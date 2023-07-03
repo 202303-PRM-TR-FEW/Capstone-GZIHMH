@@ -1,7 +1,14 @@
 import '../styles/globals.css'
-import '../styles/fonts.css';
+import localFont from 'next/font/local'
 import { Inter } from 'next/font/google'
-
+const GelionMedium = localFont({
+  src: '../styles/fonts/Gelion_Medium.ttf',
+  display: 'swap',
+})
+const GelionRegular = localFont({
+  src: '../styles/fonts/Gelion_Regular.ttf',
+  display: 'swap',
+})
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
