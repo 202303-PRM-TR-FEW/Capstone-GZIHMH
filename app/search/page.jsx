@@ -1,8 +1,41 @@
+
+import Recommended from '@/components/Recommended'
+import SearchBar from '@/components/SearchBar'
+import TopSearches from '@/components/TopSearches'
 import React from 'react'
 
 const page = () => {
+    const Top = ["Marketing Strategy", "UX Design", "Excel", "Adobe Photoshop", "CRM", "Photography", "Content Making"]
+    const searchurl = "/assets/images/searchex.jpeg";
+    const courseName = "How to UX?";
+    const tutorName = "Anna May";
+
+
+
     return (
-        <div>page</div>
+        <section>
+            <h1>Find your favorites</h1>
+
+            <SearchBar />
+            <hr className="my-2 border-gray-300 w-4/5 " />
+            <h2>TOP SEARCHES</h2>
+            <div className='flex flex-row'>
+                {Top.map((item, index) => (
+                    <TopSearches item={item} index={index} />
+                ))}
+            </div>
+            <hr className="my-2 border-gray-300 w-4/5 " />
+            <h2>CATEGORIES</h2>
+
+
+            <h2>RECOMMENDED FOR YOU</h2>
+            <div className='flex flex-row'>
+                <Recommended thumbnail={searchurl} courseName={courseName} tutorName={tutorName} />
+                <Recommended thumbnail={searchurl} courseName={courseName} tutorName={tutorName} />
+
+            </div>
+
+        </section >
     )
 }
 

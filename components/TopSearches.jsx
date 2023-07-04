@@ -1,12 +1,10 @@
 import React from 'react'
 
-const TopSearches = () => {
-  const Top = ["Marketing Strategy" , "UX Design" , "Excel" , "Adobe Photoshop" , "CRM" , "Photography" , "Content Making" ] 
+const TopSearches = (props) => {
+  const Top = ["Marketing Strategy", "UX Design", "Excel", "Adobe Photoshop", "CRM", "Photography", "Content Making"]
   return (
     <div className='flex flex-row'>
-       {Top.map((item, index) => (
-        <button className='outline_btn' key={index}>{item}</button>
-      ))}
+      <button className='outline_btn' key={props.index}>{props.item}</button>
     </div>
   )
 }

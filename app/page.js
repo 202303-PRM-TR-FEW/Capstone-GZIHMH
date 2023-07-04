@@ -8,8 +8,15 @@ export default function Intro() {
       <div>
         
           <h1>this is a font test</h1>
+
+
+
+        </div>
+        <div>
+
           <TopSearches/>
           <CheckElement id={"sales"} name={"Sales"}/>
+
 
         
       </div>
