@@ -1,3 +1,4 @@
+import CheckElement from '@/components/CheckElement'
 import TopSearches from '@/components/TopSearches'
 import Image from 'next/image'
 
@@ -7,10 +8,10 @@ export default function Intro() {
       <div>
         <div>
           <h1>this is a font test</h1>
-          <TopSearches / >
+          <TopSearches/>
         </div>
         <div>
-
+          <CheckElement id={"sales"} name={"Sales"}/>
         </div>
       </div>
     </main>
