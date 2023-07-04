@@ -9,7 +9,7 @@ export default function Intro() {
         <div>
           <h1>this is a font test</h1>
           <TopSearches/>
-            <CheckElement id={"sales"} name={"Sales"}/>
+            
         </div>
         
       </div>
