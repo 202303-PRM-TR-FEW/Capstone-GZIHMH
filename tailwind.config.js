@@ -12,6 +12,15 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      colors: {
+        primary: '#4980C2 ',
+      },
+      fonts: {
+        'gelion_md': ['Gelion_Medium', 'fallback-font', 'sans-serif'],
+        'gelion': ['Gelion_Regular', 'fallback-font', 'sans-serif'],
+
+
+      },
     },
   },
   plugins: [],

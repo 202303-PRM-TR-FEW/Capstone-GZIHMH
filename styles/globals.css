@@ -8,6 +8,20 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+@font-face {
+  font-family: 'Gelion_Regular';
+  src: url('/fonts/Gelion_Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gelion_Medium';
+  src: url('/fonts/Gelion_Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -18,10 +32,16 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+
+.search_input {
+  @apply block w-full rounded-lg border border-gray-300 bg-transparent py-1 pl-2 pr-12 text-sm placeholder-gray-500 m-1;
+}
+
+.blue_btn {
+  @apply rounded-lg border border-primary bg-primary py-1 px-2 text-white transition-all text-center text-xs flex items-center justify-center m-1;
 }
