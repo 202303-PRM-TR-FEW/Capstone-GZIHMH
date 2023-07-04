@@ -35,7 +35,6 @@ body {
   background: linear-gradient(to bottom,
       transparent,
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
-}
 
 
 .search_input {
@@ -45,3 +44,8 @@ body {
 .blue_btn {
   @apply rounded-lg border border-primary bg-primary py-1 px-2 text-white transition-all text-center text-xs flex items-center justify-center m-1;
 }
+
+.outline_btn {
+  @apply rounded-full border border-gray-300 bg-transparent py-1.5 px-5 text-gray-600 transition-all text-center text-sm  flex items-center justify-center m-2;
+}
+
