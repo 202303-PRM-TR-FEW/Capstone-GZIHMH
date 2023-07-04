@@ -3,9 +3,9 @@ import React from 'react'
 const SearchBar = () => {
 
     return (
-        <section className='searchbar'>
+        <section className='searchbar my-5'>
 
-            <form className='relative w-full flex flex-center flex-row'>
+            <form className='relative w-1/3 flex flex-center flex-row'>
                 <input
                     type='text'
                     placeholder='Search categories'

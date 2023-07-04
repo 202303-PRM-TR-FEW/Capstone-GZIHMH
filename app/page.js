@@ -7,7 +7,8 @@ export default function Intro() {
       <div>
         <div>
           <h1>this is a font test</h1>
-          <TopSearches / >
+
+
         </div>
         <div>
 
