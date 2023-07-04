@@ -1,3 +1,4 @@
+import TopSearches from '@/components/TopSearches'
 import Image from 'next/image'
 
 export default function Intro() {
@@ -6,6 +7,7 @@ export default function Intro() {
       <div>
         <div>
           <h1>this is a font test</h1>
+          <TopSearches / >
         </div>
         <div>
 

@@ -25,3 +25,7 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.outline_btn {
+  @apply rounded-full border border-gray-300 bg-transparent py-1.5 px-5 text-gray-600 transition-all text-center text-sm  flex items-center justify-center m-2;
+}
