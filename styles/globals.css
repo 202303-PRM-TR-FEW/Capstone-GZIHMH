@@ -35,7 +35,7 @@ body {
   background: linear-gradient(to bottom,
       transparent,
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
-
+ }
 
 .search_input {
   @apply block w-full rounded-lg border border-gray-300 bg-transparent py-1 pl-2 pr-12 text-sm placeholder-gray-500 m-1;
