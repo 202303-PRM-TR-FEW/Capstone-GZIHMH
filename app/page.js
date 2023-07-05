@@ -1,4 +1,4 @@
-import CheckElement from '@/components/CheckElement'
+
 import TopSearches from '@/components/TopSearches'
 import Image from 'next/image'
 
@@ -15,7 +15,7 @@ export default function Intro() {
         <div>
 
           <TopSearches/>
-          <CheckElement id={"sales"} name={"Sales"}/>
+          
 
 
         

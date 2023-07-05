@@ -1,8 +1,11 @@
 import React from 'react'
+import CheckElement from '@/components/CheckElement'
 
 const page = () => {
     return (
-        <div>page</div>
+        <div>
+            <CheckElement/>
+        </div>
     )
 }
 

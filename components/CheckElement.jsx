@@ -1,39 +1,56 @@
-
-
-
 'use client'
+import React, { useState } from 'react';
+import Image from 'next/image';
+import CourseDetails from './CourseDetails';
+import db from '../utils/db';
 
-import { useAmp } from 'next/amp';
-import React from 'react'
-import { useState } from 'react';
 
-const CheckElement = (props) => { 
-    const [isChecked,setIsChecked] = useState(false)  
-    const handleCheckboxChange = (id) =>  {
-        setIsChecked(!isChecked)
-    }; 
+function ListElement() {
+  const [selectedCourseIndex, setSelectedCourseIndex] = useState(null);
+
+  const handleCourseClick = (index) => {
+    setSelectedCourseIndex(index);
+  };
+
+  const getPersonName = (userId) => {
+    const person = db.person.find((p) => p.id === userId);
+    return person ? person.name : '';
+  };
+
   return (
-   
-      
-      <label htmlFor="sales" className="mr-6 flex items-center cursor-pointer">
-                    <div className="w-6 h-6 inline-block border-2 border-gray-300  rounded-lg bg-transparent">
-                        {isChecked && <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="2.5" stroke="#212121" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M5 12l5 5l10 -10" />
-                        </svg>}
-                    </div>
-                    <input
-                        id= {props.id}
-                        type="checkbox"
-                        className="hidden"
-                        checked={isChecked}
-                        onChange={  handleCheckboxChange}
-                    />
-                    <span className="text-gray-600 mx-2">{props.name}</span>
-                </label>
-      
-   
-  )
+    <div className='flex flex-row'>
+       <div>
+      {db.courses.map((course, index) => (
+        <div key={course.id} onClick={() => handleCourseClick(course.id)}>
+          <Image src={course.image} width={200} height={200} alt={course.title} className='image' style={{ cursor: 'pointer' }} />
+          <div className='flex flex-row justify-between'>
+            <h2>{course.title}</h2>
+            <button>
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 self-start text-gray-500 hover:text-blue-400 fill-current m-2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
+                </svg>
+              </span>
+            </button>
+          </div>
+          <p>User: {getPersonName(course.userId)}</p>
+          <input
+            type="range"
+            value={parseInt(course.completion_ratio)}
+            className="w-full h-full opacity-100 bg-white rounded-full mt-5"
+          />
+          <p>Completion Ratio: {course.completion_ratio}</p>
+        </div>
+      ))}
+    </div>
+      <div>
+
+      {selectedCourseIndex !== null && (
+        <CourseDetails courseIndex={selectedCourseIndex} />
+      )}
+      </div>
+    </div>
+  );
 }
 
-export default CheckElement
+export default ListElement;
