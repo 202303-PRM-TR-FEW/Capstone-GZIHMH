@@ -1,8 +1,12 @@
-import React from 'react'
+import ListElement from '@/components/ListElement';
+import React from 'react';
+
 
 const page = () => {
     return (
-        <div></div>
+        <div>
+            <ListElement/>
+        </div>
     )
 }
 

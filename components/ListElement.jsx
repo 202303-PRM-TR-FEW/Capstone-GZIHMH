@@ -3,7 +3,7 @@
 'use client'
 import React, { useState } from 'react';
 import Image from 'next/image';
-import CourseDetails from './CourseDetails';
+import Details from './Details';
 import db from '../utils/db';
 
 
@@ -48,7 +48,7 @@ function ListElement() {
       <div>
 
       {selectedCourseIndex !== null && (
-        <CourseDetails courseIndex={selectedCourseIndex} />
+        <Details courseIndex={selectedCourseIndex} />
       )}
       </div>
     </div>
