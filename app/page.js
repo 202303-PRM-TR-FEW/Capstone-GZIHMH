@@ -1,13 +1,15 @@
+'use client'
 import CheckElement from '@/components/CheckElement'
 import TopSearches from '@/components/TopSearches'
 import Image from 'next/image'
-
+import React from 'react'
 export default function Intro() {
   return (
     <main className="flex min-h-screen flex-row items-center justify-between p-24">
 
 
       <div>
+
 
           <div className="flex flex-row"> 
             <div>
@@ -29,15 +31,17 @@ export default function Intro() {
           </div>
 
 
+
       </div>
+
 
       <div className='bg-white    rounded-3xl '>
         <Image src="/assets/images/welcomepage.png" 
         alt="intro image"
         width={500}
         height={500}
-
         />
+
       </div>
 
 
