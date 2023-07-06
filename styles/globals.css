@@ -24,24 +24,20 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
+    --foreground-rgb: 245, 245, 245;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
-
+  color: rgb(245, 245, 245);
 
 }
 
 h1 {
   @apply text-gray-900 font-bold text-3xl;
-  
+
 }
 
 h2,
@@ -66,25 +62,29 @@ h3 {
   @apply border rounded-xl overflow-hidden object-contain;
 }
 
- 
+
 
 
 .search_input {
-  @apply block w-full rounded-lg border border-gray-300 bg-transparent py-1 pl-2 pr-12 text-sm placeholder-gray-500 m-1;
+  @apply block w-full rounded-xl border border-gray-300 bg-transparent pl-2  text-sm placeholder-gray-600 ;
 }
 
+
+.cat_btn {
+  @apply rounded-full border border-gray-300 bg-transparent py-1.5 px-5 text-gray-800 transition-all text-center text-sm flex items-center justify-center;
+
+}
 .blue_btn {
-  @apply text-blue-500 m-3 font-bold bg-transparent border border-blue-500 w-80 p-2  h-11 rounded-2xl hover:text-white hover:bg-blue-400;
+  @apply rounded-xl border border-primary bg-primary py-1.5 px-5 text-white transition-all hover:bg-white hover:text-primary text-center text-lg font-bold flex items-center justify-center;
 }
 
 .outline_btn {
-  @apply text-white m-3 font-bold bg-blue-400 border border-blue-500 w-80 p-2  h-11 rounded-2xl hover:text-blue-500 hover:bg-transparent;
+  @apply text-white m-3 font-bold bg-blue-400 border border-blue-500 w-80 p-2 h-11 rounded-2xl hover:text-blue-500 hover:bg-transparent;
 }
+
+
 
 img {
   @apply rounded-2xl m-2;
 }
 
-.course_card {
-  @apply flex flex-row rounded-2xl  m-3 p-3 opacity-100 bg-white hover:bg-blue-200 border hover:border-blue-500;
-}

@@ -26,7 +26,7 @@ const CheckElement = (props) => {
                 checked={isChecked}
                 onChange={handleCheckboxChange}
             />
-            <span className="text-gray-600 mx-2">{props.name}</span>
+            <span className="text-gray-800 mx-2">{props.name}</span>
         </label>
 
 

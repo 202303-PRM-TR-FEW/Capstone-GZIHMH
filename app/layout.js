@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import localFont from 'next/font/local'
 import { Inter } from 'next/font/google'
+import Nav from '@/components/Nav'
 const GelionMedium = localFont({
   src: '../styles/fonts/Gelion_Medium.ttf',
   display: 'swap',
@@ -19,7 +20,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+      {/* <Nav /> */}
+      <body className={`bg-gray-100 ${inter.className}`}>{children}</body>
+
+    </html >
   )
 }
