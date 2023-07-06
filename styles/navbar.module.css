@@ -1,0 +1,49 @@
+/* navbar.module.css */
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  text-decoration: none; /* Remove underlining from link */
+}
+
+.customIcon {
+  width: 55px;
+  height: 85px;
+  margin-bottom: 4px;
+  fill: white;
+}
+
+.link:hover .customIcon {
+  fill: #2F8DFF;
+}
+
+.icon {
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.link:hover .icon {
+  stroke: #2F8DFF;
+}
+
+.text {
+  font-size: 14px;
+  color: white;
+  text-decoration: none; /* Remove underlining from text */
+}
+
+.link:hover .text {
+  color: #2F8DFF;
+}
