@@ -1,8 +1,9 @@
 import React from 'react'
 import Image from 'next/image'
+import db from '@/utils/db'
 const Recommended = ({ thumbnail, courseName, tutorName }) => {
     return (
-        <div className="course_card mx-1">
+        <div className=" mr-3">
             <Image
                 src={thumbnail}
                 alt="thumbnail image"

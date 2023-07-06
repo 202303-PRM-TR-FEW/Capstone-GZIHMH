@@ -18,14 +18,14 @@ const page = () => {
             <h1>Find your favorites</h1>
 
             <SearchBar />
-            <hr className="my-2 mt-8 border-gray-300 w-4/5 " />
+            <hr className="my-2 border-gray-300 w-4/5 " />
             <h2>TOP SEARCHES</h2>
             <div className='flex flex-row'>
                 {Top.map((item, index) => (
                     <TopSearches item={item} index={index} />
                 ))}
             </div>
-            <hr className="my-2 mt-8 border-gray-300 w-4/5 " />
+            <hr className="my-2 border-gray-300 w-4/5 " />
             <h2>CATEGORIES</h2>
             <div className='flex flex-row'>
                 {
@@ -35,16 +35,8 @@ const page = () => {
                     ))
                 }
             </div>
-            <hr className="my-2 mt-8 border-gray-300 w-4/5 " />
-            <div className='flex flex-row'>
-                <div>
-                    <h2>Rating</h2>
+            <hr className="my-2 border-gray-300 w-4/5 " />
 
-                </div>
-                <div>
-
-                </div>
-            </div>
 
             <h2>RECOMMENDED FOR YOU</h2>
             <div className='flex flex-row'>
