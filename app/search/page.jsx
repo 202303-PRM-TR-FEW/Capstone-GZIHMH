@@ -22,7 +22,7 @@ const page = () => {
             <h2>TOP SEARCHES</h2>
             <div className='flex flex-row'>
                 {Top.map((item, index) => (
-                    <TopSearches item={item} index={index} />
+                    <TopSearches key={item} item={item} index={index} />
                 ))}
             </div>
             <hr className="my-2 border-gray-300 w-4/5 " />
@@ -37,7 +37,26 @@ const page = () => {
             </div>
             <hr className="my-2 border-gray-300 w-4/5 " />
 
+            <div className='flex flex-row'>
+                <div className='flex flex-col mr-44'>
+                    <h2>Rating</h2>
 
+                    <div className='mt-3 my-5'>
+                        <Star rating={3} />
+                    </div>
+                </div>
+                <div className='flex flex-col'>
+                    <h2 >Level</h2>
+                    <div className='flex flex-row mt-3 my-5'>
+                        <CheckElement id={'beginner'} name={'Beginner'} />
+                        <CheckElement id={'intermediate'} name={'Intermediate'} />
+                        <CheckElement id={'professional'} name={'Professional'} />
+                    </div>
+
+
+                </div>
+            </div>
+            <hr className="my-2 mt-8 border-gray-300 w-4/5 " />
             <h2>RECOMMENDED FOR YOU</h2>
             <div className='flex flex-row'>
                 <Recommended thumbnail={searchurl} courseName={courseName} tutorName={tutorName} />
