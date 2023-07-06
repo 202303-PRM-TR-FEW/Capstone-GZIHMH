@@ -1,9 +1,6 @@
 
-
-
 'use client'
 
-import { useAmp } from 'next/amp';
 import React from 'react'
 import { useState } from 'react';
 
