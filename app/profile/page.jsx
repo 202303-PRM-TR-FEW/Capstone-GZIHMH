@@ -1,9 +1,21 @@
-import React from 'react'
+import React from 'react';
+import InfoBar from '@/components/InfoBar';
 
-const page = () => {
-    return (
-        <div>page</div>
-    )
-}
+const ProfilePage = () => {
+  // Example usage
+  const coursesCount = 0;
+  const followersCount = 2;
+  const followingCount = 32;
 
-export default page
+  return (
+    <div>
+      <InfoBar
+        courses={coursesCount}
+        followers={followersCount}
+        following={followingCount}
+      />
+    </div>
+  );
+};
+
+export default ProfilePage;
