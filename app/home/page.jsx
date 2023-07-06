@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
+import Nav from '@/components/Nav'; 
 
-const page = () => {
+const Page = () => {
     return (
-        <div>page</div>
-    )
-}
+        <div>
+            <Nav /> 
+           
+        </div>
+    );
+};
 
-export default page
+export default Page;

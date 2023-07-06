@@ -88,6 +88,3 @@ img {
   @apply rounded-2xl m-2;
 }
 
-.course_card {
-  @apply flex flex-row rounded-2xl m-3 p-3 opacity-100 bg-white hover:bg-blue-200 border hover:border-blue-500;
-}
