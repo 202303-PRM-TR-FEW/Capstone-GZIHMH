@@ -59,9 +59,11 @@ h3 {
 }
 
 .thumbnail {
-  @apply border rounded-xl overflow-hidden object-contain;
+  @apply border rounded-xl overflow-hidden object-contain ;
 }
-
+.thumbnail_container{
+  @apply w-44 h-32
+}
 
 
 

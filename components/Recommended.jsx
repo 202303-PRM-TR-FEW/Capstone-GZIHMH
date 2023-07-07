@@ -4,13 +4,16 @@ import db from '@/utils/db'
 const Recommended = ({ thumbnail, courseName, tutorName }) => {
     return (
         <div className=" mr-3">
-            <Image
-                src={thumbnail}
-                alt="thumbnail image"
-                width={180}
-                height={180}
-                className='thumbnail'
-            />
+            <div className='thumbnail_container '>
+                <Image
+                    src={thumbnail}
+                    alt="thumbnail image"
+                    width={176}
+                    height={128}
+                    className=' w-full h-full '
+                />
+            </div>
+
 
             <div className="course_details">
                 <h2 className="course_name">{courseName}</h2>

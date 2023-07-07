@@ -98,7 +98,54 @@ const db = {
       description: 'This online course is for you if you are interested in mastering Power BI',
     },
 
-
+    {
+      id: 9,
+      image: '/assets/images/uxresearch.jpeg',
+      title: 'UX Research',
+      user_id: 5,
+      completion_ratio: 0,
+      duration: 75,
+      rating: 3.1,
+      heading: 'Course description',
+      price: 35,
+      description: 'This online course is for you if you are interested in Learning the basics of UX',
+    },
+    {
+      id: 10,
+      image: '/assets/images/uxessentials.jpeg',
+      title: 'UX Essentials',
+      user_id: 6,
+      completion_ratio: 0,
+      duration: 75,
+      rating: 3.1,
+      heading: 'Course description',
+      price: 35,
+      description: 'This online course is for you if you are interested in Learning the basics of UX',
+    },
+    {
+      id: 11,
+      image: '/assets/images/uxforbeginners.jpeg',
+      title: 'UX for Beginners',
+      user_id: 7,
+      completion_ratio: 0,
+      duration: 75,
+      rating: 3.1,
+      heading: 'Course description',
+      price: 35,
+      description: 'This online course is for you if you are interested in Learning the basics of UX',
+    },
+    {
+      id: 12,
+      image: '/assets/images/howtoux.jpeg',
+      title: 'How to UX',
+      user_id: 8,
+      completion_ratio: 0,
+      duration: 75,
+      rating: 3.1,
+      heading: 'Course description',
+      price: 35,
+      description: 'This online course is for you if you are interested in Learning the basics of UX',
+    },
 
 
   ],
@@ -112,8 +159,7 @@ const db = {
     isTeacher: true,
     email: 'davidlee@example.com',
     friendsList: [
-      '2',
-      '3'
+      2, 3
     ]
 
 
@@ -126,8 +172,7 @@ const db = {
     isTeacher: true,
     email: 'janesmith@example.com',
     friendsList: [
-      '2',
-      '3'
+      2, 3,
     ],
     courseList: [
       1, 2, 3, 4
@@ -143,8 +188,7 @@ const db = {
     isTeacher: true,
     email: 'alexjohnson@example.com',
     friendsList: [
-      '2',
-      '3'
+      3, 4,
     ]
 
 
@@ -157,16 +201,54 @@ const db = {
     isTeacher: true,
     email: 'emilydavis@example.com',
     friendsList: [
-      '2',
-      '3'
+      1, 3,
     ]
-
-
-
-
-
-
-  }],
+  },
+  {
+    id: 5,
+    name: 'Chris Kinley',
+    userName: 'kinley',
+    password: 'hello123',
+    isTeacher: true,
+    email: 'chris@example.com',
+    friendsList: [
+      2, 4,
+    ]
+  },
+  {
+    id: 6,
+    name: 'Don Draper',
+    userName: 'dondon',
+    password: 'hello123',
+    isTeacher: true,
+    email: 'don@example.com',
+    friendsList: [
+      1, 5,
+    ]
+  },
+  {
+    id: 7,
+    name: 'Ben Starter',
+    userName: 'benben',
+    password: 'hello123',
+    isTeacher: true,
+    email: 'ben@example.com',
+    friendsList: [
+      4, 5, 6,
+    ]
+  },
+  {
+    id: 8,
+    name: 'Anna May',
+    userName: 'annaanna',
+    password: 'hello123',
+    isTeacher: true,
+    email: 'anna@example.com',
+    friendsList: [
+      4, 5, 6,
+    ]
+  },
+  ],
 
 
 

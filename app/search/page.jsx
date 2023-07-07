@@ -5,12 +5,15 @@ import SearchBar from '@/components/SearchBar'
 import TopSearches from '@/components/TopSearches'
 import React from 'react'
 import categories_db from '@/utils/categories_db'
+import db from '@/utils/db'
 import Star from '@/components/Star'
 const page = () => {
     const Top = ["Marketing Strategy", "UX Design", "Excel", "Adobe Photoshop", "CRM", "Photography", "Content Making"]
-    const searchurl = "/assets/images/searchex.jpeg";
-    const courseName = "How to UX?";
-    const tutorName = "Anna May";
+
+    const getPersonName = (userId) => {
+        const person = db.person.find((p) => p.id === userId);
+        return person ? person.name : '';
+    };
 
 
 
@@ -59,9 +62,22 @@ const page = () => {
             <hr className="my-2 mt-8 border-gray-300 w-4/5 " />
 
             <h2>RECOMMENDED FOR YOU</h2>
-            <div className='flex flex-row my-5'>
-                <Recommended thumbnail={searchurl} courseName={courseName} tutorName={tutorName} />
-                <Recommended thumbnail={searchurl} courseName={courseName} tutorName={tutorName} />
+            <div >
+                <ul className='flex flex-row my-5'>
+                    {db.courses
+                        .slice(8, 12)
+                        .map(course => (
+
+                            < li key={course.id} >
+                                <Recommended thumbnail={course.image} courseName={course.title} tutorName={getPersonName(course.user_id)} />
+
+                            </li>
+                        ))
+
+
+                    }
+
+                </ul>
 
             </div>
 
