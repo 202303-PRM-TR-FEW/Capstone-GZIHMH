@@ -1,10 +1,13 @@
 import React from 'react';
 import Nav from '@/components/Nav'; 
+import HomeCategory from '@/components/homecategory';
+
 
 const Page = () => {
     return (
         <div>
-            <Nav /> 
+            {/* <Nav />  */}
+            <HomeCategory/> 
            
         </div>
     );
