@@ -1,9 +1,10 @@
 import React from 'react';
 import InfoBar from '@/components/InfoBar';
+import FinishedCourses from '@/components/FinishedCourses';
 
 const ProfilePage = () => {
   // Example usage
-  const coursesCount = 0;
+  const coursesCount = 3; // Update the number of finished courses
   const followersCount = 2;
   const followingCount = 32;
 
@@ -14,6 +15,7 @@ const ProfilePage = () => {
         followers={followersCount}
         following={followingCount}
       />
+      <FinishedCourses />
     </div>
   );
 };
