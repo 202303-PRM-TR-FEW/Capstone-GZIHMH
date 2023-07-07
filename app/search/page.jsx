@@ -34,7 +34,7 @@ const page = () => {
             <div className='flex flex-row my-5'>
                 {
                     categories_db.map((category) => (
-                        <CheckElement id={category.id} name={category.name} />
+                        <CheckElement key={category.id} id={category.id} name={category.name} />
 
                     ))
                 }
@@ -45,15 +45,15 @@ const page = () => {
                     <h2>Rating</h2>
 
                     <div className='mt-3 my-5'>
-                        <Star rating={3} />
+                        <Star key={'rating'} rating={3} />
                     </div>
                 </div>
                 <div className='flex flex-col'>
                     <h2 >Level</h2>
                     <div className='flex flex-row mt-3 my-5'>
-                        <CheckElement id={'beginner'} name={'Beginner'} />
-                        <CheckElement id={'intermediate'} name={'Intermediate'} />
-                        <CheckElement id={'professional'} name={'Professional'} />
+                        <CheckElement key={'beginner'} id={'beginner'} name={'Beginner'} />
+                        <CheckElement key={'intermediate'} id={'intermediate'} name={'Intermediate'} />
+                        <CheckElement key={'professional'} id={'professional'} name={'Professional'} />
                     </div>
 
 
