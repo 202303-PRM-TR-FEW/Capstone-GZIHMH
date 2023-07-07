@@ -26,7 +26,7 @@ const page = () => {
             <h2>TOP SEARCHES</h2>
             <div className='flex flex-row'>
                 {Top.map((item, index) => (
-                    <TopSearches item={item} index={index} />
+                    <TopSearches key={item} item={item} index={index} />
                 ))}
             </div>
             <hr className="my-2 mt-8 border-gray-300 w-4/5 " />
