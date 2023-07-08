@@ -15,10 +15,10 @@ const Details = ({ courseIndex }) => {
   };
   
   const course = getCourse(courseIndex);
-  const user = getPersonName(course.userId)
+  const user = getPersonName(course.user_id)
 
   return (
-    <section className='bg-white flex flex-col items-center'>
+    <section className='bg-white w-full flex flex-col items-center'>
       <div className='flex flex-col items-center'>
         <Image src={course.image} width={320} height={350} alt={course.title} className='image' />
         <div className='flex justify-start flex-col ml-4 '>
@@ -39,8 +39,8 @@ const Details = ({ courseIndex }) => {
       </div>
       <div>
         <div className='flex justify-evenly mt-20'>
-          <button className="outline_btn">REVIEW COURSE</button>
-          <button className="blue_btn">
+          <button className="text-primary text-1xl font-bold bg-transparent border border-primary w-80 p-2  h-11 rounded-2xl hover:text-white hover:bg-blue-400">REVIEW COURSE</button>
+          <button className="text-primary text-1xl font-bold bg-transparent border border-primary w-80 p-2  h-11 rounded-2xl hover:text-white hover:bg-blue-400">
             <Link href={`/CourseOverview/${courseIndex}`}>
               CONTINUE LEARNING
             </Link>

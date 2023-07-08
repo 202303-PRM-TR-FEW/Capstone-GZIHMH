@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Details from './Details';
 import db from '../utils/db';
-import SavedCourses from './SavedCourses'
 
 function ListElement() {
   const [selectedCourseIndex, setSelectedCourseIndex] = useState(null);
@@ -32,12 +31,20 @@ function ListElement() {
     const person = db.person.find((p) => p.id === user_id);
     return person ? person.name : '';
   };
-//save
-const handleSaveCourse = (courseId) => {
-  const course = db.courses.find((c) => c.id === courseId);
-  if (course) {
-    setSavedCourses((prevSavedCourses) => [...prevSavedCourses, course]);
-  }
+
+const handleToggle = (courseId) => {
+  const updatedDb = { ...db }; // Create a copy of the db object
+  const courses = updatedDb.courses.map((course) => {
+    if (course.id === courseId) {
+      return {
+        ...course,
+        saved: !course.saved,
+      };
+    }
+    return course;
+  });
+  updatedDb.courses = courses;
+  setRandomCourses(courses); // Update the state with the updated courses
 };
 
 
@@ -55,12 +62,33 @@ const handleSaveCourse = (courseId) => {
         </p>
         {randomCourses.map((course) => (
           <div className='flex flex-row rounded-2xl justify-evenly m-5 items-center aspect-w-1 aspect-h-1 flex-1  w-576 h-70 opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 rounded-5 border hover:border-blue-500' key={course.id} onClick={() => handleCourseClick(course.id)}>
-            <div className='flex flex-row justify-between aspect-w-1 aspect-h-1 '>
+            <div className='flex flex-row justify-between aspect-w-1 aspect-h-1'>
               <Image src={course.image} width={100} height={100} alt={course.title} className='image object-cover' style={{ cursor: 'pointer' }} />
             </div>
             <div className='ml-3'>
               <h2>{course.title}</h2>
-              <button onClick={() => handleSaveCourse(course.id)}>Save</button> 
+              <button onClick={() => handleToggle(course.id)}>
+  <span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className={`w-6 h-6 self-start ${
+        course.saved ? 'text-primary' : 'text-gray-500'
+      } fill-current m-2`}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+      />
+    </svg>
+  </span>
+  {course.saved ? 'Unsave' : 'Save'}
+</button>
+              
               <p className='mb-3'>{getPersonName(course.user_id)}</p>
               <input
                 type="range"
@@ -78,7 +106,6 @@ const handleSaveCourse = (courseId) => {
           <Details courseIndex={selectedCourseIndex} />
         )}
       </div>
-      <SavedCourses savedCourses={savedCourses} />
       
     </div>
   );

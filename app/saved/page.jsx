@@ -1,13 +1,13 @@
 import React from 'react';
 import SavedCourses from '@/components/SavedCourses';
+import db from '@/utils/db';
 
-const page = () => {
-    return (
-        <div className='text_color'>
-            <SavedCourses/>
-           
-        </div>
-    )
+export default function page() {
+  const savedCourses = db.courses.filter((course) => course.saved);
+
+  return (
+    <div>
+      <SavedCourses savedCourses={savedCourses} />
+    </div>
+  );
 }
-
-export default page
