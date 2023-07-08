@@ -1,6 +1,6 @@
 import React from 'react'
 
-const StatisticsGoalSreak = () => {
+const StatisticsGoalStreak = () => {
   return (
     <div className='flex items-center justify-center h-screen'>
       <div className='rounded-2xl bg-white w-100 h-30 flex flex-col'>
@@ -16,4 +16,4 @@ const StatisticsGoalSreak = () => {
   );
 };
 
-export default StatisticsGoalSreak
+export default StatisticsGoalStreak

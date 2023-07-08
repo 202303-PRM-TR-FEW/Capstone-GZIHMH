@@ -1,12 +1,12 @@
 import React from 'react'
 import FinishedCourses from '@/components/FinishedCourses';
-import StatisticsGoalSreak from '@/components/StatisticsGoalSreak';
+import StatisticsGoalStreak from '@/components/StatisticsGoalStreak';
 
 const page = () => {
     return (
         <div>
         {/* <FinishedCourses /> */}
-        <StatisticsGoalSreak />
+        <StatisticsGoalStreak />
         </div>
     )
 }
