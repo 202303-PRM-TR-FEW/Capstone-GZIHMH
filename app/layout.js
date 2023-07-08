@@ -20,8 +20,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      {/* <Nav /> */}
-      <body className={`bg-gray-100 ${inter.className}`}>{children}</body>
+
+
+      <body className={`bg-gray-100 ${inter.className}`}>
+        <div className='flex flex-row'>
+          <Nav />
+          {children}
+
+        </div>
+
+      </body>
 
     </html >
   )
