@@ -18,7 +18,7 @@ const page = () => {
 
 
     return (
-        <section>
+        <section className='m-6'>
             <h1>Find your favorites</h1>
 
             <SearchBar />

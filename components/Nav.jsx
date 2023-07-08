@@ -1,75 +1,124 @@
-// import React from 'react';
-// import Link from 'next/link';
+import React from 'react'
+import Image from 'next/image'
+const Nav = () => {
+    return (
+        <div>
+            <aside className="flex flex-col w-20 h-screen px-5 py-8 overflow-y-auto bg-transparent dark:bg-gray-900 dark:border-gray-700">
+                <a href="/" >
+                    <Image src="/assets/icons/icon.png"
+                        alt="icon image"
+                        width={800}
+                        height={800}
+                        className='flex m-auto w-12 h-8'
+                    />
+                </a>
 
-// const Nav = () => {
-//   return (
-//     <nav>
-//       <ul className="flex flex-col items-start p-0 list-none">
-//         <li>
-//           <img src="/assets/icons/icon.png" className="w-12 h-20 mb-1" alt="Custom Icon" />
-//         </li>
-//         <li>
-//           <Link href="/" legacyBehavior>
-//             <a className="flex flex-col items-center mb-4 cursor-pointer group">
-//               <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 stroke-current text-gray-500 group-hover:text-blue-500 transition-colors duration-300" viewBox="0 0 24 24" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-//                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-//                 <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
-//                 <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-//                 <path d="M10 12h4v4h-4z" />
-//               </svg>
-//               <span className="text-sm text-gray-500 group-hover:text-blue-500 transition-colors duration-300">Home</span>
-//             </a>
-//           </Link>
-//         </li>
-//         <li>
-//           <Link href="/search" legacyBehavior>
-//             <a className="flex flex-col items-center mb-4 cursor-pointer group">
-//               <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 stroke-current text-gray-500 group-hover:text-blue-500 transition-colors duration-300" viewBox="0 0 24 24" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-//                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-//                 <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-//                 <path d="M21 21l-6 -6" />
-//               </svg>
-//               <span className="text-sm text-gray-500 group-hover:text-blue-500 transition-colors duration-300">Search</span>
-//             </a>
-//           </Link>
-//         </li>
-//         <li>
-//           <Link href="/courses" legacyBehavior>
-//             <a className="flex flex-col items-center mb-4 cursor-pointer group">
-//               <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 stroke-current text-gray-500 group-hover:text-blue-500 transition-colors duration-300" viewBox="0 0 24 24" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-//                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-//                 <path d="M7 4v16l13 -8z" />
-//               </svg>
-//               <span className="text-sm text-gray-500 group-hover:text-blue-500 transition-colors duration-300">Courses</span>
-//             </a>
-//           </Link>
-//         </li>
-//         <li>
-//           <Link href="/saved" legacyBehavior>
-//             <a className="flex flex-col items-center mb-4 cursor-pointer group">
-//               <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 stroke-current text-gray-500 group-hover:text-blue-500 transition-colors duration-300" viewBox="0 0 24 24" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-//                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-//                 <path d="M9 4h6a2 2 0 0 1 2 2v14l-5 -3l-5 3v-14a2 2 0 0 1 2 -2" />
-//               </svg>
-//               <span className="text-sm text-gray-500 group-hover:text-blue-500 transition-colors duration-300">Saved</span>
-//             </a>
-//           </Link>
-//         </li>
-//         <li>
-//           <Link href="/profile" legacyBehavior>
-//             <a className="flex flex-col items-center mb-4 cursor-pointer group">
-//               <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 stroke-current text-gray-500 group-hover:text-blue-500 transition-colors duration-300" viewBox="0 0 24 24" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-//                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-//                 <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-//                 <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
-//               </svg>
-//               <span className="text-sm text-gray-500 group-hover:text-blue-500 transition-colors duration-300">Profile</span>
-//             </a>
-//           </Link>
-//         </li>
-//       </ul>
-//     </nav>
-//   );
-// };
+                <div className="flex flex-col justify-between flex-1 mt-6">
+                    <nav className="-mx-3 space-y-6 ">
+                        <div className="space-y-3 ">
 
-// export default Nav;
+                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-primary" href="/">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={24}
+                                    height={24}
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="rgb(177 177 177)"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <path d="M12 2L2 9v13h20V9L12 2ZM11 4.82843V9H7V5.82843L12 2.17157L17 5.82843V9H13V4.82843L12 4.17157L11 4.82843ZM13 9V19H19V9H13ZM9 9V19H5V9H9Z" />
+                                    <path d="M12 5V9H7V5H12ZM12 5H17V9H12V5Z" fill="#FFFFFF" />
+                                </svg>
+
+                                <span className="mx-2 text-sm font-medium">Home</span>
+                            </a>
+
+                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700" href="/search">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={24}
+                                    height={24}
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="rgb(177 177 177)"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <circle cx="10.5" cy="10.5" r="7.5" />
+                                    <line x1="16" y1="16" x2="20" y2="20" />
+                                </svg>
+
+                                <span className="mx-2 text-sm font-medium">Search</span>
+                            </a>
+                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700" href="/courses">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={24}
+                                    height={24}
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="rgb(177 177 177)"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polygon points="10 8 16 12 10 16 10 8" />
+                                </svg>
+
+                                <span className="mx-2 text-sm font-medium">Courses</span>
+                            </a>
+                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700" href="/saved">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={24}
+                                    height={24}
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="rgb(177 177 177)"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <path d="M19 2H5C3.897 2 3 2.897 3 4V22L12 17L21 22V4C21 2.897 20.103 2 19 2Z" />
+                                </svg>
+
+                                <span className="mx-2 text-sm font-medium">Saved</span>
+                            </a>
+                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700" href="/profile">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={24}
+                                    height={24}
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="rgb(177 177 177)"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                    <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                    <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+
+                                </svg>
+
+                                <span className="mx-2 text-sm font-medium">Profile</span>
+                            </a>
+                        </div>
+
+
+                    </nav>
+                </div>
+            </aside>
+        </div>
+
+    )
+}
+
+export default Nav
+
