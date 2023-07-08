@@ -17,7 +17,7 @@ const Nav = () => {
                     <nav className="-mx-3 space-y-6 ">
                         <div className="space-y-3 ">
 
-                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-primary" href="/">
+                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-primary" href="/home">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width={24}
