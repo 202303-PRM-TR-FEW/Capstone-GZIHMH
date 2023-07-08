@@ -1,10 +1,12 @@
 import React from 'react'
 import FinishedCourses from '@/components/FinishedCourses';
+import StatisticsGoalSreak from '@/components/StatisticsGoalSreak';
 
 const page = () => {
     return (
         <div>
-        <FinishedCourses />
+        {/* <FinishedCourses /> */}
+        <StatisticsGoalSreak />
         </div>
     )
 }
