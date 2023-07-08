@@ -6,7 +6,7 @@ import React from 'react';
 const page = () => {
     return (
         <div>
-            <div className="flex flex-col">
+            <div className="flex flex-col text-black">
             <ListElement/>
         </div>
            

@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+import SavedCourses from '@/components/SavedCourses';
 
 const page = () => {
     return (
-        <div>page</div>
+        <div className='text_color'>
+            <SavedCourses/>
+           
+        </div>
     )
 }
 
