@@ -1,12 +1,12 @@
 import React from 'react'
-import FinishedCourses from '@/components/FinishedCourses';
-import StatisticsGoalStreak from '@/components/StatisticsGoalStreak';
+import LastYearComparison from '@/components/LastYearComparison';
+import ThisWeek from '@/components/ThisWeek';
 
 const page = () => {
     return (
         <div>
-        {/* <FinishedCourses /> */}
-        <StatisticsGoalStreak />
+        <LastYearComparison />
+        <ThisWeek />
         </div>
     )
 }
