@@ -39,7 +39,7 @@ const Details = ({ courseIndex }) => {
               />
             </svg>
 
-            <p>{course.Created}</p>
+            <p>{course.duration}</p>
           </div>
          <div className='flex flex-row mb-4 mt-4'>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 mr-2 text-gray-500 hover:text-gray-600 fill-current ">
