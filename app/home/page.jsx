@@ -1,11 +1,11 @@
 import React from 'react';
-import Nav from '@/components/Nav'; 
+import Nav from '@/components/Nav';
 
 const Page = () => {
     return (
         <div>
-            <Nav /> 
-           
+            {/* <Nav />  */}
+
         </div>
     );
 };
