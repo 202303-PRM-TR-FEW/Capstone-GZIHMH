@@ -6,7 +6,6 @@ import db from '../utils/db';
 
 function ListElement() {
   const [selectedCourseIndex, setSelectedCourseIndex] = useState(null);
- 78-create-the-saved-courses-componentsaved-page
   const [randomCourses, setRandomCourses] = useState([]);
   const [savedCourses, setSavedCourses] = useState([]);
 
@@ -24,7 +23,6 @@ function ListElement() {
     getRandomCourses();
   }, []);
 
- main
 
   const handleCourseClick = (index) => {
     setSelectedCourseIndex(index);
@@ -122,7 +120,7 @@ const handleToggle = (courseId) => {
             <div className='ml-3'>
               <h2>{course.title}</h2>
               <p className='mb-3'>{getPersonName(course.userId)}</p>
- main
+
               <input
                 type="range"
                 value={parseInt(course.completion_ratio)}
@@ -130,10 +128,9 @@ const handleToggle = (courseId) => {
               />
               <p> {course.completion_ratio} complete</p>
             </div>
- 78-create-the-saved-courses-componentsaved-page
             
 
- main
+
           </div>
         ))}
       </div>
