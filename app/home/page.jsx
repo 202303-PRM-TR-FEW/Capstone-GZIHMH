@@ -5,7 +5,7 @@ import HomeCategory from '@/components/HomeCategory';
 const Page = () => {
     return (
         <div>
-            {/* <Nav />  */}
+           <Nav />  
 <HomeCategory/>
         </div>
     );
