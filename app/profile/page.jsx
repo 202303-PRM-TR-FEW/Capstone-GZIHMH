@@ -1,6 +1,7 @@
 import React from 'react';
 import InfoBar from '@/components/InfoBar';
 import FinishedCourses from '@/components/FinishedCourses';
+import Achievements from '@/components/Achievements';
 
 const ProfilePage = () => {
   // Example usage
@@ -16,6 +17,7 @@ const ProfilePage = () => {
         following={followingCount}
       />
       <FinishedCourses />
+      <Achievements />
     </div>
   );
 };
