@@ -140,7 +140,7 @@ const handleToggle = (courseId) => {
       </div>
       
     </div>
-  );
+  
 }
 
 export default ListElement;
