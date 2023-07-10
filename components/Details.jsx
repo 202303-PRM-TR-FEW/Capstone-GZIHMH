@@ -64,7 +64,7 @@ const Details = ({ courseIndex }) => {
               />
             </svg>
 
-            <p>{course.Rating} </p>
+            <p>{course.rating} </p>
           </div>
           <h3 className='mt-4 mb-2'>{course.heading}</h3>
 
