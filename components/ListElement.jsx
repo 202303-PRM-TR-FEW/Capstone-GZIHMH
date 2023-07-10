@@ -118,7 +118,7 @@ const handleToggle = (courseId) => {
             </div>
             <div className='ml-3'>
               <h2>{course.title}</h2>
-              <p className='mb-3'>{getPersonName(course.userId)}</p>
+              <p className='mb-3'>{getPersonName(course.user_id)}</p>
 
               <input
                 type="range"
