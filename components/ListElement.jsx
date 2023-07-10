@@ -50,7 +50,6 @@ const handleToggle = (courseId) => {
 
 
   return (
- 78-create-the-saved-courses-componentsaved-page
     <div className='flex flex-row flex-1'>
       <div className='rounded-2xl p-2'>
         <p className="flex flex-row justify-between p-5">
