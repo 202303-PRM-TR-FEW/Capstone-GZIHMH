@@ -134,9 +134,9 @@ const handleToggle = (courseId) => {
         ))}
       </div>
       <div>
-        {selectedCourseIndex !== null && (
+        {selectedCourseIndex !== null && 
           <Details courseIndex={selectedCourseIndex} />
-        )}
+        }
       </div>
       
     </div>
