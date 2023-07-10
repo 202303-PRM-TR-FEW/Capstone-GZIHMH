@@ -66,7 +66,7 @@ const Details = ({ courseIndex }) => {
 
             <p>{course.rating} </p>
           </div>
-          <h3 className='mt-4 mb-2'>{course.heading}</h3>
+          <h3 className='mt-4 mb-2'>Course Description</h3>
 
           <p className='w-1/2 m-1'>{course.description}</p>
         </div>
