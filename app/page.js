@@ -1,4 +1,5 @@
 import Login from '@/components/Login'
+import RegistrationForm from '@/components/RegistrationForm'
 import Image from 'next/image'
 
 export default function Intro() {
@@ -9,6 +10,7 @@ export default function Intro() {
 
       <div className="flex flex-col items-center flex-start m-auto ">
         <Login />
+        <RegistrationForm />
         
       </div>
 
