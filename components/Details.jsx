@@ -3,24 +3,31 @@ import Image from 'next/image';
 import Link from 'next/link';
 import db from '../utils/db';
 
-const Details = ({ courseIndex }) => {
+const Details = ({ courseIndex = 0 }) => {
   const getCourse = (courseIndex) => {
     const course = db.courses.find((c) => c.id === courseIndex);
-    return course;
+    return course || {};
   };
+  if (!courseIndex) {
+    courseIndex = db.courses[0].id;
+  }
 
-  const getPersonName = (userId) => {
-    const person = db.person.find((p) => p.id === userId);
+  const getPersonName = (user_id) => {
+    const person = db.person.find((p) => p.id === user_id);
     return person ? person.name : '';
   };
 
   const course = getCourse(courseIndex);
-  const user = getPersonName(course.userId)
+  const user = course ? getPersonName(course.user_id) : '';
+
+  if (!course) {
+    return <div>Course not found</div>; 
+  }
 
   return (
-    <section className='bg-white flex flex-col items-center'>
+    <section className='bg-white flex flex-col '>
       <div className='flex flex-col items-center'>
-        <Image src={course.image} width={720} height={250} alt={course.title} className='image' />
+        <Image src={course.image} width={320} height={350} alt={course.title} className='image' />
         <div className='flex justify-start flex-col ml-4 '>
           <h2 className='p-3 mb-4 mt-4'>{course.title}</h2>
           <div className='flex flex-row'>
@@ -29,7 +36,7 @@ const Details = ({ courseIndex }) => {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="w-6 mr-2 h-6 text-gray-500 hover:text-gray-600 fill-current"
+              className="w-6 mr-2 h-6 text-gray-400  fill-current"
             >
               <path
                 strokeLinecap="round"
@@ -39,7 +46,7 @@ const Details = ({ courseIndex }) => {
               />
             </svg>
 
-            <p>{course.Created}</p>
+            <p>{course.duration}</p>
           </div>
           <div className='flex flex-row mb-4 mt-4'>
             <svg
@@ -48,7 +55,7 @@ const Details = ({ courseIndex }) => {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="w-6 h-6 mr-2 text-gray-500 hover:text-gray-600 fill-current"
+              className="w-6 h-6 mr-2 text-gray-400  fill-current"
             >
               <path
                 strokeLinecap="round"
@@ -57,16 +64,16 @@ const Details = ({ courseIndex }) => {
               />
             </svg>
 
-            <p>{course.Rating} </p>
+            <p>{course.rating} </p>
           </div>
-          <h3 className='mt-4 mb-2'>{course.heading}</h3>
+          <h3 className='mt-4 mb-2'>Course Heading</h3>
           <p className='w-1/2 m-1'>{course.description}</p>
         </div>
       </div>
       <div>
-        <div className='flex justify-evenly mt-20'>
-          <button className="outline_btn">REVIEW COURSE</button>
-          <button className="blue_btn">
+        <div className='flex '>
+          <button className="text-primary m-4 text-1xl font-bold bg-transparent border border-primary w-80 p-2  h-11 rounded-2xl hover:text-white hover:bg-primary">REVIEW COURSE</button>
+          <button className="text-primary m-4 text-1xl font-bold bg-transparent border border-primary w-80 p-2  h-11 rounded-2xl hover:text-white hover:bg-primary">
             <Link href={`/CourseOverview/${courseIndex}`}>
               CONTINUE LEARNING
             </Link>

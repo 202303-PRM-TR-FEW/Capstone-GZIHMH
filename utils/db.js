@@ -8,9 +8,9 @@ const db = {
       completion_ratio: 55,
       duration: 43,
       rating: 4.7,
-      heading: 'Course description',
       price: 100,
       description: 'This online course for you if you are in taking great digital photo and learning jow to make your photography unique and outstanding',
+      saved: false,
 
     },
     {
@@ -21,9 +21,9 @@ const db = {
       completion_ratio: 27,
       duration: 43,
       rating: 4.7,
-      heading: 'Course description',
       price: 75,
-      description: 'This online course for you if you are in taking great digital photo and learning jow to make your photography unique and outstanding'
+      description: 'This online course for you if you are in taking great digital photo and learning jow to make your photography unique and outstanding',
+      saved: false,
     },
     {
       id: 3,
@@ -33,9 +33,9 @@ const db = {
       completion_ratio: 11,
       duration: 43,
       rating: 4.7,
-      heading: 'Course description',
       price: 50,
-      description: 'This online course for you if you are in taking great digital photo and learning jow to make your photography unique and outstanding'
+      description: 'This online course for you if you are in taking great digital photo and learning jow to make your photography unique and outstanding',
+      saved: false,
     },
     {
       id: 4,
@@ -45,9 +45,9 @@ const db = {
       completion_ratio: 27,
       duration: 43,
       rating: 4.7,
-      heading: 'Course description',
       price: 75,
-      description: 'This online course for you if you are in taking great digital photo and learning jow to make your photography unique and outstanding'
+      description: 'This online course for you if you are in taking great digital photo and learning jow to make your photography unique and outstanding',
+      saved: false,
     },
     {
       id: 5,
@@ -57,9 +57,9 @@ const db = {
       completion_ratio: 56,
       duration: 103,
       rating: 4.9,
-      heading: 'Course description',
       price: 24,
       description: 'This online course is for you if you are interested in mastering Power BI',
+      saved: false,
     },
     {
       id: 6,
@@ -69,9 +69,9 @@ const db = {
       completion_ratio: 56,
       duration: 59,
       rating: 4.3,
-      heading: 'Course description',
       price: 18,
       description: 'This online course is designed for individuals interested in learning Agile Project Management methodologies and techniques to effectively manage projects in dynamic and fast-paced environments.',
+      saved: true,
     },
     {
       id: 7,
@@ -81,9 +81,9 @@ const db = {
       completion_ratio: 56,
       duration: 83,
       rating: 4.6,
-      heading: 'Course description',
       price: 24,
       description: 'This online course is designed for individuals who want to master the art of using pivot tables in data analysis. Learn how to organize and analyze large datasets, create insightful reports, and make data-driven decisions.',
+      saved: true,
     },
     {
       id: 8,
@@ -93,9 +93,9 @@ const db = {
       completion_ratio: 56,
       duration: 77,
       rating: 4.1,
-      heading: 'Course description',
       price: 24,
       description: 'This online course is for you if you are interested in mastering Power BI',
+      saved: true,
     },
 
     {
@@ -106,9 +106,9 @@ const db = {
       completion_ratio: 0,
       duration: 75,
       rating: 3.1,
-      heading: 'Course description',
       price: 35,
       description: 'This online course is for you if you are interested in Learning the basics of UX',
+      saved: false,
     },
     {
       id: 10,
@@ -118,9 +118,9 @@ const db = {
       completion_ratio: 0,
       duration: 75,
       rating: 3.1,
-      heading: 'Course description',
       price: 35,
       description: 'This online course is for you if you are interested in Learning the basics of UX',
+      saved: false,
     },
     {
       id: 11,
@@ -130,9 +130,9 @@ const db = {
       completion_ratio: 0,
       duration: 75,
       rating: 3.1,
-      heading: 'Course description',
       price: 35,
       description: 'This online course is for you if you are interested in Learning the basics of UX',
+      saved: false,
     },
     {
       id: 12,
@@ -142,9 +142,9 @@ const db = {
       completion_ratio: 0,
       duration: 75,
       rating: 3.1,
-      heading: 'Course description',
       price: 35,
       description: 'This online course is for you if you are interested in Learning the basics of UX',
+      saved: false,
     },
 
 

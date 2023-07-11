@@ -1,4 +1,3 @@
-
 import ListElement from '@/components/ListElement';
 import React from 'react';
 
@@ -6,7 +5,7 @@ import React from 'react';
 const page = () => {
     return (
         <div>
-            <div className="flex flex-col">
+            <div className="flex flex-col text-black">
             <ListElement/>
         </div>
            
@@ -15,3 +14,6 @@ const page = () => {
 }
 
 export default page
+
+
+
