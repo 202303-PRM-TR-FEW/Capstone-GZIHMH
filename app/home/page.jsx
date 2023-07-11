@@ -1,7 +1,7 @@
 import React from 'react';
-import Nav from '@/components/Nav';
-import HomeCategories from '@/components/HomeCategories';
 import FeaturedCourses from '@/components/FeaturedCourses';
+import HomeCategories from "@/components/HomeCategories"
+import MyLearning from "@/components/MyLearning"
 
 const Page = () => {
     return (
@@ -14,14 +14,30 @@ const Page = () => {
                     <FeaturedCourses />
                     <FeaturedCourses />
                 </div>
+
             </div>
-        <div>
-        </div>
             <h2 className="p-2 font-bold">Categories</h2>
             <li>
                 <HomeCategories />
             </li>
+
+            <div>
+                <h2 className="p-2 font-bold">My Learning</h2>
+            </div>
+            <div className="flex flex-col md:flex-row items-center">
+                <MyLearning />
+            </div>
+
+            <div className="flex justify-center mx-auto mt-8 w-200">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-20 rounded-xl">
+                    59$
+                </button>
+
+            </div>
         </section>
+
+
+
 
     );
 };
