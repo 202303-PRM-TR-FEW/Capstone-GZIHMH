@@ -1,6 +1,6 @@
 import React from 'react';
 import Nav from '@/components/Nav';
-import HomeCategory from '@/components/HomeCategory';
+import HomeCategories from '@/components/HomeCategories';
 import FeaturedCourses from '@/components/FeaturedCourses';
 
 const Page = () => {
@@ -17,6 +17,10 @@ const Page = () => {
             </div>
         <div>
         </div>
+            <h2 className="p-2 font-bold">Categories</h2>
+            <li>
+                <HomeCategories />
+            </li>
         </section>
 
     );
