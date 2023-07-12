@@ -12,7 +12,7 @@ export default function Intro() {
         <Login />
         <RegistrationForm />
         
-      </div>
+      </div> 
 
       <div className='bg-white  rounded-3xl  '>
         <Image src="/assets/images/welcomepage.png"

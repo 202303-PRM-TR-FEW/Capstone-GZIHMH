@@ -14,4 +14,4 @@ export async function getCourses() {
         console.error(error);
     }
 }
-export default getCourses
+export default getCourses 
