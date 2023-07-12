@@ -17,7 +17,7 @@ const Nav = () => {
                     <nav className="-mx-3 space-y-6 ">
                         <div className="space-y-3 ">
 
-                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-primary" href="/home">
+                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-primary" href="/pages/home">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width={24}
@@ -36,7 +36,7 @@ const Nav = () => {
                                 <span className="mx-2 text-sm font-medium">Home</span>
                             </a>
 
-                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700" href="/search">
+                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700" href="/pages/search">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width={24}
@@ -54,7 +54,7 @@ const Nav = () => {
 
                                 <span className="mx-2 text-sm font-medium">Search</span>
                             </a>
-                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700" href="/courses">
+                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700" href="/pages/courses">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width={24}
@@ -72,7 +72,7 @@ const Nav = () => {
 
                                 <span className="mx-2 text-sm font-medium">Courses</span>
                             </a>
-                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700" href="/saved">
+                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700" href="/pages/saved">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width={24}
@@ -89,7 +89,7 @@ const Nav = () => {
 
                                 <span className="mx-2 text-sm font-medium">Saved</span>
                             </a>
-                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700" href="/profile">
+                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700" href="/pages/profile">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width={24}
