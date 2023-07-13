@@ -1,7 +1,8 @@
-import React from 'react';
-import InfoBar from '@/components/InfoBar';
-import FinishedCourses from '@/components/FinishedCourses';
-import Achievements from '@/components/Achievements';
+import React from "react";
+import InfoBar from "@/components/InfoBar";
+import FinishedCourses from "@/components/FinishedCourses";
+import Achievements from "@/components/Achievements";
+import FreindsSuggestion from "@/components/FreindsSuggestion";
 
 const ProfilePage = () => {
   // Example usage
@@ -11,6 +12,8 @@ const ProfilePage = () => {
 
   return (
     <div>
+      <FreindsSuggestion />
+
       <InfoBar
         courses={coursesCount}
         followers={followersCount}
@@ -18,8 +21,9 @@ const ProfilePage = () => {
       />
       <FinishedCourses />
       <Achievements />
+     
     </div>
   );
 };
 
-export default ProfilePage; 
+export default ProfilePage;
