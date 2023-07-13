@@ -17,10 +17,12 @@ const ProfilePage = () => {
         courses={coursesCount}
         followers={followersCount}
         following={followingCount}
-      />*/}
+      />
+       <FinishedCourses />
+      */}
 
      
-      <FinishedCourses />
+     
 
       <Achievements />
       
