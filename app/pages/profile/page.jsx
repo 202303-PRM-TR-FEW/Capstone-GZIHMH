@@ -19,7 +19,7 @@ const ProfilePage = () => {
         following={followingCount}
       />
 
-      <Friends />
+     
       <FinishedCourses />
 
       <Achievements />
