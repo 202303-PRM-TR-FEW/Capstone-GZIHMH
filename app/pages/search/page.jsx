@@ -75,7 +75,9 @@ const Page = () => {
       <h2>RECOMMENDED FOR YOU</h2>
       <div>
         <ul className="flex flex-wrap md:flex-row my-5">
-          {courses.map((course) => (
+          {courses
+          .slice(0,6)
+          .map((course) => (
             <li key={course.id}>
               <Recommended
                 path={course.url}
