@@ -50,9 +50,9 @@ function ListElement() {
 
 
   return (
-    <div className='flex flex-row flex-1'>
-      <div className='rounded-2xl p-2'>
-        <p className="flex flex-row justify-between p-5">
+    <div className='flex flex-row mt-10'>
+      <div className='rounded-2xl p-2 flex flex-col w-1/2'>
+        <p className="flex flex-row justify-evenly">
           <h1>My Learning</h1>
           <p className='flex flex-row justify-between'>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 self-start text-gray-500 hover:text-gray-600 fill-current m-2">
@@ -62,11 +62,11 @@ function ListElement() {
           </p>
         </p>
         {randomCourses.map((course) => (
-          <div className='flex flex-row rounded-2xl justify-evenly m-2 items-center aspect-w-1 aspect-h-1 flex-1  w-576 h-70 opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 rounded-5 border hover:border-blue-500' key={course.id} onClick={() => handleCourseClick(course.id)}>
-            <div className='flex flex-row justify-between aspect-w-1 aspect-h-1'>
+          <div className='flex flex-row h-280 float-right rounded-2xl justify-start m-2 flex-wrap-none opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 rounded-5 border hover:border-blue-500' key={course.id} onClick={() => handleCourseClick(course.id)}>
+            <div className='flex flex-row justify-between '>
               <Image src={course.image} width={200} height={180} alt={course.title} className='image object-cover' style={{ cursor: 'pointer' }} />
             </div>
-            <div className='ml-3'>
+            <div className='ml-3 p-4'>
               <h2>{course.title}</h2>
               <button onClick={() => handleToggle(course.id)}>
                  <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-6 h-6 self-start ${ course.saved ? 'text-primary' : 'text-gray-400' } fill-current m-2`}>
@@ -84,7 +84,7 @@ function ListElement() {
           </div>
         ))}
       </div>
-      <div>
+      <div className='float-right w-1/2 h-full '>
         {selectedCourseIndex !== null && (
           <Details courseIndex={selectedCourseIndex} />
         )}

@@ -12,9 +12,9 @@ const SavedCourseReview = ({ course }) => {
   const user = getPersonName(course.user_id);
 
   return (
-    <section className='bg-white flex flex-col items-center '>
-      <div className='flex flex-col items-center mt-20'>
-        <Image src={course.image} width={320} height={350} alt={course.title} className='image' />
+    <section className='bg-white flex flex-col items-center rounded-2xl p-4 '>
+      <div className='flex flex-col items-center'>
+        <Image src={course.image} width={350} height={350} alt={course.title} className='image' />
         <div className='flex justify-start flex-col ml-4 '>
           <h2 className='p-3 mb-4 mt-4'>{course.title}</h2>
           <div className='flex flex-row'>
