@@ -35,12 +35,15 @@ body {
 }
 
 h1 {
-  @apply text-3xl font-bold text-gray-900;
+  @apply text-gray-900 font-bold text-3xl;
+
 }
 
 h2,
 h3 {
-  @apply font-bold text-gray-600;
+
+  @apply text-gray-600 font-bold;
+
 }
 
 .check {
@@ -57,14 +60,16 @@ h3 {
 }
 
 .thumbnail {
-  @apply object-contain overflow-hidden border rounded-xl;
+
+  @apply border rounded-xl overflow-hidden object-contain;
 }
 .thumbnail_container {
-  @apply h-32 w-44;
+  @apply w-44 h-32;
 }
 
 .search_input {
-  @apply block w-full pl-2 text-sm placeholder-gray-600 bg-transparent border border-gray-300 rounded-xl;
+  @apply block w-full rounded-xl border border-gray-300 text-gray-900 bg-transparent pl-2  text-sm placeholder-gray-600;
+
 }
 
 .cat_btn {
