@@ -25,8 +25,8 @@ const Details = ({ courseIndex = 0 }) => {
   }
 
   return (
-    <section className='bg-white flex flex-col '>
-      <div className='flex flex-col items-center'>
+    <section className='bg-white flex flex-col rounded-2xl '>
+      <div className='flex flex-col items-center mt-4 '>
         <Image src={course.image} width={320} height={350} alt={course.title} className='image' />
         <div className='flex justify-start flex-col ml-4 '>
           <h2 className='p-3 mb-4 mt-4'>{course.title}</h2>
@@ -71,7 +71,7 @@ const Details = ({ courseIndex = 0 }) => {
         </div>
       </div>
       <div>
-        <div className='flex '>
+        <div className='flex mt-20 mb-20 '>
           <button className="text-primary m-4 text-1xl font-bold bg-transparent border border-primary w-80 p-2  h-11 rounded-2xl hover:text-white hover:bg-primary">REVIEW COURSE</button>
           <button className="text-primary m-4 text-1xl font-bold bg-transparent border border-primary w-80 p-2  h-11 rounded-2xl hover:text-white hover:bg-primary">
             <Link href={`/CourseOverview/${courseIndex}`}>

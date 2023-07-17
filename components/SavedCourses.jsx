@@ -17,12 +17,12 @@ function SavedCourses({ savedCourses }) {
   };
 
   return (
-    <div className='flex '>
-    <div className='text-black w-1/2 mt-20'>
-      <h1>Saved Courses</h1>
+    <div className='flex mt-20'>
+    <div className='float-left w-1/3 h-280'>
+      <h1 className='p-4'>Saved Courses</h1>
       {savedCourses.map((course, index) => (
-        <div className='flex flex-row rounded-2xl justify-evenly m-2 items-center aspect-w-1 aspect-h-1 flex-1  w-576 h-70 opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 rounded-5 border hover:border-blue-500' key={course.id}>
-          <div className='flex flex-row justify-between aspect-w-1 aspect-h-1'>
+        <div className='flex flex-row rounded-2xl justify-start m-3  opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 rounded-5 border hover:border-blue-500' key={course.id}>
+          <div className='flex flex-row'>
             <Image
               src={course.image}
               width={200}
@@ -33,7 +33,8 @@ function SavedCourses({ savedCourses }) {
               onClick={() => handleCourseClick(index)}
             />
           </div>
-          <div>
+          <div className='ml-4 '>
+            <div className='flex flex-row items-center mt-4 '>
             <h2>{course.title}</h2>
             <span>
               <svg
@@ -51,6 +52,7 @@ function SavedCourses({ savedCourses }) {
                 />
               </svg>
             </span>
+            </div>
             <p className='mb-3 tutor_name'>{getPersonName(course.user_id)}</p>
             <button className='text-white bg-primary w-12 h-6 text-sm font-semibold rounded-2xl mt-4'>BUY</button>
           </div>
@@ -59,7 +61,7 @@ function SavedCourses({ savedCourses }) {
 
      
     </div>
-    <div>
+    <div className='float-right w-1/2 h-280'>
     {selectedCourseIndex !== null && (
         <SavedCourseReview course={savedCourses[selectedCourseIndex]} />
       )}

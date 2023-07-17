@@ -36,27 +36,31 @@ body {
 
 h1 {
   @apply text-gray-900 font-bold text-3xl;
+
 }
 
 h2,
 h3 {
+
   @apply text-gray-600 font-bold;
+
 }
 
 .check {
   background-color: transparent;
-  @apply text-gray-600 rounded bg-transparent;
+  @apply text-gray-600 bg-transparent rounded;
 }
 
 .course_name {
-  @apply text-gray-900 text-lg font-semibold;
+  @apply text-lg font-semibold text-gray-900;
 }
 
 .tutor_name {
-  @apply text-gray-600 text-sm;
+  @apply text-sm text-gray-600;
 }
 
 .thumbnail {
+
   @apply border rounded-xl overflow-hidden object-contain;
 }
 .thumbnail_container {
@@ -65,6 +69,7 @@ h3 {
 
 .search_input {
   @apply block w-full rounded-xl border border-gray-300 text-gray-900 bg-transparent pl-2  text-sm placeholder-gray-600;
+
 }
 
 .cat_btn {
@@ -75,9 +80,28 @@ h3 {
 }
 
 .outline_btn {
-  @apply text-white m-3 font-bold bg-blue-400 border border-blue-500 w-80 p-2 h-11 rounded-2xl hover:text-blue-500 hover:bg-transparent;
+  @apply p-2 m-3 font-bold text-white bg-blue-400 border border-blue-500 w-80 h-11 rounded-2xl hover:text-blue-500 hover:bg-transparent;
 }
 
 img {
-  @apply rounded-2xl m-2;
+  @apply m-2 rounded-2xl;
+}
+.activity-cards {
+  background-color: #fff;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+.p-color {
+  color: black;
+}
+.activity-card {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 5px;
+}
+.footer > h2 {
+  color: blue;
+}
+.recent-card {
+  margin-bottom: 1rem;
 }
