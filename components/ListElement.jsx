@@ -52,15 +52,15 @@ function ListElement() {
   return (
     <div className='flex flex-row mt-10'>
       <div className='rounded-2xl p-2 flex flex-col w-1/2'>
-        <p className="flex flex-row justify-evenly">
+        <div className="flex flex-row justify-evenly">
           <h1>My Learning</h1>
-          <p className='flex flex-row justify-between'>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 self-start text-gray-500 hover:text-gray-600 fill-current m-2">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
-            </svg>
-            <span className='w-430 h-42 flex-grow-1 m-0 overflow-hidden text-lg leading-10 text-left tracking-normal whitespace-pre-line opacity-90 visible text-gray-600 font-rubik'>Statistics</span>
-          </p>
-        </p>
+          <div className='flex flex-row justify-between  px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700'>
+            <a className="flex text-lg items-center" href="/pages/statistics">
+              <svg xmlns="http://www.w3.org/2000/svg" className="mr-4" width="33" height="33" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 3v18h18" /><path d="M20 18v3" /><path d="M16 16v5" /><path d="M12 13v8" /><path d="M8 16v5" /><path d="M3 11c6 0 5 -5 9 -5s3 5 9 5" /></svg>
+              <span>Statistics</span>
+            </a>
+          </div>
+        </div>
         {randomCourses.map((course) => (
           <div className='flex flex-row h-280 float-right rounded-2xl justify-start m-2 flex-wrap-none opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 rounded-5 border hover:border-blue-500' key={course.id} onClick={() => handleCourseClick(course.id)}>
             <div className='flex flex-row justify-between '>
