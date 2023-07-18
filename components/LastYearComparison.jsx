@@ -24,7 +24,7 @@ const LastYearComparison = () => {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 w-1/3">
+    <div className=" bottom-4 right-4 w-auto">
       <div className="bg-white rounded-lg p-4">
         <div className="flex flex-col gap-4">
           <ProgressBar label="Study Time" progress={75} />
