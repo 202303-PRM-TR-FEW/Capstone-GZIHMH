@@ -58,7 +58,6 @@ export const initialCourses = [
     Creating actionable weekly plans for consistent progress.`
 
 },
-    { title: 'Course 2', description: 'Description of Course 2' },
 ];
 
 // Function to initialize the database schema (creating collections if needed)
@@ -90,11 +89,30 @@ export const initializeDatabaseSchema = async () => {
             const categoriesRef = firestore.collection(collectionNames.CATEGORIES);
             await Promise.all(categories_db.map((category) => categoriesRef.add(category)));
         }
-        // Create the 'users' collection if it doesn't exist
         if (!collectionNamesSet.has(collectionNames.USERS)) {
             const usersRef = firestore.collection(collectionNames.USERS);
-            await Promise.all( initialUsers.map((user) => usersRef.add(user)) );
-        }
+            await Promise.all(
+              initialUsers.map(async (user) => {
+                const userDocRef = await usersRef.add(user);
+      
+                const tutorDetails = { ...initialTutorDetails[0] };
+                tutorDetails.tutorId = userDocRef.id;
+      
+                if (!collectionNamesSet.has(collectionNames.TUTOR_DETAILS)) {
+                  const tutorDetailsRef = firestore.collection(collectionNames.TUTOR_DETAILS);
+                  const tutorDetailsDocRef = await tutorDetailsRef.add(tutorDetails);
+      
+                  const categoriesRef = firestore.collection(collectionNames.CATEGORIES);
+                  const querySnapshot = await categoriesRef.where('name', 'in', ['Sales', 'Marketing']).get();
+      
+                  const categoryRefs = querySnapshot.docs.map((doc) => doc.ref);
+      
+                  await tutorDetailsDocRef.update({ experties: categoryRefs });
+                }
+              })
+            );
+          }
+      
   
       console.log('Database schema initialized!');
     } catch (error) {
@@ -116,7 +134,7 @@ const uploadProfilePicture = async (userId, file) => {
   
       const userRef = firestore.collection('users').doc(userId);
       await userRef.update({ profilePicture: downloadURL });
-  
+        
       return downloadURL;
     } catch (error) {
       console.error('Error uploading profile picture:', error);
