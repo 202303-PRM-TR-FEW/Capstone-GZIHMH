@@ -249,6 +249,18 @@ fetchImageAsFile('/assets/images/michaelnuendorff.jpg')
   .catch((error) => {
     console.error('Error fetching image:', error);
   });
+
+  const uploadThumbnail = async (courseId, thumbnailFile) => {
+    try {
+      const thumbnailStorageRef = storage.ref(`thumbnails/${courseId}.jpg`);
+      const thumbnailSnapshot = await thumbnailStorageRef.put(thumbnailFile);
+      const thumbnailDownloadURL = await thumbnailSnapshot.ref.getDownloadURL();
+      return thumbnailDownloadURL;
+    } catch (error) {
+      console.error('Error uploading thumbnail:', error);
+      return null;
+    }
+  };  
 //function to seed category data
 // export const seedCategoriesData = async() => {
 //     try {
