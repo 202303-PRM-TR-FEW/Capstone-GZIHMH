@@ -2,10 +2,6 @@
 import { storage, firestore } from './firebase';
 import categories_db from './categories_db';
 import {getStorage} from "firebase/storage"
-const storage =getStorage();
-const storageRef = ref(storage);
-const imagesRef = ref(storage,'images');
-const michaelRef = ref(storage,'images/micaelnuendorff.jpg')
 export const collectionNames = {
     USERS: 'users',
     COURSES: 'courses',
@@ -73,7 +69,7 @@ export const initialCourses = [
 
 },
 ];
-const lesson = [
+const initialLessons = [
     {
     courseId: '',
     link: 'https://www.youtube.com/watch?v=MCpi7xZz8bg&list=PLCwOIOwZBb1gTXHXCnPTO2hPqljuROxgO&index=1&pp=iAQB',
@@ -120,11 +116,7 @@ export const initializeDatabaseSchema = async () => {
         const collections = await firestore.listCollections();
         const collectionNamesSet = new Set(collections.map((col) => col.id));
     
-        // Create the 'courses' collection if it doesn't exist
-        if (!collectionNamesSet.has(collectionNames.COURSES)) {
-            const coursesRef = firestore.collection(collectionNames.COURSES);
-            await Promise.all(initialCourses.map((course) => coursesRef.add(course)));
-        }
+       
     
         // Create the 'achievements' collection if it doesn't exist
         if (!collectionNamesSet.has(collectionNames.ACHIEVEMENTS)) {
@@ -142,6 +134,7 @@ export const initializeDatabaseSchema = async () => {
             const categoriesRef = firestore.collection(collectionNames.CATEGORIES);
             await Promise.all(categories_db.map((category) => categoriesRef.add(category)));
         }
+        // Create the 'users' collection if it doesn't exist
         if (!collectionNamesSet.has(collectionNames.USERS)) {
             const usersRef = firestore.collection(collectionNames.USERS);
             await Promise.all(
@@ -164,9 +157,72 @@ export const initializeDatabaseSchema = async () => {
                 }
               })
             );
-          }
-      
-  
+        }
+        
+
+        // Create the 'courses' collection if it doesn't exist
+        if (!collectionNamesSet.has(collectionNames.COURSES)) {
+            const coursesRef = firestore.collection(collectionNames.COURSES);
+            await Promise.all(
+                initialCourses.map(async (course) => {
+                    // Add the course to the 'courses' collection
+                    const courseDocRef = await coursesRef.add(course);
+        
+                    // Update the tutorId field of the course document
+                    const tutorDetailsRef = firestore.collection(collectionNames.TUTOR_DETAILS);
+                    const tutorDetailsQuerySnapshot = await tutorDetailsRef.limit(1).get();
+                    if (!tutorDetailsQuerySnapshot.empty) {
+                    const tutorDetailsData = tutorDetailsQuerySnapshot.docs[0].data();
+                    await courseDocRef.update({ tutorId: tutorDetailsData.tutorId });
+                    }
+        
+                    // Upload the thumbnail image to Firebase Storage and get the download URL
+                    const imageUrl = '/assets/images/thumbnailsales.jpg';
+                    const thumbnailFile = await fetchImageAsFile(imageUrl);
+                    if (thumbnailFile) {
+                    const thumbnailDownloadURL = await uploadThumbnail(courseDocRef.id, thumbnailFile);
+                    // Add the thumbnail URL to the course document
+                    await courseDocRef.update({ thumbnail: thumbnailDownloadURL });
+                    }
+        
+                    // Add the "Beginner" level reference to the course document
+                    const levelQuerySnapshot = await levelsRef.where('name', 'in', 'beginner').get();
+                    const levelRef = levelQuerySnapshot.docs;
+
+                    await courseDocRef.update({ level: levelRef });
+        
+                    // Add categories  to the course document
+                    const categoriesRef = firestore.collection(collectionNames.CATEGORIES);
+                    const categoryIds = [1, 6];
+                    const categoriesQuerySnapshot = await categoriesRef.where('id', 'in', categoryIds).get();
+                    const categoryDocs = categoriesQuerySnapshot.docs;
+                    if (categoryDocs.length === 2) {
+                        const categoryReferences = categoryDocs.map((categoryDoc) => categoryDoc.ref);
+                        await courseDocRef.update({ categories: categoryReferences });
+                    }
+                
+                })
+            );
+        }
+        // Create the lessons collection if it doesn't exist
+        if (!collectionNamesSet.has(collectionNames.LESSONS)) {
+            const lessonsRef = firestore.collection(collectionNames.LESSONS);
+            const coursesRef = firestore.collection(collectionNames.COURSES);
+            await Promise.all(initialLessons.map(async (lesson) =>{
+                const lessonsDocRef = await lessonsRef.add(lesson);
+                const courseQuerySnapshot = await coursesRef.where('title', 'in', 'Sales Training: Back to Basics').get();
+                const courseRef = courseQuerySnapshot.docs;
+
+                await lessonsDocRef.update({ courseId: courseRef });
+            }
+            ));
+
+        } 
+            
+                
+            
+        
+        
       console.log('Database schema initialized!');
     } catch (error) {
       console.error('Error initializing database schema:', error);
@@ -252,7 +308,7 @@ fetchImageAsFile('/assets/images/michaelnuendorff.jpg')
 
   const uploadThumbnail = async (courseId, thumbnailFile) => {
     try {
-      const thumbnailStorageRef = storage.ref(`thumbnails/${courseId}.jpg`);
+        const thumbnailStorageRef = storage.ref(`thumbnails/${courseId}.jpg`);
       const thumbnailSnapshot = await thumbnailStorageRef.put(thumbnailFile);
       const thumbnailDownloadURL = await thumbnailSnapshot.ref.getDownloadURL();
       return thumbnailDownloadURL;
