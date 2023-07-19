@@ -9,6 +9,7 @@ export const collectionNames = {
     LESSONS: 'lessons',
     ACHIEVEMENTS: 'achievements',
     LEVELS: 'levels',
+    TUTOR_DETAILS:'tutor-details',
 };
 export const initialAchievements = [
     { name: 'Commited Learner', description: 'Reach a 3 day streak', totalscore: 3, pointValue: 1, svg: (<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-hourglass-low" width="28" height="28" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#fb923c" fill="none" strokeLinecap="round" strokeLinejoin="round" > <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path fill="#fb923c" d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z" /> <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z" /> </svg>) },
@@ -30,42 +31,70 @@ export const initialLevels = [
     { name: 'Advanced'},
   ];
 export const initialUsers = [
-    { name:'Michael Nuendorff',}
+    { name:'Michael Nuendorff',country:'United States',
+    email:'michaelnuendorff@gmail.com', 
+    username:'michaelnuendorff',
+    profilePicture:'/assets/images/michaelnuendorff.jpg', 
+    coursesWatched: [],
+    coursesSaved: [],
+    friends: [],
+    wordsSearched: [],
+    isTutor:true,
+}
+];
+export const initialTutorDetails = [
+{tutorId:'',
+experties:[],
+teachingExperience:'5 years',
+coursePublished:[],
+}
 ];
 export const initialCourses = [
-    { title: 'Course 1', description: 'Description of Course 1' },
+    { title: 'Sales Training: Back to Basics', 
+    description: `This impactful selling course targets beginning or under-performing salespeople, providing them with the essential tools to reach higher levels of success. Key topics covered include:
+    Understanding why certain salespeople excel while others struggle.
+    Setting effective and achievable sales goals.
+    Utilizing data-driven KPIs to drive sales performance.
+    Creating actionable weekly plans for consistent progress.`
+
+},
     { title: 'Course 2', description: 'Description of Course 2' },
 ];
 
 // Function to initialize the database schema (creating collections if needed)
 export const initializeDatabaseSchema = async () => {
     try {
-      // Check if the collections already exist before initializing
-      const collections = await firestore.listCollections();
-      const collectionNamesSet = new Set(collections.map((col) => col.id));
+        // Check if the collections already exist before initializing
+        const collections = await firestore.listCollections();
+        const collectionNamesSet = new Set(collections.map((col) => col.id));
+    
+        // Create the 'courses' collection if it doesn't exist
+        if (!collectionNamesSet.has(collectionNames.COURSES)) {
+            const coursesRef = firestore.collection(collectionNames.COURSES);
+            await Promise.all(initialCourses.map((course) => coursesRef.add(course)));
+        }
+    
+        // Create the 'achievements' collection if it doesn't exist
+        if (!collectionNamesSet.has(collectionNames.ACHIEVEMENTS)) {
+            const achievementsRef = firestore.collection(collectionNames.ACHIEVEMENTS);
+            await Promise.all(initialAchievements.map((achievement) => achievementsRef.add(achievement)));
+        }
   
-      // Create the 'courses' collection if it doesn't exist
-      if (!collectionNamesSet.has(collectionNames.COURSES)) {
-        const coursesRef = firestore.collection(collectionNames.COURSES);
-        await Promise.all(initialCourses.map((course) => coursesRef.add(course)));
-      }
-  
-      // Create the 'achievements' collection if it doesn't exist
-      if (!collectionNamesSet.has(collectionNames.ACHIEVEMENTS)) {
-        const achievementsRef = firestore.collection(collectionNames.ACHIEVEMENTS);
-        await Promise.all(initialAchievements.map((achievement) => achievementsRef.add(achievement)));
-      }
-  
-      // Create the 'levels' collection if it doesn't exist
-      if (!collectionNamesSet.has(collectionNames.LEVELS)) {
-        const levelsRef = firestore.collection(collectionNames.LEVELS);
-        await Promise.all(initialLevels.map((level) => levelsRef.add(level)));
-      }
-      // Create the 'categories' collection if it doesn't exist
-      if (!collectionNamesSet.has(collectionNames.CATEGORIES)) {
-        const categoriesRef = firestore.collection(collectionNames.CATEGORIES);
-        await Promise.all(categories_db.map((category) => categoriesRef.add(category)));
-      }
+        // Create the 'levels' collection if it doesn't exist
+        if (!collectionNamesSet.has(collectionNames.LEVELS)) {
+            const levelsRef = firestore.collection(collectionNames.LEVELS);
+            await Promise.all(initialLevels.map((level) => levelsRef.add(level)));
+        }
+        // Create the 'categories' collection if it doesn't exist
+        if (!collectionNamesSet.has(collectionNames.CATEGORIES)) {
+            const categoriesRef = firestore.collection(collectionNames.CATEGORIES);
+            await Promise.all(categories_db.map((category) => categoriesRef.add(category)));
+        }
+        // Create the 'users' collection if it doesn't exist
+        if (!collectionNamesSet.has(collectionNames.USERS)) {
+            const usersRef = firestore.collection(collectionNames.USERS);
+            await Promise.all( initialUsers.map((user) => usersRef.add(user)) );
+        }
   
       console.log('Database schema initialized!');
     } catch (error) {
