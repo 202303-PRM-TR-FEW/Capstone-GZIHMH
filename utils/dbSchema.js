@@ -53,17 +53,66 @@ teachingExperience:'5 years',
 coursePublished:[],
 }
 ];
+
 export const initialCourses = [
     { title: 'Sales Training: Back to Basics', 
     description: `This impactful selling course targets beginning or under-performing salespeople, providing them with the essential tools to reach higher levels of success. Key topics covered include:
     Understanding why certain salespeople excel while others struggle.
     Setting effective and achievable sales goals.
     Utilizing data-driven KPIs to drive sales performance.
-    Creating actionable weekly plans for consistent progress.`
+    Creating actionable weekly plans for consistent progress.`,
+    links:[],
+    totalDuration:'01:51:26',
+    rate:3.5,
+    tutorId:'',
+    thumbnail:'',
+    price:50,
+    productId:'',
+    categories:[],
+    level:'',
 
 },
 ];
+const lesson = [
+    {
+    courseId: '',
+    link: 'https://www.youtube.com/watch?v=MCpi7xZz8bg&list=PLCwOIOwZBb1gTXHXCnPTO2hPqljuROxgO&index=1&pp=iAQB',
+    duration: '00:28:45', // Format: 'hh:mm:ss'
+    linkTitle: 'Beginner Sales Training Part 1',
+    linkSectionNumber: 1,
+    linkSectionName:'introduction',
+    linkSubsectionNumber: 1,
+  },
+  {
+    courseId: '',
+    link: 'https://www.youtube.com/watch?v=8GNAYwOPbP4&list=PLCwOIOwZBb1gTXHXCnPTO2hPqljuROxgO&index=2&pp=iAQB',
+    duration: '00:13:01', // Format: 'hh:mm:ss'
+    linkTitle: 'Beginner Sales Training Part 2A',
+    linkSectionNumber: 2,
+    linkSectionName:'It starts with goals ',
+    linkSubsectionNumber: 1,
+  },
+  {
+    courseId: '',
+    link: 'https://www.youtube.com/watch?v=u-qOXACgdQ0&list=PLCwOIOwZBb1gTXHXCnPTO2hPqljuROxgO&index=3&pp=iAQB',
+    duration: '00:34:58', // Format: 'hh:mm:ss'
+    linkTitle: 'Beginner Sales Training Part 2B',
+    linkSectionNumber: 2,
+    linkSectionName:'It starts with goals ',
+    linkSubsectionNumber: 2,
+  },
+  {
+    courseId: '',
+    link: 'https://www.youtube.com/watch?v=lEn1txclNTU&list=PLCwOIOwZBb1gTXHXCnPTO2hPqljuROxgO&index=4&pp=iAQB',
+    duration: '00:34:42', // Format: 'hh:mm:ss'
+    linkTitle: 'Beginner Sales Training Part 3A',
+    linkSectionNumber: 3,
+    linkSectionName:'Goals Get Done With Data (KPIs)',
+    linkSubsectionNumber: 1,
+  },
+  
 
+];
 // Function to initialize the database schema (creating collections if needed)
 export const initializeDatabaseSchema = async () => {
     try {
