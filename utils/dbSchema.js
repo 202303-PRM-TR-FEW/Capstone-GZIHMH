@@ -1,5 +1,5 @@
 
-import { firestore } from './firebase';
+import { storage, firestore } from './firebase';
 import categories_db from './categories_db';
 
 export const collectionNames = {
@@ -29,7 +29,9 @@ export const initialLevels = [
     { name: 'Intermediate'},
     { name: 'Advanced'},
   ];
-// You can also define initial data for collections if needed
+export const initialUsers = [
+    { name:'Michael Nuendorff',}
+];
 export const initialCourses = [
     { title: 'Course 1', description: 'Description of Course 1' },
     { title: 'Course 2', description: 'Description of Course 2' },
@@ -68,6 +70,29 @@ export const initializeDatabaseSchema = async () => {
       console.log('Database schema initialized!');
     } catch (error) {
       console.error('Error initializing database schema:', error);
+    }
+  };
+
+  // Function to handle profile picture upload
+const uploadProfilePicture = async (userId, file) => {
+    try {
+      // Create a reference to the Firebase Storage location where the image will be stored
+      const storageRef = storage.ref(`profile_pictures/${userId}`);
+  
+      // Upload the file to Firebase Storage
+      const snapshot = await storageRef.put(file);
+  
+      // Get the download URL of the uploaded image
+      const downloadURL = await snapshot.ref.getDownloadURL();
+  
+      const userRef = firestore.collection('users').doc(userId);
+      await userRef.update({ profilePicture: downloadURL });
+  
+      return downloadURL;
+    } catch (error) {
+      console.error('Error uploading profile picture:', error);
+      // Handle error here (e.g., show a notification to the user)
+      return null;
     }
   };
 //function to seed category data
