@@ -1,7 +1,11 @@
 
 import { storage, firestore } from './firebase';
 import categories_db from './categories_db';
-
+import {getStorage} from "firebase/storage"
+const storage =getStorage();
+const storageRef = ref(storage);
+const imagesRef = ref(storage,'images');
+const michaelRef = ref(storage,'images/micaelnuendorff.jpg')
 export const collectionNames = {
     USERS: 'users',
     COURSES: 'courses',
@@ -34,7 +38,7 @@ export const initialUsers = [
     { name:'Michael Nuendorff',country:'United States',
     email:'michaelnuendorff@gmail.com', 
     username:'michaelnuendorff',
-    profilePicture:'/assets/images/michaelnuendorff.jpg', 
+    profilePicture:'', 
     coursesWatched: [],
     coursesSaved: [],
     friends: [],
@@ -119,12 +123,25 @@ export const initializeDatabaseSchema = async () => {
       console.error('Error initializing database schema:', error);
     }
   };
-
-  // Function to handle profile picture upload
-const uploadProfilePicture = async (userId, file) => {
+  const fetchImageAsFile = async (imageUrl) => {
     try {
+      const response = await fetch(imageUrl);
+      const blob = await response.blob();
+      const file = new File([blob], "profile_picture.jpg", { type: "image/jpeg" });
+      return file;
+    } catch (error) {
+      console.error('Error fetching image:', error);
+      return null;
+    }
+  };
+  // Function to handle profile picture upload
+const uploadProfilePicture = async (username, file) => {
+    try {
+        const id = getUserId(username)
+        const fileInput = document.querySelector('#profilePictureInput');
+        const inputFile = fileInput.files[0];
       // Create a reference to the Firebase Storage location where the image will be stored
-      const storageRef = storage.ref(`profile_pictures/${userId}`);
+      const storageRef = storage.ref(`profile_pictures/${id}`);
   
       // Upload the file to Firebase Storage
       const snapshot = await storageRef.put(file);
@@ -142,6 +159,47 @@ const uploadProfilePicture = async (userId, file) => {
       return null;
     }
   };
+
+  const getUserId = async (username) => {
+    try {
+      const usersRef = firestore.collection('users');
+      const querySnapshot = await usersRef.where('username', '==', username).get();
+  
+      if (!querySnapshot.empty) {
+        // Assuming there is only one user with the given username
+        const userId = querySnapshot.docs[0].id;
+        return userId;
+      } else {
+        console.log('User not found.');
+        return null;
+      }
+    } catch (error) {
+      console.error('Error getting user ID:', error);
+      return null;
+    }
+  };
+fetchImageAsFile('/assets/images/michaelnuendorff.jpg')
+  .then((imageFile) => {
+    if (imageFile) {
+      // Call the function to upload the profile picture
+      uploadProfilePicture('michaelnuendorff', imageFile)
+        .then((downloadURL) => {
+          if (downloadURL) {
+            console.log('Profile picture uploaded successfully:', downloadURL);
+          } else {
+            console.log('Failed to upload profile picture.');
+          }
+        })
+        .catch((error) => {
+          console.error('Error uploading profile picture:', error);
+        });
+    } else {
+      console.log('Failed to fetch image as File object.');
+    }
+  })
+  .catch((error) => {
+    console.error('Error fetching image:', error);
+  });
 //function to seed category data
 // export const seedCategoriesData = async() => {
 //     try {
