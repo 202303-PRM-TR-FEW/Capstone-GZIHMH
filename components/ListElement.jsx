@@ -52,7 +52,7 @@ function ListElement() {
   return (
     <div className='flex flex-row mt-10'>
       <div className='rounded-2xl p-2 flex flex-col w-1/2'>
-        <p className="flex flex-row justify-evenly">
+        <div className="flex flex-row justify-evenly">
           <h1>My Learning</h1>
           <p className='flex flex-row justify-between'>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 self-start text-gray-500 hover:text-gray-600 fill-current m-2">
@@ -60,11 +60,11 @@ function ListElement() {
             </svg>
             <span className='w-430 h-42 flex-grow-1 m-0 overflow-hidden text-lg leading-10 text-left tracking-normal whitespace-pre-line opacity-90 visible text-gray-600 font-rubik'>Statistics</span>
           </p>
-        </p>
+        </div>
         {randomCourses.map((course) => (
           <div className='flex flex-row h-280 float-right rounded-2xl justify-start m-2 flex-wrap-none opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 rounded-5 border hover:border-blue-500' key={course.id} onClick={() => handleCourseClick(course.id)}>
             <div className='flex flex-row justify-between '>
-              <Image src={course.image} width={200} height={180} alt={course.title} className='image object-cover' style={{ cursor: 'pointer' }} />
+              <Image src={course.image} width={200} height={180} alt={course.title} className='max-w-[200px] max-h-[180px]' style={{ cursor: 'pointer' }} />
             </div>
             <div className='ml-3 p-4'>
               <h2>{course.title}</h2>
