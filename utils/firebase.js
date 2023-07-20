@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
+import { getAnalytics, isSupported } from "firebase/analytics";
 const firebaseConfig = {
     apiKey: "AIzaSyAr8iNIypfJHwu8ZJ-w4S0IBpQFbfMLlPE",
     authDomain: "courseworm.firebaseapp.com",
@@ -12,4 +13,10 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const firestore = getFirestore(app);
+let analytics = null;
+if (typeof window !== "undefined" && isSupported()) {
+    analytics = getAnalytics(app);
+}
+const storage = getStorage(app);
+export { app, analytics, firestore, storage };
