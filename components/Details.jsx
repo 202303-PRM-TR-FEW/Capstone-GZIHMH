@@ -21,13 +21,13 @@ const Details = ({ courseIndex = 0 }) => {
   const user = course ? getPersonName(course.user_id) : '';
 
   if (!course) {
-    return <div>Course not found</div>; 
+    return <div>Course not found</div>;
   }
 
   return (
-    <section className='bg-white flex flex-col rounded-2xl '>
-      <div className='flex flex-col items-center mt-4 '>
-        <Image src={course.image} width={720} height={440} alt={course.title} className='mt-10 max-w-[720px] max-h-[440px]' />
+    <section className='flex flex-col'>
+      <div className='flex flex-col items-center'>
+        <Image src={course.image} width={740} height={460} alt={course.title} className='max-w-[740px] max-h-[460px]' />
         <div className='flex justify-start flex-col ml-4 '>
           <h2 className='p-3 mb-4 mt-4'>{course.title}</h2>
           <div className='flex flex-row'>
@@ -66,14 +66,14 @@ const Details = ({ courseIndex = 0 }) => {
 
             <p>{course.rating} </p>
           </div>
-          <h3 className='mt-4 mb-2'>Course Heading</h3>
-          <p className='w-1/2 m-1'>{course.description}</p>
+          <h3 className='mb-3'>Course Description</h3>
+          <p>{course.description}</p>
         </div>
       </div>
       <div>
-        <div className='flex mt-20 mb-20 '>
-          <button className="text-primary m-4 text-1xl font-bold bg-transparent border border-primary w-80 p-2  h-11 rounded-2xl hover:text-white hover:bg-primary">REVIEW COURSE</button>
-          <button className="text-primary m-4 text-1xl font-bold bg-transparent border border-primary w-80 p-2  h-11 rounded-2xl hover:text-white hover:bg-primary">
+        <div className='flex items-center justify-evenly mt-20'>
+          <button className="text-primary text-1xl font-bold bg-transparent border border-primary w-80 h-11 rounded-2xl hover:text-white hover:bg-primary">REVIEW COURSE</button>
+          <button className="text-primary text-1xl font-bold bg-transparent border border-primary w-80  h-11 rounded-2xl hover:text-white hover:bg-primary">
             <Link href={`/CourseOverview/${courseIndex}`}>
               CONTINUE LEARNING
             </Link>

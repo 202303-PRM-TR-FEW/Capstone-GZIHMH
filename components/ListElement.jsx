@@ -50,9 +50,9 @@ function ListElement() {
 
 
   return (
-    <div className='flex flex-row mt-10'>
-      <div className='rounded-2xl p-2 flex flex-col w-1/2'>
-        <div className="flex flex-row justify-evenly">
+    <div className='flex flex-row'>
+      <div className='rounded-2xl flex flex-col m-10'>
+        <div className="flex flex-row justify-between ml-4 mr-4 mt-10 mb-10">
           <h1>My Learning</h1>
           <p className='flex flex-row justify-between'>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 self-start text-gray-500 hover:text-gray-600 fill-current m-2">
@@ -62,34 +62,35 @@ function ListElement() {
           </p>
         </div>
         {randomCourses.map((course) => (
-          <div className='flex flex-row h-280 float-right rounded-2xl justify-start m-2 flex-wrap-none opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 rounded-5 border hover:border-blue-500' key={course.id} onClick={() => handleCourseClick(course.id)}>
+          <div className='flex h-275 m-1 w-[770px] h-[185px] rounded-2xl opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 border hover:border-primary' key={course.id} onClick={() => handleCourseClick(course.id)}>
             <div className='flex flex-row justify-between '>
               <Image src={course.image} width={200} height={180} alt={course.title} className='max-w-[200px] max-h-[180px]' style={{ cursor: 'pointer' }} />
             </div>
-            <div className='ml-3 p-4'>
-              <h2>{course.title}</h2>
-              <button onClick={() => handleToggle(course.id)}>
-                 <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-6 h-6 self-start ${ course.saved ? 'text-primary' : 'text-gray-400' } fill-current m-2`}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"/></svg></span></button>
-              
+            <div className='ml-3 p-4 w-[510px]'>
+              <div className='flex justify-between'>
+                <h2>{course.title}</h2>
+                <button onClick={() => handleToggle(course.id)}>
+                  <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-6 h-6 self-start ${course.saved ? 'text-primary' : 'text-gray-400'} fill-current m-2`}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" /></svg></span></button>
+              </div>
               <p className='tutor_name mb-3'>{getPersonName(course.user_id)}</p>
               <input
                 type="range"
-                value={parseInt(course.completion_ratio)}
-                className="w-full  opacity-100 bg-white rounded-full "
+                defaultValue={parseInt(course.completion_ratio)}
+                className="w-full h-[13px]  opacity-100 bg-white rounded-full"
               />
               <p> {course.completion_ratio} complete</p>
             </div>
-            
+
           </div>
         ))}
       </div>
-      <div className='float-right w-1/2 h-full '>
+      <div className='w-[940px] h-full bg-white p-20'>
         {selectedCourseIndex !== null && (
           <Details courseIndex={selectedCourseIndex} />
         )}
       </div>
-      
+
     </div>
   );
 }
