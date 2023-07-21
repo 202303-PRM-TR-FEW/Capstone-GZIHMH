@@ -9,15 +9,15 @@
 }
 
 @font-face {
-  font-family: 'Gelion_Regular';
-  src: url('/fonts/Gelion_Regular.ttf') format('truetype');
+  font-family: "Gelion_Regular";
+  src: url("/fonts/Gelion_Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Gelion_Medium';
-  src: url('/fonts/Gelion_Medium.ttf') format('truetype');
+  font-family: "Gelion_Medium";
+  src: url("/fonts/Gelion_Medium.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -32,61 +32,52 @@
 
 body {
   color: rgb(245, 245, 245);
-
 }
 
 h1 {
-  @apply text-gray-900 font-bold text-3xl;
-
+  @apply text-3xl font-bold text-gray-900;
 }
 
 h2,
 h3 {
-  @apply text-gray-600 font-bold
+  @apply font-bold text-gray-600;
 }
 
 .check {
   background-color: transparent;
-  @apply text-gray-600 rounded bg-transparent;
+  @apply text-gray-600 bg-transparent rounded;
 }
 
 .course_name {
-  @apply text-gray-900 text-lg font-semibold;
+  @apply text-lg font-semibold text-gray-900;
 }
 
 .tutor_name {
-  @apply text-gray-600 text-sm;
+  @apply text-sm text-gray-600;
 }
 
 .thumbnail {
-  @apply border rounded-xl overflow-hidden object-contain ;
+  @apply object-contain overflow-hidden border rounded-xl;
 }
-.thumbnail_container{
-  @apply w-44 h-32
+.thumbnail_container {
+  @apply h-32 w-44;
 }
-
-
 
 .search_input {
-  @apply block w-full rounded-xl border border-gray-300 bg-transparent pl-2  text-sm placeholder-gray-600 ;
+  @apply block w-full pl-2 text-sm placeholder-gray-600 bg-transparent border border-gray-300 rounded-xl;
 }
-
 
 .cat_btn {
   @apply rounded-full border border-gray-300 bg-transparent py-1.5 px-5 text-gray-800 transition-all text-center text-sm flex items-center justify-center;
-
 }
 .blue_btn {
   @apply rounded-xl border border-primary bg-primary py-1.5 px-5 text-white transition-all hover:bg-white hover:text-primary text-center text-lg font-bold flex items-center justify-center;
 }
 
 .outline_btn {
-  @apply text-white m-3 font-bold bg-blue-400 border border-blue-500 w-80 p-2 h-11 rounded-2xl hover:text-blue-500 hover:bg-transparent;
+  @apply p-2 m-3 font-bold text-white bg-blue-400 border border-blue-500 w-80 h-11 rounded-2xl hover:text-blue-500 hover:bg-transparent;
 }
-
-
 
 img {
-  @apply rounded-2xl m-2;
+  @apply m-2 rounded-2xl;
 }
-

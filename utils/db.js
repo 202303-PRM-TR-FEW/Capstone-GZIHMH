@@ -6,6 +6,14 @@ import background2 from "@/public/assets/images/background2.jpeg";
 import background3 from "@/public/assets/images/background3.jpeg";
 import background4 from "@/public/assets/images/background4.jpeg";
 import profilePic3 from "@/public/assets/images/profilePic3.jpeg";
+import profilePic5 from "@/public/assets/images/profilePic5.jpeg";
+import howToUx from "@/public/assets/images/howtoux.jpeg";
+import uxForBegginers from "@/public/assets/images/uxforbeginners.jpeg";
+import uxEssentials from "@/public/assets/images/uxessentials.jpeg";
+import uxResearch from "@/public/assets/images/uxresearch.jpeg";
+import portraits from "@/public/assets/images/marla.jpeg";
+import orange from "@/public/assets/images/orange.jpg";
+import design from "@/public/assets/images/designThinking.jpg";
 const db = {
   courses: [
     {
@@ -16,7 +24,7 @@ const db = {
       title: "Power BI",
       user_id: 8,
       completion_ratio: 56,
-      duration: 77,
+      duration: "77min",
       rating: 4.1,
       price: 24,
       description:
@@ -31,7 +39,7 @@ const db = {
       title: "Agile Project Management",
       user_id: 6,
       completion_ratio: 56,
-      duration: 59,
+      duration: "59min",
       rating: 4.3,
       price: 18,
       description:
@@ -46,7 +54,7 @@ const db = {
       title: "Pivot Tables",
       user_id: 7,
       completion_ratio: 56,
-      duration: 83,
+      duration: "74min",
       rating: 4.6,
       price: 24,
       description:
@@ -56,12 +64,12 @@ const db = {
     {
       id: 4,
       profileImage: profilePic4,
-      backGroundImage: background1.jpeg,
+      backGroundImage: background1,
       name: "Ian Brown",
       title: "Power BI",
       user_id: 5,
       completion_ratio: 56,
-      duration: 103,
+      duration: "103min",
       rating: 4.9,
       price: 24,
       description:
@@ -70,7 +78,7 @@ const db = {
     },
     {
       id: 5,
-      image: "/assets/images/course (2).jpg",
+      backGroundImage: profilePic5,
       title: "Becoming a Photographer",
       user_id: 1,
       completion_ratio: 55,
@@ -83,7 +91,7 @@ const db = {
     },
     {
       id: 6,
-      image: "/assets/images/course(4).jpg",
+      backGroundImage: design,
       title: "Design Thinking 2.0",
       user_id: 2,
       completion_ratio: 27,
@@ -96,7 +104,7 @@ const db = {
     },
     {
       id: 7,
-      image: "/assets/images/course (1).jpg",
+      backGroundImage: orange,
       title: "Product Photography",
       user_id: 3,
       completion_ratio: 11,
@@ -109,8 +117,7 @@ const db = {
     },
     {
       id: 8,
-      image: "/assets/images/course (1).jpeg",
-
+      backGroundImage: portraits,
       title: "Learn how to make portriats",
       user_id: 4,
       completion_ratio: 27,
@@ -124,7 +131,7 @@ const db = {
     {
       id: 9,
       profileImage: profilePic4,
-      backGroundImage: background1.jpeg,
+      backGroundImage: background1,
       name: "Ian Brown",
       title: "Power BI",
       user_id: 5,
@@ -169,7 +176,7 @@ const db = {
 
     {
       id: 12,
-      image: "/assets/images/uxresearch.jpeg",
+      backGroundImage: uxResearch,
       title: "UX Research",
       user_id: 5,
       completion_ratio: 0,
@@ -182,7 +189,7 @@ const db = {
     },
     {
       id: 13,
-      image: "/assets/images/uxessentials.jpeg",
+      backGroundImage: uxEssentials,
       title: "UX Essentials",
       user_id: 6,
       completion_ratio: 0,
@@ -195,7 +202,7 @@ const db = {
     },
     {
       id: 14,
-      image: "/assets/images/uxforbeginners.jpeg",
+      backGroundImage: uxForBegginers,
       title: "UX for Beginners",
       user_id: 7,
       completion_ratio: 0,
@@ -208,7 +215,7 @@ const db = {
     },
     {
       id: 15,
-      image: "/assets/images/howtoux.jpeg",
+      backGroundImage: howToUx,
       title: "How to UX",
       user_id: 8,
       completion_ratio: 0,
