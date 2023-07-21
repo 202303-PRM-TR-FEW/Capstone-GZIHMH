@@ -11,7 +11,7 @@ const MyActivitiesBox = () => {
     <div>  
 
 <div className="flex items-center justify-between mb-4">
-        <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">Latest Customers</h5>
+        <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white"> My Activity </h5>
       </div> 
         
 
