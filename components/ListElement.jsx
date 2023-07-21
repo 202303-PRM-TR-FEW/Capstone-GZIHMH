@@ -85,7 +85,7 @@ function ListElement() {
           </div>
         ))}
       </div>
-      <div className='w-[800px] h-full bg-white p-20'>
+      <div className='w-[650px] h-full bg-white p-20'>
         {selectedCourseIndex !== null && (
           <Details courseIndex={selectedCourseIndex} />
         )}
