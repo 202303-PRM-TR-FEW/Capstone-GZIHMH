@@ -12,9 +12,9 @@ const SavedCourseReview = ({ course }) => {
   const user = getPersonName(course.user_id);
 
   return (
-    <section className='bg-white flex flex-col items-center rounded-2xl p-4 '>
+    <section className='bg-white flex flex-col rounded-2xl'>
       <div className='flex flex-col items-center'>
-        <Image src={course.image} width={350} height={350} alt={course.title} className='image' />
+        <Image src={course.image} width={740} height={460} alt={course.title} className='max-w-[740px] max-h-[460px]' />
         <div className='flex justify-start flex-col ml-4 '>
           <h2 className='p-3 mb-4 mt-4'>{course.title}</h2>
           <div className='flex flex-row'>
@@ -29,14 +29,14 @@ const SavedCourseReview = ({ course }) => {
             </svg>
             <p>{course.rating} </p>
           </div>
-          <h3 className='mt-4 mb-2'>Course description</h3>
-          <p className='w-1/2 m-1'>{course.description}</p>
+          <h3 className='mb-3'>Course description</h3>
+          <p>{course.description}</p>
         </div>
       </div>
       <div>
-        <div className='flex justify-evenly mt-20'>
-          <button className="text-primary m-3 text-1xl font-bold bg-transparent border border-primary w-80 p-2  h-11 rounded-2xl hover:text-white hover:bg-blue-400">REVIEW </button>
-          <button className="text-primary m-3 text-1xl font-bold bg-transparent border border-primary w-80 p-2  h-11 rounded-2xl hover:text-white hover:bg-blue-400">
+        <div className='flex items-center justify-evenly mt-20'>
+          <button className="text-primary m-3 text-1xl font-bold bg-transparent border border-primary w-80 h-11 rounded-2xl hover:text-white hover:bg-primary">REVIEW </button>
+          <button className="text-primary m-3 text-1xl font-bold bg-transparent border border-primary w-80 h-11 rounded-2xl hover:text-white hover:bg-primary">
             BUY NOW
           </button>
         </div>
