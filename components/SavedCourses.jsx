@@ -21,7 +21,7 @@ function SavedCourses({ savedCourses }) {
       <div className='mt-10 p-10'>
         <h1 className='p-4'>Saved Courses</h1>
         {savedCourses.map((course, index) => (
-          <div className='flex rounded-2xl h-275 w-[770px] m-3  opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 rounded-5 border hover:border-primary' key={course.id}>
+          <div className='flex rounded-2xl h-275 w-[500px] m-3  opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 rounded-5 border hover:border-primary' key={course.id}>
             <div className='flex flex-row'>
               <Image
                 src={course.image}
@@ -61,7 +61,7 @@ function SavedCourses({ savedCourses }) {
 
 
       </div>
-      <div className='w-[940px] h-full bg-white p-20'>
+      <div className='w-[650px] h-full bg-white p-20'>
         {selectedCourseIndex !== null && (
           <SavedCourseReview course={savedCourses[selectedCourseIndex]} />
         )}
