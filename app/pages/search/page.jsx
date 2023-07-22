@@ -5,7 +5,7 @@ import Recommended from '@/components/Recommended';
 import SearchBar from '@/components/SearchBar';
 import TopSearches from '@/components/TopSearches';
 import { getCourses } from '../api/getCourses';
-import categories_db from '@/utils/categories_db';
+import categories_db from '@/utils/categories_db.js';
 import db from '@/utils/db';
 import Star from '@/components/Star';
 
