@@ -1,15 +1,16 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
+import { getFirestore, collection, getDocs, addDoc, updateDoc, getDoc, doc, where, query } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getAnalytics, isSupported } from "firebase/analytics";
+
 const firebaseConfig = {
-    apiKey: "AIzaSyAr8iNIypfJHwu8ZJ-w4S0IBpQFbfMLlPE",
-    authDomain: "courseworm.firebaseapp.com",
-    projectId: "courseworm",
-    storageBucket: "courseworm.appspot.com",
-    messagingSenderId: "373313883505",
-    appId: "1:373313883505:web:e6416005c86fb69fc8bad0",
-    measurementId: "G-HLD6Z8HTQT"
+    apiKey: "AIzaSyD5lj9ewEDXPdlBzmYg2iKGuDdUUgBfQhs",
+    authDomain: "courseworm-db.firebaseapp.com",
+    projectId: "courseworm-db",
+    storageBucket: "courseworm-db.appspot.com",
+    messagingSenderId: "505892948153",
+    appId: "1:505892948153:web:054484892919f9bef03368",
+    measurementId: "G-L5DPNNP0WN"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -19,4 +20,4 @@ if (typeof window !== "undefined" && isSupported()) {
     analytics = getAnalytics(app);
 }
 const storage = getStorage(app);
-export { app, analytics, firestore, storage };
+export { app, analytics, firestore, storage, collection, getDocs, addDoc, getDoc, updateDoc, doc, ref, uploadBytes, query, where, getDownloadURL };
