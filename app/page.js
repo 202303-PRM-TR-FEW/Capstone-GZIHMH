@@ -14,6 +14,7 @@ export default function Intro() {
         
       </div> 
 
+
       <div className='bg-white  rounded-3xl  '>
         <Image src="/assets/images/welcomepage.png"
           alt="intro image"
