@@ -50,9 +50,9 @@ function ListElement() {
 
 
   return (
-<div className='flex flex-row mt-10'>
+<div className='flex flex-col lg:flex-row md:flex-col sm:flex-col ml-10 lg:ml-10 md:ml-5 sm:ml-1'>
       <div className='rounded-2xl p-2 flex flex-col w-1/2'>
-        <div className="flex flex-row justify-evenly">
+        <div className="flex flex-row justify-between mt-5 lg:mt-5 md:mt-2 sm:mt-1 h-full">
           <h1>My Learning</h1>
           <div className='flex flex-row justify-between  px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700'>
             <a className="flex text-lg items-center" href="/pages/statistics">
@@ -62,9 +62,9 @@ function ListElement() {
           </div>
         </div>
         {randomCourses.map((course) => (
-          <div className='flex h-275 m-1 w-[770px] h-[185px] rounded-2xl opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 border hover:border-primary' key={course.id} onClick={() => handleCourseClick(course.id)}>
+          <div className='flex m-1 w-[570px] h-[175px] rounded-2xl opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 border hover:border-primary' key={course.id} onClick={() => handleCourseClick(course.id)}>
             <div className='flex flex-row justify-between '>
-              <Image src={course.image} width={200} height={180} alt={course.title} className='max-w-[200px] max-h-[180px]' style={{ cursor: 'pointer' }} />
+              <Image src={course.image} width={190} height={172} alt={course.title} className='max-w-[200px] max-h-[180px]' style={{ cursor: 'pointer' }} />
             </div>
             <div className='ml-3 p-4 w-[510px]'>
               <div className='flex justify-between'>
@@ -85,7 +85,7 @@ function ListElement() {
           </div>
         ))}
       </div>
-      <div className='w-[940px] h-full bg-white p-20'>
+      <div className='w-[650px] h-full bg-white p-10 lg-p-10 md-p-5 sm-p-1'>
         {selectedCourseIndex !== null && (
           <Details courseIndex={selectedCourseIndex} />
         )}

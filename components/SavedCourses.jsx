@@ -17,18 +17,18 @@ function SavedCourses({ savedCourses }) {
   };
 
   return (
-    <div className='flex'>
-      <div className='mt-10 p-10'>
+    <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col h-full'>
+      <div className='mt-5 p-5'>
         <h1 className='p-4'>Saved Courses</h1>
         {savedCourses.map((course, index) => (
-          <div className='flex rounded-2xl w-[670px] h-[175px] m-3  opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 rounded-5 border hover:border-primary' key={course.id}>
+          <div className='flex rounded-2xl w-[570px] h-[172px] m-3 opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 rounded-5 border hover:border-primary' key={course.id}>
             <div className='flex flex-row'>
               <Image
                 src={course.image}
                 width={200}
                 height={180}
                 alt={course.title}
-                className='max-w-[200px] max-h-[180px]'
+                className='max-w-[190px] max-h-[172px]'
                 style={{ cursor: 'pointer' }}
                 onClick={() => handleCourseClick(index)}
               />
@@ -59,7 +59,7 @@ function SavedCourses({ savedCourses }) {
           </div>
         ))}
       </div>
-      <div className='w-[840px] h-full bg-white p-20'>
+      <div className='w-[650px] h-full bg-white p-5 lg:p-5 md:p-2 sm:1'>
         {selectedCourseIndex !== null && (
           <SavedCourseReview course={savedCourses[selectedCourseIndex]} />
         )}
