@@ -52,6 +52,7 @@ function ListElement() {
 
   return (
     <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col ml-10 lg:ml-10 md:ml-5 sm:ml-1'>
+<div className='flex flex-col lg:flex-row md:flex-col sm:flex-col ml-10 lg:ml-10 md:ml-5 sm:ml-1'>
       <div className='rounded-2xl p-2 flex flex-col w-1/2'>
         <div className="flex flex-row justify-between mt-5 lg:mt-5 md:mt-2 sm:mt-1 h-full">
           <h1>My Learning</h1>
