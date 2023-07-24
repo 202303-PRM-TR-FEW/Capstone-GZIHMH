@@ -93,7 +93,7 @@ function ListElement() {
           <Details courseIndex={selectedCourseIndex} />
         )}
       </div>
-
+</div>
     </div>
   );
 }
