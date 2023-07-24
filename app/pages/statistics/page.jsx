@@ -3,6 +3,7 @@ import LastYearComparison from "@/components/LastYearComparison";
 import StatisticsGoalStreak from "@/components/StatisticsGoalStreak";
 import Activities from "@/components/Activities";
 import MyActivitiesBox from "@/components/MyActivitiesBox";
+
 import ThisWeekContainer from "@/components/ThisWeekContainer";
 
 const page = () => {
@@ -53,6 +54,7 @@ const page = () => {
 </div>
 
 </div>
+
 
 
 
