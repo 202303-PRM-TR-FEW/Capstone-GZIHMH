@@ -12,6 +12,7 @@ const GelionMedium = localFont({
   src: '../styles/fonts/Gelion_Medium.ttf',
   display: 'swap',
 })
+
 const GelionRegular = localFont({
   src: '../styles/fonts/Gelion_Regular.ttf',
   display: 'swap',
@@ -29,7 +30,7 @@ export default function RootLayout({ children }) {
   if (pathname == '/') isHome = true
   return (
     <html lang="en">
-
+  {/*provider for redux and presistGate added*/}
 
       <body className={`bg-gray-100 ${inter.className}`}>
       <Provider store={store} >
