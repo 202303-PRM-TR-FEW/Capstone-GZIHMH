@@ -6,7 +6,7 @@ const InfoBar = () => {
   const { courses, followers, following } = InfoBarData;
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center mb-4">
       <div className="flex justify-between items-center bg-gray-100 rounded-lg p-4 w-96 h-20 border-2 border-white">
         <div className="flex flex-col items-center">
           <span className="text-lg font-bold mb-2 text-black">{courses}</span>

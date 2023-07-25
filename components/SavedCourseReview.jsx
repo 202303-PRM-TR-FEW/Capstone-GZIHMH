@@ -19,11 +19,19 @@ const SavedCourseReview = ({ course }) => {
         <div className='flex justify-start flex-col ml-4 '>
           <h2 className='p-3 mb-1 mt-1'>{course.title}</h2>
           <div className='flex flex-row'>
+
             {icons.map(icon => icon.name === 'course_duration' && (<div key={icon.id} className="text-gray-400 w-5 h-5 mr-2" dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
             <p>{course.duration} m</p>
           </div>
           <div className='flex flex-row'>
             {icons.map(icon => icon.name === 'course_rating' && (<div key={icon.id} className="text-gray-400 w-5 h-5 mr-2" dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
+
+            {icons.map(icon => icon.name === 'course_duration' && (<div key={icon.id} className="text-gray-400 w-6 h-6 mr-2" dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
+            <p>{course.duration} m</p>
+          </div>
+          <div className='flex flex-row mb-4 mt-4'>
+            {icons.map(icon => icon.name === 'course_rating' && (<div key={icon.id} className="text-gray-400 w-6 h-6 mr-2" dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
+
             <p>{course.rating} </p>
           </div>
           <h3 className='mt-3 mb-1'>Course description</h3>

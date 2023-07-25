@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import db from '../utils/db';
 import SavedCourseReview from './SavedCourseReview';
-
-function SavedCourses({ savedCourses }) {
+import { useSelector } from 'react-redux';
+import { selectSavedCourses } from '@/redux/selectors';
+function SavedCourses() {
   const [selectedCourseIndex, setSelectedCourseIndex] = useState(0);
-
+  const savedCourses = useSelector(selectSavedCourses);
   const handleCourseClick = (index) => {
     setSelectedCourseIndex(index);
   };
