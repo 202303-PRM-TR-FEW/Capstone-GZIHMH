@@ -48,13 +48,15 @@ const Friends = () => {
       </div>
 
       <div className="flex flex-row justify-items-center mt-8 ">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-1 w-full mr-1 rounded-lg">
-          FIND FRIENDS
-        </button>
+      <div className="flex">
+          <button className="flex-1 bg-blue-500 hover:bg-blue-700 text-white font-medium py-1 px-11 mr-1 rounded-lg">
+            FIND FRIENDS
+          </button>
 
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-1 w-full ml-1 rounded-lg">
-          INVITE FRIENDS
-        </button>
+          <button className="flex-1 bg-blue-500 hover:bg-blue-700 text-white font-medium py-1 px-11 ml-1 rounded-lg">
+            INVITE FRIENDS
+          </button>
+        </div>
       </div>
     </div>
   );
