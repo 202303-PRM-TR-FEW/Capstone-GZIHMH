@@ -3,7 +3,7 @@ const initialState = {
     savedCourses: [],
     loading: false
 }
-
+//adding saved course and remove course action to the reducer//
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case 'SAVE_COURSE':
