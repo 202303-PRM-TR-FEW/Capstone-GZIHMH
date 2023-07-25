@@ -4,8 +4,13 @@ import Image from 'next/image';
 import Details from './Details';
 import db from '../utils/db';
 import icons from '../utils/icons';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { saveCourse, removeCourse } from '@/redux/actions';
+import { selectSavedCourses } from '@/redux/selectors';
 function ListElement() {
+
+  const dispatch = useDispatch();  
+  const savedCourses = useSelector(selectSavedCourses);  
   const [selectedCourseIndex, setSelectedCourseIndex] = useState(0);
   const [randomCourses, setRandomCourses] = useState([]);
 
@@ -34,21 +39,25 @@ function ListElement() {
     return person ? person.name : '';
   };
 
-  const handleToggle = (user_id) => {
-    const updatedDb = { ...db };
-    const courses = updatedDb.courses.map((course) => {
-      if (course.id === user_id) {
-        return {
-          ...course,
-          saved: !course.saved,
+  const handleToggle = (courseId) => {
+    const course = db.courses.find((course) => course.id === courseId);
+    if (course) {
+      //if the course is saved check if the value exist in the store if it is then remove the value//
+      if (course.saved == true) {
+        const courseExists = savedCourses.some((course) => course.id === courseId);
+         if(courseExists){
+          dispatch(removeCourse(courseId));
+         }
+         course.saved = false;
+      } else {
+        //if the course wasn't saved then use the action save course to add it to the store//
+        course.saved = true;
+          dispatch(saveCourse(course));
         };
-      }
-      return course;
-    });
-    updatedDb.courses = courses;
-    setRandomCourses(courses);
-  };
-
+    }
+    console.log(savedCourses)
+    setRandomCourses(db.courses);
+  }
 
   return (
     <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col ml-10 lg:ml-10 md:ml-5 sm:ml-1'>

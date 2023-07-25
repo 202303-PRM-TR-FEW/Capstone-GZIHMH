@@ -1,0 +1,1 @@
+export const selectSavedCourses = (state) => state.courses.savedCourses;
