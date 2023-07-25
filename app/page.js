@@ -1,7 +1,7 @@
 import Login from '@/components/Login'
 import RegistrationForm from '@/components/RegistrationForm'
 import Image from 'next/image'
-
+import GetStarted from '@/components/GetStarted'
 export default function Intro() {
   return (
     <main className="flex min-h-screen w-full flex-row items-center justify-between">
@@ -9,9 +9,9 @@ export default function Intro() {
 
 
       <div className="flex flex-col items-center flex-start m-auto ">
-        <Login />
-        <RegistrationForm />
-        
+        {/* <Login />
+        <RegistrationForm /> */}
+        <GetStarted />
       </div> 
 
       <div className='bg-white  rounded-3xl  '>

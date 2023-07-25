@@ -1,6 +1,23 @@
-import React from 'react'
+'use client'
+import React,{useState} from 'react'
 import Image from 'next/image'
-const Intro = () => {
+import Login from './Login';
+import Link from 'next/link';
+const GetStarted = () => {
+  const [showLogin, setShowLogin] = useState(false);
+
+  const handleLoginClick = () => {
+    setShowLogin(true);
+  };
+  const handleContinueAsGuestClick = () => {
+    
+  };
+
+  if (showLogin) {
+    // If showLogin is true, render the Login component.
+    return <Login />;
+  }
+
   return (
     <div>
       
@@ -36,8 +53,17 @@ const Intro = () => {
           </div>
 
 
-          <div className="blue_btn  font-bold   w-40  py-5 ">
-            <button className="   py-1"> GET STARTED </button>
+          <div className=" font-bold  flex justify-between  py-5 ">
+            <div>
+                  <button className="blue_btn  m-2  py-1" onClick={handleLoginClick}> Login </button>
+            </div>
+      <div>
+        <Link href = '/pages/home'>
+        <button className=" blue_btn  m-2 py-1" onClick={handleContinueAsGuestClick} > Continue as a guest </button>
+        </Link>
+        
+      </div>
+            
           </div>
         </div>
 
@@ -48,4 +74,4 @@ const Intro = () => {
   )
 }
 
-export default Intro
+export default GetStarted
