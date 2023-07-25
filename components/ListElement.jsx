@@ -51,47 +51,47 @@ function ListElement() {
 
 
   return (
-    <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col ml-10 lg:ml-10 md:ml-5 sm:ml-1'>
-<div className='flex flex-col lg:flex-row md:flex-col sm:flex-col ml-10 lg:ml-10 md:ml-5 sm:ml-1'>
-      <div className='rounded-2xl p-2 flex flex-col w-1/2'>
-        <div className="flex flex-row justify-between mt-5 lg:mt-5 md:mt-2 sm:mt-1 h-full">
-          <h1>My Learning</h1>
-          <div className='flex flex-row justify-between  px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700'>
-            <a className="flex text-lg items-center" href="/pages/statistics">
-              {icons.map(icon => icon.name === 'statistics' && (<div key={icon.id} dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
-              <span className='px-3 py-2'>Statistics</span>
-            </a>
-          </div>
-        </div>
-        {randomCourses.map((course) => (
-          <div className='flex m-1 w-[570px] h-[175px] rounded-2xl opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 border hover:border-primary' key={course.id} onClick={() => handleCourseClick(course.id)}>
-            <div className='flex flex-row justify-between '>
-              <Image src={course.image} width={190} height={172} alt={course.title} className='max-w-[200px] max-h-[180px]' style={{ cursor: 'pointer' }} />
+    <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col ml-5 lg:ml-5 md:ml-2 sm:ml-1'>
+      <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col ml-5 lg:ml-5 md:ml-3 sm:ml-1'>
+        <div className='rounded-2xl p-2 flex flex-col w-1/2'>
+          <div className="flex flex-row justify-between items-center my-3">
+            <h1 className='ml-3'>My Learning</h1>
+            <div className='flex flex-row justify-between text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700'>
+              <a className="flex text-lg" href="/pages/statistics">
+                {icons.map(icon => icon.name === 'statistics' && (<div key={icon.id} dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
+                <span className='mx-3'>Statistics</span>
+              </a>
             </div>
-            <div className='ml-3 p-4 w-[510px]'>
-              <div className='flex justify-between'>
-                <h2>{course.title}</h2>
-                <button onClick={() => handleToggle(course.id)}>
-                  <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-6 h-6 self-start ${course.saved ? 'text-primary' : 'text-gray-400'} fill-current m-2`}><path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" /></svg>
-                  </span></button>
+          </div>
+          {randomCourses.map((course) => (
+            <div className='flex m-1 w-[570px] h-[153px] rounded-2xl opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 border hover:border-primary' key={course.id} onClick={() => handleCourseClick(course.id)}>
+              <div className='flex flex-row justify-between '>
+                <Image src={course.image} width={185} height={152} alt={course.title} className='max-w-[185px] max-h-[152px]' style={{ cursor: 'pointer' }} />
               </div>
-              <p className='tutor_name mb-3'>{getPersonName(course.user_id)}</p>
-               <div className="bg-gray-200 h-2 w-auto rounded-xl overflow-hidden mx-2">
-              <div className="h-full bg-primary rounded-lg" style={{ width: `${parseInt(course.completion_ratio)}%` }}></div>
-            </div>
-              <p> {course.completion_ratio} complete</p>
-            </div>
+              <div className='ml-3 p-4 w-[510px]'>
+                <div className='flex justify-between'>
+                  <h2>{course.title}</h2>
+                  <button onClick={() => handleToggle(course.id)}>
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-6 h-6 self-start ${course.saved ? 'text-primary' : 'text-gray-400'} fill-current m-2`}><path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" /></svg>
+                    </span></button>
+                </div>
+                <p className='tutor_name mb-3'>{getPersonName(course.user_id)}</p>
+                <div className="bg-gray-200 h-2 w-auto rounded-xl overflow-hidden mx-2">
+                  <div className="h-full bg-primary rounded-lg" style={{ width: `${parseInt(course.completion_ratio)}%` }}></div>
+                </div>
+                <p> {course.completion_ratio} complete</p>
+              </div>
 
-          </div>
-        ))}
+            </div>
+          ))}
+        </div>
+        <div className='w-[650px] h-full bg-white p-5 lg-p-5 md-p-3 sm-p-1'>
+          {selectedCourseIndex !== null && (
+            <Details courseIndex={selectedCourseIndex} />
+          )}
+        </div>
       </div>
-      <div className='w-[650px] h-full bg-white p-10 lg-p-10 md-p-5 sm-p-1'>
-        {selectedCourseIndex !== null && (
-          <Details courseIndex={selectedCourseIndex} />
-        )}
-      </div>
-</div>
     </div>
   );
 }
