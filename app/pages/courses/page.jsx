@@ -1,3 +1,4 @@
+'use client'
 import ListElement from '@/components/ListElement';
 import React from 'react';
 import { PersistGate } from 'redux-persist/integration/react';

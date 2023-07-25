@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import SavedCourses from '@/components/SavedCourses';
 import db from '@/utils/db';
