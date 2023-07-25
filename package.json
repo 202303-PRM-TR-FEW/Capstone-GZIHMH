@@ -2,7 +2,6 @@
     "name": "capstone-template",
     "version": "0.1.0",
     "private": true,
-
     "scripts": {
         "dev": "next dev",
         "build": "next build",
@@ -11,6 +10,7 @@
     },
     "dependencies": {
         "@firebase/storage-compat": "^0.3.2",
+        "@reduxjs/toolkit": "^1.9.5",
         "autoprefixer": "10.4.14",
         "axios": "^1.4.0",
         "firebase": "^10.0.0",
@@ -19,6 +19,11 @@
         "postcss": "8.4.24",
         "react": "18.2.0",
         "react-dom": "18.2.0",
+        "react-redux": "^8.1.1",
+        "redux": "^4.2.1",
+        "redux-persist": "^6.0.0",
+        "redux-thunk": "^2.4.2",
+        "reselect": "^4.1.8",
         "tailwindcss": "3.3.2"
     },
     "devDependencies": {
