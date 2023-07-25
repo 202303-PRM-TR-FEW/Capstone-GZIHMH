@@ -1,12 +1,8 @@
-
+'use client'
 import React, {Suspense} from 'react';
 import SavedCourses from '@/components/SavedCourses';
 import db from '@/utils/db';
 import Loading from '@/components/Loading';
-
-
-'use client'
-import React from 'react';
 import SavedCourses from '@/components/SavedCourses';
 import db from '@/utils/db';
 import { PersistGate } from 'redux-persist/integration/react';
