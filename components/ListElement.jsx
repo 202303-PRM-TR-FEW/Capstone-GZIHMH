@@ -42,6 +42,7 @@ function ListElement() {
   const handleToggle = (courseId) => {
     const course = db.courses.find((course) => course.id === courseId);
     if (course) {
+      //if the course is saved check if the value exist in the store if it is then remove the value//
       if (course.saved == true) {
         const courseExists = savedCourses.some((course) => course.id === courseId);
          if(courseExists){
@@ -49,6 +50,7 @@ function ListElement() {
          }
          course.saved = false;
       } else {
+        //if the course wasn't saved then use the action save course to add it to the store//
         course.saved = true;
           dispatch(saveCourse(course));
         };
