@@ -34,7 +34,7 @@ function SavedCourses({ savedCourses }) {
               />
             </div>
             <div className='ml-4 p-4 w-[510px]'>
-              <div className='flex flex-row justify-between mt-4 '>
+              <div className='flex flex-row justify-between mt-2 '>
                 <h2>{course.title}</h2>
                 <span>
                   <svg
@@ -54,7 +54,7 @@ function SavedCourses({ savedCourses }) {
                 </span>
               </div>
               <p className='mb-3 tutor_name'>{getPersonName(course.user_id)}</p>
-              <button className='text-white bg-primary w-12 h-6 text-sm font-semibold rounded-2xl mt-4'>BUY</button>
+              <button className='text-white bg-primary w-12 h-6 text-sm font-semibold rounded-2xl mt-2'>BUY</button>
             </div>
           </div>
         ))}
