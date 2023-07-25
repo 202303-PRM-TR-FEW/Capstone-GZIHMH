@@ -44,7 +44,7 @@ const Details = ({ courseIndex = 0 }) => {
         </div>
       </div>
       <div>
-        <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col items-center justify-evenly mt-10  lg:mt-10 md:mt-5 sm:mt-1'>
+        <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col items-center justify-evenly mt-5  lg:mt-5 md:mt-3 sm:mt-1'>
           <button className="text-primary m-3 text-1xl font-bold bg-transparent border border-primary w-80 h-9 rounded-2xl hover:text-white hover:bg-primary">REVIEW COURSE</button>
           <button className="text-primary m-3 text-1xl font-bold bg-transparent border border-primary w-80 h-9 rounded-2xl hover:text-white hover:bg-primary">
             <Link href={`/CourseOverview/${courseIndex}`}>
