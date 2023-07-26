@@ -1,7 +1,35 @@
-import React from 'react'
+'use client'
+import React,{useState} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+// import { storage } from './firebase.js';
 const RegistrationForm = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setSelectedImage(file);
+    }
+  };
+
+  const handleUpload = () => {
+    if (!selectedImage) return;
+
+    // const uploadTask = storage.ref(`images/${selectedImage.name}`).put(selectedImage);
+
+    uploadTask.on(
+      'state_changed',
+      null,
+      (error) => {
+        console.error('Error uploading image:', error);
+      },
+      () => {
+        // Image upload is complete
+        console.log('Image uploaded successfully!');
+      }
+    );
+  };
   return (
     <div className=" w-full " action="#">
       <div className=" ml-8 mb-4 flex flex-row  items-center h-full justify-start ">
@@ -33,22 +61,12 @@ const RegistrationForm = () => {
                       <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Name" required="" />
                   </div>
 
-
-                  <div className='mb-4'>
-                      <label for="email" className="block mb-2  ml-2  text-sm font-medium text-gray-900 dark:text-white">Surname</label>
-                      <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Surname" required="" />
-                  </div>
-
-               
-
-
-
-
+                          
 
 
                   <div className='mb-4'>
-                      <label for="email" className="block mb-2 ml-2  text-sm font-medium text-gray-900 dark:text-white">Country</label>
-                      <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Country" required="" />
+                      <label for="country" className="block mb-2 ml-2  text-sm font-medium text-gray-900 dark:text-white">Country</label>
+                      <input type="country" name="country" id="country" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Country" required="" />
                   </div>
                   
 
@@ -58,7 +76,12 @@ const RegistrationForm = () => {
                   </div>
 
                 
-
+                  <div className='mb-4'>
+                  <label for="image" className="block mb-2 ml-2  text-sm font-medium text-gray-900 dark:text-white">Profile Photo</label>
+                     
+                    <input type="file"  className ="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"onChange={handleImageChange} />
+                    {/* <button className="cat_btn" onClick={handleUpload}>Upload Image</button> */}
+                  </div>
 
 
 
