@@ -15,20 +15,20 @@ const SavedCourseReview = ({ course }) => {
 
   return (
     <section className='bg-white flex flex-col rounded-2xl'>
-      <div className='flex flex-col items-center p-5 lg-p-5 md-p-3 sm-p-1'>
+      <div className='flex flex-col items-center'>
         <Image src={course.image} width={600} height={400} alt={course.title} className='max-w-[600px] max-h-[400px]' />
         <div className='flex justify-start flex-col ml-4 '>
-          <h2 className='p-3 mb-4 mt-4'>{course.title}</h2>
+          <h2 className='py-2 '>{course.title}</h2>
           <UserImage />
-          <div className='flex flex-row'>
-            {icons.map(icon => icon.name === 'course_duration' && (<div key={icon.id} className="text-gray-400 w-5 h-5 mr-2" dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
+          <div className='flex flex-row mt-2'>
+            {icons.map(icon => icon.name === 'course_duration' && (<div key={icon.id} className="text-gray-400 w-5 h-5 mr-1" dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
             <p>{course.duration} m</p>
           </div>
           <div className='flex flex-row mb-2 mt-2'>
-            {icons.map(icon => icon.name === 'course_rating' && (<div key={icon.id} className="text-gray-400 w-5 h-5 mr-2" dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
+            {icons.map(icon => icon.name === 'course_rating' && (<div key={icon.id} className="text-gray-400 w-5 h-5 mr-1" dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
             <p>{course.rating} </p>
           </div>
-          <h3 className='mb-3'>Course description</h3>
+          <h3 className='mb-1'>Course description</h3>
           <p className='md-w-1/2 sm-w-1/2'>{course.description}</p>
         </div>
       </div>
