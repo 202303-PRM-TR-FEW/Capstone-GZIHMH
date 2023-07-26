@@ -37,16 +37,11 @@ const ProfilePage = () => {
             className="w-20 h-20 rounded-full border-2 border-blue-500"
           />
       First Column */}
-      <div className="w-full" style={{ flex: '1', padding: '1rem', display: 'flex', flexDirection: 'column' }}>
+      <div className="w-full m-2">
       
-      <div className="mx-auto">
-     
-          <h1 className="text-2xl font-bold text-gray-900">Sally Robins</h1>
-  
-          <p className="text-sm font-bold text-gray-500">New York </p>
-        </div>
+      
         <div className="flex justify-end"> {/* Use justify-end to shift the InfoBar to the right */}
-          <InfoBar className="m-0" />
+          <InfoBar name={ 'Sally Robins'} country={"New York"} image={'/assets/images/pro.jpg'} />
         </div>
         <div>
           <h2 className="text-xl text-gray-900">Total Statistics</h2>
