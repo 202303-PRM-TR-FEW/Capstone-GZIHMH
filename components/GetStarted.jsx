@@ -24,9 +24,9 @@ const GetStarted = () => {
 
 
       <div className='flex justify-start'>
-          <div className="flex flex-row  items-center  ">
+      <div className="flex flex-row  items-center h-full justify-start ">
             <div>
-              <Image src="/assets/icons/icon.png"
+              <Image src="/assets/icons/logo.png"
                 alt="icon image"
                 width={70}
                 height={40}
@@ -34,7 +34,7 @@ const GetStarted = () => {
             </div>
 
             <div>
-              <p className='text-primary font-bold'> LearnU </p>
+              <p className='text-primary font-bold'> Course Worm </p>
             </div>
           </div>
 
