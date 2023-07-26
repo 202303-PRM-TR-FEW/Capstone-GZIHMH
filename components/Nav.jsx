@@ -5,7 +5,7 @@ const Nav = () => {
         <div>
             <aside className="flex flex-col w-20 h-screen px-5 py-8 overflow-y-auto bg-transparent dark:bg-gray-900 dark:border-gray-700">
                 <a href="/" >
-                    <Image src="/assets/icons/icon.png"
+                    <Image src="/assets/icons/logos.png"
                         alt="icon image"
                         width={800}
                         height={800}
@@ -13,21 +13,23 @@ const Nav = () => {
                     />
                 </a>
 
+
                 <div className="flex flex-col justify-between flex-1 mt-6">
                     <nav className="-mx-3 space-y-6 ">
                         <div className="space-y-3 ">
 
-                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-primary" href="/pages/home">
+                            <a className=" flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-primary" href="/pages/home">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width={24}
                                     height={24}
                                     viewBox="0 0 24 24"
                                     fill="none"
-                                    stroke="rgb(177 177 177)"
+                                    stroke="currentColor"
                                     strokeWidth="2"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
+
                                 >
                                     <path d="M12 2L2 9v13h20V9L12 2ZM11 4.82843V9H7V5.82843L12 2.17157L17 5.82843V9H13V4.82843L12 4.17157L11 4.82843ZM13 9V19H19V9H13ZM9 9V19H5V9H9Z" />
                                     <path d="M12 5V9H7V5H12ZM12 5H17V9H12V5Z" fill="#FFFFFF" />
@@ -36,14 +38,14 @@ const Nav = () => {
                                 <span className="mx-2 text-sm font-medium">Home</span>
                             </a>
 
-                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700" href="/pages/search">
+                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-primary" href="/pages/search">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width={24}
                                     height={24}
                                     viewBox="0 0 24 24"
                                     fill="none"
-                                    stroke="rgb(177 177 177)"
+                                    stroke="currentColor"
                                     strokeWidth="2"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
@@ -54,14 +56,14 @@ const Nav = () => {
 
                                 <span className="mx-2 text-sm font-medium">Search</span>
                             </a>
-                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700" href="/pages/courses">
+                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-primary" href="/pages/courses">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width={24}
                                     height={24}
                                     viewBox="0 0 24 24"
                                     fill="none"
-                                    stroke="rgb(177 177 177)"
+                                    stroke="currentColor"
                                     strokeWidth="2"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
@@ -72,14 +74,14 @@ const Nav = () => {
 
                                 <span className="mx-2 text-sm font-medium">Courses</span>
                             </a>
-                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700" href="/pages/saved">
+                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-primary" href="/pages/saved">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width={24}
                                     height={24}
                                     viewBox="0 0 24 24"
                                     fill="none"
-                                    stroke="rgb(177 177 177)"
+                                    stroke="currentColor"
                                     strokeWidth="2"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
@@ -89,14 +91,14 @@ const Nav = () => {
 
                                 <span className="mx-2 text-sm font-medium">Saved</span>
                             </a>
-                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700" href="/pages/profile">
+                            <a className="flex flex-col items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-primary" href="/pages/profile">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width={24}
                                     height={24}
                                     viewBox="0 0 24 24"
                                     fill="none"
-                                    stroke="rgb(177 177 177)"
+                                    stroke="currentColor"
                                     strokeWidth="2"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
