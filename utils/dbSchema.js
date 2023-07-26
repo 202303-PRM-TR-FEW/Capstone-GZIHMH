@@ -72,7 +72,6 @@ const initialCourses = [{
     productId: '',
     categories: [],
     level: '',
-
 }, ];
 const initialLessons = [{
         courseId: '',
