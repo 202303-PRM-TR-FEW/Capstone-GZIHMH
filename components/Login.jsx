@@ -18,7 +18,7 @@ const Login = () => {
     <div className=" w-full flex flex-col " action="#">
       <div className="ml-8 mb-4 flex flex-row  items-center h-full justify-start ">
         <div>
-          <Image src="/assets/icons/logo.png"
+          <Image src="/assets/icons/logos.png"
             alt="icon image"
             width={70}
             height={40}

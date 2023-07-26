@@ -26,7 +26,7 @@ const GetStarted = () => {
       <div className='flex justify-start'>
       <div className="flex flex-row  items-center h-full justify-start ">
             <div>
-              <Image src="/assets/icons/logo.png"
+              <Image src="/assets/icons/logos.png"
                 alt="icon image"
                 width={70}
                 height={40}
