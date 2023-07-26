@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import db from '../utils/db';
 import SavedCourseReview from './SavedCourseReview';
-
-function SavedCourses({ savedCourses }) {
+import { useSelector } from 'react-redux';
+import { selectSavedCourses } from '@/redux/selectors';
+function SavedCourses() {
   const [selectedCourseIndex, setSelectedCourseIndex] = useState(0);
-
+  const savedCourses = useSelector(selectSavedCourses);
   const handleCourseClick = (index) => {
     setSelectedCourseIndex(index);
   };
@@ -18,23 +19,23 @@ function SavedCourses({ savedCourses }) {
 
   return (
     <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col h-full'>
-      <div className='mt-2 p-2'>
+      <div className='mt-5 p-5'>
         <h1 className='p-4'>Saved Courses</h1>
         {savedCourses.map((course, index) => (
-          <div className='flex rounded-2xl w-[570px] h-[153px] m-3 opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 rounded-5 border hover:border-primary' key={course.id}>
+          <div className='flex rounded-2xl w-[570px] h-[172px] m-3 opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 rounded-5 border hover:border-primary' key={course.id}>
             <div className='flex flex-row'>
               <Image
                 src={course.image}
                 width={200}
                 height={180}
                 alt={course.title}
-                className='max-w-[185px] max-h-[152px]'
+                className='max-w-[190px] max-h-[172px]'
                 style={{ cursor: 'pointer' }}
                 onClick={() => handleCourseClick(index)}
               />
             </div>
             <div className='ml-4 p-4 w-[510px]'>
-              <div className='flex flex-row justify-between mt-2 '>
+              <div className='flex flex-row justify-between mt-4 '>
                 <h2>{course.title}</h2>
                 <span>
                   <svg
@@ -54,7 +55,7 @@ function SavedCourses({ savedCourses }) {
                 </span>
               </div>
               <p className='mb-3 tutor_name'>{getPersonName(course.user_id)}</p>
-              <button className='text-white bg-primary w-12 h-6 text-sm font-semibold rounded-2xl mt-2'>BUY</button>
+              <button className='text-white bg-primary w-12 h-6 text-sm font-semibold rounded-2xl mt-4'>BUY</button>
             </div>
           </div>
         ))}
