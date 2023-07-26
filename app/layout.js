@@ -6,7 +6,7 @@ import Nav from '@/components/Nav'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { Provider } from 'react-redux'
-import { PersistGate } from 'redux-persist/integration/react';
+import { PersistGate } from 'redux-persist/lib/integration/react';
 import store, { persistor } from '@/redux/store';
 const GelionMedium = localFont({
   src: '../styles/fonts/Gelion_Medium.ttf',
