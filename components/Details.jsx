@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import db from '../utils/db';
 import icons from '../utils/icons';
+import UserImage from './UserImage'
 
 const Details = ({ courseIndex = 0 }) => {
   const getCourse = (courseIndex) => {
@@ -30,8 +31,9 @@ const Details = ({ courseIndex = 0 }) => {
       <div className='flex flex-col items-center'>
         <Image src={course.image} width={600} height={400} alt={course.title} className='max-w-[600px] max-h-[400px]' />
         <div className='flex justify-start flex-col ml-4 '>
-          <h2 className='p-3 mb-4 mt-4'>{course.title}</h2>
-          <div className='flex flex-row'>
+          <h2 className='p-2 mb-2 mt-2'>{course.title}</h2>
+          <UserImage/>
+          <div className='flex flex-row mt-2'>
             {icons.map(icon => icon.name === 'course_duration' && (<div key={icon.id} className="text-gray-400 w-6 h-6 mr-2" dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
             <p>{course.duration} m</p>
           </div>
