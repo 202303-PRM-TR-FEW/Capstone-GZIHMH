@@ -6,7 +6,7 @@ const Achievements = () => {
 
 
 
-    <div className='flex flex-col items-start justify-center m-1'>
+    <div className='flex flex-col items-start justify-center m-1 w-full h-full'>
 
 
            <div><h2 className=' text-xl text-gray-900 ' > Achievements </h2></div>
@@ -14,7 +14,7 @@ const Achievements = () => {
 
     <div className='bg-slate-50 shadow  m-2  w-auto h-30 rounded-3xl flex flex-row '>
 
-                <div className='bg-orange-100 w-20 h-20 rounded-2xl m-2 flex items-center justify-center'>
+                <div className='bg-orange-100 w-40 h-20 rounded-2xl m-2 flex items-center justify-center'>
 
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hourglass-low" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -41,7 +41,7 @@ const Achievements = () => {
 
 
             <div className="bg-gray-200 h-2 w-80 rounded-xl overflow-hidden mx-2 ">
-                 <div className="h-full bg-orange-400 rounded-lg " style={{ width: '20%' }}></div>
+                 <div className="h-full bg-orange-400 rounded-lg " style={{ width: '40%' }}></div>
                     </div>
             <dev className=' m-1 ml-2 text-gray-500 text-sm '> Reach a 3 day streak  </dev>
             
@@ -60,7 +60,7 @@ const Achievements = () => {
 
     <div className='bg-slate-50 shadow  m-2  w-auto h-30 rounded-3xl flex flex-row '>
 
-<div className='bg-lime-100 w-20 h-20 rounded-2xl m-2 flex items-center justify-center'>
+<div className='bg-lime-100 w-40 h-20 rounded-2xl m-2 flex items-center justify-center'>
 
 <svg fill="#84cc16" width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="icon line-color" stroke="#84cc16"> <g id="SVGRepo_bgCarrier" strokeWidth="0"></g> <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" stroke="#CCCCCC" strokeWidth="0.048"></g> <g id="SVGRepo_iconCarrier"> <path id="secondary" d="M17.17,5H20a1,1,0,0,1,1,1V7a4,4,0,0,1-4,4h0" fill="none" stroke="#84cc16" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.128" /> <path id="secondary-2" data-name="secondary" d="M6.74,5H4A1,1,0,0,0,3,6V7a4,4,0,0,0,4,4H7" fill="none" stroke="#84cc16" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.128" /> <path id="primary" d="M8,21h8M7,9.57a6.78,6.78,0,0,0,4.26,6.29h0a2,2,0,0,0,1.48,0h0A6.78,6.78,0,0,0,17,9.57V3H7Zm5,6.61V21" fill="#84cc16" stroke="#84cc16" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.128" /> </g> </svg> 
 </div>
@@ -90,21 +90,6 @@ const Achievements = () => {
 
 
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
 
   )

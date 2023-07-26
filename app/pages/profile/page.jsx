@@ -4,7 +4,6 @@ import Achievements from '@/components/Achievements';
 import Friends from '@/components/Friends';
 import FriendsSuggestion from '@/components/FriendsSuggestion';
 import StatisticalCard from '@/components/StatisticalCard';
-
 // ... (import statements)
 
 const CheckIcon = `
@@ -30,9 +29,25 @@ const CheckIcon3 = `
 const ProfilePage = () => {
   return (
     <div style={{ display: 'flex' }}>
-      {/* First Column */}
-      <div style={{ flex: '1', padding: '1rem', display: 'flex', flexDirection: 'column' }}>
-        <InfoBar className="m-0" />
+      
+      {/* 
+      <img
+            src="public/assets/01585e0f-4fe2-478d-930d-de730b3ccdc0.jpg"
+            alt="Profile"
+            className="w-20 h-20 rounded-full border-2 border-blue-500"
+          />
+      First Column */}
+      <div className="w-full" style={{ flex: '1', padding: '1rem', display: 'flex', flexDirection: 'column' }}>
+      
+      <div className="mx-auto">
+     
+          <h1 className="text-2xl font-bold text-gray-900">Sally Robins</h1>
+  
+          <p className="text-sm font-bold text-gray-500">New York </p>
+        </div>
+        <div className="flex justify-end"> {/* Use justify-end to shift the InfoBar to the right */}
+          <InfoBar className="m-0" />
+        </div>
         <div>
           <h2 className="text-xl text-gray-900">Total Statistics</h2>
         </div>
@@ -59,7 +74,7 @@ const ProfilePage = () => {
             style={{ flex: 1 }}
           />
         </div>
-        <div className="mt-4" style={{ flex: '1', width: '50%' }}> {/* This div will occupy the remaining space */}
+        <div className="mt-4 w-full"> {/* This div will occupy the remaining space */}
           <Achievements className="m-0" />
         </div>
       </div>
