@@ -44,7 +44,7 @@ const ProfilePage = () => {
             <InfoBar name={ 'Sally Robins'} country={"New York"} image={'/assets/images/pro.jpg'} />
 
             </div>
-            <div className='flex flex-col'>
+            <div className='flex flex-col w-full'>
               <div>
                 <h2 className="text-xl text-gray-900 w-full">Total Statistics</h2>
               </div>
@@ -78,15 +78,27 @@ const ProfilePage = () => {
                 </div>
               </div>
             </div>
+            <div className='flex flex-col w-full'>
+              <div>
+                <h2 className="text-xl text-gray-900 w-full">Achievements</h2>
+              </div>
+              <div className='w-full flex flex-col'>
+              <div className="mt-4 w-full"> {/* This div will occupy the remaining space */}
+                  <Achievements title={'Commited Learner'} desc={'Reach a 3 day streak' } imm={CheckIcon2} total={3} progress={2} bcolor={"bg-orange-400"} />
+                </div>
+                <div className="mt-4 w-full"> {/* This div will occupy the remaining space */}
+                <Achievements title ={'Point Collector'}desc={'Earn 1800 more point' }  imm={CheckIcon3} total={3000} progress={1200} bcolor={"bg-lime-300"} />
+              </div>
+              </div>
+
+            </div>
           </div>
           <div>
 
           </div>
         </div>
       
-        <div className="mt-4 w-full"> {/* This div will occupy the remaining space */}
-          <Achievements className="m-0" />
-        </div>
+        
       </div>
       {/* Second Column */}
       <div style={{ flex: '1', padding: '1rem', paddingLeft: '2rem' }}>
