@@ -100,8 +100,17 @@ const ProfilePage = () => {
               </h5>
             </div>
             <div className='w-full'>
-            <FriendsSuggestion />
+              <FriendsSuggestion />
             </div>
+            <div className='w-full'>
+              <h5 className="m-4 w-full text-xl font-bold leading-none text-gray-900 dark:text-white mb-4">
+                Friends
+              </h5>
+            </div>
+            <div className='w-full'>
+              <Friends />
+            </div>
+
           </div>
           <div>
 
