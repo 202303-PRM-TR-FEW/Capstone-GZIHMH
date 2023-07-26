@@ -28,7 +28,7 @@ const CheckIcon3 = `
 
 const ProfilePage = () => {
   return (
-    <div style={{ display: 'flex' }}>
+    <div className='w-full'>
       
       {/* 
       <img
@@ -46,7 +46,7 @@ const ProfilePage = () => {
             </div>
             <div className='flex flex-col w-full'>
               <div>
-                <h2 className="text-xl text-gray-900 w-full">Total Statistics</h2>
+                <h2 className="text-xl text-gray-900 w-full mt-10 ml-2">Total Statistics</h2>
               </div>
               <div className='flex flex-row w-full'>
                 <div className='w-full'>
@@ -80,7 +80,7 @@ const ProfilePage = () => {
             </div>
             <div className='flex flex-col w-full'>
               <div>
-                <h2 className="text-xl text-gray-900 w-full">Achievements</h2>
+                <h2 className="text-xl mt-10 text-gray-900 w-full">Achievements</h2>
               </div>
               <div className='w-full flex flex-col'>
               <div className="mt-4 w-full"> {/* This div will occupy the remaining space */}
@@ -93,6 +93,16 @@ const ProfilePage = () => {
 
             </div>
           </div>
+          <div className='flex flex-col w-full pl-6 pr-16'>
+            <div className='w-full'>
+              <h5 className="m-4 w-full text-xl font-bold leading-none text-gray-900 dark:text-white mb-4">
+                Friend Suggestions
+              </h5>
+            </div>
+            <div className='w-full'>
+            <FriendsSuggestion />
+            </div>
+          </div>
           <div>
 
           </div>
@@ -101,10 +111,10 @@ const ProfilePage = () => {
         
       </div>
       {/* Second Column */}
-      <div style={{ flex: '1', padding: '1rem', paddingLeft: '2rem' }}>
+      {/* <div style={{ flex: '1', padding: '1rem', paddingLeft: '2rem' }}>
         <FriendsSuggestion />
         <Friends />
-      </div>
+      </div> */}
     </div>
   );
 };

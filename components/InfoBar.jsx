@@ -23,7 +23,7 @@ const InfoBar = (props) => {
 
             <p className="text-sm font-bold text-gray-500 mb-2">{props.country} </p>
           </div>
-          <div className="flex justify-center items-center mb-4">
+          <div className="flex justify-center items-center mb-4 shadow-lg">
             <div className="flex flex-row items-center bg-gray-100 rounded-xl w-full border-4 p-4 m-auto border-white">
               <div className="flex flex-col items-center w-full">
                 <span className="text-lg font-bold mb-2 text-gray-900">{courses}</span>
