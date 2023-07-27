@@ -2,11 +2,7 @@
 
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-
-// Initialize Firebase
-const firebaseConfig = {
-  // Your Firebase configuration
-};
+import firebaseConfig from '../utils/firebase'
 
 firebase.initializeApp(firebaseConfig);
 
