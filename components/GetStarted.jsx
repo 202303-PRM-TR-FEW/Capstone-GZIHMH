@@ -3,10 +3,11 @@ import React,{useState, useEffect} from 'react'
 import Image from 'next/image'
 import Login from './Login';
 import Link from 'next/link';
-import { auth } from '@/utils/firebase'
-import { signInWithPopup, GoogleAuthProvider, getAuth } from 'firebase/auth'
-import { useAuthState} from 'react-firebase-hooks/auth'
-const GetStarted = () => {
+import { doc,auth, firestore, addDoc,collection ,getUserCountry} from '@/utils/firebase';
+import { signInWithPopup, GoogleAuthProvider, getAuth } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
+
+const GetStarted = ({routers}) => {
   const [user, setUser] = useAuthState(auth);
   useEffect(() => { },[user])
 
@@ -20,11 +21,30 @@ const GetStarted = () => {
     
   };
   const handleGoogleLoginClick = async () => {
-    const result = await signInWithPopup(auth,googleAuth)
+    const result = await signInWithPopup(auth, googleAuth)
+    localStorage.setItem('currentUser', JSON.stringify(auth.currentUser));
+    saveGoogleUserInfoToFirestore();
+    routers.push('/pages/home')
   };
-
+  const saveGoogleUserInfoToFirestore = async () => {
+    const { uid, displayName, email, photoURL } = auth.currentUser;
+    const userRef = collection(firestore, 'users');
+    const country = await getUserCountry();
+    try {
+      await addDoc(userRef,{
+        id:uid,
+        name: displayName,
+        email: email,
+        profilePicture: photoURL,
+        country: country,
+        
+      }, { merge: true });
+      console.log(uid,displayName,email,photoURL,country)
+    } catch (error) {
+      console.error('Firestore Update Error:', error);
+    }
+  };
   if (showLogin) {
-    // If showLogin is true, render the Login component.
     return <Login />;
   }
 
