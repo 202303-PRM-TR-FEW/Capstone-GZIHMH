@@ -2,9 +2,7 @@
 
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import firebaseConfig from '../utils/firebase'
-
-firebase.initializeApp(firebaseConfig);
+import * from '../firebase'
 
 // Get a Firestore instance
 const firestore = firebase.firestore();
