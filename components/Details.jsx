@@ -33,7 +33,7 @@ const Details = ({ courseIndex = 0 }) => {
       <div className='flex flex-col items-center'>
         <Image src={course.image} width={600} height={400} alt={course.title} className='max-w-[600px] max-h-[400px]' />
         <div className='flex justify-start flex-col ml-4 '>
-          <h2 className='p-3 mb-1 mt-1'>{course.title}</h2>
+          <h2 className='p-1 mb-1 mt-1'>{course.title}</h2>
           <div className='user-container w-1/3 mb-2 rounded-full flex  items-center bg-white h-[35px]'>
              <Image src={image} alt="User Profile " width={35} height={35} className='w-[30px] h-[35px] rounded-full' />
              <p className='opacity-60'>{name}</p></div>
