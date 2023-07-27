@@ -3,7 +3,7 @@ import React,{useState, useEffect} from 'react'
 import Image from 'next/image'
 import Login from './Login';
 import Link from 'next/link';
-import { doc,auth, firestore, addDoc,collection ,getUserCountry} from '@/utils/firebase';
+import { doc,auth, firestore, addDoc,collection,setDoc ,getUserCountry} from '@/utils/firebase';
 import { signInWithPopup, GoogleAuthProvider, getAuth } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
@@ -28,11 +28,10 @@ const GetStarted = ({routers}) => {
   };
   const saveGoogleUserInfoToFirestore = async () => {
     const { uid, displayName, email, photoURL } = auth.currentUser;
-    const userRef = collection(firestore, 'users');
     const country = await getUserCountry();
     try {
-      await addDoc(userRef,{
-        id:uid,
+      await setDoc(doc(firestore,'users',uid),{
+
         name: displayName,
         email: email,
         profilePicture: photoURL,
