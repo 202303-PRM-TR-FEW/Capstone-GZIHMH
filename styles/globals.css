@@ -36,14 +36,11 @@ body {
 
 h1 {
   @apply text-gray-900 font-bold text-3xl;
-
 }
 
 h2,
 h3 {
-
   @apply text-gray-600 font-bold;
-
 }
 
 .check {
@@ -60,7 +57,6 @@ h3 {
 }
 
 .thumbnail {
-
   @apply border rounded-xl overflow-hidden object-contain;
 }
 .thumbnail_container {
@@ -69,7 +65,6 @@ h3 {
 
 .search_input {
   @apply block w-full rounded-xl border border-gray-300 text-gray-900 bg-transparent pl-2  text-sm placeholder-gray-600;
-
 }
 
 .cat_btn {
@@ -78,11 +73,15 @@ h3 {
 .blue_btn {
   @apply rounded-xl border border-primary bg-primary py-1.5 px-5 text-white transition-all hover:bg-white hover:text-primary text-center text-lg font-bold flex items-center justify-center;
 }
-
+.out_btn {
+  @apply rounded-xl border border-primary bg-white py-1.5 px-5 text-primary transition-all hover:bg-primary hover:text-white text-center text-lg font-bold flex items-center justify-center;
+}
 .outline_btn {
   @apply p-2 m-3 font-bold text-white bg-blue-400 border border-blue-500 w-80 h-11 rounded-2xl hover:text-blue-500 hover:bg-transparent;
 }
-
+.out_btn {
+  @apply rounded-xl border border-primary bg-white py-1.5 px-5 text-primary transition-all hover:bg-primary hover:text-white text-center text-lg font-bold flex items-center justify-center;
+}
 img {
   @apply m-2 rounded-2xl;
 }

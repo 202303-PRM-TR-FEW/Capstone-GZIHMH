@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs, addDoc, updateDoc, getDoc, doc, where, query } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getAnalytics, isSupported } from "firebase/analytics";
-
+import { getAuth } from "firebase/auth";
 const firebaseConfig = {
     apiKey: "AIzaSyD5lj9ewEDXPdlBzmYg2iKGuDdUUgBfQhs",
     authDomain: "courseworm-db.firebaseapp.com",
@@ -20,4 +20,5 @@ if (typeof window !== "undefined" && isSupported()) {
     analytics = getAnalytics(app);
 }
 const storage = getStorage(app);
-export { app, analytics, firestore, storage, collection, getDocs, addDoc, getDoc, updateDoc, doc, ref, uploadBytes, query, where, getDownloadURL };
+const auth = getAuth();
+export { auth, app, analytics, firestore, storage, collection, getDocs, addDoc, getDoc, updateDoc, doc, ref, uploadBytes, query, where, getDownloadURL };
