@@ -34,10 +34,9 @@ const Details = ({ courseIndex = 0 }) => {
         <Image src={course.image} width={600} height={400} alt={course.title} className='max-w-[600px] max-h-[400px]' />
         <div className='flex justify-start flex-col ml-4 '>
           <h2 className='p-3 mb-1 mt-1'>{course.title}</h2>
-          <div className='user-container p-0 w-[170px] rounded-full flex  items-center bg-white h-[35px]'>
-      <img src={image} alt="User Profile " width={35} height={35} className='w-[35px] h-[35px] rounded-full' />
-      <p className='opacity-60'>{name}</p>
-    </div>
+          <div className='user-container w-1/3 mb-2 rounded-full flex  items-center bg-white h-[35px]'>
+             <Image src={image} alt="User Profile " width={35} height={35} className='w-[30px] h-[35px] rounded-full' />
+             <p className='opacity-60'>{name}</p></div>
           <div className='flex flex-row'>
             <div className="text-gray-400 w-5 h-5 mr-2" dangerouslySetInnerHTML={{ __html: icons.find(icon => icon.name === 'course_duration').svg }} />
             <p>{course.duration} m</p>
