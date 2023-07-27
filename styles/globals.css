@@ -79,7 +79,9 @@ h3 {
 .outline_btn {
   @apply p-2 m-3 font-bold text-white bg-blue-400 border border-blue-500 w-80 h-11 rounded-2xl hover:text-blue-500 hover:bg-transparent;
 }
-
+.out_btn {
+  @apply rounded-xl border border-primary bg-white py-1.5 px-5 text-primary transition-all hover:bg-primary hover:text-white text-center text-lg font-bold flex items-center justify-center;
+}
 img {
   @apply m-2 rounded-2xl;
 }
