@@ -2,10 +2,9 @@
 
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import * from '../firebase'
+import { app, analytics, firestore, storage, collection, getDocs, addDoc, getDoc, updateDoc, doc, ref, uploadBytes, query, where, getDownloadURL } from '../firebase'
 
-// Get a Firestore instance
-const firestore = firebase.firestore();
+
 
 // Define the user collection name
 const userCollection = 'users';
