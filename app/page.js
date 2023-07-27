@@ -1,21 +1,23 @@
 import Login from '@/components/Login'
 import RegistrationForm from '@/components/RegistrationForm'
 import Image from 'next/image'
-
+import GetStarted from '@/components/GetStarted'
 export default function Intro() {
   return (
-    <main className="flex min-h-screen w-full flex-row items-center justify-between">
+    <main className="flex min-h-screen w-full flex-col sm:flex-row items-center">
 
 
 
-      <div className="flex flex-col items-center flex-start m-auto ">
-        <Login />
-        <RegistrationForm />
+      <div className="flex flex-col items-center m-auto w-full">
         
+        {/* <Login />
+        <RegistrationForm /> */}
+        <GetStarted />
       </div> 
 
 
-      <div className='bg-white  rounded-3xl  '>
+      <div className='bg-white  rounded-3xl w-full '>
+
         <Image src="/assets/images/welcomepage.png"
           alt="intro image"
           width={700}
