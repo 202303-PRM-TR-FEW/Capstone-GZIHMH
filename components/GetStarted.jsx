@@ -1,12 +1,14 @@
 'use client'
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import Image from 'next/image'
 import Login from './Login';
 import Link from 'next/link';
 import { auth } from '@/utils/firebase'
-import {signInWithPopup, GoogleAuthProvider} from 'firebase/auth'
+import { signInWithPopup, GoogleAuthProvider, getAuth } from 'firebase/auth'
+import { useAuthState} from 'react-firebase-hooks/auth'
 const GetStarted = () => {
-
+  const [user, setUser] = useAuthState(auth);
+  useEffect(() => { },[user])
 
 
   const [showLogin, setShowLogin] = useState(false);
