@@ -59,48 +59,64 @@ h3 {
 .thumbnail {
   @apply border rounded-xl overflow-hidden object-contain;
 }
+
 .thumbnail_container {
   @apply w-44 h-32;
 }
 
 .search_input {
-  @apply block w-full rounded-xl border border-gray-300 text-gray-900 bg-transparent pl-2  text-sm placeholder-gray-600;
+  @apply block w-full rounded-xl border border-gray-300 text-gray-900 bg-transparent pl-2 text-sm placeholder-gray-600;
 }
 
 .cat_btn {
   @apply rounded-full border border-gray-300 bg-transparent py-1.5 px-5 text-gray-800 transition-all text-center text-sm flex items-center justify-center;
 }
+
 .blue_btn {
-  @apply rounded-xl border border-primary bg-primary py-1.5 px-5 text-white transition-all hover:bg-white hover:text-primary text-center text-lg font-bold flex items-center justify-center;
+  @apply rounded-xl border border-primary bg-primary py-1.5 px-5 text-white transition-all hover: bg-white hover:text-primary text-center text-lg font-bold flex items-center justify-center;
 }
+
 .out_btn {
-  @apply rounded-xl border border-primary bg-white py-1.5 px-5 text-primary transition-all hover:bg-primary hover:text-white text-center text-lg font-bold flex items-center justify-center;
+  @apply rounded-xl border border-primary bg-white py-1.5 px-5 text-primary transition-all hover: bg-primary hover:text-white text-center text-lg font-bold flex items-center justify-center;
 }
+
 .outline_btn {
-  @apply p-2 m-3 font-bold text-white bg-blue-400 border border-blue-500 w-80 h-11 rounded-2xl hover:text-blue-500 hover:bg-transparent;
+  @apply p-2 m-3 font-bold text-white bg-blue-400 border border-blue-500 w-80 h-11 rounded-2xl hover: text-blue-500 hover:bg-transparent;
 }
+
 .out_btn {
-  @apply rounded-xl border border-primary bg-white py-1.5 px-5 text-primary transition-all hover:bg-primary hover:text-white text-center text-lg font-bold flex items-center justify-center;
+  @apply rounded-xl border border-primary bg-white py-1.5 px-5 text-primary transition-all hover: bg-primary hover:text-white text-center text-lg font-bold flex items-center justify-center;
 }
+
 img {
   @apply m-2 rounded-2xl;
 }
+
 .activity-cards {
   background-color: #fff;
   padding: 0.5rem;
   border-radius: 0.5rem;
 }
+
 .p-color {
   color: black;
 }
+
 .activity-card {
   display: flex;
   gap: 0.5rem;
   margin-bottom: 5px;
 }
-.footer > h2 {
+
+.footer>h2 {
   color: blue;
 }
+
 .recent-card {
   margin-bottom: 1rem;
+}
+
+.user-container {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
 }
