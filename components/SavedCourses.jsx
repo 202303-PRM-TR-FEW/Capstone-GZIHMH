@@ -21,9 +21,9 @@ function SavedCourses() {
     <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col h-full'>
       <div className=''>
         <h1 className='pl-4 py-1.5'>Saved Courses</h1>
-        <div className='flex-1 max-h-[644px] overflow-y-auto'>
+        <div className='max-h-[644px] overflow-y-auto'>
         {savedCourses.map((course, index) => (
-          <div className='flex rounded-2xl w-[570px] h-[148px] m-3 opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 rounded-5 border hover:border-primary' key={course.id}>
+          <div className='flex rounded-2xl w-[570px] h-[148px] my-2 opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 rounded-5 border hover:border-primary' key={course.id}>
             <div className='flex flex-row'>
               <Image
                 src={course.image}
@@ -62,7 +62,7 @@ function SavedCourses() {
         ))}
         </div>
       </div>
-      <div className='w-[650px] h-full bg-white p-5 lg:p-5 md:p-2 sm:1'>
+      <div className='w-[650px] h-full bg-white mx-4 lg:mx-4 md:mx-1 sm:mx-1 p-5 lg:p-5 md:p-2 sm:1'>
         {selectedCourseIndex !== null && (
           <SavedCourseReview course={savedCourses[selectedCourseIndex]} />
         )}

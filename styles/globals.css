@@ -108,7 +108,6 @@ img {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
   background-color: #fff;
 }
-.user-container {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
-  background-color: #fff;
+.text {
+  @apply text-sm text-gray-600;
 }

@@ -87,9 +87,9 @@ function ListElement() {
                   <input
                     type="range"
                     defaultValue={parseInt(course.completion_ratio)}
-                    className="w-full h-[13px]  opacity-100 bg-white rounded-full"
+                    className="w-full h-[13px] opacity-100 bg-white rounded-full"
                   />
-                  <p> {course.completion_ratio} complete</p>
+                  <p className='text'> {course.completion_ratio} complete</p>
                 </div>
 
               </div>
