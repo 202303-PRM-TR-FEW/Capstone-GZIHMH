@@ -2,12 +2,12 @@
 
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
-import { initializeApp } from 'firebase/app';
+
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
 
-import firebaseConfig from '@/utils/firebase';
-initializeApp(firebaseConfig);
+import {app} from '@/utils/firebase';
+
 
 const handler = NextAuth({
   providers: [
