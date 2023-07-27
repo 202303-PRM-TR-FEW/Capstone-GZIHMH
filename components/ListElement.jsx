@@ -14,22 +14,15 @@ function ListElement() {
   const [selectedCourseIndex, setSelectedCourseIndex] = useState(0);
   const [randomCourses, setRandomCourses] = useState([]);
 
-   useEffect(() => {
-    const getRandomCourses = () => {
-      const shuffledCourses = [...db.courses].sort(() => 0.5 - Math.random());
-      const selectedCourses = shuffledCourses.slice(0, 4);
-      setRandomCourses(selectedCourses);
+useEffect(() => {
+    const getAllCourses = () => {
+      setRandomCourses([...db.courses]);
     };
 
-    getRandomCourses();
-  }, []);
+    getAllCourses();
+  }, []);
   
-  useEffect(() => {
-    if (randomCourses.length > 0) {
-      setSelectedCourseIndex(randomCourses[0].id);
-    }
-  }, [randomCourses]);
-
+ 
   const handleCourseClick = (index) => {
     setSelectedCourseIndex(index);
   };
