@@ -21,6 +21,7 @@ function SavedCourses() {
     <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col h-full'>
       <div className='mt-5 p-5'>
         <h1 className='p-4'>Saved Courses</h1>
+        <div className='flex-1 max-h-[644px] overflow-y-auto'>
         {savedCourses.map((course, index) => (
           <div className='flex rounded-2xl w-[570px] h-[172px] m-3 opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 rounded-5 border hover:border-primary' key={course.id}>
             <div className='flex flex-row'>
@@ -59,6 +60,7 @@ function SavedCourses() {
             </div>
           </div>
         ))}
+        </div>
       </div>
       <div className='w-[650px] h-full bg-white p-5 lg:p-5 md:p-2 sm:1'>
         {selectedCourseIndex !== null && (

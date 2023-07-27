@@ -15,13 +15,11 @@ function ListElement() {
   const [randomCourses, setRandomCourses] = useState([]);
 
   useEffect(() => {
-    const getRandomCourses = () => {
-      const shuffledCourses = [...db.courses].sort(() => 0.5 - Math.random());
-      const selectedCourses = shuffledCourses.slice(0, 4);
-      setRandomCourses(selectedCourses);
+    const getAllCourses = () => {
+      setRandomCourses([...db.courses]);
     };
 
-    getRandomCourses();
+    getAllCourses();
   }, []);
 
   useEffect(() => {
@@ -63,7 +61,7 @@ function ListElement() {
     <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col ml-10 lg:ml-10 md:ml-5 sm:ml-1'>
 <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col ml-10 lg:ml-10 md:ml-5 sm:ml-1'>
       <div className='rounded-2xl p-2 flex flex-col w-1/2'>
-        <div className="flex flex-row justify-between mt-5 lg:mt-5 md:mt-2 sm:mt-1 h-full">
+        <div className="flex flex-row justify-between mt-5 lg:mt-5 md:mt-2 sm:mt-1">
           <h1>My Learning</h1>
           <div className='flex flex-row justify-between  px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700'>
             <a className="flex text-lg items-center" href="/pages/statistics">
@@ -72,6 +70,7 @@ function ListElement() {
             </a>
           </div>
         </div>
+        <div className='overflow-y-auto flex-1 max-h-[644px]'>
         {randomCourses.map((course) => (
           <div className='flex m-1 w-[570px] h-[175px] rounded-2xl opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 border hover:border-primary' key={course.id} onClick={() => handleCourseClick(course.id)}>
             <div className='flex flex-row justify-between '>
@@ -96,6 +95,7 @@ function ListElement() {
 
           </div>
         ))}
+        </div>
       </div>
       <div className='w-[650px] h-full bg-white p-10 lg-p-10 md-p-5 sm-p-1'>
         {selectedCourseIndex !== null && (
