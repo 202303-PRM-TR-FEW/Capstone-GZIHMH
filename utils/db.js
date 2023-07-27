@@ -10,7 +10,7 @@ const db = {
       rating: 4.7,
       price: 100,
       description: 'This online course for you if you are in taking great digital photo and learning jow to make your photography unique and outstanding',
-      saved: false,
+      
 
     },
     {
@@ -23,7 +23,7 @@ const db = {
       rating: 4.7,
       price: 75,
       description: 'This online course for you if you are in taking great digital photo and learning jow to make your photography unique and outstanding',
-      saved: false,
+     
     },
     {
       id: 3,
@@ -35,7 +35,7 @@ const db = {
       rating: 4.7,
       price: 50,
       description: 'This online course for you if you are in taking great digital photo and learning jow to make your photography unique and outstanding',
-      saved: false,
+      
     },
     {
       id: 4,
@@ -47,7 +47,7 @@ const db = {
       rating: 4.7,
       price: 75,
       description: 'This online course for you if you are in taking great digital photo and learning jow to make your photography unique and outstanding',
-      saved: false,
+      
     },
     {
       id: 5,
@@ -59,7 +59,7 @@ const db = {
       rating: 4.9,
       price: 24,
       description: 'This online course is for you if you are interested in mastering Power BI',
-      saved: false,
+     
     },
     {
       id: 6,
@@ -71,7 +71,7 @@ const db = {
       rating: 4.3,
       price: 18,
       description: 'This online course is designed for individuals interested in learning Agile Project Management methodologies and techniques to effectively manage projects in dynamic and fast-paced environments.',
-      saved: true,
+      
     },
     {
       id: 7,
@@ -83,7 +83,7 @@ const db = {
       rating: 4.6,
       price: 24,
       description: 'This online course is designed for individuals who want to master the art of using pivot tables in data analysis. Learn how to organize and analyze large datasets, create insightful reports, and make data-driven decisions.',
-      saved: true,
+      
     },
     {
       id: 8,
@@ -95,7 +95,7 @@ const db = {
       rating: 4.1,
       price: 24,
       description: 'This online course is for you if you are interested in mastering Power BI',
-      saved: true,
+      
     },
 
     {
@@ -108,7 +108,7 @@ const db = {
       rating: 3.1,
       price: 35,
       description: 'This online course is for you if you are interested in Learning the basics of UX',
-      saved: false,
+     
     },
     {
       id: 10,
@@ -120,7 +120,7 @@ const db = {
       rating: 3.1,
       price: 35,
       description: 'This online course is for you if you are interested in Learning the basics of UX',
-      saved: false,
+      
     },
     {
       id: 11,
@@ -144,7 +144,7 @@ const db = {
       rating: 3.1,
       price: 35,
       description: 'This online course is for you if you are interested in Learning the basics of UX',
-      saved: false,
+     
     },
 
 

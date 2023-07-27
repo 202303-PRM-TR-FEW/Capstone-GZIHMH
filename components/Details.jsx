@@ -42,17 +42,6 @@ const Details = ({ courseIndex = 0 }) => {
             {icons.map(icon => icon.name === 'course_rating' && (<div key={icon.id} className="text-gray-400 w-5 h-5 mr-2" dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
             <p>{course.rating} </p>
           </div>
-          <h3 className='mb-2'>Course Description</h3>
-
-          <h2 className='p-3 mb-1 mt-1'>{course.title}</h2>
-          <div className='flex flex-row'>
-            <div className="text-gray-400 w-5 h-5 mr-2" dangerouslySetInnerHTML={{ __html: icons.find(icon => icon.name === 'course_duration').svg }} />
-            <p>{course.duration} m</p>
-          </div>
-          <div className='flex flex-row'>
-            <div className="text-gray-400 w-5 h-5 mr-2" dangerouslySetInnerHTML={{ __html: icons.find(icon => icon.name === 'course_rating').svg }} />
-            <p>{course.rating}</p>
-          </div>
           <h3 className='mt-3 mb-1'>Course Description</h3>
 
           <p>{course.description}</p>
@@ -60,10 +49,6 @@ const Details = ({ courseIndex = 0 }) => {
       </div>
       <div>
         <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col items-center justify-evenly mt-5  lg:mt-5 md:mt-3 sm:mt-1'>
-
-          <button className="text-primary m-3 font-bold bg-transparent border border-primary w-80 max-w-[200px] h-9 rounded-2xl hover:text-white hover:bg-primary">REVIEW COURSE</button>
-          
-
           <button className="text-primary m-3 font-bold bg-transparent border border-primary w-80 h-9 rounded-2xl hover:text-white hover:bg-primary">REVIEW COURSE</button>
           <button className="text-primary m-3 font-bold bg-transparent border border-primary w-80 h-9 rounded-2xl hover:text-white hover:bg-primary">
 
