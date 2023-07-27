@@ -1,8 +1,11 @@
+'use client'
 import Login from '@/components/Login'
 import RegistrationForm from '@/components/RegistrationForm'
 import Image from 'next/image'
 import GetStarted from '@/components/GetStarted'
+import { useRouter } from 'next/navigation'
 export default function Intro() {
+  const router = useRouter();
   return (
     <main className="flex min-h-screen w-full flex-col sm:flex-row items-center">
 
@@ -12,7 +15,7 @@ export default function Intro() {
         
         {/* <Login />
         <RegistrationForm /> */}
-        <GetStarted />
+        <GetStarted routers ={router} />
       </div> 
 
 
