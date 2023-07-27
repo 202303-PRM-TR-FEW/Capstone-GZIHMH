@@ -2,7 +2,7 @@ const db = {
   'courses': [
     {
       id: 1,
-      image: '/assets/images/course (2).jpg',
+      image: '/assets/images/profilePic5.jpeg',
       title: 'Becoming a Photographer',
       user_id: 1,
       completion_ratio: 55,
@@ -15,7 +15,7 @@ const db = {
     },
     {
       id: 2,
-      image: '/assets/images/course(4).jpg',
+      image: '/assets/images/2c1a496b-9948-4cb1-b87e-dbd417261382.jpg',
       title: 'Design Thinking 2.0',
       user_id: 2,
       completion_ratio: 27,
@@ -27,7 +27,7 @@ const db = {
     },
     {
       id: 3,
-      image: '/assets/images/course (1).jpg',
+      image: '/assets/images/937fc2b0-e1c5-4a5a-93f7-34d23cd5ca6d.jpg',
       title: 'Product Photography',
       user_id: 3,
       completion_ratio: 11,
@@ -39,7 +39,7 @@ const db = {
     },
     {
       id: 4,
-      image: '/assets/images/course (1).jpeg',
+      image: '/assets/images/photo-1614644147798-f8c0fc9da7f6.jpeg',
       title: 'Learn how to make portriats',
       user_id: 4,
       completion_ratio: 27,
