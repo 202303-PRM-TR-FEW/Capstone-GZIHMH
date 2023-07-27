@@ -6,8 +6,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
 
-import firebaseConfig from 'path/to/firebaseConfig'; // Path to your Firebase configuration
-
+import firebaseConfig from '@/utils/firebase';
 initializeApp(firebaseConfig);
 
 const handler = NextAuth({
