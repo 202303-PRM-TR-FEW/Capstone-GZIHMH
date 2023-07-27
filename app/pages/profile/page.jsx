@@ -37,8 +37,8 @@ const ProfilePage = () => {
             className="w-20 h-20 rounded-full border-2 border-blue-500"
           />
       First Column */}
-      <div className="w-full m-2">
-        <div className='flex flex-col md:flex-row m-2 w-full'>
+      <div className="w-full">
+        <div className='flex flex-col md:flex-row  w-full'>
           <div className='flex flex-col w-full'>
             <div>
             <InfoBar name={ 'Sally Robins'} country={"New York"} image={'/assets/images/pro.jpg'} />
