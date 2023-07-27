@@ -123,11 +123,7 @@ const ProfilePage = () => {
       
         
       </div>
-      {/* Second Column */}
-      {/* <div style={{ flex: '1', padding: '1rem', paddingLeft: '2rem' }}>
-        <FriendsSuggestion />
-        <Friends />
-      </div> */}
+      
     </div>
   );
 };
