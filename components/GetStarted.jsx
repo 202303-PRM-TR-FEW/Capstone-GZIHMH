@@ -3,17 +3,22 @@ import React,{useState} from 'react'
 import Image from 'next/image'
 import Login from './Login';
 import Link from 'next/link';
+import { auth } from '@/utils/firebase'
+import {signInWithPopup, GoogleAuthProvider} from 'firebase/auth'
 const GetStarted = () => {
-  const [showLogin, setShowLogin] = useState(false);
 
+
+
+  const [showLogin, setShowLogin] = useState(false);
+  const googleAuth = new GoogleAuthProvider();
   const handleLoginClick = () => {
     setShowLogin(true);
   };
   const handleContinueAsGuestClick = () => {
     
   };
-  const handleGoogleLoginClick = () => {
-    
+  const handleGoogleLoginClick = async () => {
+    const result = await signInWithPopup(auth,googleAuth)
   };
 
   if (showLogin) {
@@ -22,6 +27,7 @@ const GetStarted = () => {
   }
 
   return (
+    
     <div>
       
 
@@ -29,7 +35,7 @@ const GetStarted = () => {
       <div className='flex justify-start'>
       <div className="flex flex-row w-full  items-center h-full justify-start ">
             <div>
-              <Image src="/assets/icons/logos.png"
+              <Image src="/assets/icons/coursewormlogo.png"
                 alt="icon image"
                 width={70}
                 height={40}
@@ -62,11 +68,13 @@ const GetStarted = () => {
             </div>
             <div className='w-full' >
             <button className="out_btn  m-2  w-full py-1" onClick={handleGoogleLoginClick}>
-            <svg
+            
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
                 viewBox="0 0 186.69 190.5"
+                className='mr-2'
               >
                 <g transform="translate(1184.583 765.171)">
                   <path
