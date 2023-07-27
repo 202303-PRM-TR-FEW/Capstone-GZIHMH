@@ -15,7 +15,9 @@ export default function Intro() {
         <GetStarted />
       </div> 
 
+
       <div className='bg-white  rounded-3xl w-full '>
+
         <Image src="/assets/images/welcomepage.png"
           alt="intro image"
           width={700}
