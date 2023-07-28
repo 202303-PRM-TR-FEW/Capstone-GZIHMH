@@ -3,7 +3,6 @@ import { getFirestore, collection, getDocs, addDoc, updateDoc, getDoc, setDoc, d
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getAnalytics, isSupported } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
-import axios from "axios";
 const firebaseConfig = {
     apiKey: "AIzaSyD5lj9ewEDXPdlBzmYg2iKGuDdUUgBfQhs",
     authDomain: "courseworm-db.firebaseapp.com",
@@ -22,14 +21,4 @@ if (typeof window !== "undefined" && isSupported()) {
 }
 const storage = getStorage(app);
 const auth = getAuth();
-const getUserCountry = async() => {
-    try {
-        const response = await axios.get('https://ipinfo.io/json');
-        const { country } = response.data.city;
-        return country || '';
-    } catch (error) {
-        console.error('Error fetching user country:', error);
-        return '';
-    }
-};
-export { auth, setDoc, app, getUserCountry, analytics, firestore, storage, collection, getDocs, addDoc, getDoc, updateDoc, doc, ref, uploadBytes, query, where, getDownloadURL };
+export { auth, setDoc, app, analytics, firestore, storage, collection, getDocs, addDoc, getDoc, updateDoc, doc, ref, uploadBytes, query, where, getDownloadURL };
