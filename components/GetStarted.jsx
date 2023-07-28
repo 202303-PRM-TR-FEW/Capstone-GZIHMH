@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Login from './Login';
 import Link from 'next/link';
 import { doc,auth, firestore, addDoc,collection,setDoc } from '@/utils/firebase';
-import { signInWithPopup, GoogleAuthProvider,signInAnonymously ,signOut ,onAuthStateChanged } from 'firebase/auth';
+import { signInWithPopup, GoogleAuthProvider,signInAnonymously ,signOut,deleteUser ,onAuthStateChanged } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getUserCountry } from '@/app/pages/api/ip/route';
 const GetStarted = ({routers}) => {
@@ -30,10 +30,15 @@ const GetStarted = ({routers}) => {
       routers.push('/pages/home')
     });
   };
-  window.onbeforeunload = () => {
+  window.onbeforeunload = async () => {
+    
     if (isAnonymous) {
-      localStorage.removeItem('uid');
+      const user = auth.currentUser
+
       signOut(auth);  
+      await deleteUser(user);
+      localStorage.removeItem('uid');
+
     }
   }
   const handleGoogleLoginClick = async () => {
