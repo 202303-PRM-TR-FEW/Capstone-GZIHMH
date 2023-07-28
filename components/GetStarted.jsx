@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Login from './Login';
 import Link from 'next/link';
 import { doc,auth, firestore, addDoc,collection,setDoc } from '@/utils/firebase';
-import { signInWithPopup, GoogleAuthProvider, getAuth } from 'firebase/auth';
+import { signInWithPopup, GoogleAuthProvider,signInAnonymously  ,onAuthStateChanged } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getUserCountry } from '@/app/pages/api/ip/route';
 const GetStarted = ({routers}) => {
@@ -20,11 +20,22 @@ const GetStarted = ({routers}) => {
   };
   const handleContinueAsGuestClick = () => {
     
+    const result  = signInAnonymously(auth).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+    }).then(() => {
+      const { uid } = auth.currentUser;
+      localStorage.setItem('uid', uid);
+      console.log("signed in anonymously id is ",uid)
+      routers.push('/pages/home')
+    });
   };
   const handleGoogleLoginClick = async () => {
     const result = await signInWithPopup(auth, googleAuth)
     localStorage.setItem('currentUser', JSON.stringify(auth.currentUser));
     saveGoogleUserInfoToFirestore();
+    const { uid } = auth.currentUser;
+    localStorage.setItem('uid', uid);
     routers.push('/pages/home')
   };
   const saveGoogleUserInfoToFirestore = async () => {
