@@ -22,11 +22,10 @@ function ListElement() {
     getAllCourses();
   }, []);
 
-  useEffect(() => {
-    if (randomCourses.length > 0) {
-      setSelectedCourseIndex(randomCourses[0].id);
-    }
-  }, [randomCourses]);
+  const isCourseSaved = (courseExists) => {
+    return courseExists ? 'text-primary' : 'text-gray-400';
+  };
+  
 
   const handleCourseClick = (index) => {
     setSelectedCourseIndex(index);
@@ -81,16 +80,16 @@ function ListElement() {
                     <h2>{course.title}</h2>
                     <button onClick={() => handleToggle(course.id)}>
                       <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-5 h-5 self-start ${course.saved ? 'text-primary' : 'text-gray-400'} fill-current m-2`}><path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-5 h-5 self-start ${isCourseSaved(savedCourses.some((c) => c.id === course.id))} fill-current m-2`}><path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" /></svg>
                       </span></button>
                   </div>
                   <p className='tutor_name mb-3'>{getPersonName(course.user_id)}</p>
                   <input
                     type="range"
                     defaultValue={parseInt(course.completion_ratio)}
-                    className="w-full h-[13px]  opacity-100 bg-white rounded-full"
+                    className="w-full h-[13px] opacity-100 bg-white rounded-full"
                   />
-                  <p> {course.completion_ratio} complete</p>
+                  <p className='text'> {course.completion_ratio} complete</p>
                 </div>
 
               </div>
