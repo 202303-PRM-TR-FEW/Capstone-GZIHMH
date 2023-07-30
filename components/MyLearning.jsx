@@ -1,50 +1,65 @@
-import React from 'react'
-import Image from 'next/image'
-import BecomingPhoto from '../public/assets/images/photo-1541516160071-4bb0c5af65ba.jpeg'
-import DesignThinking from "../public/assets/images/2c1a496b-9948-4cb1-b87e-dbd417261382.jpg"
+import React from 'react';
+import Image from 'next/image';
+import BecomingPhoto from '../public/assets/images/photo-1541516160071-4bb0c5af65ba.jpeg';
+import DesignThinking from "../public/assets/images/2c1a496b-9948-4cb1-b87e-dbd417261382.jpg";
 
 const MyLearning = () => {
     return (
-        <div className="grid gap-12 lg:grid-cols-2">
-            <div className="p-1 rounded-xl group sm:flex space-x-6 bg-white bg-opacity-50 shadow-xl hover:rounded-2xl">
+        <div className="flex flex-col lg:flex-row md:flex-col sm:flex-col h-full">
+            <div className="flex rounded-2xl w-[680px] h-[172px] m-3 opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 rounded-5 border hover:border-primary shadow">
                 <Image
                     src={BecomingPhoto}
-                    width={100}
-                    height={300}
+                    width={190}
+                    height={172}
                     alt={'Becoming Photo'}
-                    className="h-56 sm:h-full w-full sm:w-5/12 object-cover object-top rounded-lg transition duration-500 group-hover:rounded-xl"
+                    className="flex flex-row"
                 />
-                <div className="sm:w-7/12 pl-0 p-5">
-                    <div className="space-y-2">
-                        <div className="space-y-4">
+                <div className="ml-4 p-4 w-[510px]">
+                    <div className="flex flex-row justify-between mt-4">
+                        <div className="px-1">
                             <h2>Becoming a Photographer</h2>
                             <p className="text-gray-600">Clara Chaning</p>
                         </div>
                     </div>
-                </div>
-
-            </div>
-            <div className="p-1 rounded-xl group sm:flex space-x-6 bg-white bg-opacity-50 shadow-xl hover:rounded-2xl">
-                <Image
-                    src={DesignThinking}
-                    width={100}
-                    height={300}
-                    alt={'Becoming Photo'}
-                    className="h-56 sm:h-full w-full sm:w-5/12 object-cover object-top rounded-lg transition duration-500 group-hover:rounded-xl"
-                />
-                <div className="sm:w-7/12 pl-0 p-5">
-                    <div className="space-y-2">
-                        <div className="space-y-4">
-                            <h2>Becoming a Photographer</h2>
-                            <p className="text-gray-600">Clara Chaning</p>
+                    <div className="flex items-center justify-between my-2">
+                        <div className="w-full h-2 bg-gray-200 rounded-full">
+                            <div className="w-2/3 h-full text-center text-xs text-white bg-blue-600 rounded-full"></div>
                         </div>
+                    </div>
+                    <p className="text-black text-sm">
+                        69% Completed
+                    </p>
+                </div>
+            </div>
+            <div className="flex flex-col lg:flex-row md:flex-col sm:flex-col h-full">
+                <div className="flex rounded-2xl w-[680px] h-[172px] m-3 opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 rounded-5 border hover:border-primary shadow">
+                    <Image
+                        src={DesignThinking}
+                        width={190}
+                        height={172}
+                        alt={'Becoming Photo'}
+                        className="flex flex-row"
+                    />
+                    <div className="ml-4 p-4 w-[510px]">
+                        <div className="flex flex-row justify-between mt-4">
+                            <div className="px-1">
+                                <h2>Design Thinking 2.0</h2>
+                                <p className="text-gray-600">Chris Kinley</p>
+                            </div>
+                        </div>
+                        <div className="flex items-center justify-between my-2">
+                            <div className="w-full h-2 bg-gray-200 rounded-full">
+                                <div className="w-2/3 h-full text-center text-xs text-white bg-blue-600 rounded-full"></div>
+                            </div>
+                        </div>
+                        <p className="text-black text-sm">
+                            27% Completed
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
+
 export default MyLearning;
-
-
-
