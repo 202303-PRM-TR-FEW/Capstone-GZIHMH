@@ -32,11 +32,11 @@ const SavedCourseReview = ({ course }) => {
             <p>{course.rating} </p>
           </div>
           <h3 className='mt-3 mb-1 text'>Course description</h3>
-          <p className='md-w-1/2 text sm-w-1/2'>{course.description}</p>
+          <p className='w-full md:w-1/2 text sm:w-1/2'>{course.description}</p>
         </div>
       </div>
       <div>
-        <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col items-center justify-evenly mt-5  lg:mt-5 md:mt-3 sm:mt-1 gap-2'>
+        <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col items-center justify-center mt-5 lg:mt-5 md:mt-3 sm:mt-1 gap-2'>
           <button className="text-primary font-bold bg-transparent border border-primary max-w-[300px] w-3/5 md:w-full text-sm h-9  rounded-2xl hover:text-white hover:bg-primary">REVIEW </button>
           <button className="text-primary font-bold bg-transparent border border-primary max-w-[300px] w-3/5 md:w-full h-9 text-sm  rounded-2xl hover:text-white hover:bg-primary">
             BUY NOW
