@@ -28,14 +28,14 @@ const Details = ({ courseIndex = 0 }) => {
   const image = '/assets/images/profilePic5.jpeg';
 
   return (
-    <section className='flex flex-col'>
-      <div className='flex flex-col items-center'>
-        <Image src={course.image} width={600} height={400} alt={course.title} className='max-w-[600px] max-h-[400px]' />
+    <section className='flex flex-col w-full'>
+      <div className='flex flex-col items-center w-full'>
+        <Image src={course.image} width={600} height={400} alt={course.title} className='h-full w-full' />
         <div className='flex justify-start flex-col ml-4 '>
           <h2 className='p-1 mb-1 mt-1'>{course.title}</h2>
-          <div className='user-container w-1/4 mb-2 rounded-full flex  items-center bg-white h-[35px]'>
-             <Image src={image} alt="User Profile " width={35} height={35} className='w-[30px] h-[35px] rounded-full' />
-             <p className='text'>{user}</p>
+          <div className='user-container min-w-[150px] w-1/4  mb-2 rounded-full flex  items-center bg-white h-[35px]'>
+             <Image src={image} alt="User Profile " width={35} height={35} className='w-[35px] m-0 h-[35px] rounded-full' />
+             <p className='text pl-2 w-full'>{user}</p>
           </div>
           <div className='flex flex-row text'>
             <div className="text-gray-400 w-5 h-5 mr-2" dangerouslySetInnerHTML={{ __html: icons.find(icon => icon.id === 2).svg }} />
@@ -50,9 +50,9 @@ const Details = ({ courseIndex = 0 }) => {
         </div>
       </div>
       <div>
-        <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col items-center justify-evenly mt-5  lg:mt-5 md:mt-3 sm:mt-1'>
-          <button className="text-primary m-3 font-bold bg-transparent border border-primary w-2/5 h-9 rounded-2xl hover:text-white hover:bg-primary">REVIEW COURSE</button>
-          <button className="text-primary m-3 font-bold bg-transparent border border-primary w-2/5 h-9 rounded-2xl hover:text-white hover:bg-primary">
+        <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col items-center justify-evenly mt-5  lg:mt-5 md:mt-3 sm:mt-1 gap-2'>
+          <button className="text-primary font-bold bg-transparent border border-primary max-w-[300px] w-3/5 md:w-full text-sm h-9  rounded-2xl hover:text-white hover:bg-primary">REVIEW COURSE</button>
+          <button className="text-primary font-bold bg-transparent border border-primary max-w-[300px] w-3/5 md:w-full h-9 text-sm  rounded-2xl hover:text-white hover:bg-primary">
             <Link href={`/CourseOverview/${courseIndex}`}>
               CONTINUE LEARNING
             </Link>
