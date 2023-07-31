@@ -57,25 +57,25 @@ function ListElement() {
   }
 
   return (
-    <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col ml-10 lg:ml-10 md:ml-5 sm:ml-1'>
-      <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col ml-10 lg:ml-10 md:ml-5 sm:ml-1'>
-        <div className='rounded-2xl p-2 flex flex-col w-1/2'>
+    <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col '>
+      <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col '>
+        <div className='rounded-2xl md:p-2 flex flex-col w-full'>
           <div className="flex flex-row justify-between ">
             <h1 className='x-3 py-2'>My Learning</h1>
             <div className='flex flex-row justify-between px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700'>
               <a className="flex text-lg items-center" href="/pages/statistics">
-                {icons.map(icon => icon.name === 'statistics' && (<div key={icon.id} dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
+                {icons.map(icon => icon.id === 1 && (<div key={icon.id} dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
                 <span className='px-3 py-2'>Statistics</span>
               </a>
             </div>
           </div>
-          <div className='overflow-y-auto flex-1 max-h-[644px]'>
+          <div className=' flex-1 w-full'>
             {randomCourses.map((course) => (
-              <div className='flex m-1 w-[570px] h-[152px] rounded-2xl opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 border hover:border-primary' key={course.id} onClick={() => handleCourseClick(course.id)}>
-                <div className='flex flex-row justify-between '>
+              <div className='flex w-full rounded-2xl opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 border hover:border-primary' key={course.id} onClick={() => handleCourseClick(course.id)}>
+                <div className='flex flex-row gap-2 justify-between'>
                   <Image src={course.image} width={180} height={152} alt={course.title} className='max-w-[180px] max-h-[152px]' style={{ cursor: 'pointer' }} />
                 </div>
-                <div className='ml-3 p-1 w-[510px]'>
+                <div className=' w-full'>
                   <div className='flex justify-between'>
                     <h2>{course.title}</h2>
                     <button onClick={() => handleToggle(course.id)}>
@@ -84,11 +84,9 @@ function ListElement() {
                       </span></button>
                   </div>
                   <p className='tutor_name mb-3'>{getPersonName(course.user_id)}</p>
-                  <input
-                    type="range"
-                    defaultValue={parseInt(course.completion_ratio)}
-                    className="w-full h-[13px] opacity-100 bg-white rounded-full"
-                  />
+                  <div className="bg-gray-200 h-2 w-auto rounded-xl overflow-hidden mx-2 my-1.5">
+                  <div className="h-full bg-primary rounded-lg" style={{ width: `${parseInt(course.completion_ratio)}%` }}></div>
+                </div>
                   <p className='text'> {course.completion_ratio} complete</p>
                 </div>
 
@@ -96,7 +94,7 @@ function ListElement() {
             ))}
           </div>
         </div>
-        <div className='w-[650px] h-full bg-white p-2 lg-p-2 md-p-1 sm-p-1'>
+        <div className='w-full h-full bg-white p-2'>
           {selectedCourseIndex !== null && (
             <Details courseIndex={selectedCourseIndex} />
           )}
