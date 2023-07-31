@@ -69,7 +69,9 @@ function ListElement() {
               </a>
             </div>
           </div>
+
           <div className=' flex-1 w-full lg:max-h-[800px] overflow-y-auto'>
+
             {randomCourses.map((course) => (
               <div className='flex w-full rounded-2xl opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 border hover:border-primary' key={course.id} onClick={() => handleCourseClick(course.id)}>
                 <div className='flex flex-row gap-2 justify-between'>

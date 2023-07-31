@@ -18,6 +18,7 @@ function SavedCourses() {
   };
 
   return (
+
     <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col h-full w-full'>
       <div className='w-full'>
         <h1 className='w-full px-4 py-1'>Saved Courses</h1>
@@ -25,6 +26,7 @@ function SavedCourses() {
           {savedCourses.map((course, index) => (
             <div className='flex rounded-2xl opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 rounded-5 border hover:border-primary' key={course.id}>
               <div className='flex flex-row w-full'>
+
                 <Image
                   src={course.image}
                   width={180}
@@ -35,8 +37,10 @@ function SavedCourses() {
                   onClick={() => handleCourseClick(index)}
                 />
               </div>
+
               <div className='w-full'>
                 <div className='flex justify-between pt-2 '>
+
                   <h2>{course.title}</h2>
                   <span>
                     <svg
@@ -44,8 +48,9 @@ function SavedCourses() {
                       fill='none'
                       viewBox='0 0 24 24'
                       strokeWidth={1.5}
-                      stroke='currentColor'
+
                       className='w-5 h-5 text-primary fill-current'
+
                     >
                       <path
                         strokeLinecap='round'
