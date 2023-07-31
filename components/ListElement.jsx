@@ -64,12 +64,12 @@ function ListElement() {
             <h1 className='x-3 py-2'>My Learning</h1>
             <div className='flex flex-row justify-between px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700'>
               <a className="flex text-lg items-center" href="/pages/statistics">
-                {icons.map(icon => icon.name === 'statistics' && (<div key={icon.id} dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
+                {icons.map(icon => icon.id === 1 && (<div key={icon.id} dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
                 <span className='px-3 py-2'>Statistics</span>
               </a>
             </div>
           </div>
-          <div className='overflow-y-auto flex-1 max-h-[644px]'>
+          <div className='overflow-y-auto flex-1 max-h-[680px]'>
             {randomCourses.map((course) => (
               <div className='flex m-1 w-[570px] h-[152px] rounded-2xl opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 border hover:border-primary' key={course.id} onClick={() => handleCourseClick(course.id)}>
                 <div className='flex flex-row justify-between '>

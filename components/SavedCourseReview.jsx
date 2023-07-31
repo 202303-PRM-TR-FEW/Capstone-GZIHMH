@@ -24,11 +24,11 @@ const SavedCourseReview = ({ course }) => {
              <Image src={image} alt="User Profile " width={35} height={35} className='w-[30px] h-[35px] rounded-full' />
              <p className='text'>{user}</p></div>
           <div className='flex flex-row text'>
-            {icons.map(icon => icon.name === 'course_duration' && (<div key={icon.id} className="text-gray-400 w-5 h-5 mr-2" dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
+            {icons.map(icon => icon.id === 2 && (<div key={icon.id} className="text-gray-400 w-5 h-5 mr-2" dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
             <p>{course.duration} m</p>
           </div>
           <div className='flex flex-row text'>
-            {icons.map(icon => icon.name === 'course_rating' && (<div key={icon.id} className="text-gray-400 w-5 h-5 mr-2" dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
+            {icons.map(icon => icon.id === 3 && (<div key={icon.id} className="text-gray-400 w-5 h-5 mr-2" dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
             <p>{course.rating} </p>
           </div>
           <h3 className='mt-3 mb-1 text'>Course description</h3>
@@ -37,8 +37,8 @@ const SavedCourseReview = ({ course }) => {
       </div>
       <div>
         <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col items-center justify-evenly mt-5  lg:mt-5 md:mt-3 sm:mt-1'>
-          <button className="text-primary m-3 font-bold bg-transparent border border-primary w-80 h-9 rounded-2xl hover:text-white hover:bg-primary">REVIEW </button>
-          <button className="text-primary m-3 font-bold bg-transparent border border-primary w-80 h-9 rounded-2xl hover:text-white hover:bg-primary">
+          <button className="text-primary m-3 font-bold bg-transparent border border-primary w-2/5 h-9 rounded-2xl hover:text-white hover:bg-primary">REVIEW </button>
+          <button className="text-primary m-3 font-bold bg-transparent border border-primary w-2/5 h-9 rounded-2xl hover:text-white hover:bg-primary">
             BUY NOW
           </button>
         </div>
