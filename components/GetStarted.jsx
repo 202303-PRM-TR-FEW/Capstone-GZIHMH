@@ -3,7 +3,7 @@ import React,{useState, useEffect} from 'react'
 import Image from 'next/image'
 import Login from './Login';
 import Link from 'next/link';
-import { doc,auth, firestore, addDoc,collection,setDoc } from '@/utils/firebase';
+import { doc,auth, firestore, setDoc } from '@/utils/firebase';
 import { signInWithPopup, GoogleAuthProvider,signInAnonymously ,signOut,deleteUser ,onAuthStateChanged } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getUserCountry } from '@/app/pages/api/ip/route';
@@ -26,24 +26,26 @@ const GetStarted = ({routers}) => {
     }).then(() => {
       const { uid } = auth.currentUser;
       localStorage.setItem('uid', uid);
-      console.log("signed in anonymously id is ",uid)
       routers.push('/pages/home')
     });
   };
-  window.onbeforeunload = async () => {
-    
-    if (isAnonymous) {
-      const user = auth.currentUser
-
-      signOut(auth);  
-      await deleteUser(user);
-      localStorage.removeItem('uid');
-
-    }
-  }
+  // if (isAnonymous) {
+  //   window.onbeforeunload = async (event) => {
+  //     if (event.type === 'unload') {
+  //         const user = auth.currentUser
+  
+  //         signOut(auth);
+  //         await deleteUser(user);
+  //         localStorage.removeItem('uid');
+  
+  //       }
+  //     }
+  // }
+  
   const handleGoogleLoginClick = async () => {
+    isAnonymous = false;
+
     const result = await signInWithPopup(auth, googleAuth)
-    localStorage.setItem('currentUser', JSON.stringify(auth.currentUser));
     saveGoogleUserInfoToFirestore();
     const { uid } = auth.currentUser;
     localStorage.setItem('uid', uid);
@@ -67,7 +69,7 @@ const GetStarted = ({routers}) => {
     }
   };
   if (showLogin) {
-    return <Login />;
+    return <Login routers={routers} />;
   }
 
   return (
@@ -79,10 +81,10 @@ const GetStarted = ({routers}) => {
       <div className='flex justify-start'>
       <div className="flex flex-row w-full  items-center h-full justify-start ">
             <div>
-              <Image src="/assets/icons/coursewormlogo.png"
+              <Image src="/assets/icons/logos.png"
                 alt="icon image"
                 width={70}
-                height={40}
+                height={70}
               />
             </div>
 

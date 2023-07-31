@@ -1,17 +1,64 @@
 
 'use client'
-import { useState } from 'react';
+import { use, useState } from 'react';
 import Link from 'next/link';
 import RegistrationForm from './RegistrationForm';
 import Image from 'next/image';
-const Login = () => {
+import { doc,auth, firestore, setDoc,getDoc } from '@/utils/firebase';
+
+import {  signInWithCustomToken } from "firebase/auth";
+const Login = ({routers}) => {
 
   const [showSignup, setShowSignup] = useState(false);
+  const [userEmail, setUserEmail] = useState('')
+  const [userPassword, setUserPassword] = useState('')
+  const [emailError, setEmailError] = useState('');  
+  const [passwordError, setPasswordError]  = useState('');
   const handleSignupClick = () => {
     setShowSignup(true);
   };
   if (showSignup) {
     return <RegistrationForm />;
+  }
+  const handleSigninClick = async () => {
+
+   const userCredential = signInWithCustomToken(auth, userEmail, userPassword)
+  .then(  async(userCredential) => {
+ 
+    const user = userCredential.user;
+    console.log(userCredential)
+    const docRef = await doc(firestore, 'users', user.email);
+    const docSnap = await getDoc(docRef);
+    const { email, password } = docSnap.data();
+    const userRef = ref(firestore)
+    if (email === userEmail && password === userPassword) {
+      isAnonymous = false;
+      localStorage.setItem('uid', docSnap);
+      routers.push('/pages/home')
+    }
+   
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    
+    switch(errorCode) {
+      case "auth/user-not-found":
+        setEmailError("User with this email does not exist.");
+        break;            
+      case "auth/wrong-password":
+        setPasswordError("Wrong password.");     
+         break;
+      case "auth/too-many-requests":
+         alert("Too many requests. Try again later.");
+         break;  
+      case "auth/invalid-email": 
+         setEmailError("invalid email");
+         break;        
+      default:
+        alert(errorMessage); 
+    }       
+  });
   }
 
   return (
@@ -45,13 +92,19 @@ const Login = () => {
 
                   <div className='m-2 w-full'>
                     <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                    <input  type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="" />
+                    <input  type="email" name="email" id="email" value={userEmail} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="" onChange={e=>setUserEmail(e.target.value)}/>
+                      {emailError && (     
+                        <p className="text-xs text-red-600 mt-1">{emailError}</p>    
+                      )}  
                   </div>
 
 
                   <div className='m-2 w-full'>
                     <label for="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                    <input type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" />
+                    <input type="password" name="password" id="password" value={userPassword} placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" onChange={e=>setUserPassword(e.target.value)}/>
+                    {passwordError && (   
+                      <p className="text-xs text-red-600 mt-1">{passwordError}</p>
+                    )} 
                   </div>
 
                 </div>
@@ -75,7 +128,7 @@ const Login = () => {
 
 
               <div className='m-auto mt-8'>
-                <button type="submit" className="w-full mb-4 text-blue-600 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
+                <button type="submit" className="w-full mb-4 text-blue-600 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" onClick={handleSigninClick}>Sign in</button>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Don’t have an account yet? <button href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500" onClick={handleSignupClick}>Sign up</button>
                 </p>
