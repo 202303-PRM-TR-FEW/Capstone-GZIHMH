@@ -84,11 +84,9 @@ function ListElement() {
                       </span></button>
                   </div>
                   <p className='tutor_name mb-3'>{getPersonName(course.user_id)}</p>
-                  <input
-                    type="range"
-                    defaultValue={parseInt(course.completion_ratio)}
-                    className="w-full h-[13px] opacity-100 bg-white rounded-full"
-                  />
+                  <div className="bg-gray-200 h-2 w-auto rounded-xl overflow-hidden mx-2 my-1.5">
+                  <div className="h-full bg-primary rounded-lg" style={{ width: `${parseInt(course.completion_ratio)}%` }}></div>
+                </div>
                   <p className='text'> {course.completion_ratio} complete</p>
                 </div>
 
