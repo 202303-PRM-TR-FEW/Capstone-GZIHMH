@@ -12,7 +12,6 @@ const SavedCourseReview = ({ course }) => {
 
   const user = getPersonName(course.user_id);
 
-  const name = 'Clara Manning';
   const image = '/assets/images/profilePic5.jpeg';
 
   return (
@@ -23,7 +22,7 @@ const SavedCourseReview = ({ course }) => {
           <h2 className='py-1.5 mb-1 mt-1'>{course.title}</h2>
           <div className='user-container w-1/3 mb-2 rounded-full flex  items-center bg-white h-[35px]'>
              <Image src={image} alt="User Profile " width={35} height={35} className='w-[30px] h-[35px] rounded-full' />
-             <p className='text'>{name}</p></div>
+             <p className='text'>{user}</p></div>
           <div className='flex flex-row text'>
             {icons.map(icon => icon.name === 'course_duration' && (<div key={icon.id} className="text-gray-400 w-5 h-5 mr-2" dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
             <p>{course.duration} m</p>
