@@ -29,8 +29,8 @@ const Details = ({ courseIndex = 0 }) => {
 
   return (
     <section className='flex flex-col w-full'>
-      <div className='flex flex-col items-center w-full'>
-        <Image src={course.image} width={600} height={400} alt={course.title} className='h-full w-full' />
+      <div className='flex flex-col items-center w-full h-full'>
+        <Image src={course.image} width={600} height={400} alt={course.title} className='max-h-[400px] max-w-[600px]' />
         <div className='flex justify-start flex-col ml-4 '>
           <h2 className='p-1 mb-1 mt-1'>{course.title}</h2>
           <div className='user-container min-w-[150px] w-1/4  mb-2 rounded-full flex  items-center bg-white h-[35px]'>

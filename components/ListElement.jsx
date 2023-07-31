@@ -72,10 +72,10 @@ function ListElement() {
           <div className=' flex-1 w-full'>
             {randomCourses.map((course) => (
               <div className='flex w-full rounded-2xl opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 border hover:border-primary' key={course.id} onClick={() => handleCourseClick(course.id)}>
-                <div className='flex flex-row justify-between'>
+                <div className='flex flex-row gap-2 justify-between'>
                   <Image src={course.image} width={180} height={152} alt={course.title} className='max-w-[180px] max-h-[152px]' style={{ cursor: 'pointer' }} />
                 </div>
-                <div className='ml-3 p-1 w-full'>
+                <div className=' w-full'>
                   <div className='flex justify-between'>
                     <h2>{course.title}</h2>
                     <button onClick={() => handleToggle(course.id)}>
