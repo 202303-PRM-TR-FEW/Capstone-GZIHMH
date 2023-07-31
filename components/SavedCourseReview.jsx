@@ -16,11 +16,11 @@ const SavedCourseReview = ({ course }) => {
 
   return (
     <section className='bg-white flex flex-col rounded-2xl'>
-      <div className='flex flex-col items-centergit'>
+      <div className='flex flex-col justify-center items-center'>
         <Image src={course.image} width={600} height={400} alt={course.title} className='max-w-[600px] max-h-[400px]' />
-        <div className='flex justify-start flex-col ml-4 '>
+        <div className='flex justify-center px-4 flex-col'>
           <h2 className='py-1.5 mb-1 mt-1'>{course.title}</h2>
-          <div className='user-container w-1/4 mb-2 rounded-full flex  items-center bg-white h-[35px]'>
+          <div className='user-container w-1/4 mb-2 rounded-full flex  items-center bg-white h-full'>
              <Image src={image} alt="User Profile " width={35} height={35} className='w-[35px] h-[35px] m-0 rounded-full' />
              <p className='text pl-2 w-full'>{user}</p></div>
           <div className='flex flex-row text'>
@@ -36,9 +36,9 @@ const SavedCourseReview = ({ course }) => {
         </div>
       </div>
       <div>
-        <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col items-center justify-evenly mt-5  lg:mt-5 md:mt-3 sm:mt-1'>
-          <button className="text-primary m-3 font-bold bg-transparent border border-primary w-2/5 h-9 rounded-2xl hover:text-white hover:bg-primary">REVIEW </button>
-          <button className="text-primary m-3 font-bold bg-transparent border border-primary w-2/5 h-9 rounded-2xl hover:text-white hover:bg-primary">
+        <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col items-center justify-evenly mt-5  lg:mt-5 md:mt-3 sm:mt-1 gap-2'>
+          <button className="text-primary font-bold bg-transparent border border-primary max-w-[300px] w-3/5 md:w-full text-sm h-9  rounded-2xl hover:text-white hover:bg-primary">REVIEW </button>
+          <button className="text-primary font-bold bg-transparent border border-primary max-w-[300px] w-3/5 md:w-full h-9 text-sm  rounded-2xl hover:text-white hover:bg-primary">
             BUY NOW
           </button>
         </div>
