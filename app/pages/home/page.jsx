@@ -16,14 +16,18 @@ const Page = () => {
         duration="1h 53m"
         rating="4.9/5"
         price="$24"
+        user_id={1} // Provide the user ID here
+        userProfileImage="/assets/images/profilePic1.jpeg" 
       />
-      <FeaturedCourses
+            <FeaturedCourses
         imageSrc="/assets/images/background2.jpeg"
         alt="Agile Project Management"
         title="Agile Project Management"
         duration="59m"
         rating="4.3/5"
         price="$18"
+        user_id={2} // Provide the user ID here
+        userProfileImage="/assets/images/profilePic2.jpeg" 
       />
       <FeaturedCourses
         imageSrc="/assets/images/background3.jpeg"
