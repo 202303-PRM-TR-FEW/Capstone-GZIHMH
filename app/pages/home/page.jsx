@@ -29,13 +29,15 @@ const Page = () => {
         user_id={2} // Provide the user ID here
         userProfileImage="/assets/images/profilePic2.jpeg" 
       />
-      <FeaturedCourses
+     <FeaturedCourses
         imageSrc="/assets/images/background3.jpeg"
         alt="Pivot Tables"
-        title="Agile Project Management"
+        title="Pivot Tables"
         duration="1h 23m"
         rating="4.6/5"
         price="$24"
+        user_id={3} // Provide the user ID here
+        userProfileImage="/assets/images/profilePic3.jpeg" 
       />
        <FeaturedCourses
         imageSrc="/assets/images/background4.jpeg"
@@ -44,6 +46,8 @@ const Page = () => {
         duration="1h 17m"
         rating="4.1/5"
         price="$24"
+        user_id={4} // Provide the user ID here
+        userProfileImage="/assets/images/profilePic4.jpg" 
       />
             </div>
             </div>
