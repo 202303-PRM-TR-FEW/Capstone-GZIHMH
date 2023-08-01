@@ -39,6 +39,7 @@ function SavedCourses() {
 
               <div className='w-full'>
                 <div className='flex justify-between pt-2 pr-2 '>
+
                   <h2>{course.title}</h2>
                   <span>
                     <svg

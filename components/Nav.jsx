@@ -1,6 +1,17 @@
 import React from 'react'
 import Image from 'next/image'
+import { signOut } from 'firebase/auth'
+import { auth} from'@/utils/firebase'
 const Nav = () => {
+  const  handleSignoutClick =() => {
+    signOut(auth).then(() => {
+        console.log("Sign-out successful.") 
+      }).catch((error) => {
+       
+      });
+      
+  }
+    
     return (
         <div>
             <aside className="flex flex-col w-20 h-screen px-5 py-8 overflow-y-auto bg-transparent dark:bg-gray-900 dark:border-gray-700">
@@ -111,6 +122,9 @@ const Nav = () => {
 
                                 <span className="mx-2 text-sm font-medium">Profile</span>
                             </a>
+                            <button className='cat_btn' onclick ={handleSignoutClick}>
+                                sign out
+                            </button>
                         </div>
 
 
