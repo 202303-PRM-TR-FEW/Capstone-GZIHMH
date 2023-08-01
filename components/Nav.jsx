@@ -1,9 +1,12 @@
-import React from 'react'
+'use client'
+import { useState,useEffect, React } from 'react'
 import Image from 'next/image'
 import { signOut } from 'firebase/auth'
 import { auth} from'@/utils/firebase'
+import { getProviders } from 'next-auth/react'
 const Nav = () => {
-  const  handleSignoutClick =() => {
+    const handleSignoutClick = () => {
+    
     signOut(auth).then(() => {
         console.log("Sign-out successful.") 
       }).catch((error) => {
@@ -11,7 +14,15 @@ const Nav = () => {
       });
       
   }
-    
+    const isUserLoggedin = false;
+    // const [providers, setProviders] = useState(null);
+    // useEffect(() => {
+    //     const setProviders = async () => {
+    //         const response = await getProviders();
+    //         setProviders(response)
+    //     }
+    //     setProviders();
+    // },[])
     return (
         <div>
             <aside className="flex flex-col w-20 h-screen px-5 py-8 overflow-y-auto bg-transparent dark:bg-gray-900 dark:border-gray-700">
@@ -122,9 +133,17 @@ const Nav = () => {
 
                                 <span className="mx-2 text-sm font-medium">Profile</span>
                             </a>
-                            <button className='cat_btn' onclick ={handleSignoutClick}>
+                            {
+                                isUserLoggedin ? (
+                                    <button className='cat_btn' onclick ={handleSignoutClick}>
                                 sign out
                             </button>
+                                ) : (
+                                        <>
+                                        </>
+                                )
+                            }
+                            
                         </div>
 
 

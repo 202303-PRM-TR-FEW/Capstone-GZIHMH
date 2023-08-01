@@ -6,7 +6,7 @@ import RegistrationForm from './RegistrationForm';
 import Image from 'next/image';
 import { doc,auth, firestore, setDoc,getDoc } from '@/utils/firebase';
 
-import {  signInWithCustomToken } from "firebase/auth";
+import {  signInWithEmailAndPassword } from "firebase/auth";
 const Login = ({routers}) => {
 
   const [showSignup, setShowSignup] = useState(false);
@@ -18,11 +18,11 @@ const Login = ({routers}) => {
     setShowSignup(true);
   };
   if (showSignup) {
-    return <RegistrationForm />;
+    return <RegistrationForm route={routers} />;
   }
   const handleSigninClick = async () => {
 
-   const userCredential = signInWithCustomToken(auth, userEmail, userPassword)
+   const userCredential = signInWithEmailAndPassword(auth, userEmail, userPassword)
   .then(  async(userCredential) => {
  
     const user = userCredential.user;

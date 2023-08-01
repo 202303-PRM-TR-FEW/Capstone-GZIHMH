@@ -34,15 +34,17 @@ export default function RootLayout({ children }) {
   {/*provider for redux and presistGate added*/}
 
       <body className={`bg-gray-100 ${inter.className}`}>
-      <Provider store={store} >
-      <PersistGate loading={null} persistor={persistor}>
-        <div className='flex flex-row'>
-          {!isHome && <Nav />}
-          {children}
-
-        </div>
-        </PersistGate>
-        </Provider>
+        {/* <AuthProvider> */}
+           <Provider store={store} >
+            <PersistGate loading={null} persistor={persistor}>
+              <div className='flex flex-row'>
+                {!isHome && <Nav />}
+                {children}
+              </div>
+             </PersistGate>
+          </Provider>
+        {/* </AuthProvider> */}
+     
       </body>
 
     </html >
