@@ -25,8 +25,7 @@ function SavedCourses() {
         <div className='lg:max-h-[800px] h-full overflow-y-auto'>
           {savedCourses.map((course, index) => (
             <div className='flex rounded-2xl opacity-100 bg-white hover:bg-blue-200 bg-opacity-30 rounded-5 border hover:border-primary' key={course.id}>
-              <div className='flex flex-row w-full'>
-
+              <div className='flex'>
                 <Image
                   src={course.image}
                   width={180}
@@ -39,7 +38,7 @@ function SavedCourses() {
               </div>
 
               <div className='w-full'>
-                <div className='flex justify-between pt-2 '>
+                <div className='flex justify-between pt-2 pr-2 '>
 
                   <h2>{course.title}</h2>
                   <span>
