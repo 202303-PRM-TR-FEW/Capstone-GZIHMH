@@ -9,12 +9,39 @@ const Page = () => {
             <div>
                 <h2 className="pt-4 pl-2 font-bold">Featured Courses</h2>
                 <div className="pl-2 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                    <FeaturedCourses />
-                    <FeaturedCourses />
-                    <FeaturedCourses />
-                    <FeaturedCourses />
-                </div>
-
+                <FeaturedCourses
+        imageSrc="/assets/images/background1.jpeg"
+        alt="Featured Courses Image"
+        title="Power BI"
+        duration="1h 53m"
+        rating="4.9/5"
+        price="$24"
+      />
+      <FeaturedCourses
+        imageSrc="/assets/images/background2.jpeg"
+        alt="Agile Project Management"
+        title="Agile Project Management"
+        duration="59m"
+        rating="4.3/5"
+        price="$18"
+      />
+      <FeaturedCourses
+        imageSrc="/assets/images/background3.jpeg"
+        alt="Pivot Tables"
+        title="Agile Project Management"
+        duration="1h 23m"
+        rating="4.6/5"
+        price="$24"
+      />
+       <FeaturedCourses
+        imageSrc="/assets/images/background4.jpeg"
+        alt="Power BI"
+        title="Power BI"
+        duration="1h 17m"
+        rating="4.1/5"
+        price="$24"
+      />
+            </div>
             </div>
             <h2 className="pl-2 font-bold">Categories</h2>
             <div className="flex-row">
