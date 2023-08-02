@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Details from './Details';
 import db from '../utils/db';
-import icons from '../utils/icons';
+import { Statistics} from '../utils/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveCourse, removeCourse } from '@/redux/actions';
 import { selectSavedCourses } from '@/redux/selectors';
@@ -60,7 +60,7 @@ function ListElement() {
             <h1 className='x-3 py-2'>My Learning</h1>
             <div className='flex flex-row justify-between px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700'>
               <a className="flex text-lg items-center" href="/pages/statistics">
-                {icons.map((icon) => icon.id === 1 && (<div key={icon.id} dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
+                <Statistics/>
                 <span className='px-3 py-2'>Statistics</span>
               </a>
             </div>

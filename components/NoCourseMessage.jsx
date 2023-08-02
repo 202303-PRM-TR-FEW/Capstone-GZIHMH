@@ -1,4 +1,5 @@
 import React from 'react';
+import { Sad_Face } from '../utils/icons';
 
 function NoCourseMessage() {
     return (
@@ -9,13 +10,7 @@ function NoCourseMessage() {
                     <br/>
                  You do not have any saved courses yet
                  <div className="flex items-center justify-center h-full pt-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-mood-sad-2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9e9e9e" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                      <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                      <path d="M14.5 16.05a3.5 3.5 0 0 0 -5 0" />
-                      <path d="M10 9.25c-.5 1 -2.5 1 -3 0" />
-                      <path d="M17 9.25c-.5 1 -2.5 1 -3 0" />
-                    </svg>
+                    <Sad_Face/>
                 </div>
                 </div>
                 <div className='flex sm:text-xs md:text-sm lg:text-3xl text-3xl flex-col items-center justify-center mt-10 lg:mt-10 md:mt-3 sm:mt-1 gap-2'>
