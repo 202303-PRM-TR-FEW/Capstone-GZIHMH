@@ -1,7 +1,9 @@
+'use client'
 import React from 'react';
 import FeaturedCourses from '@/components/FeaturedCourses';
 import HomeCategories from "@/components/HomeCategories"
 import MyLearning from "@/components/MyLearning"
+import Link from "next/link"
 
 const Page = () => {
     return (
@@ -58,14 +60,18 @@ const Page = () => {
             <div>
                 <h2 className="p-2 font-bold">My Learning</h2>
             </div>
-            <div className="flex flex-col md:flex-row items-center">
+            <div className="flex flex-col mb-4 p-2">
                 <MyLearning />
             </div>
 
             <div className="flex justify-center mx-auto mt-8 p-2">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-16 rounded-xl">
-                    SEE ALL
-                </button>
+                <div className='flex justify-center mx-auto p-2'>
+                    <Link href='/pages/courses' passHref>
+                        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-16 rounded-xl'>
+                            SEE ALL
+                        </button>
+                    </Link>
+                </div>
 
             </div>
         </section>
