@@ -85,7 +85,7 @@ function ListElement() {
                     style={{ cursor: 'pointer' }}
                   />
                 </div>
-                <div className='w-full'>
+                <div className='w-full pt-2'>
                   <div className='flex justify-between'>
                     <h2>{course.title}</h2>
                     <button onClick={() => handleToggle(course.id)}>

@@ -7,7 +7,7 @@ function NoCourseMessage() {
                 <div className='text-base sm:text-base md:text-base lg:text-base xl:text-base 2xl:text-base @screen (max-width: 300px) text-xs'>
                     <span>Oops!</span> 
                     <br/>
-                 You do not have any saved any courses yet
+                 You do not have any saved courses yet
                  
                  <div className="flex items-center justify-center h-full pt-4">
                     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-mood-sad-2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9e9e9e" fill="none" stroke-linecap="round" stroke-linejoin="round">
