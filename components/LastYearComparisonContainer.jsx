@@ -6,7 +6,9 @@ const LastYearComponentContainer = () => {
     <div>
 
 
-    <div> <p className='text-black text-2xl font-bold my-6 '> Last Year Comparison </p> </div>
+<div className="flex items-center justify-between mb-4   w-34  ">
+  <h5 className=" text-black text-2xl font-bold my-6 ">Last Year Comparison</h5>
+</div> 
 
 
 <div class=" bg-white  rounded-2xl   shadow-md p-10 flex justify-center items-center ">

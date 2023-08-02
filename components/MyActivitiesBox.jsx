@@ -6,13 +6,12 @@ import MyActivityData from "../utils/MyActivityData";
 const MyActivitiesBox = () => {
   return (
     
-
-            
+    
 
     <div>  
 
 <div className="flex items-center justify-between mb-4   w-34  ">
-  <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">My Activity</h5>
+  <h5 className=" text-black text-2xl font-bold my-6 ">My Activity</h5>
 </div> 
   
 

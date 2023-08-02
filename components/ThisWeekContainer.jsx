@@ -9,9 +9,9 @@ const ThisWeekContainer = () => {
 
     <div>
 
-    <div>
-       <div className="font-bold text-3xl text-black mb-2"> This Week </div>
-    </div>
+<div className="flex items-center justify-between mb-4   w-34  ">
+  <h5 className=" text-black text-2xl font-bold my-6 ">This Week</h5>
+</div> 
 
     <div className="w-full max-w-4xl p-1 bg-white border border-gray-200 rounded-3xl shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
        <div className=" text-md  text-gray-400 mb-1">Time Spent</div>

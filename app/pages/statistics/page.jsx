@@ -74,6 +74,10 @@ const page = () => {
 
   <div className="m-1">   {/* box 3 (My performance component will be included later) */}
   
+                
+
+  <h5 className=" text-black text-2xl font-bold my-2 ">My Performance</h5>
+
 
   <div className='flex flex-row w-full'>
                 <div className='w-full'>
@@ -128,7 +132,7 @@ const page = () => {
 
 
 {/* Right Column */}
-<div className="flex flex-col  p-4 space-y-4 bg-gray-100 rounded-lg"> 
+<div className="flex flex-col  p-4 space-y-4 bg-gray-100 rounded-lg mt-2"> 
 
 
 
