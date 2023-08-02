@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import ProgressCourses from "@/components/ProgressCourses";
+import ProgressCourses from "@/components/ProgressCourse";
 import CourseVideo from "@/components/CourseVideo";
 import coursesdb from "@/utils/coursesdb";
 
