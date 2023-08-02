@@ -7,67 +7,74 @@ import { doc,auth, firestore, setDoc } from '@/utils/firebase';
 import { signInWithPopup, GoogleAuthProvider,signInAnonymously ,signOut,deleteUser ,onAuthStateChanged } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getUserCountry } from '@/app/pages/api/ip/route';
+import signIn from '@/app/pages/api/auth/signin'
 const GetStarted = ({routers}) => {
   const [user, setUser] = useAuthState(auth);
   useEffect(() => { },[user])
   let isAnonymous = false;
 
   const [showLogin, setShowLogin] = useState(false);
-  const googleAuth = new GoogleAuthProvider();
+  // const googleAuth = new GoogleAuthProvider();
   
   const handleLoginClick = () => {
     setShowLogin(true);
   };
-  const handleContinueAsGuestClick = () => {
-    isAnonymous = true;
-    const result  = signInAnonymously(auth).catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-    }).then(() => {
-      const { uid } = auth.currentUser;
-      localStorage.setItem('uid', uid);
-      routers.push('/pages/home')
-    });
+  const handleContinueAsGuestClick = async () => {
+    // isAnonymous = true;
+    // const result  = signInAnonymously(auth).catch(function(error) {
+    //   var errorCode = error.code;
+    //   var errorMessage = error.message;
+    // }).then(() => {
+    //   const { uid } = auth.currentUser;
+    //   localStorage.setItem('uid', uid);
+    //   routers.push('/pages/home')
+    // });
+    const { result, error } = await signIn('anonymous');
+
+        if (error) {
+            return console.log(error)
+        }
+
+        // else successful
+        console.log(result)
   };
-  // if (isAnonymous) {
-  //   window.onbeforeunload = async (event) => {
-  //     if (event.type === 'unload') {
-  //         const user = auth.currentUser
-  
-  //         signOut(auth);
-  //         await deleteUser(user);
-  //         localStorage.removeItem('uid');
-  
-  //       }
-  //     }
-  // }
   
   const handleGoogleLoginClick = async () => {
-    isAnonymous = false;
+    // isAnonymous = false;
+    const { result, error } = await signIn('google');
 
-    const result = await signInWithPopup(auth, googleAuth)
-    saveGoogleUserInfoToFirestore();
-    const { uid } = auth.currentUser;
-    localStorage.setItem('uid', uid);
-    routers.push('/pages/home')
+        if (error) {
+            return console.log(error)
+        }
+
+        // else successful
+        console.log(result)
   };
-  const saveGoogleUserInfoToFirestore = async () => {
-    const { uid, displayName, email, photoURL } = auth.currentUser;
-    const res = await getUserCountry();
-    try {
-      await setDoc(doc(firestore,'users',uid),{
+    // const result = await signInWithPopup(auth, googleAuth)
+    // saveGoogleUserInfoToFirestore();
+    // const { uid } = auth.currentUser;
+    // localStorage.setItem('uid', uid);
+    // routers.push('/pages/home')
 
-        name: displayName,
-        email: email,
-        profilePicture: photoURL,
-        country: res,
+
+  // };
+  // const saveGoogleUserInfoToFirestore = async () => {
+  //   const { uid, displayName, email, photoURL } = auth.currentUser;
+  //   const res = await getUserCountry();
+  //   try {
+  //     await setDoc(doc(firestore,'users',uid),{
+
+  //       name: displayName,
+  //       email: email,
+  //       profilePicture: photoURL,
+  //       country: res,
         
-      }, { merge: true });
-      // console.log(uid,displayName,email,photoURL,country)
-    } catch (error) {
-      console.error('Firestore Update Error:', error);
-    }
-  };
+  //     }, { merge: true });
+  //     // console.log(uid,displayName,email,photoURL,country)
+  //   } catch (error) {
+  //     console.error('Firestore Update Error:', error);
+  //   }
+  // };
   if (showLogin) {
     return <Login routers={routers} />;
   }
@@ -110,7 +117,7 @@ const GetStarted = ({routers}) => {
 
           <div className=" font-bold  flex flex-col w-full  py-5 ">
             <div className='w-full'>
-                  <button className="out_btn  m-2 w-full py-1" onClick={handleLoginClick}> Login </button>
+                  <button className="out_btn  m-2 w-full py-1" onClick={handleLoginClick}> Login / Sign up</button>
             </div>
             <div className='w-full' >
             <button className="out_btn  m-2  w-full py-1" onClick={handleGoogleLoginClick}>

@@ -1,6 +1,5 @@
 import { auth, storage, setDoc, doc, firestore, uploadBytes, ref, getDownloadURL, updateDoc } from '@/utils/firebase'
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useRef } from 'react';
 
 
 
