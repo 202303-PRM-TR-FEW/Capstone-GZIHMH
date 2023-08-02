@@ -29,7 +29,7 @@ const RegistrationForm = ({route}) => {
 
     // else successful
     console.log(result)
-    // return router.push("/admin")
+     return route.push("/pages/home")
 }
  
   return (

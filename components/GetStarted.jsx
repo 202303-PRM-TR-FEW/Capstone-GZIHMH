@@ -36,7 +36,8 @@ const GetStarted = ({routers}) => {
         }
 
         // else successful
-        console.log(result)
+    console.log(result)
+    return   routers.push('/pages/home')
   };
   
   const handleGoogleLoginClick = async () => {
@@ -48,7 +49,9 @@ const GetStarted = ({routers}) => {
         }
 
         // else successful
-        console.log(result)
+    console.log(result)
+    return   routers.push('/pages/home')
+ 
   };
     // const result = await signInWithPopup(auth, googleAuth)
     // saveGoogleUserInfoToFirestore();
