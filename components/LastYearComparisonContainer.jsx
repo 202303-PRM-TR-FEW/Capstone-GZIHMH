@@ -13,8 +13,11 @@ const LastYearComponentContainer = () => {
 
 
 
-<LastYearComparison />
-
+<LastYearComparison
+        studyTimePercentage={45}
+        hoursLearnedPercentage={20}
+        finishedCoursesPercentage={70}
+      />
    </div>
 
 
