@@ -1,6 +1,7 @@
 
 import React from 'react'
 import Activities from './Activities'
+import MyActivityData from "../utils/MyActivityData";
 
 const MyActivitiesBox = () => {
   return (
@@ -17,7 +18,7 @@ const MyActivitiesBox = () => {
 
 <div className="w-full max-w-3xl p-1 bg-white border border-gray-200 rounded-3xl shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
 
-<Activities />
+<Activities dayTitle="Monday" activityData={MyActivityData} />
       
 
 

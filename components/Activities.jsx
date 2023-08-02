@@ -1,24 +1,26 @@
 import React from "react";
 import Image from "next/image";
-import MyActivityData from '../utils/MyActivityData';
 
-const Activities = () => {
+const Activities = ({ dayTitle, activityData }) => {
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
-        <h5 className="text-xl font-bold leading-none text-gray-500 dark:text-white"> Monday </h5>
-      </div>  
+        <h5 className="text-xl font-bold leading-none text-gray-500 dark:text-white">
+          {dayTitle}
+        </h5>
+      </div>
 
-      <div className="flow-root">   
-        <ul role="list">  
-          {MyActivityData.map((item, index) => (
+      <div className="flow-root">
+        <ul role="list">
+          {activityData.map((item, index) => (
             <React.Fragment key={index}>
               {index === 2 && (
                 <>
-                  
                   <li className="py-3 sm:py-1">
                     <hr className="border-t-2 border-gray mb-4" />
-                    <p className="text-sm font-bold text-gray-500 mb-2">10 DAYS AGO</p>
+                    <p className="text-sm font-bold text-gray-500 mb-2">
+                      10 DAYS AGO
+                    </p>
                   </li>
                 </>
               )}
@@ -52,7 +54,10 @@ const Activities = () => {
             </React.Fragment>
           ))}
         </ul>
-        <a href="#" className="text-sm hover:underline dark:text-blue-500 text-blue-500 font-bold py-3 sm:py-4">
+        <a
+          href="#"
+          className="text-sm hover:underline dark:text-blue-500 text-blue-500 font-bold py-3 sm:py-4"
+        >
           VIEW ALL ACTIVITY
         </a>
       </div>
