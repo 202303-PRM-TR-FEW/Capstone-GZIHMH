@@ -1,7 +1,6 @@
 import React from "react";
 import LastYearComparisonContainer from "@/components/LastYearComparisonContainer";
 import StatisticsGoalStreak from "@/components/StatisticsGoalStreak";
-import Activities from "@/components/Activities";
 import MyActivitiesBox from "@/components/MyActivitiesBox";
 import ThisWeekContainer from "@/components/ThisWeekContainer";
 import MyPerformance from "@/components/MyPerformance";
