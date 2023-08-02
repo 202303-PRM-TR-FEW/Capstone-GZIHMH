@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import ProgressCourses from "@/components/ProgressCourse";
-import CourseVideo from "@/components/CourseVideo";
+import CourseVideo from "@/components/VideoCourse";
 import coursesdb from "@/utils/coursesdb";
 
 import data from "@/utils/firebase";
