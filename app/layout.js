@@ -4,7 +4,9 @@ import localFont from 'next/font/local'
 import { Inter } from 'next/font/google'
 import Nav from '@/components/Nav'
 import { AuthContextProvider } from '@/context/AuthContext'
+
 import { usePathname,useRouter } from 'next/navigation'
+
 import Link from 'next/link'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/lib/integration/react';
