@@ -3,7 +3,7 @@ import '../styles/globals.css'
 import localFont from 'next/font/local'
 import { Inter } from 'next/font/google'
 import Nav from '@/components/Nav'
-import { AuthProvider } from '@/components/AuthProvider'
+import { AuthContextProvider } from '@/context/AuthContext'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { Provider } from 'react-redux'
@@ -21,7 +21,7 @@ const GelionRegular = localFont({
 const inter = Inter({ subsets: ['latin'] })
 
 const metadata = {
-  title: 'Learning App',
+  title: 'Course Worm',
   description: 'Find the Course you want to learn',
 }
 
@@ -31,10 +31,14 @@ export default function RootLayout({ children }) {
   if (pathname == '/') isHome = true
   return (
     <html lang="en">
-  {/*provider for redux and presistGate added*/}
+      <head>
+        <link rel="icon" href="/assets/icons/coursewormlogo.png" />
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+      </head>
 
       <body className={`bg-gray-100 ${inter.className}`}>
-        {/* <AuthProvider> */}
+        <AuthContextProvider>
            <Provider store={store} >
             <PersistGate loading={null} persistor={persistor}>
               <div className='flex flex-row'>
@@ -43,7 +47,7 @@ export default function RootLayout({ children }) {
               </div>
              </PersistGate>
           </Provider>
-        {/* </AuthProvider> */}
+        </AuthContextProvider>
      
       </body>
 
