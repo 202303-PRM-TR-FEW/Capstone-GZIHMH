@@ -22,13 +22,14 @@ function SavedCourses() {
   };
 
   return (
-    <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col h-full w-full'>
+    <div >
       {savedCourses.length === 0 ? (
         <NoCourseMessage />
       ) : (
         <>
+        <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col h-full w-full'>
           <div className='w-full'>
-            <h1 className='w-full px-4 py-1'>Saved Courses</h1>
+            <h1 className='w-full px-4 py-2'>Saved Courses</h1>
             <div className='lg:max-h-[800px] h-full overflow-y-auto'>
               {savedCourses.map((course, index) => (
                   <div
@@ -81,6 +82,7 @@ function SavedCourses() {
             {selectedCourseIndex !== null && (
               <SavedCourseReview course={savedCourses[selectedCourseIndex]} />
             )}
+          </div>
           </div>
         </>
       )}

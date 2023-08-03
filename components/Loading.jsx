@@ -1,16 +1,10 @@
 import React, { Suspense } from 'react';
-import icons from '../utils/icons';
+import { Loading_Icon} from '../utils/icons';
 
 const Loading = () => {
     return (
         <div className="fixed inset-0 flex items-center justify-center">
-            {icons.map((icon) =>
-                icon.id === 4 ? (
-                    <div key={icon.id} className="flex justify-center items-center icon-tabler-loader animate-spin-slow">
-                        {icon.svg}
-                    </div>
-                ) : null
-            )}
+            <Loading_Icon/>
         </div>
     );
 };

@@ -1,8 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import db from '../utils/db';
-import icons from '../utils/icons';
-
+import { Clock, Star } from '../utils/icons';
 
 const SavedCourseReview = ({ course }) => {
   const getPersonName = (user_id) => {
@@ -27,11 +26,11 @@ const SavedCourseReview = ({ course }) => {
              <Image src={image} alt="User Profile " width={35} height={35} className='w-[35px] h-[35px] m-0 rounded-full' />
              <p className='text pl-2 w-full'>{user}</p></div>
           <div className='flex flex-row text'>
-            {icons.map(icon => icon.id === 2 && (<div key={icon.id} className="text-gray-400 w-5 h-5 mr-2" dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
+          <Clock />
             <p>{course.duration} m</p>
           </div>
           <div className='flex flex-row text'>
-            {icons.map(icon => icon.id === 3 && (<div key={icon.id} className="text-gray-400 w-5 h-5 mr-2" dangerouslySetInnerHTML={{ __html: icon.svg }} />))}
+          <Star />
             <p>{course.rating} </p>
           </div>
           <h3 className='mt-3 mb-1 text'>Course description</h3>

@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import db from '../utils/db';
-import icons from '../utils/icons';
+import { Clock, Star } from '../utils/icons';
 
 const Details = ({ courseIndex = 0 }) => {
   const getCourse = (courseIndex) => {
@@ -38,11 +38,11 @@ const Details = ({ courseIndex = 0 }) => {
              <p className='text pl-2 w-full'>{user}</p>
           </div>
           <div className='flex flex-row text'>
-            <div className="text-gray-400 w-5 h-5 mr-2" dangerouslySetInnerHTML={{ __html: icons.find(icon => icon.id === 2).svg }} />
+          <Clock />
             <p>{course.duration} m</p>
           </div>
           <div className='flex flex-row text'>
-            <div className="text-gray-400 w-5 h-5 mr-2" dangerouslySetInnerHTML={{ __html: icons.find(icon => icon.id === 3).svg }} />
+          <Star />
             <p>{course.rating}</p>
           </div>
           <h3 className='mt-3 text mb-1'>Course Description</h3>
