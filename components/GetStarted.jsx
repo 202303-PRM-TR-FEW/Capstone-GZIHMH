@@ -4,11 +4,11 @@ import Image from 'next/image'
 import Login from './Login';
 import Link from 'next/link';
 import { doc,auth, firestore, setDoc } from '@/utils/firebase';
-import { signInWithPopup, GoogleAuthProvider,signInAnonymously ,signOut,deleteUser ,onAuthStateChanged } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getUserCountry } from '@/app/pages/api/ip/route';
 import signIn from '@/app/pages/api/auth/signin'
-const GetStarted = ({routers}) => {
+const GetStarted = ({ routers }) => {
+  console.log(auth.currentUser)
   const [user, setUser] = useAuthState(auth);
   useEffect(() => { },[user])
   let isAnonymous = false;
@@ -20,15 +20,7 @@ const GetStarted = ({routers}) => {
     setShowLogin(true);
   };
   const handleContinueAsGuestClick = async () => {
-    // isAnonymous = true;
-    // const result  = signInAnonymously(auth).catch(function(error) {
-    //   var errorCode = error.code;
-    //   var errorMessage = error.message;
-    // }).then(() => {
-    //   const { uid } = auth.currentUser;
-    //   localStorage.setItem('uid', uid);
-    //   routers.push('/pages/home')
-    // });
+    
     const { result, error } = await signIn('anonymous');
 
         if (error) {

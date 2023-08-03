@@ -4,7 +4,7 @@ import localFont from 'next/font/local'
 import { Inter } from 'next/font/google'
 import Nav from '@/components/Nav'
 import { AuthContextProvider } from '@/context/AuthContext'
-import { usePathname } from 'next/navigation'
+import { usePathname,useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/lib/integration/react';
@@ -27,6 +27,7 @@ const metadata = {
 
 export default function RootLayout({ children }) {
   const pathname = usePathname()
+  const router = useRouter()
   let isHome = false
   if (pathname == '/') isHome = true
   return (
@@ -42,7 +43,7 @@ export default function RootLayout({ children }) {
            <Provider store={store} >
             <PersistGate loading={null} persistor={persistor}>
               <div className='flex flex-row'>
-                {!isHome && <Nav />}
+                {!isHome && <Nav router={router} />}
                 {children}
               </div>
              </PersistGate>
