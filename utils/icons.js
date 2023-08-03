@@ -19,13 +19,13 @@ export const Statistics = () => (
 );
 
 export const Sad_Face = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-mood-sad-2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9e9e9e" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-        <path d="M14.5 16.05a3.5 3.5 0 0 0 -5 0" />
-        <path d="M10 9.25c-.5 1 -2.5 1 -3 0" />
-        <path d="M17 9.25c-.5 1 -2.5 1 -3 0" />
-    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mood-sad-squint text" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+    <path d="M14.5 16.05a3.5 3.5 0 0 0 -5 0" />
+    <path d="M8.5 11.5l1.5 -1.5l-1.5 -1.5" />
+    <path d="M15.5 11.5l-1.5 -1.5l1.5 -1.5" />
+  </svg>
 );
 
 export const Loading_Icon = () => (
