@@ -3,14 +3,16 @@ import { getFirestore, collection, getDocs, addDoc, updateDoc, getDoc, setDoc, d
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getAnalytics, isSupported } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
+
+
 const firebaseConfig = {
-    apiKey: "AIzaSyD5lj9ewEDXPdlBzmYg2iKGuDdUUgBfQhs",
-    authDomain: "courseworm-db.firebaseapp.com",
-    projectId: "courseworm-db",
-    storageBucket: "courseworm-db.appspot.com",
-    messagingSenderId: "505892948153",
-    appId: "1:505892948153:web:054484892919f9bef03368",
-    measurementId: "G-L5DPNNP0WN"
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+    measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
@@ -21,5 +23,7 @@ if (typeof window !== "undefined" && isSupported()) {
 }
 const storage = getStorage(app);
 const auth = getAuth();
+
+
 
 export { auth, setDoc, app, analytics, firestore, storage, collection, getDocs, addDoc, getDoc, updateDoc, doc, ref, uploadBytes, query, where, getDownloadURL };

@@ -4,10 +4,9 @@ import { use, useState } from 'react';
 import Link from 'next/link';
 import RegistrationForm from './RegistrationForm';
 import Image from 'next/image';
-import { doc,auth, firestore, setDoc,getDoc } from '@/utils/firebase';
+import signIn from '@/app/pages/api/auth/signin';
 
-import {  signInWithCustomToken } from "firebase/auth";
-const Login = ({routers}) => {
+const Login = ({ routers }) => {
 
   const [showSignup, setShowSignup] = useState(false);
   const [userEmail, setUserEmail] = useState('')
@@ -18,47 +17,74 @@ const Login = ({routers}) => {
     setShowSignup(true);
   };
   if (showSignup) {
-    return <RegistrationForm />;
+    return <RegistrationForm route={routers} />;
   }
   const handleSigninClick = async () => {
 
-   const userCredential = signInWithCustomToken(auth, userEmail, userPassword)
-  .then(  async(userCredential) => {
+    const { result, error } = await signIn('firebase',userEmail,userPassword);
+
+        if (error) {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          
+          switch(errorCode) {
+            case "auth/user-not-found":
+              setEmailError("User with this email does not exist.");
+              break;
+            case "auth/wrong-password":
+              setPasswordError("Wrong password.");
+                break;
+            case "auth/too-many-requests":
+                alert("Too many requests. Try again later.");
+                break;
+            case "auth/invalid-email":
+                setEmailError("invalid email");
+                break;
+            default:
+              alert(errorMessage);
+          }
+        }
+
+        // else successful
+        console.log(result)
+  //  const userCredential = signInWithEmailAndPassword(auth, userEmail, userPassword)
+  // .then(  async(userCredential) => {
  
-    const user = userCredential.user;
-    console.log(userCredential)
-    const docRef = await doc(firestore, 'users', user.email);
-    const docSnap = await getDoc(docRef);
-    const { email, password } = docSnap.data();
-    const userRef = ref(firestore)
-    if (email === userEmail && password === userPassword) {
-      isAnonymous = false;
-      localStorage.setItem('uid', docSnap);
-      routers.push('/pages/home')
-    }
+  //   const user = userCredential.user;
+  //   console.log(userCredential)
+  //   const docRef = await doc(firestore, 'users', user.email);
+  //   const docSnap = await getDoc(docRef);
+  //   const { email, password } = docSnap.data();
+  //   const userRef = ref(firestore)
+  //   if (email === userEmail && password === userPassword) {
+  //     isAnonymous = false;
+  //     localStorage.setItem('uid', docSnap);
+  //     routers.push('/pages/home')
+  //   }
    
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
+  // })
+  // .catch((error) => {
+  //   const errorCode = error.code;
+  //   const errorMessage = error.message;
     
-    switch(errorCode) {
-      case "auth/user-not-found":
-        setEmailError("User with this email does not exist.");
-        break;            
-      case "auth/wrong-password":
-        setPasswordError("Wrong password.");     
-         break;
-      case "auth/too-many-requests":
-         alert("Too many requests. Try again later.");
-         break;  
-      case "auth/invalid-email": 
-         setEmailError("invalid email");
-         break;        
-      default:
-        alert(errorMessage); 
-    }       
-  });
+  //   switch(errorCode) {
+  //     case "auth/user-not-found":
+  //       setEmailError("User with this email does not exist.");
+  //       break;
+  //     case "auth/wrong-password":
+  //       setPasswordError("Wrong password.");
+  //        break;
+  //     case "auth/too-many-requests":
+  //        alert("Too many requests. Try again later.");
+  //        break;
+  //     case "auth/invalid-email":
+  //        setEmailError("invalid email");
+  //        break;
+  //     default:
+  //       alert(errorMessage);
+  //   }
+  // });
+    
   }
 
   return (

@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 export const Clock = () => (
@@ -6,6 +7,7 @@ export const Clock = () => (
         <path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-5 2.66a1 1 0 0 0 -.993 .883l-.007 .117v5l.009 .131a1 1 0 0 0 .197 .477l.087 .1l3 3l.094 .082a1 1 0 0 0 1.226 0l.094 -.083l.083 -.094a1 1 0 0 0 0 -1.226l-.083 -.094l-2.707 -2.708v-4.585l-.007 -.117a1 1 0 0 0 -.993 -.883z" stroke-width="0" fill="currentColor" />
     </svg>
 );
+
 
 export const Star = () => (
     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-star-filled text-gray-400 w-5 h-5 mr-2" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -28,6 +30,7 @@ export const Sad_Face = () => (
   </svg>
 );
 
+
 export const Loading_Icon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-loader animate-spin flex justify-center items-center icon-tabler-loader animate-spin-slow" width="50" height="50" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9e9e9e" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -41,3 +44,4 @@ export const Loading_Icon = () => (
         <path d="M7.75 7.75l-2.15 -2.15" />
     </svg>
 );
+
