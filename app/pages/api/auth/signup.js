@@ -16,7 +16,7 @@ export default async function signUp(email, password, name, country, username, f
         const profilePictureUrl = await getDownloadURL(storageRef);
         console.log(profilePictureUrl)
         const userRef = doc(firestore, 'users', uid)
-
+        console.log(uid)
         await setDoc(userRef, {
 
             name: name,

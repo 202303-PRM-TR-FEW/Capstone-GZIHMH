@@ -45,7 +45,7 @@ export default async function signIn(method, email, password) {
                 var errorMessage = error.message;
             }).then(() => {
                 const { uid } = auth.currentUser;
-                localStorage.setItem('uid', uid);
+
             });
         }
         // result = await signInWithEmailAndPassword(auth, email, password);
