@@ -2,12 +2,14 @@
 import { useState,useEffect, React } from 'react'
 import Image from 'next/image'
 import { signOut } from 'firebase/auth'
+
 import { auth,getDoc,doc,firestore} from'@/utils/firebase'
 import { getProviders } from 'next-auth/react'
 import { HomeIcon, Logout, ProfileIcon, SavedIcon, CoursesIcon, SearchIcon}from '@/utils/icons'
 const Nav = ({ router }) => {
     
     
+
     const handleSignoutClick = async () => {
     console.log("this is sign out")
     await signOut(auth).then(() => {
