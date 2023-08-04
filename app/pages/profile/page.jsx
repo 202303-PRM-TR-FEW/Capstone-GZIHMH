@@ -46,7 +46,7 @@ const ProfilePage = () => {
             </div>
             <div className='flex flex-col w-full'>
               <div>
-                <h2 className="text-xl text-gray-900 w-full mt-2 md:mt-10 ml-2">Total Statistics</h2>
+                <h2 className="text-xl text-gray-900 w-full !mt-2 md:mt-10 ml-2">Total Statistics</h2>
               </div>
               <div className='flex flex-row w-full'>
                 <div className='w-full'>
