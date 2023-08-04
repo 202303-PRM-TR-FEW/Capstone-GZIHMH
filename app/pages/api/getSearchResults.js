@@ -1,5 +1,5 @@
 import Fuse from 'fuse.js';
-import { auth, query, firestore, getDocs, ref,doc,getDoc, collection ,where} from '@/utils/firebase'
+import { auth, query, firestore, getDocs, ref, updateDoc, doc, getDoc, collection, where } from '@/utils/firebase'
 const API_URL = '';
 let categories = []
 const categoryKeywords = async() => {
@@ -15,39 +15,42 @@ const fuseOptions = {
     keys: ['name'],
 };
 
-export const getSearchResults = async (querydata) => {
+export const getSearchResults = async(querydata) => {
     if (categories.length === 0) {
         await categoryKeywords();
     }
     const fuse = new Fuse(categories.map((category) => ({ name: category.name })), fuseOptions);
-    console.log("fuse is ",fuse)
+    console.log("fuse is ", fuse)
 
     const lowercaseQuery = querydata;
     const searchResults = fuse.search(lowercaseQuery);
     const matchedCategory = searchResults.length > 0 ? searchResults[0].item.name : '';
-    console.log("this is the search results: ",searchResults)
-    console.log("this is the matched category: ",matchedCategory)
+    console.log("this is the search results: ", searchResults)
+    console.log("this is the matched category: ", matchedCategory)
     console.log(matchedCategory);
 
     try {
-        // const coursesRef = collection(firestore, 'courses')
-        // const catRef = collection(firestore,'categories')
-        // const categoryRef = getDoc(qurey(catRef, where('name','==',matchedCategory)))
-        // const response = await getDocs(query(coursesRef,where('categories','==',categoryRef)))
         const coursesRef = collection(firestore, 'courses');
         const catRef = collection(firestore, 'categories');
-        // const categoryQuery = query(catRef, where('name', '==', matchedCategory));
+
         const categorySnapshot = await getDocs(query(catRef, where('name', '==', matchedCategory)));
         const categoryDoc = categorySnapshot.docs[0].ref;
-        console.log("category id is ",categoryDoc)
+        console.log("category id is ", categoryDoc)
         if (categoryDoc) {
-            const categoryId = categoryDoc.id;
-            // const coursesQuery = query(coursesRef, where('categories', '==', categoryDoc));
             const coursesSnapshot = await getDocs(query(coursesRef, where('categories', 'array-contains', categoryDoc)));
             const data = coursesSnapshot.docs.map((doc) => doc.data());
-            console.log("getSearchResults function is working");
-            console.log("this is the data : ", data);
-            console.log("this is courses snapshot: ",coursesSnapshot)
+            console.log("am i is anon?", process.env.ISANON)
+            if (process.env.ISANON == false) {
+                const { uid } = auth.currentUser
+                console.log("the user is :", uid)
+                console.log("about to save the catageroy")
+                const userRef = doc(firestore, 'users', uid)
+                const userSnapshot = await getDoc(userRef)
+                const userDocRef = userSnapshot.ref
+                await updateDoc(userDocRef, {
+                    wordsSearched: firestore.FieldValue.arrayUnion(categoryDoc)
+                })
+            }
             return data;
         } else {
             throw new Error('Category not found');

@@ -3,7 +3,6 @@ import { useState,useEffect, React } from 'react'
 import Image from 'next/image'
 import { signOut } from 'firebase/auth'
 import { auth} from'@/utils/firebase'
-import { getProviders } from 'next-auth/react'
 
 const Nav = ({ router}) => {
     const handleSignoutClick = async () => {
