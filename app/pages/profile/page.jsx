@@ -41,7 +41,7 @@ const ProfilePage = () => {
           const userDoc = userSnapshot.data();
           setUserData(userDoc);
           try {
-            setProfileUrl(userData.profilePicture)
+            setProfileUrl(userDoc.profilePicture)
           } catch { setProfileUrl('/assets/images/defaultuser.png')}
           console.log("user data is :",userData) // Update the user data state
         }
