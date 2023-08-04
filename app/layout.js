@@ -34,11 +34,11 @@ export default function RootLayout({ children }) {
   if (pathname == '/') isHome = true
   return (
     <html lang="en">
-      <head>
+      {/* <head>
         <link rel="icon" href="/assets/icons/coursewormlogo.png" />
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
-      </head>
+      </head> */}
 
       <body className={`bg-gray-100 ${inter.className}`}>
         <AuthContextProvider>
