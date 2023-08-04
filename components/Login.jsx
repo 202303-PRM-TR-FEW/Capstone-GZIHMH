@@ -5,8 +5,10 @@ import Link from 'next/link';
 import RegistrationForm from './RegistrationForm';
 import Image from 'next/image';
 import signIn from '@/app/pages/api/auth/signin';
-
+import { ReturnIcon } from '@/utils/icons';
+import GetStarted from './GetStarted';
 const Login = ({ routers }) => {
+  const [showGetStarted, setShowGetstarted] = useState(false);
 
   const [showSignup, setShowSignup] = useState(false);
   const [userEmail, setUserEmail] = useState('')
@@ -47,48 +49,20 @@ const Login = ({ routers }) => {
 
         // else successful
         console.log(result)
-  //  const userCredential = signInWithEmailAndPassword(auth, userEmail, userPassword)
-  // .then(  async(userCredential) => {
  
-  //   const user = userCredential.user;
-  //   console.log(userCredential)
-  //   const docRef = await doc(firestore, 'users', user.email);
-  //   const docSnap = await getDoc(docRef);
-  //   const { email, password } = docSnap.data();
-  //   const userRef = ref(firestore)
-  //   if (email === userEmail && password === userPassword) {
-  //     isAnonymous = false;
-  //     localStorage.setItem('uid', docSnap);
-  //     routers.push('/pages/home')
-  //   }
-   
-  // })
-  // .catch((error) => {
-  //   const errorCode = error.code;
-  //   const errorMessage = error.message;
-    
-  //   switch(errorCode) {
-  //     case "auth/user-not-found":
-  //       setEmailError("User with this email does not exist.");
-  //       break;
-  //     case "auth/wrong-password":
-  //       setPasswordError("Wrong password.");
-  //        break;
-  //     case "auth/too-many-requests":
-  //        alert("Too many requests. Try again later.");
-  //        break;
-  //     case "auth/invalid-email":
-  //        setEmailError("invalid email");
-  //        break;
-  //     default:
-  //       alert(errorMessage);
-  //   }
-  // });
+ 
     
   }
-
+  const handleReturnClick = () => {
+    console.log('im goback button')
+    setShowGetstarted(true)
+  }
+  if (showGetStarted) {
+    return <GetStarted routers={routers} />;
+  }
   return (
     <div className=" w-full flex flex-col " action="#">
+      <div className=" ml-8 mb-4  flex flex-row justify-between items-center md:pr-12">
       <div className="ml-8 mb-4 flex flex-row  items-center h-full justify-start ">
         <div>
           <Image src="/assets/icons/logos.png"
@@ -101,7 +75,15 @@ const Login = ({ routers }) => {
         <div>
           <p className='text-primary font-bold'> Course Worm </p>
         </div>
+        </div>
+        <div>
+          <button className="text-sm font-medium items-center justify-center m-auto text-gray-400 hover:bg-gray-100  hover:text-primary" onClick={handleReturnClick}>
+            <ReturnIcon />
+            Go Back
+          </button>
+        </div>
       </div>
+      
 
       <div className=" ml-4 flex flex-col rounded-lg  dark:border md:mt-0  xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="flex flex-col">
