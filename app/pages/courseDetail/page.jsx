@@ -4,7 +4,7 @@ import ProgressCourses from "@/components/ProgressCourses";
 import CourseVideo from "@/components/CourseVideo";
 import coursesdb from "@/utils/coursesdb";
 
-import data from "@/utils/firebase";
+import {firestore} from "@/utils/firebase";
 
 const CoursesDetails = () => {
   const [showVideos, setShowVideo] = useState(true);
