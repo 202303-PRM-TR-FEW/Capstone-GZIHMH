@@ -6,7 +6,7 @@ import { auth,getDoc,doc,firestore} from'@/utils/firebase'
 import { getProviders } from 'next-auth/react'
 import { HomeIcon, Logout, ProfileIcon, SavedIcon, CoursesIcon, SearchIcon}from '@/utils/icons'
 const Nav = ({ router }) => {
-    const {uid} = auth.currentUser
+    
     
     const handleSignoutClick = async () => {
     console.log("this is sign out")
@@ -76,7 +76,7 @@ const Nav = ({ router }) => {
                                 <span className="mx-2 text-sm font-medium">Profile</span>
                             </a>
                             {
-                                !process.env.ISANON? (
+                                process.env.ISANON==false? (
                                     <div className='flex flex-col items-center px-3 py-2 justify-center m-auto text-gray-400 transition-colors duration-300 transform rounded-lg  hover:bg-gray-100  hover:text-primary'>
                                         
                                         <button className="flex flex-col text-sm font-medium items-center justify-center m-auto text-gray-400 hover:bg-gray-100  hover:text-primary" onClick={handleSignoutClick}>
