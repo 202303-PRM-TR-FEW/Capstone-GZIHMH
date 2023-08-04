@@ -1,5 +1,5 @@
 import { auth, storage, setDoc, doc, firestore, uploadBytes, ref, getDownloadURL, updateDoc } from '@/utils/firebase'
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 
 
@@ -16,7 +16,6 @@ export default async function signUp(email, password, name, country, username, f
         const profilePictureUrl = await getDownloadURL(storageRef);
         console.log(profilePictureUrl)
         const userRef = doc(firestore, 'users', uid)
-        console.log(uid)
         await setDoc(userRef, {
 
             name: name,
@@ -27,6 +26,8 @@ export default async function signUp(email, password, name, country, username, f
 
         }, { merge: true });
         await updateDoc(userRef, { profilePicture: profilePictureUrl })
+        await signInWithEmailAndPassword(auth, email, password)
+        process.env.ISANON = false
 
     } catch (e) {
         error = e;
