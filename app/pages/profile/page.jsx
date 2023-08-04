@@ -1,10 +1,11 @@
-import React from 'react';
+'use client'
+import { React,useState,useEffect } from 'react';
 import InfoBar from '@/components/InfoBar';
 import Achievements from '@/components/Achievements';
 import Friends from '@/components/Friends';
 import FriendsSuggestion from '@/components/FriendsSuggestion';
 import StatisticalCard from '@/components/StatisticalCard';
-// ... (import statements)
+import {auth,firestore,getDocs,getDoc,collection,where,query,doc} from '@/utils/firebase'
 
 const CheckIcon = `
 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check w-10 h-10 text-white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -24,9 +25,38 @@ const CheckIcon3 = `
 <svg fill="#84cc16" width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="icon line-color" stroke="#84cc16"> <g id="SVGRepo_bgCarrier" strokeWidth="0"></g> <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" stroke="#CCCCCC" strokeWidth="0.048"></g> <g id="SVGRepo_iconCarrier"> <path id="secondary" d="M17.17,5H20a1,1,0,0,1,1,1V7a4,4,0,0,1-4,4h0" fill="none" stroke="#84cc16" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.128" /> <path id="secondary-2" data-name="secondary" d="M6.74,5H4A1,1,0,0,0,3,6V7a4,4,0,0,0,4,4H7" fill="none" stroke="#84cc16" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.128" /> <path id="primary" d="M8,21h8M7,9.57a6.78,6.78,0,0,0,4.26,6.29h0a2,2,0,0,0,1.48,0h0A6.78,6.78,0,0,0,17,9.57V3H7Zm5,6.61V21" fill="#84cc16" stroke="#84cc16" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.128" /> </g> </svg>
 `;
 
-// ... (import statements)
 
 const ProfilePage = () => {
+  const [userData, setUserData] = useState(null);
+  const[profileUrl,setProfileUrl]=useState('/assets/images/defaultuser.png')
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const { uid } = auth.currentUser
+        console.log("uid is :",uid)
+        const userDoc = await doc(firestore, 'users', uid);
+        const userSnapshot = await getDoc(userDoc)
+        
+        if (userSnapshot.exists()) {
+          const userDoc = userSnapshot.data();
+          setUserData(userDoc);
+          try {
+            setProfileUrl(userData.profilePicture)
+          } catch { setProfileUrl('/assets/images/defaultuser.png')}
+          console.log("user data is :",userData) // Update the user data state
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+  
+    fetchUserData();
+    console.log(userData)
+  }, []);
+  if (!userData) {
+    // If userData is still loading, you can show a loading message or spinner
+    return <p>Loading user data...</p>;
+  }
   return (
     <div className='w-full'>
       
@@ -41,7 +71,7 @@ const ProfilePage = () => {
         <div className='flex flex-col md:flex-row  w-full'>
           <div className='flex flex-col w-full'>
             <div>
-            <InfoBar name={ 'Sally Robins'} country={"New York"} image={'/assets/images/pro.jpg'} />
+            <InfoBar name={ userData.name} country={userData.country} image={profileUrl} />
 
             </div>
             <div className='flex flex-col w-full'>

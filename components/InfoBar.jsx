@@ -14,7 +14,7 @@ const InfoBar = (props) => {
             width={300}
             height={300}
             className='rounded-full bg-cover bg-center bg-no-repeat  w-32 h-28 object-cover overflow-hidden  '
-            
+            loading="eager"
           />
         </div>
         <div className='flex flex-col w-full '>
