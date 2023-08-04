@@ -8,6 +8,7 @@ import { getCourses } from '../api/getCourses';
 import categories_db from '@/utils/categories_db.js';
 import db from '@/utils/db';
 import Star from '@/components/Star';
+import getSearchResults from '../api/getSearchResults';
 
 const Page = () => {
   const Top = [
@@ -20,7 +21,7 @@ const Page = () => {
     'Content Making',
   ];
   const [isSearched, setIsSearched] = useState(false);
-
+  const [searchResults, setSearchResults] = useState('');
   const getPersonName = (userId) => {
     const person = db.person.find((p) => p.id === userId);
     return person ? person.name : '';
@@ -85,12 +86,13 @@ const Page = () => {
         <>
           <hr className="my-2 mt-8 hidden md:flex border-gray-300 w-4/5" />
           <div>
+            <h2>Search Results</h2>
             <ul className="flex flex-wrap md:flex-row my-5">
               {searchResults.map((result, index) => (
                 <li key={index}>
                   <Recommended
-                    path={result.url}
-                    thumbnail={result.image}
+                    path={result.title}
+                    thumbnail={result.thumbnail}
                     courseName={result.title}
                     tutorName={getPersonName(result.tutorId)}
                   />
