@@ -3,8 +3,12 @@ import React,{useState} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import signUp from '@/app/pages/api/auth/signup'
+import { ReturnIcon } from '@/utils/icons'
+import GetStarted from './GetStarted'
 // import { storage } from './firebase.js';
-const RegistrationForm = ({route}) => {
+const RegistrationForm = ({ route }) => {
+  const [showGetStarted, setShowGetstarted] = useState(false);
+  
   const [selectedImage, setSelectedImage] = useState(null);
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -31,11 +35,18 @@ const RegistrationForm = ({route}) => {
     console.log(result)
      return route.push("/pages/home")
 }
- 
+  const handleReturnClick = () => {
+    console.log('im goback button')
+    setShowGetstarted(true)
+  }
+  if (showGetStarted) {
+    return <GetStarted routers={route} />;
+  }
   return (
     <div className=" w-full " action="#">
-      <div className=" ml-8 mb-4 flex flex-row  items-center h-full justify-start ">
-          <div>
+      <div className=" ml-8 mb-4  flex flex-row justify-between items-center md:pr-12">
+        <div className='flex flex-row  items-center h-full justify-start'>
+           <div>
             <Image src="/assets/icons/logos.png"
               alt="icon image"
               width={70}
@@ -45,7 +56,15 @@ const RegistrationForm = ({route}) => {
 
           <div>
             <p className='text-primary font-bold'> Course Worm </p>
-          </div>
+        </div>
+        </div>  
+       
+        <div>
+          <button className="text-sm font-medium items-center justify-center m-auto text-gray-400 hover:bg-gray-100  hover:text-primary" onClick={handleReturnClick}>
+            <ReturnIcon />
+            Go Back
+          </button>
+        </div>
         </div>
 
       <div className=" m-12 rounded-lg  dark:border md:mt-0  xl:p-0 dark:bg-gray-800 dark:border-gray-700">
