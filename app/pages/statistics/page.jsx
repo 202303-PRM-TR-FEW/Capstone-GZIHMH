@@ -3,8 +3,8 @@ import LastYearComparisonContainer from "@/components/LastYearComparisonContaine
 import StatisticsGoalStreak from "@/components/StatisticsGoalStreak";
 import Activities from "@/components/Activities";
 import MyActivitiesBox from "@/components/MyActivitiesBox";
-import ThisWeekContainer from "@/components/ThisWeekContainer";
 import MyPerformance from "@/components/MyPerformance";
+import ThisWeek from "@/components/ThisWeek";
 
 
 
@@ -57,7 +57,88 @@ const page = () => {
 
 
   <div className="m-1">  * {/* box 1 */}
-  <ThisWeekContainer />
+
+
+  <div>
+   <div className="font-bold text-3xl text-black mb-2"> This Week </div>
+</div>
+
+
+<div className="w-full  p-1 bg-white border border-gray-200 rounded-3xl shadow sm:p-8 ">
+   <div className=" text-md  text-gray-400 mb-1">Time Spent</div>
+   <div className="font-semibold text-black text-xl mb-4 mt-1">31.8 hours</div>
+     
+
+
+   <div className="flex flex-row   justify-between"> 
+   
+   <ThisWeek 
+     text="Mon"
+     percentage={45}
+     />
+
+
+<ThisWeek 
+     text="Tue"
+     percentage={30}
+     />
+
+
+<ThisWeek 
+     text="Wed"
+     percentage={30}
+
+     />
+
+
+<ThisWeek 
+     text="Thu"
+     percentage={80}
+     />
+
+
+
+<ThisWeek 
+     text="Fri"
+     percentage={60}
+     />
+
+
+
+<ThisWeek 
+     text="Sat"
+     percentage={55}
+     />
+
+
+<ThisWeek 
+     text="Sun"
+     percentage={50}
+
+     />
+
+
+   
+   </div>
+
+
+
+   
+ 
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
   </div>
   
 
