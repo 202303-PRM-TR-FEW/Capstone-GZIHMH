@@ -1,10 +1,10 @@
 import React from "react";
-import LastYearComparisonContainer from "@/components/LastYearComparisonContainer";
 import StatisticsGoalStreak from "@/components/StatisticsGoalStreak";
 import Activities from "@/components/Activities";
 import MyActivitiesBox from "@/components/MyActivitiesBox";
 import MyPerformance from "@/components/MyPerformance";
 import ThisWeek from "@/components/ThisWeek";
+import LastYearComparison from "@/components/LastYearComparison";
 
 
 
@@ -191,7 +191,11 @@ const page = () => {
 
 
   <div className="m-1">   {/* box 3 (My performance component will be included later) */}
+
+
   
+  <div className="font-bold text-2xl text-black mb-2"> My Performance </div>
+
 
   <div className='flex flex-row w-full'>
                 <div className='w-full'>
@@ -263,7 +267,48 @@ const page = () => {
 
 <div className=" ">  {/* box 5 */}
 
-<LastYearComparisonContainer />
+
+<div> <p className='text-black text-2xl font-bold my-6 '> Last Year Comparison </p> </div>
+
+
+
+<div className=  " bg-white w-full  rounded-3xl   m-2    shadow-md p-10 flex flex-col justify-center items-center ">
+
+
+
+<LastYearComparison 
+
+title="STUDY"
+title2="TIME"
+percentage={90}
+number="90%"
+
+/>
+
+
+<LastYearComparison 
+
+title="HOURS"
+title2="LEARNED"
+percentage={30}
+number="30%"
+
+/>
+
+
+<LastYearComparison 
+
+title="FINISHED"
+title2="COURSES"
+percentage={70}
+number="70%"
+
+/>
+
+
+
+
+</div>
 
 
 </div> 
