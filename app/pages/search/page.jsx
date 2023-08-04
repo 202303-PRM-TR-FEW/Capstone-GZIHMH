@@ -9,6 +9,7 @@ import categories_db from '@/utils/categories_db.js';
 import db from '@/utils/db';
 import Star from '@/components/Star';
 import getSearchResults from '../api/getSearchResults';
+import Result from '@/components/Result';
 
 const Page = () => {
   const Top = [
@@ -28,17 +29,22 @@ const Page = () => {
   };
 
   const [courses, setCourses] = useState([]);
+  const [selectedLevel, setSelectedLevel] = useState(''); // To store the selected level
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getCourses();
-      setCourses(data.data);
+      try {
+        const data = await getCourses();
+        setCourses(data.data);
+      } catch (error) {
+        console.error('Error fetching courses:', error);
+      }
     };
 
     fetchData();
   }, []);
-  const handleSearch = async (searchQuery) => {
 
+  const handleSearch = async (searchQuery) => {
     try {
       const results = await getSearchResults(searchQuery);
       setSearchResults(results);
@@ -47,6 +53,12 @@ const Page = () => {
       console.error('Error fetching search results:', error);
     }
   };
+
+  // Handle the level selection
+  const handleLevelSelect = (level) => {
+    setSelectedLevel(level);
+  };
+
   return (
     <section className="m-6">
       <h1>Find your favorites</h1>
@@ -76,39 +88,20 @@ const Page = () => {
         <div className="flex flex-col">
           <h2>Level</h2>
           <div className="flex flex-row mt-3 my-5">
-            <CheckElement key="beginner" id="beginner" name="Beginner" />
-            <CheckElement key="intermediate" id="intermediate" name="Intermediate" />
-            <CheckElement key="professional" id="professional" name="Professional" />
+            <CheckElement key="beginner" id="beginner" name="Beginner" onClick={() => handleLevelSelect('Beginner')} />
+            <CheckElement key="intermediate" id="intermediate" name="Intermediate" onClick={() => handleLevelSelect('Intermediate')} />
+            <CheckElement key="professional" id="professional" name="Professional" onClick={() => handleLevelSelect('Professional')} />
           </div>
         </div>
       </div>
-      {isSearched && (
-        <>
-          <hr className="my-2 mt-8 hidden md:flex border-gray-300 w-4/5" />
-          <div>
-            <h2>Search Results</h2>
-            <ul className="flex flex-wrap md:flex-row my-5">
-              {searchResults.map((result, index) => (
-                <li key={index}>
-                  <Recommended
-                    path={result.title}
-                    thumbnail={result.thumbnail}
-                    courseName={result.title}
-                    tutorName={getPersonName(result.tutorId)}
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
-        </>
+      {selectedLevel && (
+        <Result level={selectedLevel} courses={courses} getPersonName={getPersonName} />
       )}
       <hr className="my-2 mt-8 hidden md:flex border-gray-300 w-4/5" />
       <h2>RECOMMENDED FOR YOU</h2>
       <div>
         <ul className="flex flex-wrap md:flex-row my-5">
-          {courses
-          .slice(0,6)
-          .map((course) => (
+          {courses.slice(0, 6).map((course) => (
             <li key={course.id}>
               <Recommended
                 path={course.url}
