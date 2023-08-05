@@ -1,9 +1,9 @@
 const initialState = {
 
-    savedCourses: [],
-    loading: false
-}
-//adding saved course and remove course action to the reducer//
+        savedCourses: [],
+        loading: false
+    }
+    //adding saved course and remove course action to the reducer//
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case 'SAVE_COURSE':
@@ -23,6 +23,7 @@ export default function reducer(state = initialState, action) {
                     savedCourses: state.savedCourses.filter(course => course.id !== action.payload)
                 };
             }
+
         default:
             return state;
     }
