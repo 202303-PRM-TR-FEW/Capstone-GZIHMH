@@ -36,15 +36,13 @@ const Page = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getCourses(isanon);
-      setCourses(data.data);
+      setCourses(data);
+      
     };
     
-    //fetchData();
+    try { fetchData(); }catch{setCourses([])}
   }, []);
-  if (!courses) {
-    // If userData is still loading, you can show a loading message or spinner
-    return <p>Loading user data...</p>;
-  }
+ 
   const handleSearch = async (searchQuery) => {
 
     try {
@@ -115,14 +113,13 @@ const Page = () => {
       <div>
         <ul className="flex flex-wrap md:flex-row my-5">
           {courses
-          .slice(0,6)
-          .map((course) => (
+            .slice(0,6).map((course) => (
             <li key={course.id}>
               <Recommended
-                path={course.url}
-                thumbnail={course.image}
+                path={course.title}
+                thumbnail={course.thumbnail}
                 courseName={course.title}
-                tutorName={getPersonName(course.tutorId)}
+                tutorName={getPersonName(course.title)}
               />
             </li>
           ))}
