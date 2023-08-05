@@ -66,16 +66,17 @@ function ListElement() {
             </div>
           </div>
 
-          <div className='flex-1 w-full lg:max-h-[800px] overflow-y-auto'>
+          <div className='px-4'>
+            <div className='flex-1 w-full lg:max-h-[800px] overflow-y-auto'>
             {randomCourses.map((course, index) => (
               <div
-                className={`flex rounded-2xl opacity-100 bg-white ${
+                className={`flex my-2 rounded-2xl opacity-100 bg-white ${
                   selectedCourseIndex === index ? 'border-primary bg-blue-200' : 'hover:bg-blue-200'
                 } bg-opacity-30 rounded-5 border hover:border-primary`}
                 key={course.id}
                 onClick={() => handleCourseClick(index)}
               >
-                <div className='flex flex-row gap-2 justify-between'>
+                <div className='flex flex-row justify-between'>
                   <Image
                     src={course.image}
                     width={180}
@@ -102,9 +103,10 @@ function ListElement() {
                 </div>
               </div>
             ))}
+            </div>
           </div>
         </div>
-        <div className='w-full h-full bg-white p-2'>
+        <div className='w-full h-full bg-white'>
           {selectedCourseIndex !== null && (
             <Details courseIndex={selectedCourseIndex} />
           )}
