@@ -53,7 +53,8 @@ const Login = ({ routers }) => {
         }
 
         // else successful
-        console.log(result)
+    console.log(result)
+    routers.push('/pages/home')
  
  
     
