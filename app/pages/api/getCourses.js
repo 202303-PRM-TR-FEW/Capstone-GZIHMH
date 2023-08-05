@@ -1,5 +1,6 @@
 import { auth, firestore, doc, query, collection, getDocs, getDoc } from '@/utils/firebase'
-export async function getCourses() {
+
+export async function getCourses(isanon) {
     try {
         coursesRef = collection(firestore, 'courses')
         coursesSnapshot = await getDocs(coursesRef)

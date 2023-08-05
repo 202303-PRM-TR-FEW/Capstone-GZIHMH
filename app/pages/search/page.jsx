@@ -35,16 +35,20 @@ const Page = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getCourses();
+      const data = await getCourses(isanon);
       setCourses(data.data);
     };
     
     //fetchData();
   }, []);
+  if (!courses) {
+    // If userData is still loading, you can show a loading message or spinner
+    return <p>Loading user data...</p>;
+  }
   const handleSearch = async (searchQuery) => {
 
     try {
-      const results = await getSearchResults(searchQuery);
+      const results = await getSearchResults(searchQuery,isanon);
       setSearchResults(results);
       setIsSearched(true);
     } catch (error) {

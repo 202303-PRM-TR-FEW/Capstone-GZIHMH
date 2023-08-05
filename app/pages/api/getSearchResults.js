@@ -1,5 +1,5 @@
 import Fuse from 'fuse.js';
-import { auth, query, firestore, getDocs, ref, updateDoc, doc, getDoc, collection, where } from '@/utils/firebase'
+import { auth, query, firestore, arrayUnion, getDocs, ref, updateDoc, doc, getDoc, collection, where } from '@/utils/firebase'
 const API_URL = '';
 let categories = []
 const categoryKeywords = async() => {
@@ -15,7 +15,7 @@ const fuseOptions = {
     keys: ['name'],
 };
 
-export const getSearchResults = async(querydata) => {
+export const getSearchResults = async(querydata, isanon) => {
     if (categories.length === 0) {
         await categoryKeywords();
     }
@@ -39,8 +39,8 @@ export const getSearchResults = async(querydata) => {
         if (categoryDoc) {
             const coursesSnapshot = await getDocs(query(coursesRef, where('categories', 'array-contains', categoryDoc)));
             const data = coursesSnapshot.docs.map((doc) => doc.data());
-            console.log("am i is anon?", process.env.ISANON)
-            if (process.env.ISANON == false) {
+            console.log("am i is anon?", isanon)
+            if (!isanon) {
                 const { uid } = auth.currentUser
                 console.log("the user is :", uid)
                 console.log("about to save the catageroy")
@@ -48,7 +48,7 @@ export const getSearchResults = async(querydata) => {
                 const userSnapshot = await getDoc(userRef)
                 const userDocRef = userSnapshot.ref
                 await updateDoc(userDocRef, {
-                    wordsSearched: firestore.FieldValue.arrayUnion(categoryDoc)
+                    wordsSearched: arrayUnion(matchedCategory)
                 })
             }
             return data;
