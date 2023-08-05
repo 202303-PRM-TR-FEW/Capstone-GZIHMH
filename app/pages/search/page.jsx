@@ -35,16 +35,18 @@ const Page = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getCourses();
-      setCourses(data.data);
+      const data = await getCourses(isanon);
+      setCourses(data);
+      
     };
     
-    //fetchData();
+    try { fetchData(); }catch{setCourses([])}
   }, []);
+ 
   const handleSearch = async (searchQuery) => {
 
     try {
-      const results = await getSearchResults(searchQuery);
+      const results = await getSearchResults(searchQuery,isanon);
       setSearchResults(results);
       setIsSearched(true);
     } catch (error) {
@@ -111,14 +113,13 @@ const Page = () => {
       <div>
         <ul className="flex flex-wrap md:flex-row my-5">
           {courses
-          .slice(0,6)
-          .map((course) => (
+            .slice(0,6).map((course) => (
             <li key={course.id}>
               <Recommended
-                path={course.url}
-                thumbnail={course.image}
+                path={course.title}
+                thumbnail={course.thumbnail}
                 courseName={course.title}
-                tutorName={getPersonName(course.tutorId)}
+                tutorName={getPersonName(course.title)}
               />
             </li>
           ))}
