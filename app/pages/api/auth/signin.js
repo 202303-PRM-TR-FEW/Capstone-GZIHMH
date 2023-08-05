@@ -2,6 +2,7 @@ import { auth, storage, setDoc, doc, firestore, uploadBytes, ref, getDownloadURL
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { signInWithPopup, GoogleAuthProvider, signInAnonymously, signInWithEmailAndPassword } from 'firebase/auth';
 import { getUserCountry } from '../ip/route';
+
 const saveGoogleUserInfoToFirestore = async() => {
     const { uid, displayName, email, photoURL } = auth.currentUser;
     console.log("something happening")
@@ -24,7 +25,6 @@ const saveGoogleUserInfoToFirestore = async() => {
 export default async function signIn(method, email, password) {
     let result = null,
         error = null;
-    process.env.ISANON = false;
     try {
         if (method == 'firebase') {
             result = await signInWithEmailAndPassword(auth, email, password)
@@ -32,14 +32,12 @@ export default async function signIn(method, email, password) {
         }
         if (method == 'google') {
             console.log("i'm in google sign in auth")
-            process.env.ISANON = false;
             const googleAuth = new GoogleAuthProvider();
             console.log("google auth is ", googleAuth)
             result = await signInWithPopup(auth, googleAuth)
             saveGoogleUserInfoToFirestore();
         }
         if (method == 'anonymous') {
-            process.env.ISANON = true;
             result = signInAnonymously(auth).catch(function(error) {
                 var errorCode = error.code;
                 var errorMessage = error.message;

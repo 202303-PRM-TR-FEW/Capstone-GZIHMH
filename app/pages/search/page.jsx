@@ -9,8 +9,12 @@ import categories_db from '@/utils/categories_db.js';
 import db from '@/utils/db';
 import Star from '@/components/Star';
 import getSearchResults from '../api/getSearchResults';
+import { isAnonymous } from '@/redux/selectors'
+import { useSelector } from 'react-redux';
 
 const Page = () => {
+  const isanon = useSelector(isAnonymous)
+    console.log("redux is anon is: ",isanon)
   const Top = [
     'Marketing Strategy',
     'UX Design',
@@ -34,8 +38,8 @@ const Page = () => {
       const data = await getCourses();
       setCourses(data.data);
     };
-
-    fetchData();
+    
+    //fetchData();
   }, []);
   const handleSearch = async (searchQuery) => {
 

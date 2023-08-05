@@ -7,3 +7,7 @@ export const removeCourse = courseId => ({
     type: 'REMOVE_COURSE',
     payload: courseId
 });
+export const setIsAnonymous = (isAnonymous) => ({
+    type: 'SET_IS_ANONYMOUS',
+    payload: isAnonymous,
+});

@@ -7,6 +7,8 @@ import Image from 'next/image';
 import signIn from '@/app/pages/api/auth/signin';
 import { ReturnIcon } from '@/utils/icons';
 import GetStarted from './GetStarted';
+import { setIsAnonymous } from '@/redux/actions';
+import { useDispatch } from 'react-redux'
 const Login = ({ routers }) => {
   const [showGetStarted, setShowGetstarted] = useState(false);
 
@@ -14,7 +16,9 @@ const Login = ({ routers }) => {
   const [userEmail, setUserEmail] = useState('')
   const [userPassword, setUserPassword] = useState('')
   const [emailError, setEmailError] = useState('');  
-  const [passwordError, setPasswordError]  = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const dispatch = useDispatch()
+  
   const handleSignupClick = () => {
     setShowSignup(true);
   };
@@ -24,6 +28,7 @@ const Login = ({ routers }) => {
   const handleSigninClick = async () => {
 
     const { result, error } = await signIn('firebase',userEmail,userPassword);
+    dispatch(setIsAnonymous(false))
 
         if (error) {
           const errorCode = error.code;
