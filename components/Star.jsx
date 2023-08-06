@@ -3,7 +3,7 @@ import React from 'react'
 const Star = (props) => {
     const { rating,onClick } = props;
     const handleStarClick = (index) => {
-        onClick(index + 1); 
+        onClick(index + 1);  
     };
     return (
 
