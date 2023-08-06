@@ -11,6 +11,7 @@ import Star from '@/components/Star';
 import getSearchResults from '../api/getSearchResults';
 import { isAnonymous } from '@/redux/selectors'
 import { useSelector } from 'react-redux';
+import applyFilters from '../api/applyFilters';
 
 const Page = () => {
   const isanon = useSelector(isAnonymous)
@@ -26,6 +27,10 @@ const Page = () => {
   ];
   const [isSearched, setIsSearched] = useState(false);
   const [searchResults, setSearchResults] = useState('');
+  const [filteredResults,setFilteredResults]= useState(null)
+  const [selectedRating, setSelectedRating] = useState(0);
+  const [selectedLevels, setSelectedLevels] = useState([]);
+  const [filtersChanged, setFiltersChanged] = useState(false);
   const getPersonName = (userId) => {
     const person = db.person.find((p) => p.id === userId);
     return person ? person.name : '';
@@ -42,6 +47,14 @@ const Page = () => {
     
     try { fetchData(); }catch{setCourses([])}
   }, []);
+  useEffect(() => {
+    console.log('Selected levels have changed:', selectedLevels);
+    if (filtersChanged) {
+      console.log('Selected levels and rating have changed:', selectedLevels, selectedRating);
+      handleFilters();
+      setFiltersChanged(false);
+    }
+  }, [filtersChanged]);
  
   const handleSearch = async (searchQuery) => {
 
@@ -52,6 +65,25 @@ const Page = () => {
     } catch (error) {
       console.error('Error fetching search results:', error);
     }
+  };
+  const handleStarClick =async (rating) => {
+    setSelectedRating(rating);
+    setFiltersChanged(true);
+  };
+  const handleLevelChange = async (levelName) => {
+    setSelectedLevels((prevSelectedLevels) => {
+      if (prevSelectedLevels.includes(levelName)) {
+        return prevSelectedLevels.filter((level) => level !== levelName);
+      } else {
+        return [...prevSelectedLevels, levelName];
+      }
+    });
+    setFiltersChanged(true);
+};
+  const handleFilters = async () => {
+    console.log("im in handle filters")
+    const filteredRes = await applyFilters(searchResults, selectedLevels, selectedRating);
+    setFilteredResults(filteredRes)
   };
   return (
     <section className="m-6">
@@ -76,36 +108,59 @@ const Page = () => {
         <div className="flex flex-col mr-44">
           <h2>Rating</h2>
           <div className="mt-3 my-5">
-            <Star key="rating" rating={3} />
+            <Star key="rating"rating={selectedRating} onClick={handleStarClick} />
           </div>
         </div>
         <div className="flex flex-col">
           <h2>Level</h2>
           <div className="flex flex-row mt-3 my-5">
-            <CheckElement key="beginner" id="beginner" name="Beginner" />
-            <CheckElement key="intermediate" id="intermediate" name="Intermediate" />
-            <CheckElement key="professional" id="professional" name="Professional" />
+            <CheckElement key="beginner" id="beginner" name="Beginner" handleLevelChange={handleLevelChange}/>
+            <CheckElement key="intermediate" id="intermediate" name="Intermediate" handleLevelChange={handleLevelChange}/>
+            <CheckElement key="Advanced" id="Advanced" name="Advanced" handleLevelChange={handleLevelChange}/>
           </div>
         </div>
       </div>
       {isSearched && (
         <>
-          <hr className="my-2 mt-8 hidden md:flex border-gray-300 w-4/5" />
-          <div>
-            <h2>Search Results</h2>
-            <ul className="flex flex-wrap md:flex-row my-5">
-              {searchResults.map((result, index) => (
-                <li key={index}>
-                  <Recommended
-                    path={result.title}
-                    thumbnail={result.thumbnail}
-                    courseName={result.title}
-                    tutorName={getPersonName(result.tutorId)}
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
+          {filteredResults ? (
+            <>
+              <hr className="my-2 mt-8 hidden md:flex border-gray-300 w-4/5" />
+              <div>
+                <h2>Search Results</h2>
+                <ul className="flex flex-wrap md:flex-row my-5">
+                  {filteredResults.map((result, index) => (
+                    <li key={index}>
+                      <Recommended
+                        path={result.title}
+                        thumbnail={result.thumbnail}
+                        courseName={result.title}
+                        tutorName={getPersonName(result.tutorId)}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </>
+          ) : (
+            <>
+              <hr className="my-2 mt-8 hidden md:flex border-gray-300 w-4/5" />
+              <div>
+                <h2>Search Results</h2>
+                <ul className="flex flex-wrap md:flex-row my-5">
+                  {searchResults.map((result, index) => (
+                    <li key={index}>
+                      <Recommended
+                        path={result.title}
+                        thumbnail={result.thumbnail}
+                        courseName={result.title}
+                        tutorName={getPersonName(result.tutorId)}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </>
+          )}
         </>
       )}
       <hr className="my-2 mt-8 hidden md:flex border-gray-300 w-4/5" />

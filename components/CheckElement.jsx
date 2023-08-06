@@ -5,8 +5,9 @@ import { useState } from 'react';
 
 const CheckElement = (props) => {
     const [isChecked, setIsChecked] = useState(false)
-    const handleCheckboxChange = (id) => {
+    const handleCheckboxChange = () => {
         setIsChecked(!isChecked)
+        props.handleLevelChange(props.name);
     };
     return (
 

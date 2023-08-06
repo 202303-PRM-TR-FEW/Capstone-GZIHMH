@@ -15,13 +15,18 @@ export async function getCourses(isanon) {
             const userSnap = await getDoc(userDocRef)
 
             const cats = userSnap.data().wordsSearched
-            await Promise.all(
-                cats.map(async string => {
-                    const res = await getSearchResults(string)
-                    result.push(...res)
-                })
-            )
-            return result
+            if (cats) {
+                await Promise.all(
+                    cats.map(async string => {
+                        const res = await getSearchResults(string)
+                        result.push(...res)
+                    })
+                )
+                console.log("result of recommended is : ", result)
+
+                return result
+
+            }
         }
         const courses = coursesSnapshot.docs.map((doc) => doc.data());
         console.log(courses)
