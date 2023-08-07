@@ -2,19 +2,24 @@ import React from 'react'
 
 const LastYearComparison = ({title, title2, progressBar, percentage,number }) => {
   return (
-    <div>
+
+    <div className=''>
       
 
 
-    <div className=' flex flex-row  '>
+    <div className=' flex flex-row items-center  justify-center p-3 '>
     
     
     
       
-    
-    <h2 className='text-gray-600  text-sm my-3 '>
+    <div className=' flex item-start  '>
+
+    <h2 className='text-gray-500 text-sm w-20 '>
          {title} <br/>  {title2}
       </h2>
+
+    </div>
+    
     
       <div className={`${progressBar}`}>
       <div className="w-80 bg-gray-200 rounded-full dark:bg-gray-700 mr-10 ml-3 my-5">

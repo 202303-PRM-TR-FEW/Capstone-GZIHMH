@@ -9,7 +9,7 @@ const Activities = () => {
         <h5 className="text-xl font-bold leading-none text-gray-500 dark:text-white"> Monday </h5>
       </div>  
 
-      <div className="flow-root">   
+      <div className="flow-root ">   
         <ul role="list">  
           {MyActivityData.map((item, index) => (
             <React.Fragment key={index}>
@@ -45,9 +45,9 @@ const Activities = () => {
               </li>
 
               {index === 2 && (
-                <li className="py-3 sm:py-1">
+                 <li className="py-3 sm:py-1">
                   <hr className="border-t-2 border-gray mt-2 mb-4" />
-                </li>
+                 </li>
               )}
             </React.Fragment>
           ))}

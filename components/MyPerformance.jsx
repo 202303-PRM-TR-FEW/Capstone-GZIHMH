@@ -13,7 +13,7 @@ const MyPerformance = ({ imageSrc, title, count, backgroundColor, text }) => {
           <div dangerouslySetInnerHTML={{ __html: imageSrc }} />
         </div>
         
-        <h2 className="text-sm font-bold mb-2 text-gray-900 text-center ">
+        <h2 className="text-sm font-bold mb-2 text-gray-500 text-center ">
           {title}
         </h2>
 

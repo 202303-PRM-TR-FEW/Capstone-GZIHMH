@@ -1,6 +1,9 @@
+
+
 import React from 'react'
 
 const HomeCategories = ({box, title, imageSrc}) => {
+
     return (
         <div>
 
