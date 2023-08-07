@@ -2,16 +2,16 @@
 import React, { useState } from "react";
 import ProgressCourses from "@/components/ProgressCourses";
 import CourseVideo from "@/components/CourseVideo";
-import coursesdb from "@/utils/coursesdb";
+import {initialLessons} from "@/utils/coursesdb";
 
 import {firestore} from "@/utils/firebase";
 
 const CoursesDetails = () => {
   const [showVideos, setShowVideo] = useState(true);
 
-  console.log(data);
-  const info = coursesdb.initialLessons;
-
+  // console.log(data);
+  const info = initialLessons;
+  console.log("info is " ,info)
   const [active, setActive] = useState(0);
 
   const revealVideos = () => {
@@ -30,7 +30,7 @@ const CoursesDetails = () => {
         revealVideos={revealVideos}
         info={info}
       />
-      <CourseVideo active={active} />
+      <CourseVideo info = {info[0]} active={active} />
     </div>
   );
 };
