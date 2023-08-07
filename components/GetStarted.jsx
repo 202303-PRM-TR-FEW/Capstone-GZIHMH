@@ -7,6 +7,12 @@ import { doc,auth, firestore, setDoc } from '@/utils/firebase';
 import { signInWithPopup, GoogleAuthProvider,signInAnonymously ,signOut,deleteUser ,onAuthStateChanged } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getUserCountry } from '@/app/pages/api/ip/route';
+import useTranslation from 'next-translate/useTranslation'
+
+
+const { t ,lang  } = useTranslation();
+
+
 const GetStarted = ({routers}) => {
   const [user, setUser] = useAuthState(auth);
   useEffect(() => { },[user])
@@ -14,7 +20,7 @@ const GetStarted = ({routers}) => {
 
   const [showLogin, setShowLogin] = useState(false);
   const googleAuth = new GoogleAuthProvider();
-  
+
   const handleLoginClick = () => {
     setShowLogin(true);
   };
@@ -33,15 +39,15 @@ const GetStarted = ({routers}) => {
   //   window.onbeforeunload = async (event) => {
   //     if (event.type === 'unload') {
   //         const user = auth.currentUser
-  
+
   //         signOut(auth);
   //         await deleteUser(user);
   //         localStorage.removeItem('uid');
-  
+
   //       }
   //     }
   // }
-  
+
   const handleGoogleLoginClick = async () => {
     isAnonymous = false;
 
@@ -61,7 +67,7 @@ const GetStarted = ({routers}) => {
         email: email,
         profilePicture: photoURL,
         country: res,
-        
+
       }, { merge: true });
       // console.log(uid,displayName,email,photoURL,country)
     } catch (error) {
@@ -73,9 +79,9 @@ const GetStarted = ({routers}) => {
   }
 
   return (
-    
+
     <div>
-      
+
 
 
       <div className='flex justify-start'>
@@ -100,7 +106,9 @@ const GetStarted = ({routers}) => {
         <div className='w-full'>
 
           <div className='text-gray-800 font-bold py-1 text-3xl '>
-            <p> Discover passion </p>
+            <p>
+              {t("common:discoverPassion")}
+            </p>
           </div>
 
           <div className=' text-gray-600 py-5 '>
@@ -114,7 +122,7 @@ const GetStarted = ({routers}) => {
             </div>
             <div className='w-full' >
             <button className="out_btn  m-2  w-full py-1" onClick={handleGoogleLoginClick}>
-            
+
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -143,15 +151,15 @@ const GetStarted = ({routers}) => {
               </svg>
               Login with google
             </button>
-              
+
             </div>
             <div className='w-full'>
             <Link href = '/pages/home'>
                 <button className=" blue_btn w-full m-2 py-1" onClick={handleContinueAsGuestClick} > Continue as a guest </button>
               </Link>
-          
+
             </div>
-            
+
           </div>
         </div>
 
