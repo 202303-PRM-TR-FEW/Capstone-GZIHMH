@@ -60,13 +60,13 @@ const page = () => {
   
 
 
-<div className="flex flex-col sm:flex-row items-start m-5 justify-between gap-20 p-10 space-y-4 sm:space-y-0 sm:space-x-4  ">
+<div className="flex flex-col sm:flex-row  items-center  ">
 
 
 
 
 {/* Left Column */}
-<div className="flex flex-col p-1 bg-gray-100 rounded-lg">
+<div className="flex flex-col pr-20 pl-20 bg-gray-100 rounded-lg">
 
   
 
@@ -79,7 +79,7 @@ const page = () => {
 </div>
 
 
-<div className="w-full  p-1 bg-white border border-gray-200 rounded-3xl shadow sm:p-8 ">
+<div className="w-full   bg-white border border-gray-200 rounded-3xl shadow p-8 ">
    <div className=" text-md  text-gray-400 mb-1">Time Spent</div>
    <div className="font-semibold text-black text-xl mb-4 mt-1">31.8 hours</div>
      
@@ -182,7 +182,7 @@ const page = () => {
   textcolor="text-lime-500"
   imageSrc={Logo2}
   background="bg-white" 
-  box="bg-lime-50"
+  box="bg-lime-100"
 
   />
 
@@ -250,7 +250,7 @@ const page = () => {
 
 
 {/* Right Column */}
-<div className="flex flex-col  p-4 space-y-4 bg-gray-100 rounded-lg"> 
+<div className="flex flex-col  pl-20 space-y-4 bg-gray-100 rounded-lg"> 
 
 
 
@@ -272,7 +272,8 @@ const page = () => {
 
 
 
-<div className=  " bg-white w-full  rounded-3xl   m-2    shadow-md p-10 flex flex-col justify-center items-center ">
+<div className=  " bg-white w-full  rounded-3xl   m-2    shadow-md  flex flex-col  items-center ">
+
 
 
 
@@ -280,10 +281,11 @@ const page = () => {
 
 title="STUDY"
 title2="TIME"
-percentage={90}
-number="90%"
+percentage={60}
+number="60%"
 
 />
+
 
 
 <LastYearComparison 
@@ -295,13 +297,15 @@ number="30%"
 
 />
 
+    
+
 
 <LastYearComparison 
 
 title="FINISHED"
 title2="COURSES"
-percentage={70}
-number="70%"
+percentage={80}
+number="80%"
 
 />
 
