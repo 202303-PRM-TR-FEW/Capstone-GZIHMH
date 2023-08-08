@@ -3,7 +3,7 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import reducer from './reducer';
 import isanonReducer from './isanonReducer';
-import selectCourseReducer from './selectedCourseReducer';
+import selectCourseReducer from './selectCourseReducer';
 const persistConfig = {
     key: 'root',
     storage,
