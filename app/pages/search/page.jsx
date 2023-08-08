@@ -31,10 +31,7 @@ const Page = () => {
   const [selectedRating, setSelectedRating] = useState(0);
   const [selectedLevels, setSelectedLevels] = useState([]);
   const [filtersChanged, setFiltersChanged] = useState(false);
-  const getPersonName = (userId) => {
-    const person = db.person.find((p) => p.id === userId);
-    return person ? person.name : '';
-  };
+  
 
   const [courses, setCourses] = useState([]);
 
@@ -174,7 +171,7 @@ const Page = () => {
                 path={course.title}
                 thumbnail={course.thumbnail}
                 courseName={course.title}
-                tutorName={getPersonName(course.title)}
+                tutorName={course.tutor.name}
               />
             </li>
           ))}
