@@ -1,6 +1,6 @@
 const initialState = {
 
-        selectedCourse: [],
+        selectedCours: [],
         loading: false
     }
     //adding saved course and remove course action to the reducer//
@@ -9,19 +9,16 @@ export default function selectCourseReducer(state = initialState, action) {
         case 'SELECT_COURSE':
             {
                 return {
-                    ...state,
-                    selectedCourse: [
-                        ...state.selectedCourse,
+                    selectedCours: [
+                        ...state.selectedCours,
                         action.payload
                     ]
                 };
             }
         case 'CLEAR_COURSE':
-            {
-                return {
-                    ...state,
-                    selectedCourse: null
-                };
+            return {
+
+                selectedCours: null
             }
 
         default:

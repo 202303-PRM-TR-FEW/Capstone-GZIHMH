@@ -12,7 +12,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
     courses: persistReducer(persistConfig, reducer),
     isAnonymous: persistReducer(persistConfig, isanonReducer),
-    selectedCourse: persistReducer(persistConfig, selectCourseReducer)
+    // selectedCourse: persistReducer(persistConfig, selectCourseReducer)
 });
 
 export default rootReducer;

@@ -7,8 +7,9 @@ import Link from "next/link"
 import getCourses from '../api/getCourses';
 import { isAnonymous } from '@/redux/selectors'
 import { useSelector } from 'react-redux';
-import Link from 'next/link';
-
+import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/navigation';
+import { query } from 'firebase/firestore';
 const Logo1 = `
 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-chart-histogram"
                          width="28" height="28" viewBox="0 0 24 24" stroke="#2E8DFF" fill="none">
@@ -89,7 +90,18 @@ width="28" height="28" viewBox="0 0 24 24" stroke="#2F8DFF" fill="none">
 const Page = () => {
 
     const [courses, setCourses] = useState([]);
-    const isanon = useSelector(isAnonymous)
+    const [course, setCourse] = useState([]);
+    const isanon = useSelector(isAnonymous);
+    const router = useRouter()
+    const handleCourseClick = (course) => {
+
+        setCourse(course)
+        router.push(`../pages/course/${course.id}`
+           
+        )
+
+       
+      };
     useEffect(() => {
     const fetchData = async () => {
       const data = await getCourses(isanon);
@@ -98,7 +110,14 @@ const Page = () => {
     };
     
     try { fetchData(); }catch{setCourses([])}
-  }, []);
+    }, []);
+    // useEffect(() => {
+    //     dispatch(clearCourse)
+    //     dispatch(selectCourse(course))
+
+    //     // console.log("this is what's happening after use effect  ", c)
+        
+    //   }, []);
     return (
         <section className='w-full flex flex-col md:pr-12'>
             <div className='w-full flex flex-col md:p-4'> 
@@ -108,8 +127,9 @@ const Page = () => {
                     {courses
                         .slice(0, 4).map((course) => (
                             <div className='w-full p-2 '>
-                                <Link  key={course.id} href={`/course/{course.id}`}>
-                            <li key={course.id}>
+                                {/* <Link  key={course.id} href={{pathname:`../pages/courses/${course.id}`, query:course.id   }}> */}
+                                
+                                <li key={course.id} onClick={() => handleCourseClick(course)}>
                                     <FeaturedCourses
                                         courseId={course.id}
                                     imageSrc={course.thumbnail}
@@ -121,9 +141,11 @@ const Page = () => {
                                     user_id={course.tutor} // Provide the user ID here
                                     userProfileImage={course.tutor.profilePicture} 
                                     username = {course.tutor.name}
-                                />
-                                </li>
-                                </Link>
+                                        />
+                                        
+                                    </li>
+                                {/* </Link> */}
+                                    
                             </div>
                                 
                     ))}
@@ -193,7 +215,7 @@ const Page = () => {
                 </div>
 
             </div> */}
-            {/* <div className='w-full flex flex-col'>
+            <div className='w-full flex flex-col'>
                 <h2 className="p-2 font-bold">My Learning</h2>
                 <div className="flex flex-col mb-4 p-2">
                 <MyLearning />
@@ -208,7 +230,7 @@ const Page = () => {
                     </div>
 
                 </div>
-            </div> */}
+            </div>
             
 
            

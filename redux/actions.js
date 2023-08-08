@@ -12,7 +12,11 @@ export const setIsAnonymous = (isAnonymous) => ({
     payload: isAnonymous,
 });
 
-export const selectCourse = course => ({
-    type: 'SELECT_COURSE',
-    payload: course
-})
+// export const selectCourse = course => ({
+//     type: 'SELECT_COURSE',
+//     payload: course
+// })
+
+// export const clearCourse = () => ({
+//     type: 'CLEAR_COURSE'
+// })

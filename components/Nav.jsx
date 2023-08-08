@@ -23,7 +23,7 @@ const Nav = ({ router }) => {
       });
       
     }
-    console.log("this is isanon: ",process.env.ISANON)
+    console.log("this is isanon: ",isanon)
     // const isAnon = async () => {
     //     console.log("this is isAnon function")
     //     console.log("this is uid: ",uid)
@@ -81,7 +81,7 @@ const Nav = ({ router }) => {
                                 <span className="mx-2 text-sm font-medium">Profile</span>
                             </a>
                             {
-                                !isanon? (
+                                isanon==false? (
                                     <div className='flex flex-col items-center px-3 py-2 justify-center m-auto text-gray-400 transition-colors duration-300 transform rounded-lg  hover:bg-gray-100  hover:text-primary'>
                                         
                                         <button className="flex flex-col text-sm font-medium items-center justify-center m-auto text-gray-400 hover:bg-gray-100  hover:text-primary" onClick={handleSignoutClick}>

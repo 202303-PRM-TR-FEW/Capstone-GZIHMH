@@ -31,7 +31,7 @@ export async function getCourses(isanon) {
             coursesSnapshot.docs.map(async(doc) => {
                 const courseData = doc.data();
                 const tutorData = await getUser(courseData.tutorId.id);
-                return {...courseData, tutor: tutorData };
+                return {...courseData, tutor: tutorData, id: doc.id };
             })
         );
         console.log("courses data are: ", coursesData)
