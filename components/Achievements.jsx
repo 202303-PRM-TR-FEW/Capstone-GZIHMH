@@ -1,11 +1,22 @@
 
 import { useEffect, useState } from 'react';
-import { firestore } from '../utils/firebase';
+import {auth,firestore,getDocs,getDoc,collection,where,query,doc} from '../utils/firebase';
 
 const Achievements = ({ title ,desc,  imm, total, progress, bcolor}) => {
   const [achievements, setAchievements] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Default state is not logged in
 
-    useEffect(() => {
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      // Check if the user is logged in or not
+      setIsLoggedIn(!!user); // !!user converts user to a boolean
+    });
+
+    return () => unsubscribe(); // Clean up the listener when the component unmounts
+  }, []);
+
+  useEffect(() => {
+    if (isLoggedIn) {
       const fetchAchievements = async () => {
         try {
           const achievementsRef = firestore.collection('ACHIEVEMENTS');
@@ -20,9 +31,15 @@ const Achievements = ({ title ,desc,  imm, total, progress, bcolor}) => {
           console.error('Error fetching achievements:', error);
         }
       };
-  
+
       fetchAchievements();
-    }, []);
+    }
+  }, [isLoggedIn]); // Fetch achievements when the authentication status changes
+
+  if (!isLoggedIn) {
+    return null; // If user is not logged in, do not render anything
+  }
+
   return (
     <div>
     {achievements.map(achievement => (
