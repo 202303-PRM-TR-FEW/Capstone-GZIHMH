@@ -6,8 +6,8 @@ const getPersonName = (user_id) => {
   return person ? person.name : '';
 };
 
-const UserProfile = ({ user_id, image }) => {
-  const userName = getPersonName(user_id);
+const UserProfile = ({ user_id, userName, image }) => {
+  // const userName = getPersonName(user_id);
 
   return (
     <div className='user-container shadow-lg min-w-[150px] w-1/4 mb-2 rounded-full flex items-center bg-white h-[35px]'>

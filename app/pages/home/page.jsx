@@ -1,10 +1,12 @@
 'use client'
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import FeaturedCourses from '@/components/FeaturedCourses';
 import HomeCategories from "@/components/HomeCategories"
 import MyLearning from "@/components/MyLearning"
 import Link from "next/link"
-
+import getCourses from '../api/getCourses';
+import { isAnonymous } from '@/redux/selectors'
+import { useSelector } from 'react-redux';
 
 
 const Logo1 = `
@@ -20,10 +22,6 @@ const Logo1 = `
                     </svg>
 `;
 
-
-
-
-
 const Logo2 = `
 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-users-group"
 width="28" height="28" viewBox="0 0 24 24" stroke="#2F8DFF" fill="none">
@@ -37,9 +35,6 @@ width="28" height="28" viewBox="0 0 24 24" stroke="#2F8DFF" fill="none">
 </svg>
 `;
 
-
-
-
 const Logo3 = `
 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-scribble"
 width="28" height="28" viewBox="0 0 24 24" stroke="#2F8DFF" fill="none">
@@ -47,8 +42,6 @@ width="28" height="28" viewBox="0 0 24 24" stroke="#2F8DFF" fill="none">
 <path d="M3 15c2 3 4 4 7 4s7 -3 7 -7s-3 -7 -6 -7s-5 1.5 -5 4s2 5 6 5s8.408 -2.453 10 -5"/>
 </svg>
 `;
-
-
 
 const Logo4 = `
 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-database"
@@ -59,7 +52,6 @@ const Logo4 = `
                         <path d="M4 12v6a8 3 0 0 0 16 0v-6"/>
                     </svg>
 `;
-
 
 const Logo5 = `
 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-wand" width="28"
@@ -73,7 +65,6 @@ height="28" viewBox="0 0 24 24" stroke="#2F8DFF" fill="none">
 `;
 
 
-
 const Logo6 = `
 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-bulb" width="28"
 height="28" viewBox="0 0 24 24" stroke="#2F8DFF" fill="none">
@@ -83,7 +74,6 @@ height="28" viewBox="0 0 24 24" stroke="#2F8DFF" fill="none">
 <path d="M9.7 17l4.6 0"/>
 </svg>
 `;
-
 
 
 const Logo7 = `
@@ -96,61 +86,45 @@ width="28" height="28" viewBox="0 0 24 24" stroke="#2F8DFF" fill="none">
 `;
 
 
-
-
-
 const Page = () => {
+
+    const [courses, setCourses] = useState([]);
+    const isanon = useSelector(isAnonymous)
+    useEffect(() => {
+    const fetchData = async () => {
+      const data = await getCourses(isanon);
+      setCourses(data);
+      
+    };
+    
+    try { fetchData(); }catch{setCourses([])}
+  }, []);
     return (
         <section className='w-full flex flex-col md:pr-12'>
             <div className='w-full flex flex-col md:p-4'> 
                 <h1 className="pt-2 p-2 font-bold">Featured Courses</h1>
                 <div className="flex flex-col flex-wrap md:flex-nowrap md:flex-row  ">
-                    <div className='w-full p-2 '>
-                        <FeaturedCourses
-                            imageSrc="/assets/images/background1.jpeg"
-                            alt="Featured Courses Image"
-                            title="Power BI"
-                            duration="1h 53m"
-                            rating="4.9/5"
-                            price="$24"
-                            user_id={1} // Provide the user ID here
-                            userProfileImage="/assets/images/profilePic1.jpeg" 
-                        />
-                    </div>
-                    <div className='w-full p-2'>
-                        <FeaturedCourses
-                            imageSrc="/assets/images/background1.jpeg"
-                            alt="Featured Courses Image"
-                            title="Power BI"
-                            duration="1h 53m"
-                            rating="4.9/5"
-                            price="$24"
-                            user_id={1} // Provide the user ID here
-                            userProfileImage="/assets/images/profilePic1.jpeg" 
-                        />
-                    </div><div className='w-full p-2'>
-                        <FeaturedCourses
-                            imageSrc="/assets/images/background1.jpeg"
-                            alt="Featured Courses Image"
-                            title="Power BI"
-                            duration="1h 53m"
-                            rating="4.9/5"
-                            price="$24"
-                            user_id={1} // Provide the user ID here
-                            userProfileImage="/assets/images/profilePic1.jpeg" 
-                        />
-                    </div><div className='w-full p-2'>
-                        <FeaturedCourses
-                            imageSrc="/assets/images/background1.jpeg"
-                            alt="Featured Courses Image"
-                            title="Power BI"
-                            duration="1h 53m"
-                            rating="4.9/5"
-                            price="$24"
-                            user_id={1} // Provide the user ID here
-                            userProfileImage="/assets/images/profilePic1.jpeg" 
-                        />
-                    </div>
+                    
+                    {courses
+                        .slice(0, 4).map((course) => (
+                            <div className='w-full p-2 '>
+                            <li key={course.id}>
+                                <FeaturedCourses
+                                    imageSrc={course.thumbnail}
+                                    alt={course.title}
+                                    title={course.title}
+                                    duration={course.totalDuration}
+                                    rating={course.rate}
+                                    price={course.price}
+                                    user_id={course.tutor} // Provide the user ID here
+                                    userProfileImage={course.tutor.profilePicture} 
+                                    username = {course.tutor.name}
+                                />
+                            </li>
+                            </div>
+                                
+                    ))}
+                    
                
                     
             </div>

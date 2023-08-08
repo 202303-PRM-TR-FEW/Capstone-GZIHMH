@@ -1,8 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
 import UserProfile from "@/components/UserProfile"
-import { Clock,Star } from '@/utils/icons';
-const FeaturedCourses = ({ imageSrc, alt, title, duration, rating, price, user_id, userProfileImage }) => {
+import { Clock, Star } from '@/utils/icons';
+
+const FeaturedCourses = ({ imageSrc, alt, title, duration, rating, price, user_id,username, userProfileImage }) => {
   return (
    
       <div className=" bg-white  shadow-md rounded-3xl  cursor-pointer relative p-2">
@@ -17,7 +18,7 @@ const FeaturedCourses = ({ imageSrc, alt, title, duration, rating, price, user_i
           {/* UserProfile component */}
           <div className="user-profile-container  absolute top-24 left-0 ml-3">
             {/* Pass the user_id and userProfileImage props to UserProfile */}
-            <UserProfile user_id={user_id} image={userProfileImage} />
+            <UserProfile user_id={user_id} userName={username} image={userProfileImage} />
           </div>
           <p className="absolute right-2 top-3 bg-white rounded-xl p-2 cursor-pointer opacity-50 group">
             <svg
@@ -33,7 +34,7 @@ const FeaturedCourses = ({ imageSrc, alt, title, duration, rating, price, user_i
           </p>
         </div>
         <div className="pt-8 pl-2 mb-2">
-          <p className="text-lg font-semibold text-gray-900 mb-0">{title}</p>
+          <p className=" whitespace-nowrap overflow-hidden max-w-sm truncate  font-semibold text-gray-900 mb-0">{title}</p>
         <div className="flex items-center justify-between">
           <div className='flex flex-row '>
               <p className="flex items-center text-gray-900">
