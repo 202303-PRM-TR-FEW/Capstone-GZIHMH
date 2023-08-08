@@ -1,36 +1,29 @@
 const initialState = {
 
-        savedCourses: [],
-        isAnonymous: true,
+        selectedCourse: [],
         loading: false
     }
     //adding saved course and remove course action to the reducer//
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case 'SAVE_COURSE':
+        case 'SELECT_COURSE':
             {
                 return {
                     ...state,
-                    savedCourses: [
-                        ...state.savedCourses,
+                    selectedCourse: [
+                        ...state.selectedCourse,
                         action.payload
                     ]
                 };
             }
-        case 'REMOVE_COURSE':
+        case 'CLEAR_COURSE':
             {
                 return {
                     ...state,
-                    savedCourses: state.savedCourses.filter(course => course.id !== action.payload)
+                    selectedCourse: null
                 };
             }
-        case 'SET_IS_ANONYMOUS':
-            {
-                return {
-                    ...state,
-                    isAnonymous: action.payload,
-                };
-            }
+
         default:
             return state;
     }

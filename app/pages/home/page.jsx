@@ -7,7 +7,7 @@ import Link from "next/link"
 import getCourses from '../api/getCourses';
 import { isAnonymous } from '@/redux/selectors'
 import { useSelector } from 'react-redux';
-
+import Link from 'next/link';
 
 const Logo1 = `
 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-chart-histogram"
@@ -108,8 +108,10 @@ const Page = () => {
                     {courses
                         .slice(0, 4).map((course) => (
                             <div className='w-full p-2 '>
+                                <Link  key={course.id} href={`/course/{course.id}`}>
                             <li key={course.id}>
-                                <FeaturedCourses
+                                    <FeaturedCourses
+                                        courseId={course.id}
                                     imageSrc={course.thumbnail}
                                     alt={course.title}
                                     title={course.title}
@@ -120,7 +122,8 @@ const Page = () => {
                                     userProfileImage={course.tutor.profilePicture} 
                                     username = {course.tutor.name}
                                 />
-                            </li>
+                                </li>
+                                </Link>
                             </div>
                                 
                     ))}

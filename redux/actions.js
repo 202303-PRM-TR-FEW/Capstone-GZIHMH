@@ -11,3 +11,8 @@ export const setIsAnonymous = (isAnonymous) => ({
     type: 'SET_IS_ANONYMOUS',
     payload: isAnonymous,
 });
+
+export const selectCourse = course => ({
+    type: 'SELECT_COURSE',
+    payload: course
+})

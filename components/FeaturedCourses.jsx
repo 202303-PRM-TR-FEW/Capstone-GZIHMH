@@ -3,7 +3,7 @@ import Image from 'next/image';
 import UserProfile from "@/components/UserProfile"
 import { Clock, Star } from '@/utils/icons';
 
-const FeaturedCourses = ({ imageSrc, alt, title, duration, rating, price, user_id,username, userProfileImage }) => {
+const FeaturedCourses = ({ courseId, imageSrc, alt, title, duration, rating, price, user_id,username, userProfileImage }) => {
   return (
    
       <div className=" bg-white  shadow-md rounded-3xl  cursor-pointer relative p-2">
@@ -34,7 +34,7 @@ const FeaturedCourses = ({ imageSrc, alt, title, duration, rating, price, user_i
           </p>
         </div>
         <div className="pt-8 pl-2 mb-2">
-          <p className=" whitespace-nowrap overflow-hidden max-w-sm truncate  font-semibold text-gray-900 mb-0">{title}</p>
+          <p className=" whitespace-nowrap overflow-hidden max-w-xs truncate overflow-ellipsis font-semibold text-gray-900 mb-0">{title}</p>
         <div className="flex items-center justify-between">
           <div className='flex flex-row '>
               <p className="flex items-center text-gray-900">

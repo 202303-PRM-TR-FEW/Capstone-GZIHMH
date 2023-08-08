@@ -1,6 +1,4 @@
-export default function course({ query }) {
-    const id = query
-}
+import { useRouter } from 'next/router';
 export async function getServerSideProps({ query }) {
     const { id } = query
     
