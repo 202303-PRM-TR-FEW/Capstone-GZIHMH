@@ -101,127 +101,140 @@ width="28" height="28" viewBox="0 0 24 24" stroke="#2F8DFF" fill="none">
 
 const Page = () => {
     return (
-        <section>
-            <div>
-                <h2 className="pt-4 pl-2 font-bold">Featured Courses</h2>
-                <div className="pl-2 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                <FeaturedCourses
-        imageSrc="/assets/images/background1.jpeg"
-        alt="Featured Courses Image"
-        title="Power BI"
-        duration="1h 53m"
-        rating="4.9/5"
-        price="$24"
-        user_id={1} // Provide the user ID here
-        userProfileImage="/assets/images/profilePic1.jpeg" 
-      />
-            <FeaturedCourses
-        imageSrc="/assets/images/background2.jpeg"
-        alt="Agile Project Management"
-        title="Agile Project Management"
-        duration="59m"
-        rating="4.3/5"
-        price="$18"
-        user_id={2} // Provide the user ID here
-        userProfileImage="/assets/images/profilePic2.jpeg" 
-      />
-     <FeaturedCourses
-        imageSrc="/assets/images/background3.jpeg"
-        alt="Pivot Tables"
-        title="Pivot Tables"
-        duration="1h 23m"
-        rating="4.6/5"
-        price="$24"
-        user_id={3} // Provide the user ID here
-        userProfileImage="/assets/images/profilePic3.jpeg" 
-      />
-       <FeaturedCourses
-        imageSrc="/assets/images/background4.jpeg"
-        alt="Power BI"
-        title="Power BI"
-        duration="1h 17m"
-        rating="4.1/5"
-        price="$24"
-        user_id={4} // Provide the user ID here
-        userProfileImage="/assets/images/profilePic4.jpg" 
-      />
+        <section className='w-full flex flex-col md:pr-12'>
+            <div className='w-full flex flex-col md:p-4'> 
+                <h1 className="pt-2 p-2 font-bold">Featured Courses</h1>
+                <div className="flex flex-col flex-wrap md:flex-nowrap md:flex-row  ">
+                    <div className='w-full p-2 '>
+                        <FeaturedCourses
+                            imageSrc="/assets/images/background1.jpeg"
+                            alt="Featured Courses Image"
+                            title="Power BI"
+                            duration="1h 53m"
+                            rating="4.9/5"
+                            price="$24"
+                            user_id={1} // Provide the user ID here
+                            userProfileImage="/assets/images/profilePic1.jpeg" 
+                        />
+                    </div>
+                    <div className='w-full p-2'>
+                        <FeaturedCourses
+                            imageSrc="/assets/images/background1.jpeg"
+                            alt="Featured Courses Image"
+                            title="Power BI"
+                            duration="1h 53m"
+                            rating="4.9/5"
+                            price="$24"
+                            user_id={1} // Provide the user ID here
+                            userProfileImage="/assets/images/profilePic1.jpeg" 
+                        />
+                    </div><div className='w-full p-2'>
+                        <FeaturedCourses
+                            imageSrc="/assets/images/background1.jpeg"
+                            alt="Featured Courses Image"
+                            title="Power BI"
+                            duration="1h 53m"
+                            rating="4.9/5"
+                            price="$24"
+                            user_id={1} // Provide the user ID here
+                            userProfileImage="/assets/images/profilePic1.jpeg" 
+                        />
+                    </div><div className='w-full p-2'>
+                        <FeaturedCourses
+                            imageSrc="/assets/images/background1.jpeg"
+                            alt="Featured Courses Image"
+                            title="Power BI"
+                            duration="1h 53m"
+                            rating="4.9/5"
+                            price="$24"
+                            user_id={1} // Provide the user ID here
+                            userProfileImage="/assets/images/profilePic1.jpeg" 
+                        />
+                    </div>
+               
+                    
             </div>
             </div>
+            {/* <div className='w-full flex flex-col'>
             <h2 className="pl-2 font-bold">Categories</h2>
             <div className="flex flex-row ">
-    <HomeCategories 
-    
-    title="Sales"
-    imageSrc={Logo1}
-    
-    />
+                <HomeCategories 
+                
+                title="Sales"
+                imageSrc={Logo1}
+                
+                />
 
-<HomeCategories 
-    
-    title="HR"
-    imageSrc={Logo2}
-    
-    />
+                <HomeCategories 
+                    
+                    title="HR"
+                    imageSrc={Logo2}
+                    
+                    />
 
-<HomeCategories 
-    
-    title="drawing"
-    imageSrc={Logo3}
-    
-    />
+                <HomeCategories 
+                    
+                    title="drawing"
+                    imageSrc={Logo3}
+                    
+                    />
 
-<HomeCategories 
-    
-    title="BigData"
-    imageSrc={Logo4}
-    
+                <HomeCategories 
+                    
+                    title="BigData"
+                    imageSrc={Logo4}
+                    
 
-    />
-
-
-<HomeCategories 
-    
-    title="Design"
-    imageSrc={Logo5}
-    
-    />
+                    />
 
 
-<HomeCategories 
-    
-    title="Marketing"
-    imageSrc={Logo6}
-    
-    />
+                <HomeCategories 
+                    
+                    title="Design"
+                    imageSrc={Logo5}
+                    
+                    />
 
 
-<HomeCategories 
-    
-    title="Astronomy"
-    imageSrc={Logo7}
-    
-    />
+                <HomeCategories 
+                    
+                    title="Marketing"
+                    imageSrc={Logo6}
+                    
+                    />
+
+
+                <HomeCategories 
+                    
+                    title="Astronomy"
+                    imageSrc={Logo7}
+                    
+                    />
 
 
 
-</div>
-            <div>
-                <h2 className="p-2 font-bold">My Learning</h2>
-            </div>
-            <div className="flex flex-col mb-4 p-2">
-                <MyLearning />
-            </div>
-
-            <div className="flex justify-center mx-auto mt-8 p-2">
-                <div className='flex justify-center mx-auto p-2'>
-                    <Link href='/pages/courses' passHref>
-                        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-16 rounded-xl'>
-                            SEE ALL
-                        </button>
-                    </Link>
                 </div>
 
-            </div>
+            </div> */}
+            {/* <div className='w-full flex flex-col'>
+                <h2 className="p-2 font-bold">My Learning</h2>
+                <div className="flex flex-col mb-4 p-2">
+                <MyLearning />
+                </div>
+                <div className="flex justify-center mx-auto mt-8 p-2">
+                    <div className='flex justify-center mx-auto p-2'>
+                        <Link href='/pages/courses' passHref>
+                            <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-16 rounded-xl'>
+                                SEE ALL
+                            </button>
+                        </Link>
+                    </div>
+
+                </div>
+            </div> */}
+            
+
+           
         </section>
 
 
