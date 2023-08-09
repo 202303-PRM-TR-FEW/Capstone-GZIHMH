@@ -1,6 +1,6 @@
 
 
-import {firestore, collection, getDocs, docs} from ‘@/utils/firebase’
+import {firestore, collection, getDocs, docs} from '@/utils/firebase'
 
 
 
@@ -12,7 +12,7 @@ Const getcategories = async ()=> {
     return catdata
     }
 
-    
+    export default getCategories
 
 
 
