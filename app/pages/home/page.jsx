@@ -147,7 +147,7 @@ const Page = () => {
             </div>
             </div>
             <div className='w-full flex flex-col'>
-            <h2 className="pl-2 font-bold">Categories</h2>
+            <h2 className="p-3 font-bold">Categories</h2>
             <div className="flex flex-row ">
                 <HomeCategories 
                 
@@ -156,59 +156,13 @@ const Page = () => {
                 
                 />
 
-                <HomeCategories 
-                    
-                    title="HR"
-                    imageSrc={Logo2}
-                    
-                    />
-
-                <HomeCategories 
-                    
-                    title="drawing"
-                    imageSrc={Logo3}
-                    
-                    />
-
-                <HomeCategories 
-                    
-                    title="BigData"
-                    imageSrc={Logo4}
-                    
-
-                    />
-
-
-                <HomeCategories 
-                    
-                    title="Design"
-                    imageSrc={Logo5}
-                    
-                    />
-
-
-                <HomeCategories 
-                    
-                    title="Marketing"
-                    imageSrc={Logo6}
-                    
-                    />
-
-
-                <HomeCategories 
-                    
-                    title="Astronomy"
-                    imageSrc={Logo7}
-                    
-                    />
-
 
 
                 </div>
 
             </div>
             <div className='w-full flex flex-col'>
-                <h2 className="p-2 font-bold">My Learning</h2>
+                <h2 className="p-3 font-bold">My Learning</h2>
                 <div className="flex flex-col mb-4 p-2">
                 <MyLearning />
                 </div>
