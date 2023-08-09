@@ -111,13 +111,7 @@ const Page = () => {
     
     try { fetchData(); }catch{setCourses([])}
     }, []);
-    // useEffect(() => {
-    //     dispatch(clearCourse)
-    //     dispatch(selectCourse(course))
-
-    //     // console.log("this is what's happening after use effect  ", c)
-        
-    //   }, []);
+ 
     return (
         <section className='w-full flex flex-col md:pr-12'>
             <div className='w-full flex flex-col md:p-4'> 
@@ -127,7 +121,6 @@ const Page = () => {
                     {courses
                         .slice(0, 4).map((course) => (
                             <div className='w-full p-2 'key={course.id}>
-                                {/* <Link  key={course.id} href={{pathname:`../pages/courses/${course.id}`, query:course.id   }}> */}
                                 
                                 <li  onClick={() => handleCourseClick(course)}>
                                     <FeaturedCourses
@@ -144,7 +137,6 @@ const Page = () => {
                                         />
                                         
                                     </li>
-                                {/* </Link> */}
                                     
                             </div>
                                 
@@ -154,7 +146,7 @@ const Page = () => {
                     
             </div>
             </div>
-            {/* <div className='w-full flex flex-col'>
+            <div className='w-full flex flex-col'>
             <h2 className="pl-2 font-bold">Categories</h2>
             <div className="flex flex-row ">
                 <HomeCategories 
@@ -214,7 +206,7 @@ const Page = () => {
 
                 </div>
 
-            </div> */}
+            </div>
             <div className='w-full flex flex-col'>
                 <h2 className="p-2 font-bold">My Learning</h2>
                 <div className="flex flex-col mb-4 p-2">
