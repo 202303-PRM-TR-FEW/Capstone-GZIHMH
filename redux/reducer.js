@@ -20,7 +20,7 @@ export default function reducer(state = initialState, action) {
             {
                 return {
                     ...state,
-                    savedCourses: state.savedCourses.filter(course => course.id !== action.payload)
+                    savedCourses: state.savedCourses.filter(course => course.id == action.payload)
                 };
             }
 
