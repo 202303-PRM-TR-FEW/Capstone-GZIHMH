@@ -1,6 +1,6 @@
 import { auth, firestore, doc, query, collection, getDocs, getDoc } from '@/utils/firebase'
 import getSearchResults from './getSearchResults'
-
+import getUser from './getUser'
 export async function getCourses(isanon) {
     try {
         const result = []
@@ -22,15 +22,21 @@ export async function getCourses(isanon) {
                         result.push(...res)
                     })
                 )
-                console.log("result of recommended is : ", result)
 
                 return result
 
             }
         }
-        const courses = coursesSnapshot.docs.map((doc) => doc.data());
-        console.log(courses)
-        return courses
+        const coursesData = await Promise.all(
+            coursesSnapshot.docs.map(async(doc) => {
+                const courseData = doc.data();
+                const tutorData = await getUser(courseData.tutorId.id);
+                return {...courseData, tutor: tutorData, id: doc.id };
+            })
+        );
+        console.log("courses data are: ", coursesData)
+
+        return coursesData;
     } catch (error) {
         // Logging any errors that occur
         console.error(error);
