@@ -8,19 +8,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { saveCourse, removeCourse } from '@/redux/actions';
 import { selectSavedCourses } from '@/redux/selectors';
 
-function ListElement() {
+function ListElement({courses}) {
   const dispatch = useDispatch();
   const savedCourses = useSelector(selectSavedCourses);
-  const [selectedCourseIndex, setSelectedCourseIndex] = useState(0);
+  const [selectedCourseIndex, setSelectedCourseIndex] = useState(null);
   const [randomCourses, setRandomCourses] = useState([]);
 
-  useEffect(() => {
-    const getAllCourses = () => {
-      setRandomCourses([...db.courses]);
-    };
+  // useEffect(() => {
+  //   const getAllCourses = () => {
+  //     setRandomCourses([...db.courses]);
+  //   };
 
-    getAllCourses();
-  }, []);
+  //   getAllCourses();
+  // }, []);
 
   const isCourseSaved = (courseExists) => {
     return courseExists ? 'text-primary' : 'text-gray-400';
@@ -28,6 +28,7 @@ function ListElement() {
 
   const handleCourseClick = (index) => {
     setSelectedCourseIndex(index);
+    console.log("cours in list element : ",index)
   };
 
   const getPersonName = (user_id) => {
@@ -67,17 +68,17 @@ function ListElement() {
           </div>
 
           <div className='flex-1 w-full lg:max-h-[800px] overflow-y-auto'>
-            {randomCourses.map((course, index) => (
+            {courses.map((course, index) => (
               <div
                 className={`flex rounded-2xl opacity-100 bg-white ${
                   selectedCourseIndex === index ? 'border-primary bg-blue-200' : 'hover:bg-blue-200'
                 } bg-opacity-30 rounded-5 border hover:border-primary`}
                 key={course.id}
-                onClick={() => handleCourseClick(index)}
+                onClick={() => handleCourseClick(course)}
               >
                 <div className='flex flex-row gap-2 justify-between'>
                   <Image
-                    src={course.image}
+                    src={course.thumbnail}
                     width={180}
                     height={152}
                     alt={course.title}
@@ -94,19 +95,19 @@ function ListElement() {
                       </span>
                     </button>
                   </div>
-                  <p className='tutor_name mb-3'>{getPersonName(course.user_id)}</p>
+                  <p className='tutor_name mb-3'>{course.tutor.name}</p>
                   <div className="bg-gray-200 h-2 w-auto rounded-xl overflow-hidden mx-2 my-1.5">
-                    <div className="h-full bg-primary rounded-lg" style={{ width: `${parseInt(course.completion_ratio)}%` }}></div>
+                    <div className="h-full bg-primary rounded-lg" style={{ width: '30%' }}></div>
                   </div>
-                  <p className='text'>{course.completion_ratio} complete</p>
+                  <p className='text'>30% complete</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
         <div className='w-full h-full bg-white p-2'>
-          {selectedCourseIndex !== null && (
-            <Details courseIndex={selectedCourseIndex} />
+          {selectedCourseIndex  && (
+            <Details course={selectedCourseIndex} /> 
           )}
         </div>
       </div>
