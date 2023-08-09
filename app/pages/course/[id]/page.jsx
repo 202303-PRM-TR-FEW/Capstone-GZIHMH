@@ -8,20 +8,21 @@ import {getLessons} from '../../api/getLessons';
 import { getCourse } from '../../api/getCourse';
 import getCourses from '../../api/getCourses';
 import Recommended from '@/components/Recommended';
-import { useSearchParams } from "next/navigation";
-import CoursesDetails from '../../courseDetail/page';
+import Details from '@/components/Details';
 const page = ({params}) => {
   // const router = useRouter()
-  const searchParams = useSearchParams();
-  const id = searchParams.get("id");
+  const id = params.id
   const [course, setCourse] = useState([]);
   const [lessons,setlessons] = useState([])
   useEffect(() => {
     const fetchData = async () => {
       const data = await getCourse(true, id);
-      const lessons = await getLessons(true,id)
+      const lessonsData = await getLessons(true,id)
       setCourse(data);
-      console.log("the id sent to course id is :",id)
+      setlessons(lessonsData);
+      // console.log("the id sent to course id is :", id)
+      console.log("this is the fucking course : ",data)
+      // console.log("these are the fucking lessons:", lessons)
       
     };
     
@@ -32,7 +33,7 @@ const page = ({params}) => {
     <div>
       <h1>this is the page</h1>
       {/* <h1>{id}</h1> */}
-      <CoursesDetails/>
+      <Details course={course} />
       {/* <p className='text-black'>{lessons}</p> */}
 
       

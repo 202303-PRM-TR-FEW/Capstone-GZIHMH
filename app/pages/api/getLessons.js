@@ -1,4 +1,4 @@
-import { auth, firestore, docs, query, collection, getDocs, getDoc } from '@/utils/firebase'
+import { auth, firestore, docs, query, collection, getDocs, getDoc, where } from '@/utils/firebase'
 import getSearchResults from './getSearchResults'
 import getUser from './getUser'
 export async function getLessons(isanon, id) {
