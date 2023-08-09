@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Achievements = ({ title ,desc,  imm, total, progress, bcolor}) => {
+const Achievements = ({ title, desc, imm, total, progress, bcolor }) => {
+  const percentage = progress / total *100   ;
   return (
 
     <div className='bg-slate-50 shadow p-2   m-2 rounded-3xl flex flex-row '>
@@ -26,7 +27,7 @@ const Achievements = ({ title ,desc,  imm, total, progress, bcolor}) => {
 
 
             <div className="bg-gray-200 h-2 rounded-xl overflow-hidden mx-2 ">
-                 <div className={`h-full ${bcolor} rounded-lg`} style={{ width: '40%' }}></div>
+                 <div className={`h-full ${bcolor} rounded-lg`} style={{ width: `${percentage}%` }}></div>
                     </div>
             <dev className=' m-1 ml-2 text-gray-500 text-sm '> {desc} </dev>
             

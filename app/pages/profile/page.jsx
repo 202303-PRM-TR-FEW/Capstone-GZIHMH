@@ -6,6 +6,7 @@ import Friends from '@/components/Friends';
 import FriendsSuggestion from '@/components/FriendsSuggestion';
 import StatisticalCard from '@/components/StatisticalCard';
 import {auth,firestore,getDocs,getDoc,collection,where,query,doc} from '@/utils/firebase'
+import getAchievements from '../api/getAchievements';
 
 const CheckIcon = `
 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check w-10 h-10 text-white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -28,10 +29,13 @@ const CheckIcon3 = `
 
 const ProfilePage = () => {
   const [userData, setUserData] = useState(null);
+  const [achiev, setAchiev] = useState([]);
   const[profileUrl,setProfileUrl]=useState('/assets/images/defaultuser.png')
   useEffect(() => {
     const fetchUserData = async () => {
       try {
+        const achData = await getAchievements();
+        setAchiev(achData)
         const { uid } = auth.currentUser
         console.log("uid is :",uid)
         const userDoc = await doc(firestore, 'users', uid);
@@ -49,7 +53,6 @@ const ProfilePage = () => {
         console.error('Error fetching user data:', error);
       }
     };
-  
     fetchUserData();
     console.log(userData)
   }, []);
@@ -113,12 +116,19 @@ const ProfilePage = () => {
                 <h2 className="text-xl mt-2 md:mt-10 text-gray-900 w-full">Achievements</h2>
               </div>
               <div className='w-full flex flex-col'>
-              <div className="mt-4 w-full"> {/* This div will occupy the remaining space */}
-                  <Achievements title={'Commited Learner'} desc={'Reach a 3 day streak' } imm={CheckIcon2} total={3} progress={2} bcolor={"bg-orange-400"} />
-                </div>
-                <div className="mt-4 w-full"> {/* This div will occupy the remaining space */}
-                <Achievements title ={'Point Collector'}desc={'Earn 1800 more point' }  imm={CheckIcon3} total={3000} progress={1200} bcolor={"bg-lime-300"} />
-              </div>
+                {achiev
+                        .slice(0, 2).map((ach) => (
+                            <div className='w-full p-2 'key={ach.id}>
+                                
+                                <div className="mt-4 w-full">
+                                <Achievements title={ach.name} desc={ach.description } imm={ach.svg} total={ach.totalscore} progress={ach.pointValue} bcolor={"bg-orange-400"} />
+                                        
+                                    </div>
+                                    
+                            </div>
+                                
+                    ))}
+              
               </div>
 
             </div>
