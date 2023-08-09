@@ -7,7 +7,7 @@ import FriendsSuggestion from '@/components/FriendsSuggestion';
 import StatisticalCard from '@/components/StatisticalCard';
 import {auth,firestore,getDocs,getDoc,collection,where,query,doc} from '@/utils/firebase'
 import getAchievements from '../api/getAchievements';
-
+import { useAuthContext } from '@/context/AuthContext';
 const CheckIcon = `
 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check w-10 h-10 text-white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -28,6 +28,8 @@ const CheckIcon3 = `
 
 
 const ProfilePage = () => {
+  const user = useAuthContext();
+  console.log("the user in profile form useAuthcountesxt: ",user)
   const [userData, setUserData] = useState(null);
   const [achiev, setAchiev] = useState([]);
   const[profileUrl,setProfileUrl]=useState('/assets/images/defaultuser.png')
