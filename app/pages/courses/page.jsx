@@ -8,7 +8,7 @@ import Loading from '@/components/Loading';
 import getCourses from '../api/getCourses';
 import { isAnonymous } from '@/redux/selectors'
 import { useSelector } from 'react-redux';
-const page = () => {
+const Page = () => {
     const [courses, setCourses] = useState([]);
     const isanon = useSelector(isAnonymous);
   useEffect(() => {
@@ -36,7 +36,7 @@ const page = () => {
     )
 }
 
-export default page
+export default Page
 
 
 
