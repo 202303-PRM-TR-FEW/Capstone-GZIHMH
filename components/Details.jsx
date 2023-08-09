@@ -41,7 +41,7 @@ const Details = ({ course  }) => {
           </div>
           <div className='flex flex-row text'>
           <Clock />
-            <p>{course.totalDuration} m</p>
+            <p>{course.totalDuration} </p>
           </div>
           <div className='flex flex-row text'>
           <Star />

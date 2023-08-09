@@ -126,10 +126,10 @@ const Page = () => {
                     
                     {courses
                         .slice(0, 4).map((course) => (
-                            <div className='w-full p-2 '>
+                            <div className='w-full p-2 'key={course.id}>
                                 {/* <Link  key={course.id} href={{pathname:`../pages/courses/${course.id}`, query:course.id   }}> */}
                                 
-                                <li key={course.id} onClick={() => handleCourseClick(course)}>
+                                <li  onClick={() => handleCourseClick(course)}>
                                     <FeaturedCourses
                                         courseId={course.id}
                                     imageSrc={course.thumbnail}

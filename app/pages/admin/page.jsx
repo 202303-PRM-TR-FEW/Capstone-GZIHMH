@@ -8,7 +8,7 @@ function Page() {
 
   React.useEffect(() => {
     if (user == null) router.push("/");
-  }, [user]);
+  }, [user,router]);
 
   return <h1>Only logged in users can view this page</h1>;
 }
