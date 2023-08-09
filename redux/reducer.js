@@ -11,12 +11,11 @@ export default function reducer(state = initialState, action) {
                 return {
                     ...state,
                     savedCourses: [
-                        ...state.savedCourses,
                         action.payload
                     ]
                 };
             }
-        case 'REMOVE_COURSE':
+        case 'SELECT_COURSE':
             {
                 return {
                     ...state,

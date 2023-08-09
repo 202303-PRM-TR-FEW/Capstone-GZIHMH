@@ -5,11 +5,12 @@ import HomeCategories from "@/components/HomeCategories"
 import MyLearning from "@/components/MyLearning"
 import Link from "next/link"
 import getCourses from '../api/getCourses';
-import { isAnonymous } from '@/redux/selectors'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
-import { query } from 'firebase/firestore';
+import { useAuthContext } from '@/context/AuthContext'
+import { selectSavedCourses } from '@/redux/selectors';
+import { saveCourse,selectCourse } from '@/redux/actions';
 const Logo1 = `
 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-chart-histogram"
                          width="28" height="28" viewBox="0 0 24 24" stroke="#2E8DFF" fill="none">
@@ -88,14 +89,11 @@ width="28" height="28" viewBox="0 0 24 24" stroke="#2F8DFF" fill="none">
 
 
 const Page = () => {
-
+    const user = useAuthContext();
     const [courses, setCourses] = useState([]);
-    const [course, setCourse] = useState([]);
-    const isanon = useSelector(isAnonymous);
+    const [isloading, setIsloading] = useState(true);
     const router = useRouter()
     const handleCourseClick = (course) => {
-
-        setCourse(course)
         router.push(`../pages/course/${course.id}`
            
         )
@@ -103,15 +101,22 @@ const Page = () => {
        
       };
     useEffect(() => {
-    const fetchData = async () => {
-      const data = await getCourses(isanon);
-      setCourses(data);
+
+        console.log(user)
+        const fetchData = async () => {
+        const data = await getCourses(user.user.isAnonymous);
+        setCourses(data);
+        
+        setIsloading(false)
       
     };
+        
     
     try { fetchData(); }catch{setCourses([])}
     }, []);
- 
+    if (isloading) {
+     return <p>loading ...</p>
+ }
     return (
         <section className='w-full flex flex-col md:pr-12'>
             <div className='w-full flex flex-col md:p-4'> 

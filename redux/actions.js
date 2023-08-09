@@ -3,7 +3,7 @@ export const saveCourse = course => ({
     payload: course
 });
 
-export const removeCourse = courseId => ({
+export const selectCourse = courseId => ({
     type: 'SELECT_COURSE',
     payload: courseId
 });

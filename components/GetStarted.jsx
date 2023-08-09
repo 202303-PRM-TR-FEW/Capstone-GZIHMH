@@ -7,13 +7,10 @@ import { doc,auth, firestore, setDoc } from '@/utils/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getUserCountry } from '@/app/pages/api/ip/route';
 import signIn from '@/app/pages/api/auth/signin'
-import { setIsAnonymous } from '@/redux/actions';
-import { useDispatch } from 'react-redux';
 const GetStarted = ({ routers }) => {
   console.log(auth.currentUser)
   const [user, setUser] = useAuthState(auth);
   useEffect(() => { },[user])
-  const dispatch = useDispatch()
 
   const [showLogin, setShowLogin] = useState(false);
   // const googleAuth = new GoogleAuthProvider();
@@ -28,7 +25,6 @@ const GetStarted = ({ routers }) => {
       if (error) {
           return console.log(error)
       }
-    dispatch(setIsAnonymous(true))
     
         // else successful
     console.log(result)
@@ -42,7 +38,6 @@ const GetStarted = ({ routers }) => {
         if (error) {
             return console.log(error)
         }
-        dispatch(setIsAnonymous(false))
         // else successful
     console.log(result)
     return   routers.push('/pages/home')

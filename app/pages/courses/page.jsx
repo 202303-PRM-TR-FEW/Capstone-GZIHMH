@@ -6,14 +6,14 @@ import store, { persistor } from '@/redux/store';
 import { Provider } from 'react-redux';
 import Loading from '@/components/Loading';
 import getCourses from '../api/getCourses';
-import { isAnonymous } from '@/redux/selectors'
 import { useSelector } from 'react-redux';
+import { useAuthContext } from '@/context/AuthContext';
 const Page = () => {
+    const user = useAuthContext()
     const [courses, setCourses] = useState([]);
-    const isanon = useSelector(isAnonymous);
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getCourses(isanon);
+      const data = await getCourses(user.user.isAnonymous);
       setCourses(data);
       
     };

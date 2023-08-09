@@ -1,4 +1,4 @@
-import { auth, firestore, doc, query, collection, getDocs, getDoc } from '@/utils/firebase'
+import { auth, firestore, doc, query, collection, getDocs, getDoc, } from '@/utils/firebase'
 import getSearchResults from './getSearchResults'
 import getUser from './getUser'
 export async function getCourses(isanon) {
@@ -13,17 +13,19 @@ export async function getCourses(isanon) {
             const userDocRef = doc(firestore, 'users', uid)
 
             const userSnap = await getDoc(userDocRef)
+            if ('wordsSearched' in userSnap.data()) {
+                const cats = userSnap.data().wordsSearched
+                if (cats) {
+                    await Promise.all(
+                        cats.map(async string => {
+                            const res = await getSearchResults(string)
+                            result.push(...res)
+                        })
+                    )
 
-            const cats = userSnap.data().wordsSearched
-            if (cats) {
-                await Promise.all(
-                    cats.map(async string => {
-                        const res = await getSearchResults(string)
-                        result.push(...res)
-                    })
-                )
+                    return result
 
-                return result
+                }
 
             }
         }
