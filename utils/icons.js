@@ -8,7 +8,18 @@ export const Clock = () => (
     </svg>
 );
 
-
+export const SaveButtonIcon = ({color}) => (
+    <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 384 512"
+            className="h-4 w-4 group-hover:opacity-50 opacity-1"
+            
+            >
+            <path
+               fill={color} d="M0 512V48C0 21.49 21.49 0 48 0h288c26.51 0 48 21.49 48 48v464L192 400 0 512z"
+            ></path>
+            </svg>
+)
 export const Star = () => (
     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-star-filled text-gray-400 w-5 h-5 mr-2" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />

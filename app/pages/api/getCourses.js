@@ -22,8 +22,10 @@ export async function getCourses(isanon) {
                             result.push(...res)
                         })
                     )
+                    if (!result) {
+                        return result
 
-                    return result
+                    }
 
                 }
 

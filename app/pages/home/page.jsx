@@ -90,7 +90,9 @@ width="28" height="28" viewBox="0 0 24 24" stroke="#2F8DFF" fill="none">
 
 const Page = () => {
     const user = useAuthContext();
+    const dispatch = useDispatch();
     const [courses, setCourses] = useState([]);
+    const [course, setCourse] = useState([]);
     const [isloading, setIsloading] = useState(true);
     const router = useRouter()
     const handleCourseClick = (course) => {
@@ -103,14 +105,14 @@ const Page = () => {
     useEffect(() => {
 
         console.log(user)
-        const fetchData = async () => {
+    const fetchData = async () => {
         const data = await getCourses(user.user.isAnonymous);
+        console.log(data)
         setCourses(data);
-        
         setIsloading(false)
       
     };
-        
+    
     
     try { fetchData(); }catch{setCourses([])}
     }, []);
@@ -127,7 +129,7 @@ const Page = () => {
                         .slice(0, 4).map((course) => (
                             <div className='w-full p-2 'key={course.id}>
                                 
-                                <li  onClick={() => handleCourseClick(course)}>
+                                <li  >
                                     <FeaturedCourses
                                         courseId={course.id}
                                     imageSrc={course.thumbnail}
@@ -138,7 +140,8 @@ const Page = () => {
                                     price={course.price}
                                     user_id={course.tutor} // Provide the user ID here
                                     userProfileImage={course.tutor.profilePicture} 
-                                    username = {course.tutor.name}
+                                        username={course.tutor.name}
+                                        user = {user}
                                         />
                                         
                                     </li>

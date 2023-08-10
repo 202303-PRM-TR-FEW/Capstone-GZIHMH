@@ -11,15 +11,16 @@ export default function reducer(state = initialState, action) {
                 return {
                     ...state,
                     savedCourses: [
+                        ...state.savedCourses,
                         action.payload
                     ]
                 };
             }
-        case 'SELECT_COURSE':
+        case 'REMOVE_COURSE':
             {
                 return {
                     ...state,
-                    savedCourses: state.savedCourses.filter(course => course.id == action.payload)
+                    savedCourses: state.savedCourses.filter(course => course.id !== action.payload)
                 };
             }
 

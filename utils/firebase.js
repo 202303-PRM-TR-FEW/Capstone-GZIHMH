@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, addDoc, arrayUnion, updateDoc, getDoc, setDoc, doc, where, query } from "firebase/firestore";
+import { getFirestore, collection, getDocs, addDoc, arrayUnion, updateDoc, getDoc, setDoc, doc, arrayRemove, where, query, collectionGroup } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getAnalytics, isSupported } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
@@ -26,4 +26,4 @@ const auth = getAuth();
 
 
 
-export { auth, setDoc, app, analytics, firestore, arrayUnion, storage, collection, getDocs, addDoc, getDoc, updateDoc, doc, ref, uploadBytes, query, where, getDownloadURL };
+export { auth, setDoc, app, analytics, firestore, arrayUnion, arrayRemove, storage, collection, collectionGroup, getDocs, addDoc, getDoc, updateDoc, doc, ref, uploadBytes, query, where, getDownloadURL };

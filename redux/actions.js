@@ -3,7 +3,11 @@ export const saveCourse = course => ({
     payload: course
 });
 
-export const selectCourse = courseId => ({
-    type: 'SELECT_COURSE',
+export const removeCourse = courseId => ({
+    type: 'REMOVE_COURSE',
     payload: courseId
+});
+export const setIsAnonymous = (isAnonymous) => ({
+    type: 'SET_IS_ANONYMOUS',
+    payload: isAnonymous,
 });
