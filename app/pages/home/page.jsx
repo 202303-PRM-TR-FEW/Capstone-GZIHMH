@@ -8,7 +8,7 @@ import getCourses from '../api/getCourses';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
-
+import { useAuthContext } from '@/context/AuthContext';
 import { query } from 'firebase/firestore';
 
 
