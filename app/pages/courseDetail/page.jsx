@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ProgressCourses from "@/components/ProgressCourses";
 import CourseVideo from "@/components/CourseVideo";
 import {initialLessons} from "@/utils/coursesdb";
+import CourseOverview from "@/components/CourseOverview";
 
 import {firestore} from "@/utils/firebase";
 
@@ -31,6 +32,11 @@ const CoursesDetails = () => {
         info={info}
       />
       <CourseVideo info = {info[0]} active={active} />
+      <CourseOverview
+        title="Your Course Title"
+        numberOfVideos={10}
+        text="Videos"
+      />
     </div>
   );
 };
