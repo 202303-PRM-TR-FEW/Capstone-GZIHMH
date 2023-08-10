@@ -5,23 +5,23 @@ import HomeCategories from "@/components/HomeCategories"
 import MyLearning from "@/components/MyLearning"
 import Link from "next/link"
 import getCourses from '../api/getCourses';
-import { isAnonymous } from '@/redux/selectors'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
+
 import { query } from 'firebase/firestore';
 
 
 
-const Page = () => {
 
+const Page = () => {
+    const user = useAuthContext();
+    const dispatch = useDispatch();
     const [courses, setCourses] = useState([]);
     const [course, setCourse] = useState([]);
-    const isanon = useSelector(isAnonymous);
+    const [isloading, setIsloading] = useState(true);
     const router = useRouter()
     const handleCourseClick = (course) => {
-
-        setCourse(course)
         router.push(`../pages/course/${course.id}`
            
         )
@@ -29,15 +29,22 @@ const Page = () => {
        
       };
     useEffect(() => {
+
+        console.log(user)
     const fetchData = async () => {
-      const data = await getCourses(isanon);
-      setCourses(data);
+        const data = await getCourses(user.user.isAnonymous);
+        console.log(data)
+        setCourses(data);
+        setIsloading(false)
       
     };
     
+    
     try { fetchData(); }catch{setCourses([])}
     }, []);
- 
+    if (isloading) {
+     return <p>loading ...</p>
+ }
     return (
         <section className='w-full flex flex-col md:pr-12'>
             <div className='w-full flex flex-col md:p-4'> 
@@ -48,7 +55,7 @@ const Page = () => {
                         .slice(0, 4).map((course) => (
                             <div className='w-full p-2 'key={course.id}>
                                 
-                                <li  onClick={() => handleCourseClick(course)}>
+                                <li  >
                                     <FeaturedCourses
                                         courseId={course.id}
                                     imageSrc={course.thumbnail}
@@ -59,7 +66,8 @@ const Page = () => {
                                     price={course.price}
                                     user_id={course.tutor} // Provide the user ID here
                                     userProfileImage={course.tutor.profilePicture} 
-                                    username = {course.tutor.name}
+                                        username={course.tutor.name}
+                                        user = {user}
                                         />
                                         
                                     </li>

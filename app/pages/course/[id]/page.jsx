@@ -6,26 +6,28 @@ import FeaturedCourses from '@/components/FeaturedCourses';
 import {getLessons} from '../../api/getLessons';
 import { getCourse } from '../../api/getCourse';
 import Details from '@/components/Details';
-
-const Course = ({ params }) => {
+import { useAuthContext } from '@/context/AuthContext';
+const Page = ({ params }) => {
+  const user = useAuthContext()
   const id = params.id
   const [course, setCourse] = useState([]);
   const [lessons, setlessons] = useState([])
+  const [isloading,setIsloading] = useState(true)
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getCourse(true, id);
-      const lessonsData = await getLessons(true, id)
+      const data = await getCourse(user.user.isAnonymous, id);
+      const lessonsData = await getLessons(user.user.isAnonymous, id)
       setCourse(data);
       setlessons(lessonsData);
-      // console.log("the id sent to course id is :", id)
-      console.log("this is the fucking course : ", data)
-      // console.log("these are the fucking lessons:", lessons)
+      setIsloading(false)
       
     };
     
     try { fetchData(); } catch { setCourse([]) }
   }, []);
-
+  if (isloading) {
+  return<p>loading ...</p>
+}
   return (
     <div>
       <h1>this is the page</h1>
@@ -38,4 +40,4 @@ const Course = ({ params }) => {
 
   )
 }
-export default Course
+export default Page

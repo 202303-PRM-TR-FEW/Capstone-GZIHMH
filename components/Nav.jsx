@@ -4,13 +4,12 @@ import Image from 'next/image'
 import { signOut } from 'firebase/auth'
 
 import { auth,getDoc,doc,firestore} from'@/utils/firebase'
-import { getProviders } from 'next-auth/react'
 import { HomeIcon, Logout, ProfileIcon, SavedIcon, CoursesIcon, SearchIcon}from '@/utils/icons'
-import { isAnonymous } from '@/redux/selectors'
-import { useSelector } from 'react-redux';
+import { useAuthContext } from '@/context/AuthContext'
 
 const Nav = ({ router }) => {
-    const isanon = useSelector(isAnonymous)    
+    const user = useAuthContext();
+    const isanon = user.isAnonymous 
     
 
     const handleSignoutClick = async () => {
