@@ -66,16 +66,16 @@ const page = () => {
 
 
 {/* Left Column */}
-<div className="flex flex-col pr-20 pl-20 bg-gray-100 rounded-lg">
+<div className="flex flex-col md:px-16 bg-gray-100 rounded-lg">
 
   
 
 
-  <div className="m-1">  * {/* box 1 */}
+  <div>  * {/* box 1 */}
 
 
   <div>
-   <div className="font-bold text-3xl text-black mb-2"> This Week </div>
+   <div className="font-bold text-3xl text-black p-2"> This Week </div>
 </div>
 
 
@@ -162,7 +162,7 @@ const page = () => {
 
 
 
-  <div className="m-1 flex flex-row">   {/* box 2 */}
+  <div className=" flex flex-row">   {/* box 2 */}
 
 
   <StatisticsGoalStreak
@@ -190,7 +190,7 @@ const page = () => {
   </div>
 
 
-  <div className="m-1">   {/* box 3 (My performance component will be included later) */}
+  <div>   {/* box 3 (My performance component will be included later) */}
 
 
   
@@ -250,12 +250,12 @@ const page = () => {
 
 
 {/* Right Column */}
-<div className="flex flex-col  pl-20 space-y-4 bg-gray-100 rounded-lg"> 
+<div className="flex flex-col  bg-gray-100 rounded-lg"> 
 
 
 
 
-<div className="m-1">   {/* box 4 */}
+<div>   {/* box 4 */}
 
 <MyActivitiesBox />
 
@@ -265,14 +265,14 @@ const page = () => {
 
 
 
-<div className=" ">  {/* box 5 */}
+<div >  {/* box 5 */}
 
 
 <div> <p className='text-black text-2xl font-bold my-6 '> Last Year Comparison </p> </div>
 
 
 
-<div className=  " bg-white w-full  rounded-3xl   m-2    shadow-md  flex flex-col  items-center ">
+<div className=  " bg-white w-full  rounded-3xl   p-2    shadow-md  flex flex-col  items-center ">
 
 
 
