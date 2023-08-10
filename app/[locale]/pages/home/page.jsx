@@ -10,6 +10,8 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import { query } from 'firebase/firestore';
+import {useTranslations} from "next-intl"
+
 
 
 
@@ -19,6 +21,7 @@ const Page = () => {
     const [course, setCourse] = useState([]);
     const isanon = useSelector(isAnonymous);
     const router = useRouter()
+    const t = useTranslations()
     const handleCourseClick = (course) => {
 
         setCourse(course)
@@ -41,7 +44,7 @@ const Page = () => {
     return (
         <section className='w-full flex flex-col md:pr-12'>
             <div className='w-full flex flex-col md:p-4'> 
-                <h1 className="pt-2 p-2 font-bold">Featured Courses</h1>
+                <h1 className="pt-2 p-2 font-bold">{t("featured_courses")}</h1>
                 <div className="flex flex-col flex-wrap md:flex-nowrap md:flex-row  ">
                     
                     {courses

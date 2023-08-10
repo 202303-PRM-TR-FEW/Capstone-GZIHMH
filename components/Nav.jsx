@@ -8,9 +8,12 @@ import { getProviders } from 'next-auth/react'
 import { HomeIcon, Logout, ProfileIcon, SavedIcon, CoursesIcon, SearchIcon}from '@/utils/icons'
 import { isAnonymous } from '@/redux/selectors'
 import { useSelector } from 'react-redux';
+import {useTranslations} from "next-intl"
+import LanguageChanger from "@/components/LanguageChanger"
 
 const Nav = ({ router }) => {
-    const isanon = useSelector(isAnonymous)    
+    const isanon = useSelector(isAnonymous)
+    const t = useTranslations()
     
 
     const handleSignoutClick = async () => {
@@ -95,9 +98,9 @@ const Nav = ({ router }) => {
                                         </>
                                 )
                             }
-                            
-                        </div>
 
+                            <LanguageChanger></LanguageChanger>
+                        </div>
 
                     </nav>
                 </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import signUp from '@/app/pages/api/auth/signup';
+import signUp from '@/app/[locale]/pages/api/auth/signup';
 import { ReturnIcon } from '@/utils/icons';
 import GetStarted from './GetStarted';
 

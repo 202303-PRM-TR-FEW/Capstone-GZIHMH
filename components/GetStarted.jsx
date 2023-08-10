@@ -5,8 +5,8 @@ import Login from './Login';
 import Link from 'next/link';
 import { doc,auth, firestore, setDoc } from '@/utils/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { getUserCountry } from '@/app/pages/api/ip/route';
-import signIn from '@/app/pages/api/auth/signin'
+import { getUserCountry } from '@/app/[locale]/pages/api/ip/route';
+import signIn from '@/app/[locale]/pages/api/auth/signin'
 import { setIsAnonymous } from '@/redux/actions';
 import { useDispatch } from 'react-redux';
 const GetStarted = ({ routers }) => {

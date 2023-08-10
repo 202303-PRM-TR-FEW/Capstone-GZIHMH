@@ -4,7 +4,7 @@ import { use, useState } from 'react';
 import Link from 'next/link';
 import RegistrationForm from './RegistrationForm';
 import Image from 'next/image';
-import signIn from '@/app/pages/api/auth/signin';
+import signIn from '@/app/[locale]/pages/api/auth/signin';
 import { ReturnIcon } from '@/utils/icons';
 import GetStarted from './GetStarted';
 import { setIsAnonymous } from '@/redux/actions';
