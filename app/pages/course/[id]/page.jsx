@@ -7,7 +7,7 @@ import {getLessons} from '../../api/getLessons';
 import { getCourse } from '../../api/getCourse';
 import Details from '@/components/Details';
 import { useAuthContext } from '@/context/AuthContext';
-const page = ({ params }) => {
+const Page = ({ params }) => {
   const user = useAuthContext()
   const id = params.id
   const [course, setCourse] = useState([]);
@@ -40,4 +40,4 @@ const page = ({ params }) => {
 
   )
 }
-export default page
+export default Page
