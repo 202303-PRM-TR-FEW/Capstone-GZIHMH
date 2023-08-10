@@ -1,38 +1,37 @@
 
 
 import React from 'react'
+import categories_db from '../utils/categories_db'; 
 
-const HomeCategories = ({box, title, imageSrc}) => {
+const HomeCategories = () => {
 
     return (
-        <div>
 
 
+        <div className='flex flex-row'>
+        {categories_db.map((categoriesItem) => (
+          <div key={categoriesItem.id} className='bg-white shadow-md mx-3  rounded-2xl flex flex-col justify-center items-center  hover:bg-blue-200 hover:border-blue-500   '>
 
 
-      <div className= {` bg-white shadow-md mx-3  rounded-2xl flex flex-col justify-center items-center  hover:bg-[#CBE1FA] hover:border-blue-500 ${box}`}    > 
-
-              
-            
-
-            <div className='mt-2 '>
-            <div dangerouslySetInnerHTML={{ __html: imageSrc }} />
+            <div className='mt-2  '>
+                {categoriesItem.svg}
             </div>
 
-            
 
+            <p className=  " text-gray-600 text-bold py-2 px-10  mx-4 rounded-2xl " >
 
-            <p className=  " text-gray-600 text-bold py-2 px-10     mx-4  rounded-2xl   hover:text-[#2E8DFF] " >
+               {categoriesItem.name}
 
-                {title}
+             </p>
 
-            </p>
-            
 
             
-        </div>
+           
+          </div>
+        ))}
+      </div>
 
-    </div>
+
     );
 };
 
