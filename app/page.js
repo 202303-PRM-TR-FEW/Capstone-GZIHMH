@@ -5,6 +5,7 @@ import Image from 'next/image'
 import GetStarted from '@/components/GetStarted'
 import { useRouter } from 'next/navigation'
 export default function Intro() {
+
   const router = useRouter();
   return (
     <main className="flex min-h-screen w-full flex-col sm:flex-row items-center">

@@ -6,10 +6,10 @@ import Link from 'next/link';
 import { doc,auth, firestore, setDoc } from '@/utils/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getUserCountry } from '@/app/pages/api/ip/route';
+import { useAuthContext } from '@/context/AuthContext';
 import signIn from '@/app/pages/api/auth/signin'
 const GetStarted = ({ routers }) => {
   console.log(auth.currentUser)
-  const [user, setUser] = useAuthState(auth);
   useEffect(() => { },[user])
 
   const [showLogin, setShowLogin] = useState(false);
