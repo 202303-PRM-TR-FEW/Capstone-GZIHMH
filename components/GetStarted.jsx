@@ -9,8 +9,7 @@ import { getUserCountry } from '@/app/pages/api/ip/route';
 import { useAuthContext } from '@/context/AuthContext';
 import signIn from '@/app/pages/api/auth/signin'
 const GetStarted = ({ routers }) => {
-  console.log(auth.currentUser)
-  useEffect(() => { },[user])
+
 
   const [showLogin, setShowLogin] = useState(false);
   // const googleAuth = new GoogleAuthProvider();
