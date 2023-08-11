@@ -7,13 +7,15 @@ import { doc,auth, firestore, setDoc } from '@/utils/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getUserCountry } from '@/app/pages/api/ip/route';
 import { useAuthContext } from '@/context/AuthContext';
-import signIn from '@/app/pages/api/auth/signin'
+import signIn from '@/app/pages/api/auth/signin';
+import { usePathname } from 'next/navigation'
 const GetStarted = ({ routers }) => {
 
 
   const [showLogin, setShowLogin] = useState(false);
   const [ishome, setIshome] = useState(false);
-  if (routers.pathname == '/pages/home') {
+  const pathname = usePathname()
+  if (pathname == '/pages/home') {
   setIshome(true)
     
   }
@@ -32,7 +34,8 @@ const GetStarted = ({ routers }) => {
     
         // else successful
     console.log(result)
-    if (routers.pathname == '/') {
+    console.log("my route is ",pathname)
+    if (pathname == '/') {
       return routers.push('/pages/home');
     }
   };
@@ -46,7 +49,7 @@ const GetStarted = ({ routers }) => {
         }
         // else successful
     console.log(result)
-    if (routers.pathname == '/') {
+    if (pathname == '/') {
      return  routers.push('/pages/home');
     }
   };

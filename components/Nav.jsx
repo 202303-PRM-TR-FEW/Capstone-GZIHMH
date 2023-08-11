@@ -6,17 +6,18 @@ import { signOut } from 'firebase/auth'
 import { auth,getDoc,doc,firestore} from'@/utils/firebase'
 import { HomeIcon, Logout, ProfileIcon, SavedIcon, CoursesIcon, SearchIcon}from '@/utils/icons'
 import { useAuthContext } from '@/context/AuthContext'
-
+import signIn from '@/app/pages/api/auth/signin'
 const Nav = ({ router }) => {
     const user = useAuthContext();
-    const isanon = user.user.isAnonymous 
+    
+    const isanon =  user.user && user.user.isAnonymous 
     
 
     const handleSignoutClick = async () => {
     console.log("this is sign out")
     await signOut(auth).then(() => {
         console.log("Sign-out successful.") 
-        router.push('/')
+        signIn('anonymous')
       }).catch((error) => {
        
       });
