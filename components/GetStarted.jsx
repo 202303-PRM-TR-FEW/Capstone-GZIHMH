@@ -12,6 +12,11 @@ const GetStarted = ({ routers }) => {
 
 
   const [showLogin, setShowLogin] = useState(false);
+  const [ishome, setIshome] = useState(false);
+  if (routers.pathname == '/pages/home') {
+  setIshome(true)
+    
+  }
   // const googleAuth = new GoogleAuthProvider();
   
   const handleLoginClick = () => {
@@ -27,7 +32,9 @@ const GetStarted = ({ routers }) => {
     
         // else successful
     console.log(result)
-    return   routers.push('/pages/home')
+    if (routers.pathname == '/') {
+      return routers.push('/pages/home');
+    }
   };
   
   const handleGoogleLoginClick = async () => {
@@ -39,34 +46,11 @@ const GetStarted = ({ routers }) => {
         }
         // else successful
     console.log(result)
-    return   routers.push('/pages/home')
- 
+    if (routers.pathname == '/') {
+     return  routers.push('/pages/home');
+    }
   };
-    // const result = await signInWithPopup(auth, googleAuth)
-    // saveGoogleUserInfoToFirestore();
-    // const { uid } = auth.currentUser;
-    // localStorage.setItem('uid', uid);
-    // routers.push('/pages/home')
 
-
-  // };
-  // const saveGoogleUserInfoToFirestore = async () => {
-  //   const { uid, displayName, email, photoURL } = auth.currentUser;
-  //   const res = await getUserCountry();
-  //   try {
-  //     await setDoc(doc(firestore,'users',uid),{
-
-  //       name: displayName,
-  //       email: email,
-  //       profilePicture: photoURL,
-  //       country: res,
-        
-  //     }, { merge: true });
-  //     // console.log(uid,displayName,email,photoURL,country)
-  //   } catch (error) {
-  //     console.error('Firestore Update Error:', error);
-  //   }
-  // };
   if (showLogin) {
     return <Login routers={routers} />;
   }
@@ -96,16 +80,24 @@ const GetStarted = ({ routers }) => {
         </div>
 
 
-        <div className='w-full'>
-
-          <div className='text-gray-800 font-bold py-1 text-3xl '>
+      <div className='w-full'>
+        {
+          !ishome && (
+            <>
+            <div className='text-gray-800 font-bold py-1 text-3xl '>
             <p> Discover passion </p>
           </div>
 
           <div className=' text-gray-600 py-5 '>
             <p> find out what topics you find interesting, <br /> learn a new skill & connect with people that <br /> are passionate about similer topics.  </p>
           </div>
+            </>
+           
 
+          )
+        }
+
+          
 
           <div className=" font-bold  flex flex-col w-full  py-5 ">
             <div className='w-full'>

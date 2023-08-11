@@ -51,8 +51,9 @@ const Login = ({ routers }) => {
         }
 
         // else successful
-    console.log(result)
-    routers.push('/pages/home')
+    if (routers.pathname == '/') {
+      routers.push('/pages/home');
+    }
  
  
     

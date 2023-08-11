@@ -9,7 +9,7 @@ import { useAuthContext } from '@/context/AuthContext'
 
 const Nav = ({ router }) => {
     const user = useAuthContext();
-    const isanon = user.isAnonymous 
+    const isanon = user.user.isAnonymous 
     
 
     const handleSignoutClick = async () => {

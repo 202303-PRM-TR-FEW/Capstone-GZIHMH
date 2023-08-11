@@ -1,11 +1,25 @@
+'use client'
 import React from 'react';
 import Image from 'next/image';
 import UserProfile from "@/components/UserProfile"
 import { Clock, Star } from '@/utils/icons';
 import SaveButton from '@/components/SaveButton';
+import Link from 'next/link';
+import { useState } from 'react';
+import SignInModal from './SignInModal';
+const FeaturedCourses = ({ router, courseId, imageSrc, alt, title, duration, rating, price, user_id,username, userProfileImage,user,paylink }) => {
+  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
 
-const FeaturedCourses = ({ courseId, imageSrc, alt, title, duration, rating, price, user_id,username, userProfileImage,user }) => {
-  console.log("user in featurecourses component: ",user.user.isAnonymous)
+  const handlePayment = () => {
+    if (user.user.isAnonymous) {
+      setIsSignInModalOpen(true);
+      console.log("button clicked")
+      console.log(paylink)
+    } else {
+      router.push(paylink)
+    }
+  
+}  
   return (
    
       <div className=" bg-white  shadow-md rounded-3xl  cursor-pointer relative p-2">
@@ -40,15 +54,19 @@ const FeaturedCourses = ({ courseId, imageSrc, alt, title, duration, rating, pri
           <div className='md:pr-2'>
             <div className="flex items-center justify-center box-border overflow-hidden outline-none cursor-default w-16 h-8 opacity-100 bg-blue-600 rounded-full border-0">
               <span className="flex items-center p-2">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-20 rounded-xl">
-                  {price}
+                
+                <button  onClick={ handlePayment} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-20 rounded-xl">
+                  {price}$
                 </button>
+                
               </span>
+              
             </div>
           </div>
             
           </div>
-        </div>
+      </div>
+      {isSignInModalOpen && <SignInModal onClose={() => setIsSignInModalOpen(false)} />}
       </div>
     
   );

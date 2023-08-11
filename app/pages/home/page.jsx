@@ -67,7 +67,9 @@ const Page = () => {
                                     user_id={course.tutor} // Provide the user ID here
                                     userProfileImage={course.tutor.profilePicture} 
                                         username={course.tutor.name}
-                                        user = {user}
+                                        user={user}
+                                        paylink={course.paymentLink}
+                                        router={router}
                                         />
                                         
                                     </li>
