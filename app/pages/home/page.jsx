@@ -21,6 +21,7 @@ const Page = () => {
     const [course, setCourse] = useState([]);
     const [isloading, setIsloading] = useState(true);
     const router = useRouter()
+    
     const handleCourseClick = (course) => {
         router.push(`../pages/course/${course.id}`
            

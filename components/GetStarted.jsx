@@ -9,16 +9,19 @@ import { getUserCountry } from '@/app/pages/api/ip/route';
 import { useAuthContext } from '@/context/AuthContext';
 import signIn from '@/app/pages/api/auth/signin';
 import { usePathname } from 'next/navigation'
-const GetStarted = ({ routers }) => {
+const GetStarted = ({ routers,popup }) => {
 
 
   const [showLogin, setShowLogin] = useState(false);
   const [ishome, setIshome] = useState(false);
   const pathname = usePathname()
-  if (pathname == '/pages/home') {
-  setIshome(true)
-    
-  }
+ 
+
+  useEffect(()=>{
+    if (pathname == '/pages/home') {
+      setIshome(true)
+    }    
+	}, [])
   // const googleAuth = new GoogleAuthProvider();
   
   const handleLoginClick = () => {
@@ -99,7 +102,13 @@ const GetStarted = ({ routers }) => {
 
           )
         }
-
+        {
+          popup && (
+            <div className=' text-gray-600 py-5 '>
+            <p> Please sign in to continue  </p>
+          </div>
+          )
+        }
           
 
           <div className=" font-bold  flex flex-col w-full  py-5 ">

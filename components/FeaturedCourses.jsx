@@ -6,13 +6,14 @@ import { Clock, Star } from '@/utils/icons';
 import SaveButton from '@/components/SaveButton';
 import Link from 'next/link';
 import { useState } from 'react';
-import SignInModal from './SignInModal';
+import SignInModal from './SigninModal';
 const FeaturedCourses = ({ router, courseId, imageSrc, alt, title, duration, rating, price, user_id,username, userProfileImage,user,paylink }) => {
-  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
+const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
 
-  const handlePayment = () => {
+  const handlePayment = (event) => {
     if (user.user.isAnonymous) {
       setIsSignInModalOpen(true);
+      event.preventDefault(); 
       console.log("button clicked")
       console.log(paylink)
     } else {
@@ -66,7 +67,7 @@ const FeaturedCourses = ({ router, courseId, imageSrc, alt, title, duration, rat
             
           </div>
       </div>
-      {isSignInModalOpen && <SignInModal onClose={() => setIsSignInModalOpen(false)} />}
+      {isSignInModalOpen && <SignInModal open={isSignInModalOpen} onClose={() => setIsSignInModalOpen(false)} />}
       </div>
     
   );
