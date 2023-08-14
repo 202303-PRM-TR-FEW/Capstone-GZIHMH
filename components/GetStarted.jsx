@@ -53,15 +53,11 @@ const GetStarted = ({ routers,popup ,isSignedIn}) => {
             return console.log(error)
         }
         // else successful
-    console.log(result)
     if (pathname == '/') {
      return  routers.push('/pages/home');
     }
-    if (popup) {
-      (function(){ isSignedIn })()
-      
-    }
-
+    
+ 
   };
 
   if (showLogin) {

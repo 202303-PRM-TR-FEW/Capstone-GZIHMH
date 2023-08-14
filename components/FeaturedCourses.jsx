@@ -6,7 +6,7 @@ import { Clock, Star } from '@/utils/icons';
 import SaveButton from '@/components/SaveButton';
 import Link from 'next/link';
 import { useState } from 'react';
-import SignInModal from './SigninModal';
+import SignInModal from './SignInModal';
 const FeaturedCourses = ({ router, courseId, imageSrc, alt, title, duration, rating, price, user_id,username, userProfileImage,user,paylink }) => {
 const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
 const [isSignedIn, setIsSignedIn] = useState(false);
