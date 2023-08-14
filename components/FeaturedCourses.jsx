@@ -9,13 +9,10 @@ import { useState } from 'react';
 import SignInModal from './SigninModal';
 const FeaturedCourses = ({ router, courseId, imageSrc, alt, title, duration, rating, price, user_id,username, userProfileImage,user,paylink }) => {
 const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
-
+const [isSignedIn, setIsSignedIn] = useState(false);
   const handlePayment = (event) => {
     if (user.user.isAnonymous) {
       setIsSignInModalOpen(true);
-      event.preventDefault(); 
-      console.log("button clicked")
-      console.log(paylink)
     } else {
       router.push(paylink)
     }

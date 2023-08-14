@@ -9,7 +9,7 @@ import { getUserCountry } from '@/app/pages/api/ip/route';
 import { useAuthContext } from '@/context/AuthContext';
 import signIn from '@/app/pages/api/auth/signin';
 import { usePathname } from 'next/navigation'
-const GetStarted = ({ routers,popup }) => {
+const GetStarted = ({ routers,popup ,isSignedIn}) => {
 
 
   const [showLogin, setShowLogin] = useState(false);
@@ -28,7 +28,9 @@ const GetStarted = ({ routers,popup }) => {
     setShowLogin(true);
   };
   const handleContinueAsGuestClick = async () => {
-    
+    if (popup) {
+      return 
+    }
     const { result, error } = await signIn('anonymous');
       
       if (error) {
@@ -46,7 +48,7 @@ const GetStarted = ({ routers,popup }) => {
   const handleGoogleLoginClick = async () => {
     // isAnonymous = false;
     const { result, error } = await signIn('google');
-
+        
         if (error) {
             return console.log(error)
         }
@@ -55,6 +57,11 @@ const GetStarted = ({ routers,popup }) => {
     if (pathname == '/') {
      return  routers.push('/pages/home');
     }
+    if (popup) {
+      (function(){ isSignedIn })()
+      
+    }
+
   };
 
   if (showLogin) {
@@ -116,7 +123,7 @@ const GetStarted = ({ routers,popup }) => {
                   <button className="out_btn  m-2 w-full py-1" onClick={handleLoginClick}> Login / Sign up</button>
             </div>
             <div className='w-full' >
-            <button className="out_btn  m-2  w-full py-1" onClick={handleGoogleLoginClick}>
+            <button className="out_btn  m-2  w-full py-1" onClick={handleGoogleLoginClick} >
             
               <svg
                 xmlns="http://www.w3.org/2000/svg"

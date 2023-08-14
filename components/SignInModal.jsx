@@ -1,7 +1,10 @@
+'use client'
 import React from 'react';
 import GetStarted from './GetStarted';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 const SignInModal = ({ open, onClose }) => {
+    
    const router = useRouter()
     if (!open) return null;
     return (
@@ -17,7 +20,7 @@ const SignInModal = ({ open, onClose }) => {
               X
             </p>
             <div className='content'>
-                        <GetStarted routers={router} popup={true } />
+                        <GetStarted routers={router} popup={true } isSignedIn = {onClose } />
             </div>
             
           </div>
