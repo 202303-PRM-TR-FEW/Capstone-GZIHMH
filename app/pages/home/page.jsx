@@ -33,7 +33,7 @@ const Page = () => {
 
         console.log(user)
     const fetchData = async () => {
-        const data = await getCourses(user.user.isAnonymous);
+        const data = await getCourses(user);
         console.log(data)
         setCourses(data);
         setIsloading(false)
@@ -71,6 +71,7 @@ const Page = () => {
                                         user={user}
                                         paylink={course.paymentLink}
                                         router={router}
+                                        isSaved ={course.isSaved}
                                         />
                                         
                                     </li>

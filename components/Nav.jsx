@@ -14,30 +14,14 @@ const Nav = ({ router }) => {
     
 
     const handleSignoutClick = async () => {
-    console.log("this is sign out")
     await signOut(auth).then(() => {
-        console.log("Sign-out successful.") 
         signIn('anonymous')
       }).catch((error) => {
        
       });
       
     }
-    console.log("this is isanon: ",isanon)
-    // const isAnon = async () => {
-    //     console.log("this is isAnon function")
-    //     console.log("this is uid: ",uid)
-    //     const userRef =  doc(firestore, 'users',uid)
-    //     const docSnap = await getDoc(userRef)
-    //     if (docSnap.exists()) {
-    //         return true
-    //     }
-    //     else return false
-    // }
-    // if (uid == null) {
-    //     return <p>Loading user data...</p>;
-    // }
-    // console.log("resule of isAnon is ",isAnon())
+  
     return (
         <div>
             <aside className="flex flex-col w-20  px-5 py-8 overflow-y-auto bg-transparent ">

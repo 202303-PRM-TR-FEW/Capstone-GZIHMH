@@ -13,7 +13,7 @@ const Page = () => {
   const [isloading, setIsloading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getCourses(user.user.isAnonymous);
+      const data = await getCourses(user);
       setCourses(data);
       setIsloading(false)
       

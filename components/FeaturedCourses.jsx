@@ -7,14 +7,20 @@ import SaveButton from '@/components/SaveButton';
 import Link from 'next/link';
 import { useState } from 'react';
 import SignInModal from './SignInModal';
-const FeaturedCourses = ({ router, courseId, imageSrc, alt, title, duration, rating, price, user_id,username, userProfileImage,user,paylink }) => {
+import setMyLearning from '@/app/pages/api/setMyLearning';
+import getUserCourses from '@/app/pages/api/getUserCourses';
+const FeaturedCourses = ({ router, isSaved,courseId, imageSrc, alt, title, duration, rating, price, user_id,username, userProfileImage,user,paylink }) => {
 const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
 const [isSignedIn, setIsSignedIn] = useState(false);
-  const handlePayment = (event) => {
+  const handlePayment = async (event) => {
     if (user.user.isAnonymous) {
       setIsSignInModalOpen(true);
     } else {
-      router.push(paylink)
+      await setMyLearning(user,courseId)
+      // router.push(paylink)
+      const res = await getUserCourses(user)
+      console.log("result of the function getUserCourses is : ", res)
+
     }
   
 }  
@@ -34,7 +40,7 @@ const [isSignedIn, setIsSignedIn] = useState(false);
             {/* Pass the user_id and userProfileImage props to UserProfile */}
             <UserProfile user_id={user_id} userName={username} image={userProfileImage} />
         </div>
-        <SaveButton user={ user} courseId={courseId}/>
+        <SaveButton user={user} courseId={courseId}  isSaved={ isSaved}/>
         </div>
         <div className="pt-8 pl-2 mb-2">
           <p className=" whitespace-nowrap overflow-hidden max-w-xs truncate overflow-ellipsis font-semibold text-gray-900 mb-0">{title}</p>
