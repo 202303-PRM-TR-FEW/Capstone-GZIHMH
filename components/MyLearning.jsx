@@ -11,14 +11,13 @@ import Link from 'next/link';
 const MyLearning = ({data ,user} ) => {
     const savedCourses = useSelector(selectSavedCourses);
     const [coursesToShow, setCoursesToShow] = useState([]);
-    const [seeAll,setSeeAll] = useState(false)
 
     useEffect(() => {
         const shuffledCourses = shuffleArray(db.courses);
-        if (!seeAll) {
+        
         setCoursesToShow(data.slice(0, 2));
             
-        }
+   
     }, []);
 
 
@@ -32,7 +31,7 @@ const MyLearning = ({data ,user} ) => {
     return (
         <div>
  <div className='grid grid-cols-1 gap-4 md:grid-cols-2  p-2'>
-            {data.map((course) => (
+            {coursesToShow.map((course) => (
                 <div
                     key={course.id}
                     className='relative flex  p-2 items-start justify-start bg-white rounded-xl dark:bg-white dark:text-white text-slate-700 cursor-pointer'
@@ -50,7 +49,7 @@ const MyLearning = ({data ,user} ) => {
                         <div className='flex justify-between'>
                             <h2 className='text-xl font-bold mr-8'>{course.title}</h2>
                             
-                                <SaveButton user={user} isSaved={course.isSaved}/>
+                                <SaveButton user={user} courseId={course.id} isSaved={course.isSaved}/>
                                
                             
                            
