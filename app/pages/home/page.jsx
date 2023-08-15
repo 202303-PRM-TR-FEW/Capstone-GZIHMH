@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import { useAuthContext } from '@/context/AuthContext';
 import { query } from 'firebase/firestore';
+import { getCategories } from '../api/getCategories';
 
 
 
@@ -19,6 +20,7 @@ const Page = () => {
     const dispatch = useDispatch();
     const [courses, setCourses] = useState([]);
     const [course, setCourse] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [isloading, setIsloading] = useState(true);
     const router = useRouter()
     
@@ -34,7 +36,9 @@ const Page = () => {
         console.log(user)
     const fetchData = async () => {
         const data = await getCourses(user);
-        console.log(data)
+        const catData = await getCategories();
+        console.log("categories data: ", catData)
+        setCategories(catData)
         setCourses(data);
         setIsloading(false)
       
@@ -87,10 +91,10 @@ const Page = () => {
             <div className='w-full flex flex-col'>
             <h2 className="p-2 font-bold">Categories</h2>
 
-            <div className="flex flex-row ">
+            <div className="flex flex-col md:flex-row  w-full p-2">
 
                 
-                <HomeCategories/>
+                    <HomeCategories data={ categories} />
 
                
 

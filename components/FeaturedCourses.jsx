@@ -9,17 +9,17 @@ import { useState } from 'react';
 import SignInModal from './SignInModal';
 import setMyLearning from '@/app/pages/api/setMyLearning';
 import getUserCourses from '@/app/pages/api/getUserCourses';
+import { useRouter } from 'next/router';
 const FeaturedCourses = ({ router, isSaved,courseId, imageSrc, alt, title, duration, rating, price, user_id,username, userProfileImage,user,paylink }) => {
 const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
-const [isSignedIn, setIsSignedIn] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(false);
   const handlePayment = async (event) => {
     if (user.user.isAnonymous) {
       setIsSignInModalOpen(true);
     } else {
       await setMyLearning(user,courseId)
-      // router.push(paylink)
-      const res = await getUserCourses(user)
-      console.log("result of the function getUserCourses is : ", res)
+      router.push(paylink)
+
 
     }
   
