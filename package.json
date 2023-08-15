@@ -6,7 +6,8 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "test": "jest"
     },
     "dependencies": {
         "@firebase/storage-compat": "^0.3.2",
@@ -36,6 +37,6 @@
     "devDependencies": {
         "eslint": "^8.44.0",
         "eslint-config-next": "^13.4.9",
-        "jest": "^25.0.0"
+        "jest": "^25.5.4"    
     }
 }
