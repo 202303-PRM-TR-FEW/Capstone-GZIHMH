@@ -43,9 +43,7 @@ const Page = () => {
     try { fetchData(); }catch{setCourses([])}
   }, []);
   useEffect(() => {
-    console.log('Selected levels have changed:', selectedLevels);
     if (filtersChanged) {
-      console.log('Selected levels and rating have changed:', selectedLevels, selectedRating);
       handleFilters();
       setFiltersChanged(false);
     }
@@ -54,7 +52,7 @@ const Page = () => {
   const handleSearch = async (searchQuery) => {
 
     try {
-      const results = await getSearchResults(searchQuery,isanon);
+      const results = await getSearchResults(searchQuery,user);
       setSearchResults(results);
       setIsSearched(true);
     } catch (error) {
