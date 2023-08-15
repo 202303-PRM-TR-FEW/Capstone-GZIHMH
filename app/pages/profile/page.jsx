@@ -9,6 +9,7 @@ import {auth,firestore,getDocs,getDoc,collection,where,query,doc} from '@/utils/
 import getAchievements from '../api/getAchievements';
 import { useAuthContext } from '@/context/AuthContext';
 import findFriends from '../api/findFriends';
+import getFriends from '../api/getFriends';
 const CheckIcon = `
 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check w-10 h-10 text-white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -47,7 +48,7 @@ const ProfilePage = () => {
         
         if (userSnapshot.exists()) {
           const userDoc = userSnapshot.data();
-           const data = await findFriends(user);
+          const data = await findFriends(user);
           setFriends(data)
           setUserData(userDoc);
           try {
@@ -153,7 +154,7 @@ const ProfilePage = () => {
               </h5>
             </div>
             <div className='w-full'>
-              <Friends />
+              <Friends user={user}/>
             </div>
             <div className='w-full flex flex-col md:flex-row'>
               <button className='out_btn w-full m-2'>FIND FRIENDS</button>

@@ -3,7 +3,7 @@ import React, { useState ,useEffect} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import addFriend from '@/app/pages/api/addFriend';
-
+import getFriends from '@/app/pages/api/getFriends';
 // Import the data from the file
 
 const FriendsSuggestion = ({user, friends }) => {
@@ -24,6 +24,8 @@ const FriendsSuggestion = ({user, friends }) => {
   const handleAddFriend = async (friendId) =>{
     await addFriend(user, friendId)
     handleRemoveFriend(friendId)
+    await getFriends(user)
+
   }
   return (
     <div className='flex flex-col w-full m-2 bg-white rounded-2xl shadow-lg p-4'>

@@ -19,7 +19,6 @@ async function findFriends(user) {
 
         res = [...res, filteredFriendData]
     }
-    console.log("the result is : :", res)
     return res
 
 }
