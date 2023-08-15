@@ -26,7 +26,7 @@ const Page = () => {
     };
     
     try { fetchData(); }catch{setCourses([])}
-  }, []);
+  }, [user]);
   if (isloading) {
     return <p>loading </p>
   }

@@ -25,9 +25,7 @@ const MyLearning = ({data ,user} ) => {
 
   
 
-    const handleCourseClick = (courseId) => {
-        console.log(`Navigating to course with id: ${courseId}`);
-    };
+
 
 
     return (

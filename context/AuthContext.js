@@ -23,7 +23,7 @@ export const AuthContextProvider = ({
         });
 
         return () => unsubscribe();
-    }, []);
+    }, [user]);
 
     return (
         <AuthContext.Provider value={{ user }}>

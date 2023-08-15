@@ -23,18 +23,21 @@ const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
 
     }
   
-}  
+  }
+
   return (
-   
       <div className=" bg-white  shadow-md rounded-3xl  cursor-pointer relative p-2">
-        <div className=" rounded-2xl relative ">
+      <div className=" rounded-2xl relative " >
+      <Link href={`/course/${courseId}`}>
           <Image
             src={imageSrc}
             alt={alt}
             width={800}
-            height={300}
+          height={300}
+          
             className="object-cover h-28 m-0 "
           />
+          </Link>
           {/* UserProfile component */}
           <div className="user-profile-container  absolute top-24 left-0 ml-3">
             {/* Pass the user_id and userProfileImage props to UserProfile */}
@@ -42,9 +45,13 @@ const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
         </div>
         <SaveButton user={user} courseId={courseId}  isSaved={ isSaved}/>
         </div>
-        <div className="pt-8 pl-2 mb-2">
+      <div className="pt-8 pl-2 mb-2">
+    <Link href={`/course/${courseId}`}>
+        
           <p className=" whitespace-nowrap overflow-hidden max-w-xs truncate overflow-ellipsis font-semibold text-gray-900 mb-0">{title}</p>
-        <div className="flex items-center justify-between">
+      </Link>
+        
+          <div className="flex items-center justify-between">
           <div className='flex flex-row '>
               <p className="flex items-center text-gray-900">
                   <Clock/>
@@ -72,7 +79,6 @@ const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
       </div>
       {isSignInModalOpen && <SignInModal open={isSignInModalOpen} onClose={() => setIsSignInModalOpen(false)} />}
       </div>
-    
   );
 };
 

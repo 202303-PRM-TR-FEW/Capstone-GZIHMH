@@ -17,6 +17,7 @@ const fuseOptions = {
 };
 
 export const getSearchResults = async(querydata, user) => {
+
     if (categories.length === 0) {
         await categoryKeywords();
     }

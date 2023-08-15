@@ -1,7 +1,7 @@
 import React from 'react'
 import { auth, firestore, setDoc, collection, arrayUnion, doc, getDoc, where, arrayRemove, updateDoc, query } from '@/utils/firebase'
 const isCourseSaved = async(user, courseId) => {
-    if (user.user.isAnonymous) {
+    if (!user || user.user.isAnonymous) {
         return ''
     } else {
         const courseSnapshot = await getDoc(doc(firestore, 'courses', courseId))
@@ -23,8 +23,8 @@ const isCourseSaved = async(user, courseId) => {
 
 
         } catch (error) {
-            console.log(error)
-            return '';
+            console.log("error from iscourseSaved :", error)
+            return 'this is the rerro';
         }
     }
 

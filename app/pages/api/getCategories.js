@@ -1,6 +1,4 @@
 import { auth, firestore, docs, query, collection, getDocs, getDoc, where } from '@/utils/firebase'
-import getSearchResults from './getSearchResults'
-import getUser from './getUser'
 export async function getCategories() {
     try {
         const CategoriesRef = collection(firestore, 'categories')
