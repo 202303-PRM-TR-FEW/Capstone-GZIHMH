@@ -145,7 +145,7 @@ const ProfilePage = () => {
               </h5>
             </div>
             <div className='w-full'>
-              <FriendsSuggestion friends={friends } />
+              <FriendsSuggestion user = {user} friends={friends } />
             </div>
             <div className='w-full'>
               <h5 className="m-4 w-full text-xl font-bold leading-none text-gray-900 dark:text-white mb-4">

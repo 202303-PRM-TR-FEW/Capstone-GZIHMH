@@ -2,10 +2,11 @@
 import React, { useState ,useEffect} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import addFriend from '@/app/pages/api/addFriend';
 
 // Import the data from the file
 
-const FriendsSuggestion = ({ friends }) => {
+const FriendsSuggestion = ({user, friends }) => {
   const [isViewAll, setIsViewAll] = useState(false)  
   const [displayedFriends, setDisplayedFriends] = useState(friends);
   const [slicedFriends, setSlicedFriends] = useState(friends.slice(0, 2));
@@ -20,6 +21,10 @@ const FriendsSuggestion = ({ friends }) => {
     setDisplayedFriends(updatedFriends);
     setSlicedFriends(updatedFriends.slice(0,2))
   };
+  const handleAddFriend = async (friendId) =>{
+    await addFriend(user, friendId)
+    handleRemoveFriend(friendId)
+  }
   return (
     <div className='flex flex-col w-full m-2 bg-white rounded-2xl shadow-lg p-4'>
       
@@ -41,7 +46,8 @@ const FriendsSuggestion = ({ friends }) => {
                     </p>
                   </div>
                   <div className="flex ">
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-medium    px-2 rounded-lg">
+            <button onClick={()=>handleAddFriend(friend.id)}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-medium    px-2 rounded-lg">
                       +
                     </button>
             <button
