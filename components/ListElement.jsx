@@ -61,13 +61,13 @@ function ListElement({courses, user}) {
 
           <div className='flex flex-col w-full lg:max-h-[800px] overflow-y-auto'>
           {courses.map((course, index) => (
-          <div className='p-2'>
+          <div className='p-2' key={course.id}>
               
               <div
                 className={`flex relative flex-row rounded-2xl w-full bg-white ${
                   selectedCourseIndex === index ? 'border-primary bg-blue-200' : 'hover:bg-blue-200'
                 } bg-opacity-30 rounded-5 border hover:border-primary p-2 `}
-                key={course.id}
+                
                 onClick={() => handleCourseClick(course)}
               >
 
