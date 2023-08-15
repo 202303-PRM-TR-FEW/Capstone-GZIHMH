@@ -3,7 +3,7 @@ import Image from 'next/image';
 import signUp from '@/app/pages/api/auth/signup';
 import { ReturnIcon } from '@/utils/icons';
 import GetStarted from './GetStarted';
-
+import { usePathname } from 'next/navigation';
 const RegistrationForm = ({ route }) => {
     const [showGetStarted, setShowGetStarted] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
@@ -13,7 +13,7 @@ const RegistrationForm = ({ route }) => {
     const [name, setName] = useState('');
     const [username, setUsername] = useState('');
     const [countries, setCountries] = useState([]);
-
+    const pathname = usePathname()
     useEffect(() => {
         fetchCountries();
     }, []);
@@ -56,8 +56,8 @@ const RegistrationForm = ({ route }) => {
         if (error) {
             console.log(error);
         } else {
-            if (routerspathname == '/') {
-                return  routers.push('/pages/home');
+            if (pathname == '/') {
+                return  route.push('/pages/home');
                }
         }
     };

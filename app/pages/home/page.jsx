@@ -109,14 +109,19 @@ const Page = () => {
                 </div>
 
             </div>
-            <div className='w-full flex flex-col'>
-                <h2 className="p-3 font-bold">My Learning</h2>
-                <div className="flex flex-col mb-4 p-2">
-                <MyLearning data={userCourses} user={user}/>
+            {
+                !user.user.isAnonymous && (
+                    <div className='w-full flex flex-col'>
+                    <h2 className="p-3 font-bold">My Learning</h2>
+                    <div className="flex flex-col mb-4 p-2">
+                    <MyLearning data={userCourses} user={user}/>
+                    </div>
+                   
                 </div>
-               
-            </div>
-            
+                
+                )
+            }
+           
 
            
         </section>

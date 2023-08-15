@@ -47,7 +47,7 @@ const Login = ({ routers }) => {
                 setEmailError("invalid email");
                 break;
             default:
-              alert(errorMessage);
+              alert("error happend",errorMessage);
           }
         }
 
