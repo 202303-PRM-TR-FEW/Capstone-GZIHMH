@@ -13,7 +13,7 @@ const RegistrationForm = ({ route }) => {
     const [name, setName] = useState('');
     const [username, setUsername] = useState('');
     const [countries, setCountries] = useState([]);
-
+    const pathname = usePathname()
     useEffect(() => {
         fetchCountries();
     }, []);
@@ -56,7 +56,7 @@ const RegistrationForm = ({ route }) => {
         if (error) {
             console.log(error);
         } else {
-            if (route.pathname == '/') {
+            if (pathname == '/') {
                 return  route.push('/pages/home');
                }
         }
