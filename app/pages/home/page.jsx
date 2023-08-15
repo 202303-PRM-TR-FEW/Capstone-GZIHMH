@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation';
 import { useAuthContext } from '@/context/AuthContext';
 import { query } from 'firebase/firestore';
 import { getCategories } from '../api/getCategories';
+import getUserCourses from '../api/getUserCourses';
 
 
 
@@ -20,6 +21,7 @@ const Page = () => {
     const dispatch = useDispatch();
     const [courses, setCourses] = useState([]);
     const [course, setCourse] = useState([]);
+    const [userCourses, setUserCourses] = useState([]);
     const [categories, setCategories] = useState([]);
     const [isloading, setIsloading] = useState(true);
     const router = useRouter()
@@ -37,6 +39,8 @@ const Page = () => {
     const fetchData = async () => {
         const data = await getCourses(user);
         const catData = await getCategories();
+        const userCoursesData = await getUserCourses(user);
+        setUserCourses(userCoursesData)
         console.log("categories data: ", catData)
         setCategories(catData)
         setCourses(data);
@@ -108,18 +112,9 @@ const Page = () => {
             <div className='w-full flex flex-col'>
                 <h2 className="p-3 font-bold">My Learning</h2>
                 <div className="flex flex-col mb-4 p-2">
-                <MyLearning />
+                <MyLearning data={userCourses}/>
                 </div>
-                <div className="flex justify-center mx-auto mt-8 p-2">
-                    <div className='flex justify-center mx-auto p-2'>
-                        <Link href='/pages/courses' passHref>
-                            <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-16 rounded-xl'>
-                                SEE ALL
-                            </button>
-                        </Link>
-                    </div>
-
-                </div>
+               
             </div>
             
 
