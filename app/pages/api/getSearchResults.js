@@ -1,4 +1,6 @@
 import Fuse from 'fuse.js';
+import isCourseSaved from '@/app/pages/api/isCourseSaved';
+
 import { auth, query, firestore, arrayUnion, getDocs, ref, updateDoc, doc, getDoc, collection, where } from '@/utils/firebase'
 const API_URL = '';
 let categories = []
@@ -32,7 +34,32 @@ export const getSearchResults = async(querydata, user) => {
         const categoryDoc = categorySnapshot.docs[0].ref;
         if (categoryDoc) {
             const coursesSnapshot = await getDocs(query(coursesRef, where('categories', 'array-contains', categoryDoc)));
-            const data = coursesSnapshot.docs.map((doc) => doc.data());
+            // const data = coursesSnapshot.docs.map((doc) => doc.data());
+            const coursesRefs = coursesSnapshot.docs.map(doc => doc.ref);
+            const coursesWithData = await Promise.all(
+                coursesRefs.map(async courseRef => {
+                    const courseDoc = await getDoc(courseRef);
+
+                    if (!courseDoc.exists()) {
+                        return null;
+                    }
+
+                    const courseData = courseDoc.data();
+                    const isSavedData = await isCourseSaved(user, courseDoc.id);
+
+
+                    const tutorRef = courseData.tutorId;
+                    const tutorDoc = await getDoc(tutorRef);
+                    const tutorData = tutorDoc.data();
+
+                    return {
+                        ...courseData,
+                        isSaved: isSavedData,
+                        tutor: tutorData,
+                        id: courseDoc.id,
+                    };
+                })
+            );
             if (!user.user.isAnonymous) {
                 const { uid } = auth.currentUser
                 const userRef = doc(firestore, 'users', uid)
@@ -42,7 +69,7 @@ export const getSearchResults = async(querydata, user) => {
                     wordsSearched: arrayUnion(matchedCategory)
                 })
             }
-            return data;
+            return coursesWithData;
         } else {
             throw new Error('Category not found');
         }

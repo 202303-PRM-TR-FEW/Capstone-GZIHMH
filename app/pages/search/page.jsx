@@ -127,7 +127,7 @@ const Page = () => {
                         path={result.title}
                         thumbnail={result.thumbnail}
                         courseName={result.title}
-                        tutorName={getPersonName(result.tutorId)}
+                        tutorName={result.tutor.name}
                       />
                     </li>
                   ))}
@@ -146,7 +146,7 @@ const Page = () => {
                         path={result.title}
                         thumbnail={result.thumbnail}
                         courseName={result.title}
-                        tutorName={getPersonName(result.tutorId)}
+                        tutorName={result.tutor.name}
                       />
                     </li>
                   ))}
