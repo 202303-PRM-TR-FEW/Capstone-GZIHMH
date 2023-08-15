@@ -1,19 +1,34 @@
-import React from 'react';
+'use client'
+import React, { useState ,useEffect} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-// Import the data from the file
-import FriendsSuggestionData from '../utils/FriendsSuggestionData';
 
-const FriendsSuggestion = () => {
+// Import the data from the file
+
+const FriendsSuggestion = ({ friends }) => {
+  const [isViewAll, setIsViewAll] = useState(false)  
+  const [displayedFriends, setDisplayedFriends] = useState(friends);
+  const [slicedFriends, setSlicedFriends] = useState(friends.slice(0, 2));
+  const [viewedFriends,setViewedFriends] = useState(friends)
+
+  useEffect(() => {
+    setViewedFriends(isViewAll ? displayedFriends : slicedFriends);
+  }, [isViewAll, displayedFriends,slicedFriends]);
+
+  const handleRemoveFriend = (friendName) => {
+    const updatedFriends = displayedFriends.filter((friend) => friend.id !== friendName);
+    setDisplayedFriends(updatedFriends);
+    setSlicedFriends(updatedFriends.slice(0,2))
+  };
   return (
     <div className='flex flex-col w-full m-2 bg-white rounded-2xl shadow-lg p-4'>
       
-      {FriendsSuggestionData.map((friend) => (
-              <div key={friend.id} className="py-3 sm:py-1 flex flex-row w-full items-center">
+      {viewedFriends.map((friend) => (
+              <div key={friend} className="py-3 sm:py-1 flex flex-row w-full items-center">
                 
                   <div className="flex-shrink-0">
                     <Image
-                      src={friend.profilePic}
+                      src={friend.profilePicture}
                       width={500}
                       height={500}
                       alt={`Picture of ${friend.name}`}
@@ -26,11 +41,13 @@ const FriendsSuggestion = () => {
                     </p>
                   </div>
                   <div className="flex ">
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-1 px-2 rounded-lg">
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-medium    px-2 rounded-lg">
                       +
                     </button>
-                    <button className="text-gray-500 hover:text-red-500 font-medium py-1 px-2 rounded-lg">
-                      x
+            <button
+              onClick={()=>handleRemoveFriend(friend.id)}
+              className="text-gray-500 hover:text-red-500 font-medium py-1 px-2 rounded-lg">
+                      X
                     </button>
                   </div>
                 
@@ -39,12 +56,13 @@ const FriendsSuggestion = () => {
 
       <hr className="my-2 mt-8 hidden md:flex border-gray-300 " />
       <div className="">
-        <Link
+        <button
           href="#"
           className=" ml-2 text-sm font-bold text-blue-500 hover:underline "
+          onClick={()=>setIsViewAll(!isViewAll)}
         >
-          VIEW ALL
-        </Link>
+           {isViewAll ? 'SHOW LESS' : 'VIEW ALL'}
+        </button>
       </div>
     </div>
     
