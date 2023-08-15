@@ -2,7 +2,6 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
 const Recommended = (props) => {
   return (
     <div className="mr-3">
@@ -16,7 +15,7 @@ const Recommended = (props) => {
         />
       </div>
       <div className="course_details w-44 ml-2">
-        <h2 className="course_name">{props.courseName}</h2>
+        <p className="text-sm font-bold text-gray-900 ">{props.courseName}</p>
         <Link href={props.path} className="tutor_name">
         {props.tutorName}
         </Link>
