@@ -14,7 +14,7 @@ const fuseOptions = {
     keys: ['name'],
 };
 
-export const getSearchResults = async(querydata, isanon) => {
+export const getSearchResults = async(querydata, user) => {
     if (categories.length === 0) {
         await categoryKeywords();
     }
@@ -33,7 +33,7 @@ export const getSearchResults = async(querydata, isanon) => {
         if (categoryDoc) {
             const coursesSnapshot = await getDocs(query(coursesRef, where('categories', 'array-contains', categoryDoc)));
             const data = coursesSnapshot.docs.map((doc) => doc.data());
-            if (!isanon) {
+            if (!user.user.isAnonymous) {
                 const { uid } = auth.currentUser
                 const userRef = doc(firestore, 'users', uid)
                 const userSnapshot = await getDoc(userRef)
