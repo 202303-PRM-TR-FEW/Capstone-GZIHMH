@@ -9,7 +9,7 @@ import getCourses from '../api/getCourses';
 import { useAuthContext } from '@/context/AuthContext';
 import getUserCourses from '../api/getUserCourses';
 const Page = () => {
-    const user = useAuthContext()
+  const user = useAuthContext()
   const [courses, setCourses] = useState([]);
   const [isloading, setIsloading] = useState(true);
   useEffect(() => {
