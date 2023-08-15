@@ -4,8 +4,9 @@ import Image from 'next/image';
 import Details from './Details';
 import db from '../utils/db';
 import { Statistics} from '../utils/icons';
+import SaveButton from './SaveButton';
 
-function ListElement({courses}) {
+function ListElement({courses, user}) {
   const [selectedCourseIndex, setSelectedCourseIndex] = useState(null);
   const [randomCourses, setRandomCourses] = useState([]);
 
@@ -23,7 +24,6 @@ function ListElement({courses}) {
 
   const handleCourseClick = (index) => {
     setSelectedCourseIndex(index);
-    console.log("cours in list element : ",index)
   };
 
   const getPersonName = (user_id) => {
@@ -46,63 +46,67 @@ function ListElement({courses}) {
   };
 
   return (
-    <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col '>
-      <div className='flex flex-col lg:flex-row md:flex-col sm:flex-col '>
-        <div className='rounded-2xl md:p-2 flex flex-col w-full'>
+    <div className='flex flex-col lg:flex-row w-full  '>
+      <div className='flex flex-col  w-full '>
           <div className="flex flex-row justify-between ">
             <h1 className='x-3 py-2'>My Learning</h1>
             <div className='flex flex-row justify-between px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-primary hover:text-gray-700'>
               <a className="flex text-lg items-center" href="/pages/statistics">
                 <Statistics/>
                 <span className='px-3 py-2'>Statistics</span>
-              </a>
+            </a>
+              
             </div>
           </div>
 
-          <div className='flex-1 w-full lg:max-h-[800px] overflow-y-auto'>
-            {courses.map((course, index) => (
+          <div className='flex flex-col w-full lg:max-h-[800px] overflow-y-auto'>
+          {courses.map((course, index) => (
+          <div className='p-2'>
+              
               <div
-                className={`flex rounded-2xl opacity-100 bg-white ${
+                className={`flex relative flex-row rounded-2xl w-full bg-white ${
                   selectedCourseIndex === index ? 'border-primary bg-blue-200' : 'hover:bg-blue-200'
-                } bg-opacity-30 rounded-5 border hover:border-primary`}
+                } bg-opacity-30 rounded-5 border hover:border-primary p-2 `}
                 key={course.id}
                 onClick={() => handleCourseClick(course)}
               >
-                <div className='flex flex-row gap-2 justify-between'>
+
+                <div className='flex flex-row  p-2 '>
                   <Image
                     src={course.thumbnail}
-                    width={180}
+                    width={190}
                     height={152}
                     alt={course.title}
-                    className='max-w-[180px] max-h-[152px]'
                     style={{ cursor: 'pointer' }}
                   />
                 </div>
-                <div className='w-full pt-2'>
-                  <div className='flex justify-between'>
+                <div className='w-full p-2'>
+                  <div className='flex '>
                     <h2>{course.title}</h2>
-                    <button onClick={() => handleToggle(course.id)}>
-                      <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-5 h-5 self-start  fill-current m-2`}><path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" /></svg>
-                      </span>
-                    </button>
                   </div>
                   <p className='tutor_name mb-3'>{course.tutor.name}</p>
-                  <div className="bg-gray-200 h-2 w-auto rounded-xl overflow-hidden mx-2 my-1.5">
+                  <div className="bg-gray-200 h-2 w-full rounded-xl overflow-hidden mx-2 my-1.5">
                     <div className="h-full bg-primary rounded-lg" style={{ width: '30%' }}></div>
                   </div>
                   <p className='text'>30% complete</p>
                 </div>
-              </div>
+            <SaveButton user={user} isSaved={course.isSaved} courseId={course.id}/>
+
+            </div>
+            </div> 
             ))}
+          
+          
           </div>
-        </div>
-        <div className='w-full h-full bg-white p-2'>
-          {selectedCourseIndex  && (
-            <Details course={selectedCourseIndex} /> 
-          )}
-        </div>
+        
       </div>
+      
+      {selectedCourseIndex != null && (
+        <div className='w-full h-full bg-white p-2'>
+          <Details course={selectedCourseIndex} /> 
+        </div>
+          
+          )}
     </div>
   );
 }
