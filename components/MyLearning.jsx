@@ -69,18 +69,20 @@ const MyLearning = ({data ,user} ) => {
             ))}
 
        
-        </div>
-         <div className="flex justify-center mx-auto mt-8 p-2">
-        
-
             </div>
-            <div className='flex justify-center mx-auto p-2'>
+            {
+                coursesToShow.length > 0 && (
+                    <div className='flex justify-center mx-auto p-2'>
              <Link href='/pages/courses' passHref>
                  <button onClick={()=>setSeeAll(true)} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-16 rounded-xl'>
                      SEE ALL
                  </button>
              </Link>
          </div>
+                )
+            }
+         
+            
         </div>
        
     );
