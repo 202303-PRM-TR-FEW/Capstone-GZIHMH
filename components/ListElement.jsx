@@ -5,18 +5,17 @@ import Details from './Details';
 import db from '../utils/db';
 import { Statistics} from '../utils/icons';
 import SaveButton from './SaveButton';
+import NoCourseMessage from './NoCourseMessage';
 
 function ListElement({courses, user}) {
   const [selectedCourseIndex, setSelectedCourseIndex] = useState(null);
   const [randomCourses, setRandomCourses] = useState([]);
 
-  // useEffect(() => {
-  //   const getAllCourses = () => {
-  //     setRandomCourses([...db.courses]);
-  //   };
-
-  //   getAllCourses();
-  // }, []);
+  useEffect(() => {
+    if (courses && courses.length > 0) {
+      setRandomCourses(courses);
+    }
+  }, [courses]);
 
   const isCourseSaved = (courseExists) => {
     return courseExists ? 'text-primary' : 'text-gray-400';
@@ -58,9 +57,9 @@ function ListElement({courses, user}) {
               
             </div>
           </div>
-
+          {randomCourses.length > 0 ? (
           <div className='flex flex-col w-full lg:max-h-[800px] overflow-y-auto'>
-          {courses.map((course, index) => (
+          {randomCourses.map((course, index) => (
           <div className='p-2' key={course.id}>
               
               <div
@@ -98,6 +97,8 @@ function ListElement({courses, user}) {
           
           
           </div>
+          ) : (<NoCourseMessage />
+          )}
         
       </div>
       

@@ -14,8 +14,10 @@ const MyLearning = ({data ,user} ) => {
 
     useEffect(() => {
         const shuffledCourses = shuffleArray(db.courses);
-        
+        if (data) {
         setCoursesToShow(data.slice(0, 2));
+            
+        }
             
    
     }, []);
