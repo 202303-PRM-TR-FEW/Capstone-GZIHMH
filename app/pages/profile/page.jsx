@@ -8,6 +8,8 @@ import StatisticalCard from '@/components/StatisticalCard';
 import {auth,firestore,getDocs,getDoc,collection,where,query,doc} from '@/utils/firebase'
 import getAchievements from '../api/getAchievements';
 import { useAuthContext } from '@/context/AuthContext';
+import findFriends from '../api/findFriends';
+import getFriends from '../api/getFriends';
 const CheckIcon = `
 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check w-10 h-10 text-white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -32,6 +34,7 @@ const ProfilePage = () => {
   console.log("the user in profile form useAuthcountesxt: ",user)
   const [userData, setUserData] = useState(null);
   const [achiev, setAchiev] = useState([]);
+  const [friends,setFriends] = useState([])
   const[profileUrl,setProfileUrl]=useState('/assets/images/defaultuser.png')
   useEffect(() => {
     const fetchUserData = async () => {
@@ -40,16 +43,17 @@ const ProfilePage = () => {
         setAchiev(achData)
         const { uid } = auth.currentUser
         console.log("uid is :",uid)
-        const userDoc = await doc(firestore, 'users', uid);
+        const userDoc = doc(firestore, 'users', uid);
         const userSnapshot = await getDoc(userDoc)
         
         if (userSnapshot.exists()) {
           const userDoc = userSnapshot.data();
+          const data = await findFriends(user);
+          setFriends(data)
           setUserData(userDoc);
           try {
             setProfileUrl(userDoc.profilePicture)
           } catch { setProfileUrl('/assets/images/defaultuser.png')}
-          console.log("user data is :",userData) // Update the user data state
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
@@ -142,7 +146,7 @@ const ProfilePage = () => {
               </h5>
             </div>
             <div className='w-full'>
-              <FriendsSuggestion />
+              <FriendsSuggestion user = {user} friends={friends } />
             </div>
             <div className='w-full'>
               <h5 className="m-4 w-full text-xl font-bold leading-none text-gray-900 dark:text-white mb-4">
@@ -150,7 +154,7 @@ const ProfilePage = () => {
               </h5>
             </div>
             <div className='w-full'>
-              <Friends />
+              <Friends user={user}/>
             </div>
             <div className='w-full flex flex-col md:flex-row'>
               <button className='out_btn w-full m-2'>FIND FRIENDS</button>

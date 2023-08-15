@@ -7,18 +7,31 @@ import { doc,auth, firestore, setDoc } from '@/utils/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getUserCountry } from '@/app/pages/api/ip/route';
 import { useAuthContext } from '@/context/AuthContext';
-import signIn from '@/app/pages/api/auth/signin'
-const GetStarted = ({ routers }) => {
+import signIn from '@/app/pages/api/auth/signin';
+import { usePathname } from 'next/navigation'
+const GetStarted = ({ routers,popup }) => {
 
 
   const [showLogin, setShowLogin] = useState(false);
+  const [ishome, setIshome] = useState(false);
+  const [isSignedIn,setIsSignedIn] = useState('Please sign in to continue')
+  const pathname = usePathname()
+ 
+
+  useEffect(()=>{
+    if (pathname == '/pages/home') {
+      setIshome(true)
+    }    
+	}, [])
   // const googleAuth = new GoogleAuthProvider();
   
   const handleLoginClick = () => {
     setShowLogin(true);
   };
   const handleContinueAsGuestClick = async () => {
-    
+    if (popup) {
+      return 
+    }
     const { result, error } = await signIn('anonymous');
       
       if (error) {
@@ -27,46 +40,27 @@ const GetStarted = ({ routers }) => {
     
         // else successful
     console.log(result)
-    return   routers.push('/pages/home')
+    console.log("my route is ",pathname)
+    if (pathname == '/') {
+      return routers.push('/pages/home');
+    }
   };
   
   const handleGoogleLoginClick = async () => {
     // isAnonymous = false;
     const { result, error } = await signIn('google');
-
+        
         if (error) {
             return console.log(error)
         }
         // else successful
-    console.log(result)
-    return   routers.push('/pages/home')
+    if (pathname == '/') {
+     return  routers.push('/pages/home');
+    }
+    setIsSignedIn("Successfully signed in ")
  
   };
-    // const result = await signInWithPopup(auth, googleAuth)
-    // saveGoogleUserInfoToFirestore();
-    // const { uid } = auth.currentUser;
-    // localStorage.setItem('uid', uid);
-    // routers.push('/pages/home')
 
-
-  // };
-  // const saveGoogleUserInfoToFirestore = async () => {
-  //   const { uid, displayName, email, photoURL } = auth.currentUser;
-  //   const res = await getUserCountry();
-  //   try {
-  //     await setDoc(doc(firestore,'users',uid),{
-
-  //       name: displayName,
-  //       email: email,
-  //       profilePicture: photoURL,
-  //       country: res,
-        
-  //     }, { merge: true });
-  //     // console.log(uid,displayName,email,photoURL,country)
-  //   } catch (error) {
-  //     console.error('Firestore Update Error:', error);
-  //   }
-  // };
   if (showLogin) {
     return <Login routers={routers} />;
   }
@@ -96,23 +90,37 @@ const GetStarted = ({ routers }) => {
         </div>
 
 
-        <div className='w-full'>
-
-          <div className='text-gray-800 font-bold py-1 text-3xl '>
+      <div className='w-full'>
+        {
+          !ishome && (
+            <>
+            <div className='text-gray-800 font-bold py-1 text-3xl '>
             <p> Discover passion </p>
           </div>
 
           <div className=' text-gray-600 py-5 '>
             <p> find out what topics you find interesting, <br /> learn a new skill & connect with people that <br /> are passionate about similer topics.  </p>
           </div>
+            </>
+           
 
+          )
+        }
+        {
+          popup && (
+            <div className=' text-gray-600 py-5 '>
+            <p> {isSignedIn}  </p>
+          </div>
+          )
+        }
+          
 
           <div className=" font-bold  flex flex-col w-full  py-5 ">
             <div className='w-full'>
                   <button className="out_btn  m-2 w-full py-1" onClick={handleLoginClick}> Login / Sign up</button>
             </div>
             <div className='w-full' >
-            <button className="out_btn  m-2  w-full py-1" onClick={handleGoogleLoginClick}>
+            <button className="out_btn  m-2  w-full py-1" onClick={handleGoogleLoginClick} >
             
               <svg
                 xmlns="http://www.w3.org/2000/svg"

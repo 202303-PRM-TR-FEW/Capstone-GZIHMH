@@ -35,7 +35,7 @@ const Page = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getCourses(user.user.isAnonymous);
+      const data = await getCourses(user);
       setCourses(data);
       
     };

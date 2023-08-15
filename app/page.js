@@ -4,6 +4,7 @@ import RegistrationForm from '@/components/RegistrationForm'
 import Image from 'next/image'
 import GetStarted from '@/components/GetStarted'
 import { useRouter } from 'next/navigation'
+import Modal from 'react-modal';
 export default function Intro() {
 
   const router = useRouter();

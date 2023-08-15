@@ -6,37 +6,22 @@ import { signOut } from 'firebase/auth'
 import { auth,getDoc,doc,firestore} from'@/utils/firebase'
 import { HomeIcon, Logout, ProfileIcon, SavedIcon, CoursesIcon, SearchIcon}from '@/utils/icons'
 import { useAuthContext } from '@/context/AuthContext'
-
+import signIn from '@/app/pages/api/auth/signin'
 const Nav = ({ router }) => {
     const user = useAuthContext();
-    const isanon = user.isAnonymous 
+    
+    const isanon =  user.user && user.user.isAnonymous 
     
 
     const handleSignoutClick = async () => {
-    console.log("this is sign out")
     await signOut(auth).then(() => {
-        console.log("Sign-out successful.") 
-        router.push('/')
+        signIn('anonymous')
       }).catch((error) => {
        
       });
       
     }
-    console.log("this is isanon: ",isanon)
-    // const isAnon = async () => {
-    //     console.log("this is isAnon function")
-    //     console.log("this is uid: ",uid)
-    //     const userRef =  doc(firestore, 'users',uid)
-    //     const docSnap = await getDoc(userRef)
-    //     if (docSnap.exists()) {
-    //         return true
-    //     }
-    //     else return false
-    // }
-    // if (uid == null) {
-    //     return <p>Loading user data...</p>;
-    // }
-    // console.log("resule of isAnon is ",isAnon())
+  
     return (
         <div>
             <aside className="flex flex-col w-20  px-5 py-8 overflow-y-auto bg-transparent ">

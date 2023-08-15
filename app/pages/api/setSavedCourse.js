@@ -7,19 +7,14 @@ const setSavedCourse = async (user,courseId) => {
     else {
         const courseSnapshot = await getDoc(doc(firestore, 'courses', courseId))
         const courseRef = courseSnapshot.ref
-        console.log("course ref in setsavedcourse:",courseRef)
         try {
             const userSnapshot = await getDoc(doc(firestore, 'users', user.user.uid))
             const userRef = userSnapshot.ref
             const userData = userSnapshot.data()
-            console.log("the result of the userData is : ", userData)
-            console.log("this is the users saved courses : ", userData.savedCourses)
             const exists = userData.savedCourses.some(savedCourseRef => savedCourseRef.path === courseRef.path);
 
-            console.log("does is exist?", exists)
             if (exists)
             {
-                console.log("this data is already in user document")
                 await updateDoc(userRef, {
                     savedCourses:arrayRemove(courseRef)
         

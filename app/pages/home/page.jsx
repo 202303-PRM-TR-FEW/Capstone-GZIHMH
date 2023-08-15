@@ -10,6 +10,8 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import { useAuthContext } from '@/context/AuthContext';
 import { query } from 'firebase/firestore';
+import { getCategories } from '../api/getCategories';
+import getUserCourses from '../api/getUserCourses';
 
 
 
@@ -19,8 +21,11 @@ const Page = () => {
     const dispatch = useDispatch();
     const [courses, setCourses] = useState([]);
     const [course, setCourse] = useState([]);
+    const [userCourses, setUserCourses] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [isloading, setIsloading] = useState(true);
     const router = useRouter()
+    
     const handleCourseClick = (course) => {
         router.push(`../pages/course/${course.id}`
            
@@ -32,8 +37,12 @@ const Page = () => {
 
         console.log(user)
     const fetchData = async () => {
-        const data = await getCourses(user.user.isAnonymous);
-        console.log(data)
+        const data = await getCourses(user);
+        const catData = await getCategories();
+        const userCoursesData = await getUserCourses(user);
+        setUserCourses(userCoursesData)
+        console.log("categories data: ", catData)
+        setCategories(catData)
         setCourses(data);
         setIsloading(false)
       
@@ -67,7 +76,10 @@ const Page = () => {
                                     user_id={course.tutor} // Provide the user ID here
                                     userProfileImage={course.tutor.profilePicture} 
                                         username={course.tutor.name}
-                                        user = {user}
+                                        user={user}
+                                        paylink={course.paymentLink}
+                                        router={router}
+                                        isSaved ={course.isSaved}
                                         />
                                         
                                     </li>
@@ -83,10 +95,10 @@ const Page = () => {
             <div className='w-full flex flex-col'>
             <h2 className="p-2 font-bold">Categories</h2>
 
-            <div className="flex flex-row ">
+            <div className="flex flex-col md:flex-row  w-full p-2">
 
                 
-                <HomeCategories/>
+                    <HomeCategories data={ categories} />
 
                
 
@@ -100,18 +112,9 @@ const Page = () => {
             <div className='w-full flex flex-col'>
                 <h2 className="p-3 font-bold">My Learning</h2>
                 <div className="flex flex-col mb-4 p-2">
-                <MyLearning />
+                <MyLearning data={userCourses} user={user}/>
                 </div>
-                <div className="flex justify-center mx-auto mt-8 p-2">
-                    <div className='flex justify-center mx-auto p-2'>
-                        <Link href='/pages/courses' passHref>
-                            <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-16 rounded-xl'>
-                                SEE ALL
-                            </button>
-                        </Link>
-                    </div>
-
-                </div>
+               
             </div>
             
 

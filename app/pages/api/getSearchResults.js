@@ -6,7 +6,6 @@ const categoryKeywords = async() => {
     const categoryRef = collection(firestore, 'categories')
     const categorySnapshot = await getDocs(categoryRef)
     categories = categorySnapshot.docs.map((doc) => doc.data());
-    console.log(categories)
     return categories
 }
 
@@ -20,14 +19,10 @@ export const getSearchResults = async(querydata, isanon) => {
         await categoryKeywords();
     }
     const fuse = new Fuse(categories.map((category) => ({ name: category.name })), fuseOptions);
-    console.log("fuse is ", fuse)
 
     const lowercaseQuery = querydata;
     const searchResults = fuse.search(lowercaseQuery);
     const matchedCategory = searchResults.length > 0 ? searchResults[0].item.name : '';
-    console.log("this is the search results: ", searchResults)
-    console.log("this is the matched category: ", matchedCategory)
-    console.log(matchedCategory);
 
     try {
         const coursesRef = collection(firestore, 'courses');
@@ -35,15 +30,11 @@ export const getSearchResults = async(querydata, isanon) => {
 
         const categorySnapshot = await getDocs(query(catRef, where('name', '==', matchedCategory)));
         const categoryDoc = categorySnapshot.docs[0].ref;
-        console.log("category id is ", categoryDoc)
         if (categoryDoc) {
             const coursesSnapshot = await getDocs(query(coursesRef, where('categories', 'array-contains', categoryDoc)));
             const data = coursesSnapshot.docs.map((doc) => doc.data());
-            console.log("am i is anon?", isanon)
             if (!isanon) {
                 const { uid } = auth.currentUser
-                console.log("the user is :", uid)
-                console.log("about to save the catageroy")
                 const userRef = doc(firestore, 'users', uid)
                 const userSnapshot = await getDoc(userRef)
                 const userDocRef = userSnapshot.ref

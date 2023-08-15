@@ -1,11 +1,29 @@
+'use client'
 import React from 'react';
 import Image from 'next/image';
 import UserProfile from "@/components/UserProfile"
 import { Clock, Star } from '@/utils/icons';
 import SaveButton from '@/components/SaveButton';
+import Link from 'next/link';
+import { useState } from 'react';
+import SignInModal from './SignInModal';
+import setMyLearning from '@/app/pages/api/setMyLearning';
+import getUserCourses from '@/app/pages/api/getUserCourses';
+import { useRouter } from 'next/router';
+const FeaturedCourses = ({ router, isSaved,courseId, imageSrc, alt, title, duration, rating, price, user_id,username, userProfileImage,user,paylink }) => {
+const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(false);
+  const handlePayment = async (event) => {
+    if (user.user.isAnonymous) {
+      setIsSignInModalOpen(true);
+    } else {
+      await setMyLearning(user,courseId)
+      router.push(paylink)
 
-const FeaturedCourses = ({ courseId, imageSrc, alt, title, duration, rating, price, user_id,username, userProfileImage,user }) => {
-  console.log("user in featurecourses component: ",user.user.isAnonymous)
+
+    }
+  
+}  
   return (
    
       <div className=" bg-white  shadow-md rounded-3xl  cursor-pointer relative p-2">
@@ -22,7 +40,7 @@ const FeaturedCourses = ({ courseId, imageSrc, alt, title, duration, rating, pri
             {/* Pass the user_id and userProfileImage props to UserProfile */}
             <UserProfile user_id={user_id} userName={username} image={userProfileImage} />
         </div>
-        <SaveButton user={ user} courseId={courseId}/>
+        <SaveButton user={user} courseId={courseId}  isSaved={ isSaved}/>
         </div>
         <div className="pt-8 pl-2 mb-2">
           <p className=" whitespace-nowrap overflow-hidden max-w-xs truncate overflow-ellipsis font-semibold text-gray-900 mb-0">{title}</p>
@@ -40,15 +58,19 @@ const FeaturedCourses = ({ courseId, imageSrc, alt, title, duration, rating, pri
           <div className='md:pr-2'>
             <div className="flex items-center justify-center box-border overflow-hidden outline-none cursor-default w-16 h-8 opacity-100 bg-blue-600 rounded-full border-0">
               <span className="flex items-center p-2">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-20 rounded-xl">
-                  {price}
+                
+                <button  onClick={ handlePayment} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-20 rounded-xl">
+                  {price}$
                 </button>
+                
               </span>
+              
             </div>
           </div>
             
           </div>
-        </div>
+      </div>
+      {isSignInModalOpen && <SignInModal open={isSignInModalOpen} onClose={() => setIsSignInModalOpen(false)} />}
       </div>
     
   );

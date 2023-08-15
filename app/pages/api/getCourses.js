@@ -1,14 +1,14 @@
 import { auth, firestore, doc, query, collection, getDocs, getDoc, } from '@/utils/firebase'
 import getSearchResults from './getSearchResults'
 import getUser from './getUser'
-export async function getCourses(isanon) {
+import isCourseSaved from './isCourseSaved'
+export async function getCourses(user) {
     try {
         const result = []
 
         const coursesRef = collection(firestore, 'courses')
-        console.log("courseRef is ", coursesRef)
         const coursesSnapshot = await getDocs(coursesRef)
-        if (!isanon) {
+        if (!user.user.isAnonymous) {
             const { uid } = auth.currentUser
             const userDocRef = doc(firestore, 'users', uid)
 
@@ -35,10 +35,10 @@ export async function getCourses(isanon) {
             coursesSnapshot.docs.map(async(doc) => {
                 const courseData = doc.data();
                 const tutorData = await getUser(courseData.tutorId.id);
-                return {...courseData, tutor: tutorData, id: doc.id };
+                const isSavedData = await isCourseSaved(user, doc.id)
+                return {...courseData, tutor: tutorData, id: doc.id, isSaved: isSavedData };
             })
         );
-        console.log("courses data are: ", coursesData)
 
         return coursesData;
     } catch (error) {

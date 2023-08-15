@@ -1,17 +1,32 @@
-import React from 'react';
+'use client'
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import FriendsData from '../utils/FriendsData';
 import Link from 'next/link';
-const Friends = () => {
+import getFriends from '@/app/pages/api/getFriends';
+const Friends = ({user}) => {
+  const [friends, setFriends] = useState([]);
+  useEffect(() => {
+    const fetchFriends = async () => {
+      try {
+        const friendsData = await getFriends(user);
+        setFriends(friendsData);
+      } catch (error) {
+        console.error('Error fetching friends:', error);
+      }
+    };
+
+    fetchFriends();
+  }, [user]);
   return (
     <div className='flex flex-col w-full m-2 bg-white rounded-2xl shadow-lg p-4'>
       
-      {FriendsData.map((friend, index) => (
+      {friends.map((friend, index) => (
               <div key={friend.id} className="py-3 sm:py-1 flex flex-row w-full items-center">
                 
                   <div className="flex-shrink-0">
                     <Image
-                      src={friend.image}
+                      src={friend.profilePicture}
                       width={500}
                       height={500}
                       alt={`Picture of ${friend.name}`}
@@ -24,7 +39,7 @@ const Friends = () => {
                     </p>
                   </div>
                   <div className="inline-flex items-center text-base font-bold text-blue-500 dark:text-white">
-                    <a href={friend.profileLink}>PROFILE</a>
+                    <a href='#'>PROFILE</a>
                   </div>
                             
               </div>

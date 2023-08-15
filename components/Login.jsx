@@ -8,9 +8,10 @@ import signIn from '@/app/pages/api/auth/signin';
 import { ReturnIcon } from '@/utils/icons';
 import GetStarted from './GetStarted';
 import { useDispatch } from 'react-redux'
+import { usePathname } from 'next/navigation';
 const Login = ({ routers }) => {
   const [showGetStarted, setShowGetstarted] = useState(false);
-
+  const pathname = usePathname()
   const [showSignup, setShowSignup] = useState(false);
   const [userEmail, setUserEmail] = useState('')
   const [userPassword, setUserPassword] = useState('')
@@ -51,8 +52,9 @@ const Login = ({ routers }) => {
         }
 
         // else successful
-    console.log(result)
-    routers.push('/pages/home')
+    if (pathname == '/') {
+      routers.push('/pages/home');
+    }
  
  
     

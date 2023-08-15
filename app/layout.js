@@ -44,7 +44,7 @@ export default function RootLayout({ children }) {
         <AuthContextProvider>
            <Provider store={store} >
             <PersistGate loading={null} persistor={persistor}>
-              <div className='flex flex-row'>
+              <div className='flex flex-row w-full'>
                 {!isHome && <Nav router={router} />}
                 {children}
               </div>

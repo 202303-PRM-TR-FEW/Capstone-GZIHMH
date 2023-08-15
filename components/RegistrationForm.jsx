@@ -56,7 +56,9 @@ const RegistrationForm = ({ route }) => {
         if (error) {
             console.log(error);
         } else {
-            route.push('/pages/home');
+            if (routerspathname == '/') {
+                return  routers.push('/pages/home');
+               }
         }
     };
 
