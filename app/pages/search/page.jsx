@@ -13,7 +13,6 @@ import applyFilters from '../api/applyFilters';
 import { useAuthContext } from '@/context/AuthContext';
 const Page = () => {
   const user = useAuthContext()
-    console.log("redux is anon is: ",user.user.isAnonymous)
   const Top = [
     'Marketing Strategy',
     'UX Design',
@@ -74,7 +73,6 @@ const Page = () => {
     setFiltersChanged(true);
 };
   const handleFilters = async () => {
-    console.log("im in handle filters")
     const filteredRes = await applyFilters(searchResults, selectedLevels, selectedRating);
     setFilteredResults(filteredRes)
   };

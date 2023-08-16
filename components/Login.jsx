@@ -60,7 +60,6 @@ const Login = ({ routers }) => {
     
   }
   const handleReturnClick = () => {
-    console.log('im goback button')
     setShowGetstarted(true)
   }
   if (showGetStarted) {

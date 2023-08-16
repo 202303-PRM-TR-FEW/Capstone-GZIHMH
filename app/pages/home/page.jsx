@@ -12,6 +12,7 @@ import { useAuthContext } from '@/context/AuthContext';
 import { query } from 'firebase/firestore';
 import { getCategories } from '../api/getCategories';
 import getUserCourses from '../api/getUserCourses';
+import getUser from '../api/getUser';
 
 
 
@@ -25,32 +26,38 @@ const Page = () => {
     const [categories, setCategories] = useState([]);
     const [isloading, setIsloading] = useState(true);
     const router = useRouter()
-    
-    const handleCourseClick = (course) => {
-        router.push(`../pages/course/${course.id}`
-           
-        )
 
-       
-      };
     useEffect(() => {
 
-        console.log(user)
-    const fetchData = async () => {
-        const data = await getCourses(user);
-        const catData = await getCategories();
-        const userCoursesData = await getUserCourses(user);
+        const fetchData = async () => {
+            
+            try {
+                const data = await getCourses(user);
+                setCourses(data);
+    
+            } catch {
+                console.log('error from getCourses')
+}
+            const catData = await getCategories();
+              
+            try {
+                const userCoursesData = await getUserCourses(user);
         setUserCourses(userCoursesData)
-        console.log("categories data: ", catData)
+
+
+    
+            } catch {
+                console.log('error from getUserCourses')
+}
         setCategories(catData)
-        setCourses(data);
+       
         setIsloading(false)
       
     };
     
     
     try { fetchData(); }catch{setCourses([])}
-    }, []);
+    }, [user]);
     if (isloading) {
      return <p>loading ...</p>
  }
@@ -110,7 +117,7 @@ const Page = () => {
 
             </div>
             {
-                !user.user.isAnonymous && (
+               user !== undefined && user !== null && (!user.user || !user.user.isAnonymous) && (
                     <div className='w-full flex flex-col'>
                     <h2 className="p-3 font-bold">My Learning</h2>
                     <div className="flex flex-col mb-4 p-2">

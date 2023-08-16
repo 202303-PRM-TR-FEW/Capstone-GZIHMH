@@ -31,7 +31,6 @@ const CheckIcon3 = `
 
 const ProfilePage = () => {
   const user = useAuthContext();
-  console.log("the user in profile form useAuthcountesxt: ",user)
   const [userData, setUserData] = useState(null);
   const [achiev, setAchiev] = useState([]);
   const [friends,setFriends] = useState([])
@@ -42,7 +41,6 @@ const ProfilePage = () => {
         const achData = await getAchievements();
         setAchiev(achData)
         const { uid } = auth.currentUser
-        console.log("uid is :",uid)
         const userDoc = doc(firestore, 'users', uid);
         const userSnapshot = await getDoc(userDoc)
         
@@ -60,7 +58,6 @@ const ProfilePage = () => {
       }
     };
     fetchUserData();
-    console.log(userData)
   }, []);
   if (!userData) {
     // If userData is still loading, you can show a loading message or spinner
