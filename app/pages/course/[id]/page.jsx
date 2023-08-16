@@ -31,21 +31,9 @@ const Page = ({ params }) => {
   return<p>loading ...</p>
 }
   return (
-    <div className='w-full flex flex-col md:flex-row'>
-     
-      <div>
-      <Details course={course} />
-        
-      </div>
-      <div className='bg-white flex flex-col w-full md:p-8 h-full'>
-        <h1>Course Overview</h1>
-      <CourseOverview lessons={lessons}/>
+    
+      <CourseOverview lessons={lessons} course={course}/>
 
-      </div>
-   
-
-      
-    </div>
 
   )
 }

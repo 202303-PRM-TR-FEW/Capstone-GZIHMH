@@ -1,9 +1,9 @@
 import { DropdownButton } from '@/utils/icons';
 import React, { useState } from 'react';
-
-const CourseOverview = ({ lessons }) => {
+import Details from './Details';
+const CourseOverview = ({ lessons ,course }) => {
   const [openSections, setOpenSections] = useState([]);
-
+  const [selectedLessonLink, setSelectedLessonLink] = useState(null);
   const toggleSection = (sectionKey) => {
     if (openSections.includes(sectionKey)) {
       setOpenSections(openSections.filter(section => section !== sectionKey));
@@ -21,9 +21,19 @@ const CourseOverview = ({ lessons }) => {
     acc[sectionKey].push(lesson);
     return acc;
   }, {});
-
+  const handleLessonClick = (lessonLink) => {
+    setSelectedLessonLink(lessonLink);
+  };
   return (
-    <div className='flex flex-col w-full m-2 bg-white rounded-2xl shadow-lg p-4'>
+    <div className='w-full flex flex-col md:flex-row'>
+
+      <div>
+      <Details key={selectedLessonLink} course={course} link={selectedLessonLink} />
+
+      </div>
+      <div className='bg-white flex flex-col w-full md:p-8 h-full'>
+        <h1>Course Overview</h1>
+        <div className='flex flex-col w-full m-2 bg-white rounded-2xl  p-4'>
       {Object.keys(groupedSections).map(sectionKey => {
         const sectionName = groupedSections[sectionKey][0].linkSectionName || 'Lessons';
         const sortedLessons = groupedSections[sectionKey].sort((a, b) => a.linkSubsectionNumber - b.linkSubsectionNumber);
@@ -42,12 +52,12 @@ const CourseOverview = ({ lessons }) => {
               <div className="pl-4 mt-2">
                 {sortedLessons.map(subLesson => (
                   <div key={subLesson.id} className="py-2">
-                    <a
-                      href={subLesson.link}
-                      className="text-md text-gray-700 hover:text-blue-600 transition duration-300"
-                    >
-                      {subLesson.linkTitle}
-                    </a>
+                   <button
+                        onClick={() => handleLessonClick(subLesson.link)}
+                        className="text-md text-gray-700 hover:text-blue-600 transition duration-300 bg-transparent border-none p-0 cursor-pointer"
+                      >
+                        {subLesson.linkTitle}
+                      </button>
                   </div>
                 ))}
               </div>
@@ -56,6 +66,10 @@ const CourseOverview = ({ lessons }) => {
         );
       })}
     </div>
+
+      </div>
+    </div>
+   
   );
 };
 
