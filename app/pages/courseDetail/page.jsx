@@ -10,9 +10,7 @@ import {firestore} from "@/utils/firebase";
 const CoursesDetails = () => {
   const [showVideos, setShowVideo] = useState(true);
 
-  // console.log(data);
   const info = initialLessons;
-  console.log("info is " ,info)
   const [active, setActive] = useState(0);
 
   const revealVideos = () => {

@@ -20,7 +20,6 @@ const Page = ({ params }) => {
       const lessonsData = await getLessons(user, id)
       setCourse(data);
       setlessons(lessonsData);
-      console.log("lessons data in course/id",lessonsData)
       setIsloading(false)
       
     };
