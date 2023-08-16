@@ -39,8 +39,6 @@ const GetStarted = ({ routers,popup }) => {
       }
     
         // else successful
-    console.log(result)
-    console.log("my route is ",pathname)
     if (pathname == '/') {
       return routers.push('/pages/home');
     }
