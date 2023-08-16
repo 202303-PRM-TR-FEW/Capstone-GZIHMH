@@ -1,39 +1,44 @@
-import React, { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import db from '../utils/db';
 import { Clock, Star } from '../utils/icons';
-
-const Details = ({ course  }) => {
-  // const getCourse = (courseIndex) => {
-  //   const course = db.courses.find((c) => c.id === courseIndex);
-  //   return course || {};
-  // };
-  // if (!courseIndex) {
-  //   courseIndex = db.courses[0].id;
-  // }
-
-  // const getPersonName = (user_id) => {
-  //   const person = db.person.find((p) => p.id === user_id);
-  //   return person ? person.name : '';
-  // };
-
-  // const course = getCourse(courseIndex);
-  // const user = course ? getPersonName(course.user_id) : '';
-
-  // if (!course) {
-  //   return <div>Course not found</div>;
-  // }
-
-  // const image = '/assets/images/profilePic5.jpeg';
+import React,{ useState,useEffect } from 'react';
+const Details = ({ course  ,link}) => {
+  const [showVideo, setShowVideo] = useState(false);
+  const [videoLink,setVideoLink] = useState(null)
+  const getVideoIdFromWatchUrl = (watchUrl) => {
+    const regex = /[?&]v=([^&]+)/;
+    const match = watchUrl.match(regex);
+    return match ? match[1] : null; 
+  };
   useEffect(() => {
-    console.log(course)
-  }, []);
+    if (link) {
+      handleShowVideo();
+    }
+  }, [link]);
+  const handleShowVideo = () => {
+    const videoId = getVideoIdFromWatchUrl(link);
+    const youtubeEmbedLink = `https://www.youtube.com/embed/${videoId}`;
+    setShowVideo(true);
+    setVideoLink(youtubeEmbedLink);
+  };
+
   return (
-    <section className='flex flex-col w-full'>
+    <section className='flex flex-col w-full p-2'>
       <div className='flex flex-col items-center w-full h-full'>
+      {showVideo ? (
+          <iframe
+            src={videoLink}
+            width='600'
+            height='400'
+            frameBorder='0'
+            allowFullScreen
+            className='max-h-[400px] max-w-[600px]'
+          ></iframe>
+        ) : (
         <Image src={course.thumbnail} width={600} height={400} alt={course.title} className='max-h-[400px] max-w-[600px]' />
-        <div className='flex justify-start flex-col ml-4 '>
+        )}
+       <div className='flex justify-start flex-col ml-4 '>
           <h2 className='p-1 mb-1 mt-1'>{course.title}</h2>
           <div className='user-container min-w-[150px] w-1/4  mb-2 rounded-full flex  items-center bg-white h-[35px]'>
              <Image src={course.tutor.profilePicture} alt="User Profile " width={35} height={35} className='w-[35px] m-0 h-[35px] rounded-full' />
