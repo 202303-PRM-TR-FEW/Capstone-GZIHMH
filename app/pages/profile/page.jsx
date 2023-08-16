@@ -77,7 +77,7 @@ const ProfilePage = () => {
         <div className='flex flex-col md:flex-row  w-full'>
           <div className='flex flex-col w-full'>
             <div>
-            <InfoBar name={ userData.name} country={userData.country} image={profileUrl} />
+              <InfoBar userDetails={user.user} name={ userData.name} country={userData.country} image={profileUrl} />
 
             </div>
             <div className='flex flex-col w-full'>

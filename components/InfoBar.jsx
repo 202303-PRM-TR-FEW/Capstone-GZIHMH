@@ -1,18 +1,52 @@
-import React from 'react';
-import InfoBarData from '../utils/InfoBarData';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { MapPinIcon } from '@/utils/icons';
 
-// SVG component for the map pin icon
-const MapPinIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-map-pin-filled" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
-    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-    <path d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203 .21l-4.243 4.242a3 3 0 0 1 -4.097 .135l-.144 -.135l-4.244 -4.243a9 9 0 0 1 12.728 -12.728zm-6.364 3.364a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z" strokeWidth="0" fill="currentColor" />
-  </svg>
-);
+import {firestore,collection,doc,query,getDoc,getDocs,where, } from '@/utils/firebase'
+import getUser from '@/app/pages/api/getUser';
 
 const InfoBar = (props) => {
-  const { courses, followers, following } = InfoBarData;
-
+  const [coursesCount, setCoursesCount] = useState(0);
+  const [followersCount, setFollowersCount] = useState(0);
+  const [followingCount, setFollowingCount] = useState(0);
+  console.log("user data is ; ",props.user)
+  const [user,setUser ] = useState(props.userDetails)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getUser(props.userDetails.uid);
+        setUser(data);
+        console.log("the data from user func is: ", data);
+  
+        if (data.courses) {
+          setCoursesCount(data.courses.length);
+        }
+  
+        // Fetch followers count
+        await fetchFollowers(data);
+  
+        // Fetch following count from user data
+        if (data.following) {
+          setFollowingCount(data.following.length);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+  
+    fetchData();
+  }, []);
+  
+  const fetchFollowers = async (data) => {
+    const users = collection(firestore, 'users')
+    const allUsersSnapshot = await getDocs(users);
+    const followers = allUsersSnapshot.docs.filter(doc => {
+      const userData = doc.data();
+      return userData.following && userData.id == data.uid;
+    });
+    console.log("followers data is ; ",followers)
+    setFollowersCount(followers.length)
+  }
   return (
     <div className='p-3 w-full'>
       <div className="flex flex-row w-full">
@@ -29,15 +63,15 @@ const InfoBar = (props) => {
           <div className="flex justify-center items-center mb-4 ">
             <div className="flex flex-row items-center bg-gray-100 rounded-3xl w-full border-8 p-4 m-auto border-white">
               <div className="flex flex-col items-center w-full">
-                <span className="text-lg font-bold mb-2 text-gray-900">{courses}</span>
+                <span className="text-lg font-bold mb-2 text-gray-900">{coursesCount}</span>
                 <span className="text-gray-900 text-xs uppercase font-bold ">My COURSES</span>
               </div>
               <div className="flex flex-col items-center w-full">
-                <span className="text-lg font-bold mb-2 text-gray-900">{followers}</span>
+                <span className="text-lg font-bold mb-2 text-gray-900">{followersCount}</span>
                 <span className="text-gray-900 text-xs uppercase font-bold ">FOLLOWERS</span>
               </div>
               <div className="flex flex-col items-center w-full">
-                <span className="text-lg font-bold mb-2 text-gray-900">{following}</span>
+                <span className="text-lg font-bold mb-2 text-gray-900">{followingCount}</span>
                 <span className="text-xs uppercase text-gray-900 font-bold ">FOLLOWING</span>
               </div>
             </div>

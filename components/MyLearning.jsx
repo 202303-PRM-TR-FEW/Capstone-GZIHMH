@@ -35,7 +35,7 @@ const MyLearning = ({data ,user} ) => {
                 <div
                     key={course.id}
                     className='relative flex  p-2 items-start justify-start bg-white rounded-xl dark:bg-white dark:text-white text-slate-700 cursor-pointer'
-                    onClick={() => handleCourseClick(course.id)}
+                    
                 >
                     <div className='relative rounded-2xl overflow-hidden'>
                         <Image
@@ -45,6 +45,8 @@ const MyLearning = ({data ,user} ) => {
                             alt={course.title}
                         />
                     </div>
+                    <Link href={`/pages/course/${course.id}`}>
+
                     <div className='flex flex-col flex-grow p-3'>
                         <div className='flex justify-between'>
                             <h2 className='text-xl font-bold mr-8'>{course.title}</h2>
@@ -61,8 +63,10 @@ const MyLearning = ({data ,user} ) => {
                                 style={{ width: '30%' }}
                             ></div>
                         </div>
-                        <p className='text'> 30% complete</p>
+                            <p className='text'> 30% complete</p>
+                            
                     </div>
+                    </Link>
                 </div>
             ))}
 
