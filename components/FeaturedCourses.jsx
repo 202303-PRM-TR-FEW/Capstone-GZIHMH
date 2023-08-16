@@ -28,7 +28,7 @@ const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   return (
       <div className=" bg-white  shadow-md rounded-3xl  cursor-pointer relative p-2">
       <div className=" rounded-2xl relative " >
-      <Link href={`/course/${courseId}`}>
+      <Link href={`/pages/course/${courseId}`}>
           <Image
             src={imageSrc}
             alt={alt}
@@ -46,7 +46,7 @@ const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
         <SaveButton user={user} courseId={courseId}  isSaved={ isSaved}/>
         </div>
       <div className="pt-8 pl-2 mb-2">
-    <Link href={`/course/${courseId}`}>
+    <Link href={`/pages/course/${courseId}`}>
         
           <p className=" whitespace-nowrap overflow-hidden max-w-xs truncate overflow-ellipsis font-semibold text-gray-900 mb-0">{title}</p>
       </Link>

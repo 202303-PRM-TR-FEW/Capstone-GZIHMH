@@ -8,6 +8,24 @@ export const Clock = () => (
     </svg>
 );
 
+export const DropdownButton = ({isDropdownOpen}) => (
+    <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className={`icon icon-tabler icon-tabler-math-greater ${
+              isDropdownOpen ? 'rotate-90' : ''}`}
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            strokeWidth="2"
+            stroke="#9e9e9e"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M5 18l14 -6l-14 -6" />
+          </svg>
+)
 export const SaveButtonIcon = ({color}) => (
     <svg
             xmlns="http://www.w3.org/2000/svg"
