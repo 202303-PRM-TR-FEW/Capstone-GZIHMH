@@ -1,10 +1,10 @@
-import { auth, firestore, docs, query, collection, getDocs, getDoc, where } from '@/utils/firebase'
+import { auth, firestore, docs, query, doc, collection, getDocs, getDoc, where } from '@/utils/firebase'
 import getSearchResults from './getSearchResults'
 import getUser from './getUser'
-export async function getLessons(isanon, id) {
+export async function getLessons(user, id) {
     try {
-        const lessonsRef = collection(firestore, 'Lessons')
-        const lessonsSnapshot = await getDocs(lessonsRef, where('courseId.id', '==', id))
+        const lessonsRef = collection(firestore, 'lessons')
+        const lessonsSnapshot = await getDocs(query(lessonsRef, where('courseId', '==', id)))
 
         const lessonsData = lessonsSnapshot.docs.map((doc) => doc.data());
 

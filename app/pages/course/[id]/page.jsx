@@ -7,6 +7,7 @@ import {getLessons} from '../../api/getLessons';
 import { getCourse } from '../../api/getCourse';
 import Details from '@/components/Details';
 import { useAuthContext } from '@/context/AuthContext';
+import CourseOverview from '@/components/CourseOverview';
 const Page = ({ params }) => {
   const user = useAuthContext()
   const id = params.id
@@ -15,25 +16,33 @@ const Page = ({ params }) => {
   const [isloading,setIsloading] = useState(true)
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getCourse(user.user.isAnonymous, id);
-      const lessonsData = await getLessons(user.user.isAnonymous, id)
+      const data = await getCourse(user, id);
+      const lessonsData = await getLessons(user, id)
       setCourse(data);
       setlessons(lessonsData);
+      console.log("lessons data in course/id",lessonsData)
       setIsloading(false)
       
     };
     
     try { fetchData(); } catch { setCourse([]) }
-  }, []);
+  }, [user]);
   if (isloading) {
   return<p>loading ...</p>
 }
   return (
-    <div>
-      <h1>this is the page</h1>
-      {/* <h1>{id}</h1> */}
+    <div className='w-full flex flex-col md:flex-row'>
+     
+      <div>
       <Details course={course} />
-      {/* <p className='text-black'>{lessons}</p> */}
+        
+      </div>
+      <div className='bg-white flex flex-col w-full md:p-8 h-full'>
+        <h1>Course Overview</h1>
+      <CourseOverview lessons={lessons}/>
+
+      </div>
+   
 
       
     </div>
