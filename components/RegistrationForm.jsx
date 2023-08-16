@@ -4,6 +4,7 @@ import signUp from '@/app/pages/api/auth/signup';
 import { ReturnIcon } from '@/utils/icons';
 import GetStarted from './GetStarted';
 import { usePathname } from 'next/navigation';
+
 const RegistrationForm = ({ route }) => {
     const [showGetStarted, setShowGetStarted] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
@@ -13,7 +14,10 @@ const RegistrationForm = ({ route }) => {
     const [name, setName] = useState('');
     const [username, setUsername] = useState('');
     const [countries, setCountries] = useState([]);
-    const pathname = usePathname()
+    const pathname = usePathname();
+    const [nameError, setNameError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+
     useEffect(() => {
         fetchCountries();
     }, []);
@@ -44,6 +48,23 @@ const RegistrationForm = ({ route }) => {
     const handleForm = async (event) => {
         event.preventDefault();
 
+        // Validate name: Allow only letters
+        if (!/^[a-zA-Z\s]*$/.test(name)) {
+            setNameError('Name should contain only letters.');
+            return;
+        } else {
+            setNameError('');
+        }
+
+        // Validate password: At least 6 characters with one capital letter
+        if (!/(?=.*[A-Z])(?=.*[a-z]).{6,}/.test(password)) {
+            setPasswordError('Password should contain at least 6 characters, including one capital letter.');
+            return;
+        } else {
+            setPasswordError('');
+        }
+
+        // Other form submission logic
         const { result, error } = await signUp(
             email,
             password,
@@ -115,6 +136,9 @@ const RegistrationForm = ({ route }) => {
                                 required
                                 onChange={(e) => setName(e.target.value)}
                             />
+                            {nameError !== '' && (
+                           <p className="text-xs text-red-600 mt-1 ml-2">{nameError}</p>
+                            )}
                         </div>
                         {countries.length > 0 && (
                             <div className="mb-4">
@@ -204,6 +228,9 @@ const RegistrationForm = ({ route }) => {
                                 required
                                 onChange={(e) => setPassword(e.target.value)}
                             />
+                           {passwordError !== '' && (
+                         <p className="text-xs text-red-600 mt-1 ml-2">{passwordError}</p>
+                           )}
                         </div>
                         <div>
                             <button className="blue_btn m-2 py-1" type="submit">
@@ -218,4 +245,3 @@ const RegistrationForm = ({ route }) => {
 };
 
 export default RegistrationForm;
-
