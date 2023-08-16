@@ -117,7 +117,7 @@ const Page = () => {
 
             </div>
             {
-                !user.user.isAnonymous && (
+               user !== undefined && user !== null && (!user.user || !user.user.isAnonymous) && (
                     <div className='w-full flex flex-col'>
                     <h2 className="p-3 font-bold">My Learning</h2>
                     <div className="flex flex-col mb-4 p-2">
